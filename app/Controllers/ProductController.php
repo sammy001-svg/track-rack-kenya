@@ -43,8 +43,7 @@ class ProductController extends Controller
         $title = $product['meta_title']
             ?: ($product['name'] . (!empty($product['category_name']) ? ' — ' . $product['category_name'] : ''));
 
-        $description = $product['meta_desc']
-            ?: excerpt($product['short_desc'] ?: $product['description'], 155);
+        $description = $product['meta_desc'] ?: $this->composeDescription($product);
 
         $trail = ['Home' => url('/')];
         $trail['Catalog'] = url('/shop');
@@ -74,5 +73,38 @@ class ProductController extends Controller
             'related'   => $model->related($productId, $product['category_id'] ? (int) $product['category_id'] : null, 4),
             'pillar'    => $pillar,
         ]);
+    }
+
+    /**
+     * Build a meta description for a product that has none of its own.
+     *
+     * Short product copy leaves most of the 158 characters Google will show
+     * unused, so where there is room we add the maker and where to buy it —
+     * both genuinely useful to someone reading a search result.
+     */
+    private function composeDescription(array $product): string
+    {
+        $base = trim(strip_tags((string) ($product['short_desc'] ?: $product['description'])));
+        $base = preg_replace('/\s+/u', ' ', $base) ?? $base;
+
+        if ($base === '') {
+            $base = $product['name'] . '.';
+        }
+
+        if (mb_strlen($base) > 118) {
+            return excerpt($base, 155);
+        }
+
+        $tail = [];
+
+        if (!empty($product['brand_name'])) {
+            $tail[] = 'By ' . $product['brand_name'] . '.';
+        }
+
+        $tail[] = 'Available from Tack Rack, Ngong Road, Nairobi.';
+
+        $composed = rtrim($base, '. ') . '. ' . implode(' ', $tail);
+
+        return mb_strlen($composed) <= 158 ? $composed : excerpt($base, 155);
     }
 }

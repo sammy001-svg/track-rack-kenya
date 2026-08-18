@@ -310,6 +310,82 @@ where, with the aspect ratio each needs, so they can be swapped one at a time.
 
 ---
 
+## SEO
+
+Every `<head>` is assembled by `app/Core/Seo.php` rather than hand-written per view, so
+titles, descriptions, canonicals, robots directives and social cards stay consistent.
+`app/Core/Schema.php` builds the JSON-LD.
+
+### Titles and descriptions
+
+Titles render as `Page title | Tack Rack Kenya`, clamped to the ~60 characters Google
+displays. When a page's own title needs the room the suffix is dropped rather than the
+title being cut. Descriptions clamp to 158 characters on a word boundary.
+
+Every level can be overridden in the admin, and falls back sensibly when left blank:
+
+| Level | Set in | Falls back to |
+|---|---|---|
+| Homepage | Settings → seo | Site tagline |
+| Category | Categories → edit | Category name and description |
+| Product | Products → edit | Product name, category, brand, and location |
+| Service | Services → edit | Service name and tagline |
+| CMS page | Pages → edit | Page title and subtitle |
+
+The product form shows a **live Google-result preview** with character meters that turn
+amber when a description is too short and red when either will be truncated.
+
+### Structured data
+
+One `@graph` per page, so entities cross-reference instead of sitting as unrelated blobs:
+
+| Page | Schema types |
+|---|---|
+| All | `SportingGoodsStore`, `WebSite` (with sitelinks search box) |
+| Product | `Product` + `Offer`, `BreadcrumbList` |
+| Category | `CollectionPage` + `ItemList`, `BreadcrumbList` |
+| Services | `Service`, `FAQPage`, `BreadcrumbList` |
+| Heritage | `AboutPage` |
+| Contact | `ContactPage` |
+| Quote process / How to order | `FAQPage` |
+
+`SportingGoodsStore` carries address, phone, opening hours as machine-readable
+`openingHoursSpecification`, and social profiles as `sameAs`. Add coordinates under
+Settings → contact and `geo` is published too — it is omitted while blank rather than
+guessed.
+
+**Prices are only published in structured data when they are publicly visible on the
+page.** Quote-only products get an `Offer` carrying availability and a "Price on request"
+`priceSpecification` but no price. Search Console may flag those as *"Missing field
+price"* — that is a benign warning, not an error, and asserting a price Google cannot
+verify on the page is the thing that actually risks a penalty.
+
+### Crawl hygiene
+
+- **Filtered catalog URLs** (`?q=`, `?brand=`, `?sort=`, `?stock=`) are `noindex, follow`
+  and canonical back to the clean category page — filters otherwise generate unlimited
+  near-duplicate URLs
+- **Paginated pages** stay indexable with a self-referencing canonical and their own
+  `— Page N` title
+- **Transactional and account pages** are `noindex` and blocked in `robots.txt`
+- **Legal pages** are `noindex` — they carry no search value and only consume crawl budget
+- **The sitemap contains only indexable URLs.** Every URL in it returns 200 and is
+  `index, follow`; nothing that is `noindex` appears there, so Search Console will not
+  report "Submitted URL marked noindex"
+
+### After going live
+
+1. Verify the domain in **Google Search Console** and submit `/sitemap.xml`
+2. Run a few pages through the [Rich Results Test](https://search.google.com/test/rich-results)
+3. Set the **map coordinates** under Settings → contact (copy them from Google Maps)
+4. Create a **Google Business Profile** for the Ngong Road shop — for a local retailer
+   this drives more traffic than anything on the site itself
+5. Set the share image under Settings → seo if you want something other than the default
+6. Fill in the meta title and description for each category — the defaults are good
+   starting points, but you know the terms your customers actually use
+
+---
+
 ## Security
 
 - **Prepared statements everywhere** — no string-interpolated SQL. Table and column

@@ -6,21 +6,30 @@ use App\Core\Database;
 
 class SeoController extends Controller
 {
+    /**
+     * CMS pages that are deliberately noindex. Listing a noindex URL in the
+     * sitemap is a contradictory signal and shows up in Search Console as
+     * "Submitted URL marked noindex", so they are excluded here too.
+     *
+     * Keep in step with PageController::show().
+     */
+    private const NOINDEX_PAGES = ['privacy-policy', 'terms-of-service'];
+
     /** GET /sitemap.xml */
     public function sitemap(): void
     {
         $db  = Database::instance();
         $now = date('Y-m-d');
 
+        // Only pages that are genuinely indexable belong here.
         $urls = [
             ['loc' => url('/'),                          'priority' => '1.0', 'freq' => 'weekly',  'lastmod' => $now],
             ['loc' => url('/shop'),                      'priority' => '0.9', 'freq' => 'daily',   'lastmod' => $now],
             ['loc' => url('/heritage'),                  'priority' => '0.7', 'freq' => 'monthly', 'lastmod' => $now],
             ['loc' => url('/services'),                  'priority' => '0.8', 'freq' => 'monthly', 'lastmod' => $now],
-            ['loc' => url('/services/saddle-fitting'),   'priority' => '0.8', 'freq' => 'monthly', 'lastmod' => $now],
-            ['loc' => url('/services/repairs'),          'priority' => '0.8', 'freq' => 'monthly', 'lastmod' => $now],
-            ['loc' => url('/contact'),                   'priority' => '0.6', 'freq' => 'yearly',  'lastmod' => $now],
-            ['loc' => url('/request-a-quote'),           'priority' => '0.6', 'freq' => 'yearly',  'lastmod' => $now],
+            ['loc' => url('/services/saddle-fitting'),   'priority' => '0.9', 'freq' => 'monthly', 'lastmod' => $now],
+            ['loc' => url('/services/repairs'),          'priority' => '0.9', 'freq' => 'monthly', 'lastmod' => $now],
+            ['loc' => url('/contact'),                   'priority' => '0.7', 'freq' => 'yearly',  'lastmod' => $now],
         ];
 
         foreach ($db->all('SELECT `slug`, `updated_at` FROM `categories` WHERE `is_active` = 1 ORDER BY `sort_order`') as $row) {
@@ -42,8 +51,13 @@ class SeoController extends Controller
         }
 
         foreach ($db->all('SELECT `slug`, `updated_at` FROM `pages` WHERE `is_active` = 1') as $row) {
+            // Heritage has its own entry above; legal pages are noindex.
+            if ($row['slug'] === 'heritage' || in_array($row['slug'], self::NOINDEX_PAGES, true)) {
+                continue;
+            }
+
             $urls[] = [
-                'loc'      => url($row['slug'] === 'heritage' ? '/heritage' : '/page/' . $row['slug']),
+                'loc'      => url('/page/' . $row['slug']),
                 'priority' => '0.5',
                 'freq'     => 'monthly',
                 'lastmod'  => substr((string) $row['updated_at'], 0, 10),
