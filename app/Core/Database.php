@@ -16,16 +16,26 @@ class Database
 
     private function __construct(array $config)
     {
-        $dsn = sprintf(
-            'mysql:host=%s;port=%d;dbname=%s;charset=%s',
-            $config['host'],
-            $config['port'],
-            $config['database'],
-            $config['charset']
-        );
+        // Fall back to sensible values so a partially-filled config.php cannot
+        // take the whole site down with an obscure driver error.
+        $host     = $config['host']     ?? '127.0.0.1';
+        $port     = (int) ($config['port'] ?? 3306) ?: 3306;
+        $database = $config['database'] ?? '';
+        $charset  = $config['charset']  ?? 'utf8mb4';
+        $username = $config['username'] ?? '';
+        $password = $config['password'] ?? '';
+
+        if ($database === '') {
+            throw new RuntimeException(
+                'No database name is configured. Set db.database in config/config.php '
+                . '(or config/config.local.php).'
+            );
+        }
+
+        $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s;charset=%s', $host, $port, $database, $charset);
 
         try {
-            $this->pdo = new PDO($dsn, $config['username'], $config['password'], [
+            $this->pdo = new PDO($dsn, $username, $password, [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES   => false,

@@ -1,0 +1,51 @@
+# =====================================================================
+#  Tack Rack Kenya — project-root .htaccess
+#
+#  This file only matters when the hosting account's document root could
+#  NOT be pointed at the public/ directory.
+#
+#  The preferred setup is to point the domain's document root directly at
+#  .../track.hostanex.com/public — in which case this file is never read
+#  and can be left in place harmlessly.
+#
+#  Where that is not possible, this file does two jobs:
+#    1. denies the browser any access to application code and data
+#    2. forwards every remaining request into public/
+# =====================================================================
+
+# ---------------------------------------------------------------------
+#  1. Nothing outside public/ is ever web-accessible
+# ---------------------------------------------------------------------
+RedirectMatch 404 (?i)^/(app|config|database|storage|bin|vendor|tests)(/|$)
+RedirectMatch 404 (?i)^/.*\.(sql|log|md|lock|json|ini|yml|yaml|sh|bak|old|orig|save|swp|dist)$
+RedirectMatch 404 (?i)^/\.(env|git|gitignore|htpasswd|DS_Store)
+
+<FilesMatch "(?i)^(composer\.(json|lock)|package(-lock)?\.json|README\.md|CHANGELOG\.md|\.gitignore|\.env.*)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# ---------------------------------------------------------------------
+#  2. Forward everything else into public/
+# ---------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Already inside public/ — stop here and let public/.htaccess take over.
+    # This is also what makes the rules below loop-safe on internal re-entry.
+    RewriteRule ^public/ - [L]
+
+    # Real files that live under public/ (CSS, JS, images, uploads) — serve them.
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+    RewriteRule ^(.+)$ public/$1 [L]
+
+    # Everything else is an application route.
+    RewriteRule ^ public/index.php [L]
+</IfModule>
+
+Options -Indexes

@@ -61,6 +61,13 @@ if (PHP_SAPI === 'cli') {
         $scriptDir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
         $scriptDir = $scriptDir === '/' ? '' : $scriptDir;
 
+        // When the document root could not be pointed at public/ and the root
+        // .htaccess rewrites into it instead, SCRIPT_NAME ends in /public.
+        // Drop it so generated URLs stay clean.
+        if (str_ends_with($scriptDir, '/public')) {
+            $scriptDir = substr($scriptDir, 0, -strlen('/public'));
+        }
+
         define('BASE_URL', $scheme . '://' . $host . $scriptDir);
     }
 

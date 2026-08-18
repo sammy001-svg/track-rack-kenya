@@ -9,11 +9,17 @@ class Session
             return;
         }
 
-        session_name($config['name']);
+        // Default anything the config does not supply, and turn the secure flag
+        // on automatically when the request is already over HTTPS.
+        $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https'
+            || (int) ($_SERVER['SERVER_PORT'] ?? 0) === 443;
+
+        session_name($config['name'] ?? 'tackrack_session');
         session_set_cookie_params([
-            'lifetime' => $config['lifetime'],
+            'lifetime' => (int) ($config['lifetime'] ?? 7200),
             'path'     => '/',
-            'secure'   => (bool) $config['secure'],
+            'secure'   => (bool) ($config['secure'] ?? false) || $https,
             'httponly' => true,
             'samesite' => 'Lax',
         ]);

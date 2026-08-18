@@ -1,0 +1,10 @@
+# Application code and data. Never web-accessible.
+# This is defence in depth: with the document root correctly pointed at
+# public/, nothing here is reachable in the first place.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
