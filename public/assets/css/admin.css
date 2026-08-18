@@ -986,3 +986,94 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .a-stack > * + * { margin-top: 1.25rem; }
 .a-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
 .a-spread { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; }
+
+/* ---------------------------------------------------------------------
+   SERP preview — shows how a page will appear in Google results
+   --------------------------------------------------------------------- */
+.a-serp {
+  background: #fff;
+  border: 1px solid var(--a-line);
+  border-radius: var(--a-radius-sm);
+  padding: 1rem 1.15rem;
+  font-family: arial, sans-serif;
+  max-width: 40rem;
+}
+
+.a-serp__crumb {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 12px;
+  color: #202124;
+  margin-bottom: .3rem;
+}
+
+.a-serp__favicon {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--a-line);
+  display: grid;
+  place-items: center;
+  background: var(--a-ink);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  flex: none;
+}
+
+.a-serp__site { line-height: 1.2; }
+.a-serp__site strong { display: block; font-size: 14px; font-weight: 400; }
+.a-serp__site span { color: #4d5156; font-size: 12px; }
+
+.a-serp__title {
+  color: #1a0dab;
+  font-size: 20px;
+  line-height: 1.3;
+  margin: .35rem 0 .2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.a-serp__desc {
+  color: #4d5156;
+  font-size: 14px;
+  line-height: 1.58;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.a-serp__meter {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .75rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--a-line-soft);
+  font-size: .72rem;
+  color: var(--a-faint);
+  font-family: var(--a-sans);
+}
+
+.a-serp__bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--a-line);
+  overflow: hidden;
+  max-width: 9rem;
+}
+
+.a-serp__bar i {
+  display: block;
+  height: 100%;
+  background: var(--a-green);
+  transition: width .25s var(--a-ease), background-color .25s var(--a-ease);
+}
+
+.a-serp__bar.is-over i { background: var(--a-red); }
+.a-serp__bar.is-short i { background: var(--a-amber); }

@@ -180,6 +180,82 @@
     });
   }
 
+  /* --- Live Google-result preview on the SEO panel --- */
+  function initSerpPreview() {
+    const panel = $('#seo-panel');
+    if (!panel) return;
+
+    const titleField = $('[data-seo-title]', panel);
+    const descField  = $('[data-seo-desc]', panel);
+    const nameField  = $('[data-slug-source]');
+    const slugField  = $('[data-slug-target]');
+
+    const outTitle = $('[data-serp-title]', panel);
+    const outDesc  = $('[data-serp-desc]', panel);
+    const outUrl   = $('[data-serp-url]', panel);
+
+    const suffix = panel.dataset.seoSuffix || '';
+    const host   = panel.dataset.seoHost || '';
+
+    // Google truncates around these lengths.
+    const TITLE_MAX = 60;
+    const DESC_MAX  = 158;
+    const DESC_MIN  = 70;
+
+    function meter(field, length, max, min) {
+      const wrap = field.closest('.a-field');
+      if (!wrap) return;
+
+      const bar   = $('.a-serp__bar', wrap);
+      const fill  = bar ? $('i', bar) : null;
+      const count = $('[data-seo-title-count], [data-seo-desc-count]', wrap);
+
+      if (fill) fill.style.width = Math.min(100, (length / max) * 100) + '%';
+
+      if (bar) {
+        bar.classList.toggle('is-over', length > max);
+        bar.classList.toggle('is-short', min !== undefined && length > 0 && length < min);
+      }
+
+      if (count) {
+        count.textContent = length + ' / ' + max
+          + (length > max ? ' — will be cut off' : '');
+      }
+    }
+
+    function update() {
+      const rawTitle = (titleField.value.trim())
+        || (nameField ? nameField.value.trim() : '')
+        || titleField.dataset.seoFallback
+        || 'Product name';
+
+      const full = suffix && rawTitle !== suffix ? rawTitle + ' | ' + suffix : rawTitle;
+
+      const rawDesc = (descField.value.trim())
+        || descField.dataset.seoFallback
+        || 'A short description helps this product earn clicks from search results.';
+
+      if (outTitle) outTitle.textContent = full;
+      if (outDesc)  outDesc.textContent  = rawDesc;
+
+      if (outUrl) {
+        const slug = slugField && slugField.value.trim()
+          ? slugField.value.trim()
+          : (panel.dataset.seoPath || '').replace('/product/', '');
+        outUrl.textContent = host + ' › product › ' + slug;
+      }
+
+      meter(titleField, full.length, TITLE_MAX);
+      meter(descField, rawDesc.length, DESC_MAX, DESC_MIN);
+    }
+
+    [titleField, descField, nameField, slugField].forEach((field) => {
+      if (field) field.addEventListener('input', update);
+    });
+
+    update();
+  }
+
   function boot() {
     initSidebar();
     initFlashes();
@@ -189,6 +265,7 @@
     initDropzones();
     initRepeater();
     initDirtyGuard();
+    initSerpPreview();
   }
 
   if (document.readyState === 'loading') {

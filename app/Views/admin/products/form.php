@@ -183,20 +183,50 @@ $stockStatuses = ['in_stock' => 'In stock', 'low_stock' => 'Low stock', 'on_orde
       </section>
 
       <!-- SEO -->
-      <section class="a-panel">
-        <div class="a-panel__head"><h2>Search engine listing</h2></div>
-        <div class="a-panel__body">
+      <section class="a-panel" id="seo-panel"
+               data-seo-suffix="<?= e(setting('seo_title_suffix', 'Tack Rack Kenya')) ?>"
+               data-seo-host="<?= e(preg_replace('#^https?://#', '', rtrim(BASE_URL, '/'))) ?>"
+               data-seo-path="/product/<?= e($val('slug') ?: 'your-product') ?>">
+        <div class="a-panel__head">
+          <h2>Search engine listing</h2>
+          <p>How this product will appear in Google. Leave the fields blank and the product
+             name and short description are used.</p>
+        </div>
+
+        <div class="a-panel__body a-stack">
+          <div class="a-serp">
+            <div class="a-serp__crumb">
+              <span class="a-serp__favicon">TR</span>
+              <span class="a-serp__site">
+                <strong><?= e(setting('site_name', 'Tack Rack')) ?></strong>
+                <span data-serp-url></span>
+              </span>
+            </div>
+            <div class="a-serp__title" data-serp-title></div>
+            <div class="a-serp__desc" data-serp-desc></div>
+          </div>
+
           <div class="a-form-grid">
             <label class="a-field <?= $err('meta_title') ? 'has-error' : '' ?>">
               <span class="a-label">Meta title</span>
-              <input class="a-input" type="text" name="meta_title" value="<?= e($val('meta_title')) ?>" maxlength="190"
-                     placeholder="Defaults to the product name">
+              <input class="a-input" type="text" name="meta_title" value="<?= e($val('meta_title')) ?>"
+                     maxlength="190" placeholder="Defaults to the product name"
+                     data-seo-title data-seo-fallback="<?= e($val('name')) ?>">
+              <span class="a-serp__meter">
+                <span class="a-serp__bar"><i></i></span>
+                <span data-seo-title-count></span>
+              </span>
             </label>
 
             <label class="a-field <?= $err('meta_desc') ? 'has-error' : '' ?>">
               <span class="a-label">Meta description</span>
-              <textarea class="a-textarea" name="meta_desc" rows="2" maxlength="300"
-                        placeholder="Defaults to the short description"><?= e($val('meta_desc')) ?></textarea>
+              <textarea class="a-textarea" name="meta_desc" rows="3" maxlength="300"
+                        placeholder="Defaults to the short description"
+                        data-seo-desc data-seo-fallback="<?= e($val('short_desc')) ?>"><?= e($val('meta_desc')) ?></textarea>
+              <span class="a-serp__meter">
+                <span class="a-serp__bar"><i></i></span>
+                <span data-seo-desc-count></span>
+              </span>
             </label>
           </div>
         </div>

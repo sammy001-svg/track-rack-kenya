@@ -79,6 +79,8 @@ class ServiceController extends Controller
             'tagline'          => $validator->value('tagline') ?: null,
             'description'      => $validator->value('description') ?: null,
             'what_to_expect'   => $validator->value('what_to_expect') ?: null,
+            'meta_title'       => $validator->value('meta_title') ?: null,
+            'meta_desc'        => $validator->value('meta_desc') ?: null,
             'duration_minutes' => $duration !== '' && is_numeric($duration) ? (int) $duration : null,
             'price_from'       => is_numeric($price) ? round((float) $price, 2) : null,
             'travel_available' => isset($_POST['travel_available']) ? 1 : 0,
