@@ -4,25 +4,50 @@
 --  Catalog tree follows the RIDER / HORSE / STABLE structure in the brief.
 -- =====================================================================
 
+-- ---------------------------------------------------------------------
+--  WHAT THIS RESETS
+--
+--  Replaced:  the demo catalog — products, images, variants, categories,
+--             brands and the written pages.
+--
+--  Preserved: settings, staff accounts, customers, quotes, orders,
+--             bookings, repairs and messages. Those hold real data or
+--             configuration, so this file never deletes them. Settings and
+--             the admin account are inserted only if missing, which is what
+--             makes this file safe to run after the migrations rather than
+--             only before them.
+-- ---------------------------------------------------------------------
+
 SET NAMES utf8mb4;
+
+-- Disable FK checks so dependent rows can be removed first.
+-- Works on shared hosts even without SUPER privilege.
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE `quote_items`;
-TRUNCATE TABLE `quotes`;
-TRUNCATE TABLE `product_variants`;
-TRUNCATE TABLE `product_images`;
-TRUNCATE TABLE `products`;
-TRUNCATE TABLE `categories`;
-TRUNCATE TABLE `brands`;
-TRUNCATE TABLE `messages`;
-TRUNCATE TABLE `settings`;
-TRUNCATE TABLE `pages`;
-TRUNCATE TABLE `users`;
+
+-- Clear tables in safe order (children before parents).
+DELETE FROM `product_variants`;
+DELETE FROM `product_images`;
+DELETE FROM `order_items`;     -- references products
+DELETE FROM `products`;
+DELETE FROM `categories`;
+DELETE FROM `brands`;
+DELETE FROM `pages`;
+
+-- Reset auto-increment counters (DELETE does not do this automatically).
+ALTER TABLE `product_variants` AUTO_INCREMENT = 1;
+ALTER TABLE `product_images`   AUTO_INCREMENT = 1;
+ALTER TABLE `products`         AUTO_INCREMENT = 1;
+ALTER TABLE `categories`       AUTO_INCREMENT = 1;
+ALTER TABLE `brands`           AUTO_INCREMENT = 1;
+ALTER TABLE `pages`            AUTO_INCREMENT = 1;
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- ---------------------------------------------------------------------
 --  Admin account   ->  admin@tackrack.co.ke  /  TackRack@2026
+--  IGNORE so an existing account, or a changed password, survives.
 -- ---------------------------------------------------------------------
-INSERT INTO `users` (`id`,`name`,`email`,`password_hash`,`role`,`is_active`) VALUES
+INSERT IGNORE INTO `users` (`id`,`name`,`email`,`password_hash`,`role`,`is_active`) VALUES
 (1,'Tack Rack Admin','admin@tackrack.co.ke','$2y$10$XAH0rk0QSalvKPYGNt1XUuCP7lXZfdBMWVDnbSNERGNCYlye97SEq','admin',1);
 
 -- ---------------------------------------------------------------------
