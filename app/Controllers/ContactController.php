@@ -3,6 +3,8 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Mailer;
+use App\Core\Schema;
+use App\Core\Seo;
 use App\Core\Session;
 use App\Core\Validator;
 use App\Models\Message;
@@ -11,9 +13,24 @@ class ContactController extends Controller
 {
     public function index(): void
     {
+        $seo = Seo::make()
+            ->title('Contact Us — Ngong Road, Nairobi')
+            ->description(
+                'Visit Tack Rack at the MacNaughton Business Centre on Ngong Road, Nairobi. '
+                . 'Call ' . setting('contact_phone') . ', email or message us on WhatsApp.'
+            )
+            ->canonical(url('/contact'))
+            ->schema(Schema::breadcrumbs(['Home' => url('/'), 'Contact' => null]))
+            ->schema([
+                '@type'      => 'ContactPage',
+                'name'       => 'Contact Tack Rack',
+                'url'        => url('/contact'),
+                'mainEntity' => ['@id' => Schema::id('organisation')],
+                'isPartOf'   => ['@id' => Schema::id('website')],
+            ]);
+
         $this->view('site.contact', [
-            'pageTitle' => 'Contact Us',
-            'metaDesc'  => 'Visit Tack Rack at the MacNaughton Business Centre on Ngong Road, Nairobi, or call, email or WhatsApp us.',
+            'seo'       => $seo,
             'bodyClass' => 'page-contact',
             'errors'    => Session::errors(),
         ]);

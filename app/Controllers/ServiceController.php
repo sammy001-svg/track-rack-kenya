@@ -4,6 +4,8 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\CustomerAuth;
 use App\Core\Mailer;
+use App\Core\Schema;
+use App\Core\Seo;
 use App\Core\Session;
 use App\Core\Uploader;
 use App\Core\Validator;
@@ -23,11 +25,23 @@ class ServiceController extends Controller
     /** GET /services */
     public function index(): void
     {
+        $services = (new Service())->active();
+
+        $seo = Seo::make()
+            ->title('Saddle Fitting & Tack Repairs')
+            ->description('Saddle fitting by the only Society of Master Saddlers qualified fitter in East Africa, plus saddle and tack repairs in our own Nairobi workshop.')
+            ->canonical(url('/services'))
+            ->image(asset('/assets/img/service-fitting.jpg'), 'Saddle fitting at Tack Rack')
+            ->schema(Schema::breadcrumbs(['Home' => url('/'), 'Services' => null]));
+
+        foreach ($services as $service) {
+            $seo->schema(Schema::service($service));
+        }
+
         $this->view('site.services', [
-            'pageTitle' => 'Our Services',
-            'metaDesc'  => 'Saddle fitting by the only Society of Master Saddlers qualified fitter in East Africa, and workshop repairs in Nairobi.',
+            'seo'       => $seo,
             'bodyClass' => 'page-services',
-            'services'  => (new Service())->active(),
+            'services'  => $services,
         ]);
     }
 
@@ -41,9 +55,28 @@ class ServiceController extends Controller
         $service  = (new Service())->bySlug('saddle-fitting');
         $customer = CustomerAuth::user();
 
+        $seo = Seo::make()
+            ->title($service['meta_title'] ?? 'Saddle Fitting in Nairobi')
+            ->description($service['meta_desc'] ?? $service['tagline'] ?? 'Book a saddle fitting with Tack Rack, Nairobi.')
+            ->canonical(url('/services/saddle-fitting'))
+            ->image(asset('/assets/img/service-fitting.jpg'), 'Saddle fitting on the horse')
+            ->schema(Schema::breadcrumbs([
+                'Home' => url('/'), 'Services' => url('/services'), 'Saddle Fitting' => null,
+            ]))
+            ->schema($service !== null ? Schema::service($service) : [])
+            ->schema(Schema::faq([
+                'Why does a saddle need professional fitting?'
+                    => 'A saddle that does not fit will damage a horse\'s back long before the rider notices. Horses also change shape with work, age and condition, so a saddle that fitted last season may not fit this one.',
+                'Do you travel to the yard?'
+                    => 'Yes. Fittings are carried out at the shop on Ngong Road or at your own yard anywhere in Kenya. Yard visits are charged by distance and confirmed before we travel.',
+                'How long does a saddle fitting take?'
+                    => 'Around 90 minutes. The horse is assessed standing and in work, checking wither clearance, panel contact, balance and billet alignment.',
+                'Who carries out the fitting?'
+                    => 'Sharon Ashley, the only Saddle Fitter in East Africa qualified with the Society of Master Saddlers.',
+            ]));
+
         $this->view('site.service-fitting', [
-            'pageTitle'   => $service['name'] ?? 'Saddle Fitting',
-            'metaDesc'    => $service['tagline'] ?? 'Book a saddle fitting with Tack Rack, Nairobi.',
+            'seo'         => $seo,
             'bodyClass'   => 'page-fitting',
             'service'     => $service,
             'disciplines' => self::DISCIPLINES,
@@ -139,9 +172,28 @@ class ServiceController extends Controller
     {
         $service = (new Service())->bySlug('workshop-repairs');
 
+        $seo = Seo::make()
+            ->title($service['meta_title'] ?? 'Saddle & Tack Repairs, Nairobi')
+            ->description($service['meta_desc'] ?? $service['tagline'] ?? 'Saddle, tree and tack repairs in our Nairobi workshop.')
+            ->canonical(url('/services/repairs'))
+            ->image(asset('/assets/img/service-repairs.jpg'), 'Saddlery in the Tack Rack workshop')
+            ->schema(Schema::breadcrumbs([
+                'Home' => url('/'), 'Services' => url('/services'), 'Workshop Repairs' => null,
+            ]))
+            ->schema($service !== null ? Schema::service($service) : [])
+            ->schema(Schema::faq([
+                'What can you repair?'
+                    => 'Broken and cracked saddle trees, re-flocking, panel repair, restitching bridles, girths and stirrup leathers, replacement billets and fittings, rug repairs and re-proofing, and brass nameplate engraving.',
+                'How much does a repair cost?'
+                    => 'Every job is quoted individually. Send photographs of the damage and we will assess and quote before any work begins — nothing starts until you approve it.',
+                'How long does a repair take?'
+                    => 'Most repairs are turned around within about a week. Tree repairs take longer and we will tell you so up front.',
+                'Do I need to bring the item in?'
+                    => 'Send photographs first if you would rather have a figure before you travel. Otherwise drop the item at the MacNaughton Business Centre on Ngong Road.',
+            ]));
+
         $this->view('site.service-repairs', [
-            'pageTitle' => $service['name'] ?? 'Workshop Repairs',
-            'metaDesc'  => $service['tagline'] ?? 'Saddle, tree and tack repairs in our Nairobi workshop.',
+            'seo'       => $seo,
             'bodyClass' => 'page-repairs',
             'service'   => $service,
             'itemTypes' => RepairRequest::ITEM_TYPES,

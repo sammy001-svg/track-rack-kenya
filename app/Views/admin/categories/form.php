@@ -62,6 +62,23 @@ $action = $isNew ? url('/admin/categories/store') : url('/admin/categories/' . $
             <span class="a-hint">Shown beneath the heading on the category page and in the homepage pillar.</span>
           </label>
 
+          <label class="a-field">
+            <span class="a-label">Meta title</span>
+            <input class="a-input" type="text" name="meta_title" value="<?= e($val('meta_title')) ?>" maxlength="190"
+                   placeholder="Defaults to the category name">
+            <span class="a-hint">
+              Shown in Google. Aim for under 60 characters including the site name, and lead
+              with what people search for — "Riding Boots, Paddock Boots &amp; Chaps".
+            </span>
+          </label>
+
+          <label class="a-field">
+            <span class="a-label">Meta description</span>
+            <textarea class="a-textarea" name="meta_desc" rows="3" maxlength="300"
+                      placeholder="Defaults to the description above"><?= e($val('meta_desc')) ?></textarea>
+            <span class="a-hint">The grey text under the title in search results. Around 155 characters.</span>
+          </label>
+
           <div class="a-field a-col-full">
             <span class="a-label">Category image</span>
             <label class="a-drop">

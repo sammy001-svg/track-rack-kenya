@@ -135,7 +135,9 @@ class CategoryController extends Controller
     {
         $validator = new Validator($_POST);
         $validator->require('name', 'Category name')->max('name', 150, 'Category name')
-            ->max('tagline', 255, 'Tagline');
+            ->max('tagline', 255, 'Tagline')
+            ->max('meta_title', 190, 'Meta title')
+            ->max('meta_desc', 300, 'Meta description');
 
         if ($validator->fails()) {
             Session::flashErrors($validator->errors());
@@ -160,6 +162,8 @@ class CategoryController extends Controller
             'name'        => $validator->value('name'),
             'tagline'     => $validator->value('tagline') ?: null,
             'description' => $validator->value('description') ?: null,
+            'meta_title'  => $validator->value('meta_title') ?: null,
+            'meta_desc'   => $validator->value('meta_desc') ?: null,
             'image'       => $image ?: null,
             'sort_order'  => (int) ($_POST['sort_order'] ?? 0),
             'is_active'   => isset($_POST['is_active']) ? 1 : 0,

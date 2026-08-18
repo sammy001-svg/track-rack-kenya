@@ -47,6 +47,7 @@ class PageController extends Controller
         $validator = new Validator($_POST);
         $validator->require('title', 'Page title')->max('title', 200, 'Page title')
             ->max('subtitle', 300, 'Subtitle')
+            ->max('meta_title', 190, 'Meta title')
             ->max('meta_desc', 300, 'Meta description')
             ->require('body', 'Page content');
 
@@ -58,8 +59,9 @@ class PageController extends Controller
         }
 
         $model->updateById($pageId, [
-            'title'     => $validator->value('title'),
-            'subtitle'  => $validator->value('subtitle') ?: null,
+            'title'      => $validator->value('title'),
+            'subtitle'   => $validator->value('subtitle') ?: null,
+            'meta_title' => $validator->value('meta_title') ?: null,
             'body'      => $this->sanitiseHtml((string) ($_POST['body'] ?? '')),
             'meta_desc' => $validator->value('meta_desc') ?: null,
             'is_active' => isset($_POST['is_active']) ? 1 : 0,

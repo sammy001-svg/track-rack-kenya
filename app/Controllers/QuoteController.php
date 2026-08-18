@@ -66,6 +66,8 @@ class QuoteController extends Controller
         $this->view('site.quote-list', [
             'pageTitle'   => 'Your Quote List',
             'metaDesc'    => 'Review the items on your Tack Rack quote list before sending your request.',
+            // Contents depend on the visitor's session — nothing to index.
+            'noindex'     => true,
             'bodyClass'   => 'page-quote-list',
             'items'       => array_merge($split['buyable'], $split['quote']),
             'buyable'     => $split['buyable'],
@@ -115,6 +117,7 @@ class QuoteController extends Controller
         $this->view('site.quote-form', [
             'pageTitle'   => 'Request a Quote',
             'metaDesc'    => 'Send your selected items to Tack Rack and receive a full quote, usually within one working day.',
+            'noindex'     => true,
             'bodyClass'   => 'page-quote-form',
             'items'       => $items,
             'disciplines' => self::DISCIPLINES,

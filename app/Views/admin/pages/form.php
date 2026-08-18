@@ -34,6 +34,13 @@ $publicUrl = $page['slug'] === 'heritage' ? '/heritage' : '/page/' . $page['slug
             <span class="a-hint">The single line shown under the heading.</span>
           </label>
 
+          <label class="a-field">
+            <span class="a-label">Meta title</span>
+            <input class="a-input" type="text" name="meta_title" value="<?= e($val('meta_title')) ?>" maxlength="190"
+                   placeholder="Defaults to the page title">
+            <span class="a-hint">Shown in Google. Under 60 characters including the site name.</span>
+          </label>
+
           <label class="a-field <?= $err('body') ? 'has-error' : '' ?>">
             <span class="a-label">Page content <span class="req">*</span></span>
             <textarea class="a-textarea a-textarea--tall a-textarea--code" name="body" rows="22" required><?= e($val('body')) ?></textarea>

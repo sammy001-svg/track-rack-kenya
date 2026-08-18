@@ -1,34 +1,36 @@
 <?php
+use App\Core\Seo;
 use App\Core\Session;
 
 $siteName   = setting('site_name', 'Tack Rack');
-$pageTitle  = $pageTitle ?? $siteName;
-$fullTitle  = $pageTitle === $siteName ? $siteName . ' — Equestrian Supplies, Kenya' : $pageTitle . ' — ' . $siteName;
-$metaDesc   = $metaDesc ?? setting('site_intro');
 $bodyClass  = $bodyClass ?? '';
 $overHeader = !empty($transparentHeader);
 $flashes    = Session::flashes();
+
+/*
+ * Controllers may pass a fully-built Seo object as $seo. Where they don't, one
+ * is assembled from the simpler $pageTitle / $metaDesc / $ogImage variables so
+ * older views keep working unchanged.
+ */
+if (!isset($seo) || !$seo instanceof Seo) {
+    $seo = Seo::make()
+        ->title($pageTitle ?? null)
+        ->description($metaDesc ?? null)
+        ->image($ogImage ?? null);
+
+    if (!empty($noindex)) {
+        $seo->noindex();
+    }
+}
 ?>
 <!doctype html>
 <html lang="en-KE">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?= e($fullTitle) ?></title>
-<meta name="description" content="<?= e(excerpt($metaDesc, 158)) ?>">
-<?php if (!empty($noindex)): ?><meta name="robots" content="noindex, nofollow"><?php endif; ?>
+<?= $seo->render() ?>
+
 <meta name="theme-color" content="#14110E">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="<?= e($siteName) ?>">
-<meta property="og:title" content="<?= e($fullTitle) ?>">
-<meta property="og:description" content="<?= e(excerpt($metaDesc, 158)) ?>">
-<meta property="og:image" content="<?= e($ogImage ?? asset('/assets/img/og-default.jpg')) ?>">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="canonical" href="<?= e(url(CURRENT_PATH)) ?>">
 <link rel="icon" href="<?= e(asset('/assets/img/favicon.svg')) ?>" type="image/svg+xml">
 
 <?php /* Flag scripting before first paint so scroll-reveal can hide content
@@ -42,25 +44,6 @@ $flashes    = Session::flashes();
 <link rel="stylesheet" href="<?= e(asset('/assets/css/main.css')) ?>">
 <link rel="stylesheet" href="<?= e(asset('/assets/css/account.css')) ?>">
 
-<script type="application/ld+json">
-<?= json_encode([
-    '@context' => 'https://schema.org',
-    '@type'    => 'SportingGoodsStore',
-    'name'     => setting('site_name', 'Tack Rack Limited'),
-    'description' => setting('site_intro'),
-    'url'      => url('/'),
-    'telephone' => setting('contact_phone'),
-    'email'    => setting('contact_email'),
-    'foundingDate' => setting('founded_year', '1997'),
-    'address'  => [
-        '@type'           => 'PostalAddress',
-        'streetAddress'   => setting('contact_address'),
-        'addressLocality' => 'Nairobi',
-        'addressCountry'  => 'KE',
-    ],
-    'openingHours' => setting('contact_hours'),
-], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) ?>
-</script>
 </head>
 
 <body class="<?= e($bodyClass) ?>">

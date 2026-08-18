@@ -46,6 +46,20 @@ $publicUrl = $service['slug'] === 'saddle-fitting' ? '/services/saddle-fitting' 
             <span class="a-hint">Shown in the sidebar beside the booking form.</span>
           </label>
 
+          <label class="a-field">
+            <span class="a-label">Meta title</span>
+            <input class="a-input" type="text" name="meta_title" value="<?= e($val('meta_title')) ?>" maxlength="190"
+                   placeholder="Defaults to the service name">
+            <span class="a-hint">Shown in Google. Under 60 characters including the site name.</span>
+          </label>
+
+          <label class="a-field">
+            <span class="a-label">Meta description</span>
+            <textarea class="a-textarea" name="meta_desc" rows="3" maxlength="300"
+                      placeholder="Defaults to the tagline"><?= e($val('meta_desc')) ?></textarea>
+            <span class="a-hint">Around 155 characters.</span>
+          </label>
+
           <div class="a-field">
             <span class="a-label">Service image</span>
             <label class="a-drop">

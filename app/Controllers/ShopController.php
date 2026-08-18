@@ -2,6 +2,8 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Schema;
+use App\Core\Seo;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -70,8 +72,7 @@ class ShopController extends Controller
         $tagline = $category['tagline'] ?? 'Rider, Horse and Stable - the complete Tack Rack range.';
 
         $this->view('site.shop', [
-            'pageTitle'     => $category !== null ? $category['name'] : 'Shop the Catalog',
-            'metaDesc'      => $category['description'] ?? setting('site_intro'),
+            'seo'           => $this->buildSeo($category, $pillar, $filters, $subCategoryId, $result),
             'bodyClass'     => 'page-shop',
             'heading'       => $heading,
             'tagline'       => $tagline,
@@ -87,5 +88,66 @@ class ShopController extends Controller
             'filters'       => $filters,
             'activeSubId'   => $subCategoryId,
         ]);
+    }
+
+    /**
+     * Search-engine handling for a catalog page.
+     *
+     * Filter combinations (search terms, brand, availability, sort) generate an
+     * effectively unlimited number of near-identical URLs, so those are marked
+     * noindex and pointed back at the clean category page. Genuine pagination
+     * stays indexable with a self-referencing canonical.
+     */
+    private function buildSeo(?array $category, ?array $pillar, array $filters, int $subCategoryId, array $result): Seo
+    {
+        $cleanPath = $category !== null ? '/shop/' . $category['slug'] : '/shop';
+
+        $isFiltered = ($filters['q'] ?? '') !== ''
+            || !empty($filters['brand_id'])
+            || !empty($filters['stock'])
+            || ($filters['sort'] ?? '') !== ''
+            || $subCategoryId > 0;
+
+        $page = (int) $result['page'];
+
+        $title = $category['meta_title']
+            ?? ($category !== null ? $category['name'] : 'Shop Equestrian Supplies Online');
+
+        $description = $category['meta_desc']
+            ?? ($category['description']
+                ?? 'Browse the full Tack Rack catalog — saddlery, rider apparel and yard essentials for every discipline ridden in Kenya.');
+
+        // Page 2 onwards gets its own title so results are not duplicates.
+        if (!$isFiltered && $page > 1) {
+            $title .= ' — Page ' . $page;
+        }
+
+        $seo = Seo::make()->title($title)->description($description);
+
+        if ($isFiltered) {
+            $seo->noindex()->canonical(url($cleanPath));
+        } else {
+            $seo->canonical($page > 1 ? url($cleanPath) . '?page=' . $page : url($cleanPath));
+
+            $trail = ['Home' => url('/'), 'Catalog' => url('/shop')];
+
+            if ($category !== null) {
+                if ($pillar !== null && $pillar['id'] !== $category['id']) {
+                    $trail[$pillar['name']] = url('/shop/' . $pillar['slug']);
+                }
+                $trail[$category['name']] = null;
+            }
+
+            $seo->schema(Schema::breadcrumbs($trail))
+                ->schema(Schema::collection($category ?? ['name' => 'The Catalog'], $result['items']));
+        }
+
+        if ($category !== null && !empty($category['image'])) {
+            $seo->image(image($category['image']), $category['name']);
+        } elseif ($pillar !== null && in_array($pillar['slug'], ['rider', 'horse', 'stable'], true)) {
+            $seo->image(asset('/assets/img/pillar-' . $pillar['slug'] . '.jpg'), $pillar['name']);
+        }
+
+        return $seo;
     }
 }

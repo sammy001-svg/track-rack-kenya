@@ -49,7 +49,9 @@ class ServiceController extends Controller
 
         $validator = new Validator($_POST);
         $validator->require('name', 'Service name')->max('name', 150, 'Service name')
-            ->max('tagline', 255, 'Tagline');
+            ->max('tagline', 255, 'Tagline')
+            ->max('meta_title', 190, 'Meta title')
+            ->max('meta_desc', 300, 'Meta description');
 
         if ($validator->fails()) {
             Session::flashErrors($validator->errors());
