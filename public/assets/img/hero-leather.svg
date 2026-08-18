@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img" aria-label="Macro detail of hand-stitched bridle leather and solid brass hardware">
+  <defs>
+    <linearGradient id="hide" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#5A3A1C"/>
+      <stop offset="38%" stop-color="#8A5A2B"/>
+      <stop offset="70%" stop-color="#6B4522"/>
+      <stop offset="100%" stop-color="#3A2412"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#F0DCA8"/>
+      <stop offset="35%"  stop-color="#C9A227"/>
+      <stop offset="62%"  stop-color="#8A6B1C"/>
+      <stop offset="100%" stop-color="#E3C878"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="66%" cy="26%" r="62%">
+      <stop offset="0%"   stop-color="#C9945A" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="26"/></filter>
+    <pattern id="pores" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="6"  cy="7"  r="1.5" fill="#2A1A0C" opacity=".28"/>
+      <circle cx="19" cy="16" r="1.1" fill="#2A1A0C" opacity=".22"/>
+      <circle cx="12" cy="22" r="1.7" fill="#2A1A0C" opacity=".18"/>
+      <circle cx="23" cy="4"  r="1.2" fill="#4A3018" opacity=".20"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="1500" fill="url(#hide)"/>
+  <rect width="1200" height="1500" fill="url(#pores)"/>
+  <rect width="1200" height="1500" fill="url(#glow)"/>
+
+  <!-- broad leather straps running on the diagonal -->
+  <g transform="rotate(-24 600 750)">
+    <rect x="-260" y="300"  width="1760" height="250" rx="8" fill="#7A4E24" opacity=".92"/>
+    <rect x="-260" y="300"  width="1760" height="18"  fill="#A5713C" opacity=".55"/>
+    <rect x="-260" y="532"  width="1760" height="18"  fill="#2E1C0D" opacity=".55"/>
+
+    <rect x="-260" y="820"  width="1760" height="170" rx="8" fill="#5F3C1C" opacity=".95"/>
+    <rect x="-260" y="820"  width="1760" height="14"  fill="#8A5A2B" opacity=".5"/>
+
+    <!-- saddle stitching -->
+    <g stroke="#EBD9BC" stroke-width="7" stroke-linecap="round" opacity=".82" stroke-dasharray="26 22">
+      <line x1="-260" y1="352" x2="1500" y2="352"/>
+      <line x1="-260" y1="500" x2="1500" y2="500"/>
+      <line x1="-260" y1="866" x2="1500" y2="866"/>
+      <line x1="-260" y1="946" x2="1500" y2="946"/>
+    </g>
+  </g>
+
+  <!-- brass buckle -->
+  <g transform="translate(600 760) rotate(-24)">
+    <rect x="-190" y="-118" width="380" height="236" rx="26" fill="none" stroke="url(#brass)" stroke-width="30"/>
+    <rect x="-190" y="-118" width="380" height="236" rx="26" fill="none" stroke="#2A1A0C" stroke-width="4" opacity=".45"/>
+    <rect x="-14" y="-150" width="28" height="300" rx="12" fill="url(#brass)"/>
+    <path d="M6 0 L250 0" stroke="url(#brass)" stroke-width="26" stroke-linecap="round"/>
+    <circle cx="-96" cy="0" r="13" fill="#2A1A0C" opacity=".5"/>
+    <circle cx="96"  cy="0" r="13" fill="#2A1A0C" opacity=".5"/>
+  </g>
+
+  <!-- brass rivets -->
+  <g fill="url(#brass)">
+    <circle cx="215" cy="255" r="17"/>
+    <circle cx="978" cy="1268" r="17"/>
+    <circle cx="150" cy="1180" r="13"/>
+    <circle cx="1045" cy="330" r="13"/>
+  </g>
+
+  <!-- light falloff + film grain -->
+  <ellipse cx="820" cy="330" rx="520" ry="420" fill="#E9C79A" opacity=".14" filter="url(#soft)"/>
+  <rect width="1200" height="1500" fill="#14110E" opacity=".26"/>
+  <rect width="1200" height="1500" filter="url(#grain)" opacity=".5"/>
+</svg>

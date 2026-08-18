@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Tack Rack — Premium Equestrian Gear. Trusted Heritage.">
+  <defs>
+    <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1C1710"/><stop offset="60%" stop-color="#14110E"/><stop offset="100%" stop-color="#0C0A08"/>
+    </linearGradient>
+    <radialGradient id="ogl" cx="82%" cy="14%" r="66%">
+      <stop offset="0%" stop-color="#B99149" stop-opacity=".34"/><stop offset="100%" stop-color="#B99149" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#og)"/>
+  <rect width="1200" height="630" fill="url(#ogl)"/>
+
+  <g stroke="#B99149" fill="none" stroke-width="6" stroke-linecap="round" opacity=".5">
+    <rect x="946" y="150" width="44" height="34" rx="10"/>
+    <path d="M968 184q-64 0-64 82 0 52 26 74h76q26-22 26-74 0-82-64-82z"/>
+    <path d="M904 340h128" stroke-width="14"/>
+  </g>
+
+  <g stroke="#EBD9BC" stroke-width="2" stroke-dasharray="9 11" opacity=".25">
+    <line x1="72" y1="72" x2="1128" y2="72"/>
+    <line x1="72" y1="558" x2="1128" y2="558"/>
+  </g>
+
+  <text x="72" y="182" font-family="Helvetica,Arial,sans-serif" font-size="20" font-weight="700"
+        letter-spacing="8" fill="#B99149">NAIROBI, KENYA &#183; EST. 1997</text>
+
+  <text x="72" y="300" font-family="Georgia,serif" font-size="72" fill="#F7F4EF">Premium Equestrian Gear.</text>
+  <text x="72" y="386" font-family="Georgia,serif" font-size="72" font-style="italic" fill="#B99149">Trusted Heritage.</text>
+
+  <text x="72" y="470" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#F7F4EF" opacity=".62">
+    Saddlery, rider apparel and yard essentials — fitted by specialists.
+  </text>
+
+  <text x="72" y="600" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="700"
+        letter-spacing="6" fill="#F7F4EF" opacity=".45">TACK RACK LIMITED</text>
+</svg>

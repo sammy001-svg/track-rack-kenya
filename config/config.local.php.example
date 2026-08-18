@@ -1,0 +1,29 @@
+<?php
+/**
+ * Environment overrides. Copy to config.local.php and edit.
+ * Values here are merged over config/config.php and never committed.
+ */
+
+return [
+    'app' => [
+        'env'   => 'production',
+        'debug' => false,
+        'url'   => 'https://www.tackrack-kenya.com',
+    ],
+
+    'db' => [
+        'host'     => '127.0.0.1',
+        'database' => 'tackrack',
+        'username' => 'CHANGE_ME',
+        'password' => 'CHANGE_ME',
+    ],
+
+    'session' => [
+        'secure' => true,
+    ],
+
+    'mail' => [
+        'enabled'    => true,
+        'from_email' => 'no-reply@tackrack.co.ke',
+    ],
+];

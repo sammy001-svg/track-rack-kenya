@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Horse equipment and tack">
+  <defs>
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2A2119"/><stop offset="55%" stop-color="#181310"/><stop offset="100%" stop-color="#0D0A08"/>
+    </linearGradient>
+    <radialGradient id="hgl" cx="70%" cy="22%" r="72%">
+      <stop offset="0%" stop-color="#C08A4A" stop-opacity=".3"/><stop offset="100%" stop-color="#C08A4A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="hgr"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="11"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".13"/></feComponentTransfer></filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#hg)"/>
+  <rect width="800" height="1000" fill="url(#hgl)"/>
+
+  <g stroke="#B99149" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+    <!-- english saddle, three-quarter silhouette -->
+    <path d="M180 430q0-70 90-92 78-19 160-19t160 19q90 22 90 92 0 46-40 66-58 29-210 29t-210-29q-40-20-40-66z"/>
+    <path d="M250 350q60 34 180 34t180-34"/>
+    <path d="M226 470q78 30 204 30t204-30"/>
+    <!-- flap + knee roll -->
+    <path d="M266 470q-18 96-6 158 6 32 44 32h60q26 0 30-28l14-104"/>
+    <path d="M300 500q-14 62-8 112"/>
+    <!-- girth + stirrup -->
+    <path d="M410 500v92"/>
+    <path d="M410 592l-26 96q-6 24 18 24h16q24 0 18-24z"/>
+    <path d="M382 712h56"/>
+    <ellipse cx="410" cy="770" rx="46" ry="58"/>
+    <path d="M368 786h84" stroke-width="7"/>
+  </g>
+
+  <!-- stitch rule -->
+  <g stroke="#EBD9BC" stroke-width="2.2" stroke-dasharray="9 11" opacity=".3">
+    <line x1="60" y1="120" x2="740" y2="120"/>
+    <line x1="60" y1="900" x2="740" y2="900"/>
+  </g>
+
+  <text x="400" y="962" text-anchor="middle" font-family="Georgia,serif" font-size="30" letter-spacing="10" fill="#B99149" opacity=".6">HORSE</text>
+  <rect width="800" height="1000" filter="url(#hgr)" opacity=".55"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Tack Rack product">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFEAE1"/><stop offset="52%" stop-color="#E4DCD0"/><stop offset="100%" stop-color="#D6CBBB"/>
+    </linearGradient>
+    <radialGradient id="pgl" cx="34%" cy="22%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".85"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="pgr"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".07"/></feComponentTransfer></filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#pg)"/>
+  <rect width="800" height="1000" fill="url(#pgl)"/>
+
+  <!-- stirrup iron -->
+  <g stroke="#8A5A2B" fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity=".38">
+    <rect x="368" y="286" width="64" height="52" rx="14"/>
+    <path d="M400 338q-112 0-112 152 0 96 46 148h132q46-52 46-148 0-152-112-152z"/>
+    <path d="M288 638h224" stroke-width="24"/>
+    <path d="M328 638v-40M472 638v-40" stroke-width="7"/>
+  </g>
+
+  <!-- stitched frame -->
+  <rect x="72" y="72" width="656" height="856" rx="6" fill="none"
+        stroke="#8A5A2B" stroke-opacity=".22" stroke-width="2.5" stroke-dasharray="10 12"/>
+
+  <text x="400" y="790" text-anchor="middle" font-family="Georgia,serif" font-size="40"
+        letter-spacing="14" fill="#8A5A2B" opacity=".42">TACK RACK</text>
+  <text x="400" y="828" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16"
+        letter-spacing="7" fill="#6B655C" opacity=".5">IMAGE TO FOLLOW</text>
+
+  <rect width="800" height="1000" filter="url(#pgr)" opacity=".6"/>
+</svg>

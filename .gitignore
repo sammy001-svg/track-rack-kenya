@@ -1,0 +1,25 @@
+# Environment-specific configuration (credentials live here)
+/config/config.local.php
+
+# Uploaded media — keep the directories, not their contents
+/public/uploads/*
+!/public/uploads/.gitkeep
+!/public/uploads/*/
+/public/uploads/*/*
+!/public/uploads/*/.gitkeep
+
+# Logs
+/storage/logs/*
+!/storage/logs/.gitkeep
+
+# Editor / OS noise
+.vscode/
+.idea/
+*.sublime-*
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Database dumps
+*.sql.gz
+/database/backups/
