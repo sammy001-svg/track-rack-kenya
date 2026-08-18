@@ -4,14 +4,22 @@
  * Expects: $product (row from Product::catalog / featured / related)
  * Optional: $cardFallback (placeholder key), $cardReveal (bool)
  */
-$fallback  = $cardFallback ?? 'product';
+// Prefer the product's own section so a mixed grid does not repeat one image.
+$pillarSlug = $product['pillar_slug'] ?? null;
+$fallback   = in_array($pillarSlug, ['rider', 'horse', 'stable'], true)
+    ? $pillarSlug
+    : ($cardFallback ?? 'product');
+
 $showPrice = (int) ($product['price_visible'] ?? 0) === 1 && $product['price'] !== null;
 $reveal    = $cardReveal ?? true;
 ?>
 <article class="card"<?= $reveal ? ' data-reveal' : '' ?>>
   <div class="card__media">
-    <img src="<?= e(image($product['primary_image'] ?? null, $fallback)) ?>"
-         alt="<?= e($product['name']) ?>" loading="lazy" width="480" height="600">
+    <?= picture(
+        image($product['primary_image'] ?? null, $fallback),
+        $product['name'],
+        ['loading' => 'lazy', 'width' => 480, 'height' => 600, 'decoding' => 'async']
+    ) ?>
 
     <?php if (!empty($product['is_new']) || ($product['stock_status'] ?? '') === 'out_of_stock' || !empty($product['is_featured'])): ?>
       <div class="card__flags">
@@ -43,7 +51,7 @@ $reveal    = $cardReveal ?? true;
     </h3>
 
     <?php if (!empty($product['short_desc'])): ?>
-      <p class="card__desc"><?= excerpt($product['short_desc'], 92) ?></p>
+      <p class="card__desc"><?= e(excerpt($product["short_desc"], 92)) ?></p>
     <?php endif; ?>
 
     <div class="card__foot">

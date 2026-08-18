@@ -44,9 +44,11 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
   </div>
 
   <div class="hero__visual">
-    <img src="<?= e(asset('/assets/img/hero-leather.svg')) ?>"
-         alt="Macro detail of hand-stitched bridle leather and solid brass hardware"
-         width="1200" height="1500" fetchpriority="high">
+    <?= picture(
+        asset('/assets/img/hero-leather.jpg'),
+        'Close detail of quilted leather with hand-run saddle stitching',
+        ['width' => 1100, 'height' => 1375, 'fetchpriority' => 'high', 'decoding' => 'async']
+    ) ?>
   </div>
 
   <div class="hero__scroll" aria-hidden="true">
@@ -88,11 +90,20 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
 
   <div class="pillars">
     <?php foreach ($pillars as $index => $pillar): ?>
-      <?php $art = $pillarArt[$pillar['slug']] ?? 'product'; ?>
+      <?php
+        $art = $pillarArt[$pillar['slug']] ?? null;
+        $pillarImage = !empty($pillar['image'])
+            ? image($pillar['image'])
+            : asset('/assets/img/' . ($art !== null ? 'pillar-' . $art : 'placeholder-product') . '.jpg');
+        $pillarAlt = [
+            'rider'  => 'A showjumping rider clearing a fence',
+            'horse'  => 'An English saddle fitted with a sheepskin numnah',
+            'stable' => 'Grooming a horse with a body brush',
+        ][$pillar['slug']] ?? $pillar['name'];
+      ?>
       <article class="pillar" data-reveal>
         <div class="pillar__media">
-          <img src="<?= e(image($pillar['image'] ?? null, $art)) ?>"
-               alt="<?= e($pillar['name']) ?>" loading="lazy" width="800" height="1000">
+          <?= picture($pillarImage, $pillarAlt, ['loading' => 'lazy', 'width' => 800, 'height' => 1000]) ?>
         </div>
 
         <span class="pillar__index"><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span>
@@ -142,8 +153,11 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
         <?php foreach ($spotlight as $item): ?>
           <article class="spot-card">
             <div class="spot-card__media">
-              <img src="<?= e(image($item['primary_image'] ?? null, 'product')) ?>"
-                   alt="<?= e($item['name']) ?>" loading="lazy" width="400" height="267">
+              <?= picture(
+                  image($item['primary_image'] ?? null, 'product'),
+                  $item['name'],
+                  ['loading' => 'lazy', 'width' => 400, 'height' => 267, 'decoding' => 'async']
+              ) ?>
             </div>
             <h4><a href="<?= e(url('/product/' . $item['slug'])) ?>"><?= e($item['name']) ?></a></h4>
             <span><?= e($item['category_name'] ?? 'Tack Rack') ?></span>

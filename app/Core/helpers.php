@@ -52,13 +52,72 @@ function asset(string $path): string
     return is_file($file) ? $url . '?v=' . filemtime($file) : $url;
 }
 
-/** A stored upload path, or a category-appropriate placeholder. */
+/** A stored upload path, or a category-appropriate placeholder photograph. */
 function image(?string $path, string $fallback = 'product'): string
 {
     if ($path !== null && $path !== '') {
         return rtrim(BASE_URL, '/') . '/' . ltrim($path, '/');
     }
-    return asset('/assets/img/placeholder-' . $fallback . '.svg');
+    return asset('/assets/img/placeholder-' . $fallback . '.jpg');
+}
+
+/**
+ * Turn a URL produced by asset() or image() back into its path on disk, so we
+ * can look for sibling files. Returns null for anything outside this site.
+ */
+function local_path(string $url): ?string
+{
+    $url  = strtok($url, '?') ?: $url;
+    $base = rtrim(BASE_URL, '/');
+
+    if ($base !== '' && str_starts_with($url, $base)) {
+        $url = substr($url, strlen($base));
+    }
+
+    if (!str_starts_with($url, '/') || str_contains($url, '..')) {
+        return null;
+    }
+
+    return PUBLIC_PATH . str_replace('/', DIRECTORY_SEPARATOR, $url);
+}
+
+/**
+ * A <picture> element that serves WebP where the browser supports it and falls
+ * back to the original. Uploaded images get a .webp sibling automatically
+ * (see ImageProcessor), as do the bundled site photographs.
+ *
+ * @param array $attrs Extra attributes for the <img>, e.g. ['loading' => 'lazy']
+ */
+function picture(string $src, string $alt = '', array $attrs = []): string
+{
+    $disk = local_path($src);
+    $webp = null;
+
+    if ($disk !== null) {
+        $candidate = preg_replace('/\.[a-z0-9]+$/i', '', $disk) . '.webp';
+
+        if ($candidate !== null && is_file($candidate) && !str_ends_with(strtolower($disk), '.webp')) {
+            $webp = preg_replace('/\.[a-z0-9]+$/i', '', strtok($src, '?') ?: $src) . '.webp';
+            $webp .= '?v=' . filemtime($candidate);
+        }
+    }
+
+    $attributes = '';
+    foreach ($attrs as $key => $value) {
+        if ($value === true) {
+            $attributes .= ' ' . $key;
+        } elseif ($value !== false && $value !== null) {
+            $attributes .= ' ' . $key . '="' . e($value) . '"';
+        }
+    }
+
+    $img = '<img src="' . e($src) . '" alt="' . e($alt) . '"' . $attributes . '>';
+
+    if ($webp === null) {
+        return $img;
+    }
+
+    return '<picture><source srcset="' . e($webp) . '" type="image/webp">' . $img . '</picture>';
 }
 
 function slugify(string $text): string
@@ -85,7 +144,13 @@ function old(string $key, $default = '')
     return Session::old($key, $default);
 }
 
-/** Truncate on a word boundary. */
+/**
+ * Truncate on a word boundary.
+ *
+ * Returns plain text, never HTML — the ellipsis is a real character rather than
+ * an entity — so the result must still be passed through e() on output. That
+ * keeps one rule for the whole codebase: escape everything at the point of use.
+ */
 function excerpt(?string $text, int $length = 140): string
 {
     $text = trim(strip_tags((string) $text));
@@ -97,7 +162,7 @@ function excerpt(?string $text, int $length = 140): string
     $cut   = mb_substr($text, 0, $length);
     $space = mb_strrpos($cut, ' ');
 
-    return rtrim($space === false ? $cut : mb_substr($cut, 0, $space), " ,.;:") . '&hellip;';
+    return rtrim($space === false ? $cut : mb_substr($cut, 0, $space), " ,.;:") . "\u{2026}";
 }
 
 function money($amount): string

@@ -41,7 +41,7 @@
                   </div>
                 </div>
               </td>
-              <td class="a-muted"><?= excerpt($brand['description'], 64) ?: '—' ?></td>
+              <td class="a-muted"><?= e(excerpt($brand["description"], 64)) ?: "—" ?></td>
               <td class="a-table__num"><?= (int) $brand['product_count'] ?></td>
               <td class="a-table__num a-faint"><?= (int) $brand['sort_order'] ?></td>
               <td>

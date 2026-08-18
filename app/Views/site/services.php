@@ -19,11 +19,18 @@
   <div class="shell shell--wide">
     <div class="service-grid">
       <?php foreach ($services as $index => $service): ?>
-        <?php $isFitting = $service['slug'] === 'saddle-fitting'; ?>
+        <?php
+          $isFitting = $service['slug'] === 'saddle-fitting';
+          $serviceImage = !empty($service['image'])
+              ? image($service['image'])
+              : asset('/assets/img/service-' . ($isFitting ? 'fitting' : 'repairs') . '.jpg');
+          $serviceAlt = $isFitting
+              ? 'A dressage rider working a horse in a correctly fitted saddle'
+              : 'Saddlery in the workshop awaiting repair';
+        ?>
         <article class="service-card" data-reveal>
           <div class="service-card__media">
-            <img src="<?= e(image($service['image'] ?? null, $isFitting ? 'horse' : 'stable')) ?>"
-                 alt="<?= e($service['name']) ?>" loading="lazy" width="800" height="600">
+            <?= picture($serviceImage, $serviceAlt, ['loading' => 'lazy', 'width' => 900, 'height' => 600]) ?>
           </div>
 
           <div class="service-card__body">

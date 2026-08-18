@@ -49,7 +49,7 @@
                 <div class="a-cell-media__meta"><?= e($message['email']) ?></div>
               </td>
               <td><?= e($message['subject'] ?: 'No subject') ?></td>
-              <td class="a-muted"><?= excerpt($message['body'], 62) ?></td>
+              <td class="a-muted"><?= e(excerpt($message["body"], 62)) ?></td>
               <td class="a-faint a-nowrap" title="<?= e(pretty_date($message['created_at'], true)) ?>"><?= e(time_ago($message['created_at'])) ?></td>
               <td class="a-table__actions">
                 <div class="a-actions">

@@ -23,11 +23,17 @@ $flashes    = Session::flashes();
 <meta property="og:site_name" content="<?= e($siteName) ?>">
 <meta property="og:title" content="<?= e($fullTitle) ?>">
 <meta property="og:description" content="<?= e(excerpt($metaDesc, 158)) ?>">
-<meta property="og:image" content="<?= e(asset('/assets/img/og-default.svg')) ?>">
+<meta property="og:image" content="<?= e($ogImage ?? asset('/assets/img/og-default.jpg')) ?>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="canonical" href="<?= e(url(CURRENT_PATH)) ?>">
 <link rel="icon" href="<?= e(asset('/assets/img/favicon.svg')) ?>" type="image/svg+xml">
+
+<?php /* Flag scripting before first paint so scroll-reveal can hide content
+         safely. Without JS the class is never set and everything stays visible. */ ?>
+<script>document.documentElement.classList.add('js');</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

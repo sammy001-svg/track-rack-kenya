@@ -31,18 +31,29 @@ foreach ($variants as $variant) {
     <!-- Gallery -->
     <div class="gallery">
       <div class="gallery__main" id="gallery-main">
-        <img src="<?= e(image($mainImage, $art)) ?>" alt="<?= e($images[0]['alt'] ?? $product['name']) ?>"
-             width="900" height="1125" fetchpriority="high">
+        <?= picture(
+            image($mainImage, $art),
+            $images[0]['alt'] ?? $product['name'],
+            ['width' => 900, 'height' => 1125, 'fetchpriority' => 'high', 'decoding' => 'async']
+        ) ?>
       </div>
 
       <?php if (count($images) > 1): ?>
         <div class="gallery__thumbs">
           <?php foreach ($images as $index => $img): ?>
+            <?php
+              $full     = image($img['path'], $art);
+              $fullDisk = local_path($full);
+              $fullWebp = $fullDisk !== null && is_file(preg_replace('/\.[a-z0-9]+$/i', '', $fullDisk) . '.webp')
+                  ? preg_replace('/\.[a-z0-9]+$/i', '', $full) . '.webp'
+                  : '';
+            ?>
             <button class="gallery__thumb <?= $index === 0 ? 'is-active' : '' ?>" type="button"
-                    data-full="<?= e(image($img['path'], $art)) ?>"
+                    data-full="<?= e($full) ?>"
+                    data-full-webp="<?= e($fullWebp) ?>"
                     data-alt="<?= e($img['alt'] ?? $product['name']) ?>"
                     aria-label="View image <?= $index + 1 ?>">
-              <img src="<?= e(image($img['path'], $art)) ?>" alt="" loading="lazy" width="120" height="120">
+              <?= picture($full, '', ['loading' => 'lazy', 'width' => 120, 'height' => 120]) ?>
             </button>
           <?php endforeach; ?>
         </div>

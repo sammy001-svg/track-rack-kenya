@@ -296,14 +296,27 @@
     if (!main) return;
 
     const image = $('img', main);
+    // When the main image sits inside a <picture>, the WebP <source> wins over
+    // img.src — so it has to be swapped in step with it.
+    const source = $('source', main);
 
     $$('.gallery__thumb').forEach((thumb) => {
       thumb.addEventListener('click', () => {
         const full = thumb.dataset.full;
         if (!full || !image) return;
 
+        const webp = thumb.dataset.fullWebp || '';
+
         image.style.opacity = '0';
         window.setTimeout(() => {
+          if (source) {
+            if (webp) {
+              source.srcset = webp;
+            } else {
+              // No WebP for this one; disable the source so the JPEG shows.
+              source.removeAttribute('srcset');
+            }
+          }
           image.src = full;
           image.alt = thumb.dataset.alt || image.alt;
           image.style.opacity = '1';

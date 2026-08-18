@@ -34,12 +34,16 @@ class ProductController extends Controller
             $pillar = (new Category())->find((int) $product['category_id']);
         }
 
+        $images = $model->images($productId);
+
         $this->view('site.product', [
             'pageTitle' => $product['meta_title'] ?: $product['name'],
             'metaDesc'  => $product['meta_desc'] ?: excerpt($product['short_desc'] ?: $product['description'], 155),
             'bodyClass' => 'page-product',
+            // Share the product's own photograph when the page is linked.
+            'ogImage'   => isset($images[0]['path']) ? image($images[0]['path']) : null,
             'product'   => $product,
-            'images'    => $model->images($productId),
+            'images'    => $images,
             'variants'  => $model->variants($productId),
             'related'   => $model->related($productId, $product['category_id'] ? (int) $product['category_id'] : null, 4),
             'pillar'    => $pillar,

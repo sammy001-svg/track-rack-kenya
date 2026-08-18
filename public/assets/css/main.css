@@ -2289,17 +2289,20 @@ body.nav-open { overflow: hidden; }
 /* ---------------------------------------------------------------------
    27. Scroll reveal
    --------------------------------------------------------------------- */
-[data-reveal] {
+/* Scoped to .js so content is never hidden when scripting is unavailable —
+   without this, a JS failure would leave the whole catalog invisible. The .js
+   class is set by an inline script in <head>, before first paint. */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(1.65rem);
   transition: opacity .85s var(--ease-out), transform .95s var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-[data-reveal].is-visible { opacity: 1; transform: none; }
+.js [data-reveal].is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; }
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------------------------------------------------------------------

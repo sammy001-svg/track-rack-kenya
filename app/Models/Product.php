@@ -15,7 +15,13 @@ class Product extends Model
         (SELECT pi.path FROM product_images pi
           WHERE pi.product_id = p.id
           ORDER BY pi.is_primary DESC, pi.sort_order ASC, pi.id ASC
-          LIMIT 1) AS primary_image";
+          LIMIT 1) AS primary_image,
+        -- Top-level section (rider/horse/stable) this product sits under, so a
+        -- card with no photograph can fall back to the right section image.
+        (SELECT COALESCE(parent.slug, self.slug)
+           FROM categories self
+           LEFT JOIN categories parent ON parent.id = self.parent_id
+          WHERE self.id = p.category_id) AS pillar_slug";
 
     /**
      * Filtered, paginated catalog query.

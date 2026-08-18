@@ -281,9 +281,32 @@ A high-end editorial system rather than a generic shop theme.
 - **Responsive** — fluid `clamp()` type and spacing, no horizontal overflow, a full
   mobile drawer, and card quick-add always visible on touch devices
 
-All product artwork ships as hand-drawn SVG placeholders in the brand palette, so the
-site looks finished before a single photograph is uploaded. Upload real images and they
-take over automatically.
+### Photography
+
+The site ships with real photography under the [Unsplash License](https://unsplash.com/license),
+which permits commercial use without permission or attribution. Provenance for every file
+is recorded in [`public/assets/img/CREDITS.md`](public/assets/img/CREDITS.md).
+
+Each image is generated as a **JPEG + WebP pair** and served through `<picture>`, so
+supporting browsers get WebP and everything else falls back cleanly. Uploaded product
+photographs get the same treatment automatically via `ImageProcessor`.
+
+Actual download per page (one format per image, below-the-fold images lazy-loaded):
+
+| Page | Images | WebP | JPEG fallback |
+|---|---|---|---|
+| Home | 9 | 662 KB | 974 KB |
+| Heritage | 5 | 374 KB | 606 KB |
+| Catalog | 4 | 208 KB | 309 KB |
+| Services | 3 | 193 KB | 300 KB |
+
+**Products with no photograph fall back to their own section's image** — a bridle shows
+saddlery, a grooming kit shows grooming — so the catalog reads as a real shop rather than
+a grid of identical placeholders. The moment a product gets its own photograph in the
+admin, that takes over.
+
+These are stand-ins for Tack Rack's own photography. `CREDITS.md` lists which file appears
+where, with the aspect ratio each needs, so they can be swapped one at a time.
 
 ---
 
@@ -345,7 +368,8 @@ take over automatically.
 3. Point the document root at `public/`, and serve over HTTPS with `session.secure = true`
 4. Set `app.url` to the canonical domain — M-Pesa callbacks and reset links depend on it
 5. Replace the seeded demo catalog with the real inventory and photographs
-   (Admin → Import & export takes a CSV; run it as a dry run first)
+   (Admin → Import & export takes a CSV; run it as a dry run first). Swap the stock
+   photography for Tack Rack's own — see `public/assets/img/CREDITS.md`
 6. Add the Google Maps embed URL and Instagram link in Settings
 7. Configure SMTP and send yourself a test — quote and order confirmations depend on it
 8. Set delivery pricing and the free-delivery threshold under Settings → commerce

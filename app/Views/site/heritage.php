@@ -2,9 +2,11 @@
 
 <section class="heritage-hero">
   <div class="heritage-hero__media">
-    <img src="<?= e(asset('/assets/img/heritage.svg')) ?>"
-         alt="The Tack Rack workshop bench — hand tools, waxed thread and cut leather"
-         width="1600" height="900" fetchpriority="high">
+    <?= picture(
+        asset('/assets/img/heritage.jpg'),
+        'A saddler\'s bench — hand tools, waxed thread and cut leather',
+        ['width' => 1600, 'height' => 900, 'fetchpriority' => 'high', 'decoding' => 'async']
+    ) ?>
   </div>
 
   <div class="shell shell--wide">
@@ -85,9 +87,15 @@
 
   <div class="pillars">
     <?php foreach ($pillars as $index => $pillar): ?>
+      <?php
+        $pillarImage = !empty($pillar['image'])
+            ? image($pillar['image'])
+            : asset('/assets/img/' . (in_array($pillar['slug'], ['rider', 'horse', 'stable'], true)
+                ? 'pillar-' . $pillar['slug'] : 'placeholder-product') . '.jpg');
+      ?>
       <article class="pillar" data-reveal>
         <div class="pillar__media">
-          <img src="<?= e(image($pillar['image'] ?? null, $pillar['slug'])) ?>" alt="<?= e($pillar['name']) ?>" loading="lazy" width="800" height="1000">
+          <?= picture($pillarImage, $pillar['name'], ['loading' => 'lazy', 'width' => 800, 'height' => 1000]) ?>
         </div>
         <span class="pillar__index"><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span>
         <span class="pillar__tag"><?= e($pillar['tagline']) ?></span>
