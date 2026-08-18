@@ -54,13 +54,16 @@ $wa        = whatsapp_link('Hello Tack Rack, I would like to enquire about');
       </div>
 
       <div>
-        <h4>Customer Care</h4>
+        <h4>Services &amp; Care</h4>
         <ul class="footer__links">
+          <li><a href="<?= e(url('/services/saddle-fitting')) ?>">Saddle fitting</a></li>
+          <li><a href="<?= e(url('/services/repairs')) ?>">Workshop repairs</a></li>
           <li><a href="<?= e(url('/page/how-to-order')) ?>">How to order</a></li>
           <li><a href="<?= e(url('/page/quote-process')) ?>">The quote process</a></li>
           <li><a href="<?= e(url('/request-a-quote')) ?>">Request a quote</a></li>
           <li><a href="<?= e(url('/contact')) ?>">Contact us</a></li>
           <li><a href="<?= e(url('/heritage')) ?>">About our heritage</a></li>
+          <li><a href="<?= e(url('/account')) ?>">My account</a></li>
         </ul>
       </div>
 

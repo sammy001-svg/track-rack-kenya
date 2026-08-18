@@ -34,6 +34,7 @@ $flashes    = Session::flashes();
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="<?= e(asset('/assets/css/main.css')) ?>">
+<link rel="stylesheet" href="<?= e(asset('/assets/css/account.css')) ?>">
 
 <script type="application/ld+json">
 <?= json_encode([

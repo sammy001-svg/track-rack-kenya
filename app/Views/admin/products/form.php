@@ -292,6 +292,22 @@ $stockStatuses = ['in_stock' => 'In stock', 'low_stock' => 'Low stock', 'on_orde
             <input type="checkbox" name="price_visible" value="1" <?= $checked('price_visible', 0) ? 'checked' : '' ?>>
             <span class="a-switch__text">Show this price publicly<small>Off: the site says "Price on request".</small></span>
           </label>
+
+          <label class="a-switch">
+            <input type="checkbox" name="buyable" value="1" <?= $checked('buyable', 0) ? 'checked' : '' ?>>
+            <span class="a-switch__text">Allow direct purchase
+              <small>Customers can pay by M-Pesa without waiting for a quote. Needs a visible price above zero.</small>
+            </span>
+          </label>
+
+          <label class="a-field">
+            <span class="a-label">Stock quantity</span>
+            <input class="a-input" type="number" name="stock_qty" value="<?= e($val('stock_qty')) ?>" min="0" step="1" placeholder="Not tracked">
+            <span class="a-hint">
+              Optional. When set, paid orders reduce it automatically and the product is
+              marked unavailable at zero. Leave blank for made-to-order items.
+            </span>
+          </label>
         </div>
       </section>
 

@@ -220,10 +220,21 @@ class ProductController extends Controller
 
         $categoryId = (int) ($_POST['category_id'] ?? 0);
         $brandId    = (int) ($_POST['brand_id'] ?? 0);
+        $stockQty   = trim((string) ($_POST['stock_qty'] ?? ''));
+
+        // Direct purchase only makes sense with a real, visible price.
+        $priceVisible = isset($_POST['price_visible']) ? 1 : 0;
+        $buyable      = (isset($_POST['buyable']) && $priceVisible === 1 && $price !== '' && (float) $price > 0) ? 1 : 0;
+
+        if (isset($_POST['buyable']) && $buyable === 0) {
+            Session::flash('error', 'Direct purchase needs a price that is greater than zero and visible publicly — it has been left off.');
+        }
 
         return [
             'category_id'    => $categoryId > 0 ? $categoryId : null,
             'brand_id'       => $brandId > 0 ? $brandId : null,
+            'buyable'        => $buyable,
+            'stock_qty'      => $stockQty !== '' && is_numeric($stockQty) ? max(0, (int) $stockQty) : null,
             'name'           => $validator->value('name'),
             'sku'            => $validator->value('sku') ?: null,
             'short_desc'     => $validator->value('short_desc') ?: null,
@@ -231,7 +242,7 @@ class ProductController extends Controller
             'specifications' => $validator->value('specifications') ?: null,
             'sizing_guide'   => $validator->value('sizing_guide') ?: null,
             'price'          => $price !== '' ? round((float) $price, 2) : null,
-            'price_visible'  => isset($_POST['price_visible']) ? 1 : 0,
+            'price_visible'  => $priceVisible,
             'stock_status'   => $validator->value('stock_status') ?: 'in_stock',
             'is_featured'    => isset($_POST['is_featured']) ? 1 : 0,
             'is_new'         => isset($_POST['is_new']) ? 1 : 0,

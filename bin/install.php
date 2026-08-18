@@ -91,8 +91,58 @@ if (!$schemaOnly) {
     $run($pdo, $root . '/database/seed.sql', 'Seed data');
 }
 
+// ---- Migrations --------------------------------------------------------
+// The base schema is Phase 1. Everything since lives in database/migrations
+// and is applied here so a fresh install matches an upgraded one exactly.
+$pdo->exec(
+    'CREATE TABLE IF NOT EXISTS `migrations` (
+        `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        `filename`   VARCHAR(190) NOT NULL,
+        `applied_at` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`id`),
+        UNIQUE KEY `uq_migrations_filename` (`filename`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
+);
+
+$applied    = $pdo->query('SELECT `filename` FROM `migrations`')->fetchAll(PDO::FETCH_COLUMN);
+$migrations = glob($root . '/database/migrations/*.sql') ?: [];
+sort($migrations);
+
+$appliedNow = 0;
+
+foreach ($migrations as $file) {
+    $name = basename($file);
+
+    if (in_array($name, $applied, true)) {
+        continue;
+    }
+
+    try {
+        $pdo->exec(file_get_contents($file));
+        $pdo->prepare('INSERT INTO `migrations` (`filename`) VALUES (?)')->execute([$name]);
+        $appliedNow++;
+    } catch (PDOException $e) {
+        out('  ERROR  Migration failed: ' . $name);
+        out('         ' . $e->getMessage());
+        exit(1);
+    }
+}
+
+out($appliedNow > 0
+    ? '  Migrations applied (' . $appliedNow . ')'
+    : '  Migrations up to date');
+
 // ---- Writable directories ---------------------------------------------
-foreach (['/public/uploads', '/public/uploads/products', '/public/uploads/brands', '/public/uploads/categories', '/storage/logs'] as $path) {
+foreach ([
+    '/public/uploads',
+    '/public/uploads/products',
+    '/public/uploads/brands',
+    '/public/uploads/categories',
+    '/public/uploads/services',
+    '/public/uploads/repairs',
+    '/public/uploads/site',
+    '/storage/logs',
+] as $path) {
     $dir = $root . $path;
     if (!is_dir($dir)) {
         @mkdir($dir, 0775, true);
@@ -102,8 +152,12 @@ foreach (['/public/uploads', '/public/uploads/products', '/public/uploads/brands
 
 // ---- Summary -----------------------------------------------------------
 $counts = [];
-foreach (['products', 'categories', 'brands', 'quotes', 'pages', 'users'] as $table) {
-    $counts[$table] = (int) $pdo->query("SELECT COUNT(*) FROM `{$table}`")->fetchColumn();
+foreach (['products', 'categories', 'brands', 'services', 'pages', 'users', 'customers', 'quotes', 'orders', 'bookings'] as $table) {
+    try {
+        $counts[$table] = (int) $pdo->query("SELECT COUNT(*) FROM `{$table}`")->fetchColumn();
+    } catch (PDOException $e) {
+        $counts[$table] = 0;
+    }
 }
 
 out('');

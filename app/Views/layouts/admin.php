@@ -1,13 +1,20 @@
 <?php
 use App\Core\Auth;
 use App\Core\Session;
+use App\Models\Booking;
 use App\Models\Message;
+use App\Models\Order;
 use App\Models\Quote;
+use App\Models\RepairRequest;
 
 $user        = Auth::user();
 $flashes     = Session::flashes();
 $newQuotes   = (new Quote())->countByStatus()['new'] ?? 0;
 $newMessages = (new Message())->unreadCount();
+$newBookings = (new Booking())->countByStatus()['new'] ?? 0;
+$openRepairs = (new RepairRequest())->openCount();
+$orderCounts = (new Order())->countByStatus();
+$openOrders  = ($orderCounts['pending'] ?? 0) + ($orderCounts['confirmed'] ?? 0) + ($orderCounts['processing'] ?? 0);
 
 $initials = '';
 foreach (preg_split('/\s+/', (string) ($user['name'] ?? 'TR')) as $part) {
@@ -37,6 +44,12 @@ $ico = [
     'settings' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 7 19.4a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 2.6 14H2.4a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 7a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 10 2.6V2.4a2 2 0 1 1 4 0v.1A1.7 1.7 0 0 0 17 4.6a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.6 1h.2a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.6 1z" stroke="currentColor" stroke-width="1.3"/></svg>',
     'users'    => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.4" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16.5 5.2a3.4 3.4 0 0 1 0 6.6M18 14.4a6.5 6.5 0 0 1 3.5 5.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
     'site'     => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z" stroke="currentColor" stroke-width="1.5"/></svg>',
+    'orders'   => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.55L21.5 8H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10.5" cy="20" r="1.2" fill="currentColor"/><circle cx="18" cy="20" r="1.2" fill="currentColor"/></svg>',
+    'calendar' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    'wrench'   => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14.5 3.5l6 6-9 9H5.5v-6l9-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12.5 5.5l6 6" stroke="currentColor" stroke-width="1.5"/></svg>',
+    'people'   => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    'services' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l7.5 3.5v5c0 4.4-3.1 8.4-7.5 9.5-4.4-1.1-7.5-5.1-7.5-9.5v-5L12 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'transfer' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 8h13l-3-3M20 16H7l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 ];
 ?>
 <!doctype html>
@@ -66,7 +79,14 @@ $ico = [
         <p class="a-side__label">Overview</p>
         <?php $navLink('/admin', 'Dashboard', $ico['dash'], 0, true); ?>
         <?php $navLink('/admin/quotes', 'Quote requests', $ico['quotes'], $newQuotes); ?>
+        <?php $navLink('/admin/orders', 'Orders', $ico['orders'], $openOrders); ?>
         <?php $navLink('/admin/messages', 'Messages', $ico['msgs'], $newMessages); ?>
+      </div>
+
+      <div class="a-side__group">
+        <p class="a-side__label">Services</p>
+        <?php $navLink('/admin/bookings', 'Saddle fittings', $ico['calendar'], $newBookings); ?>
+        <?php $navLink('/admin/repairs', 'Workshop repairs', $ico['wrench'], $openRepairs); ?>
       </div>
 
       <div class="a-side__group">
@@ -74,11 +94,14 @@ $ico = [
         <?php $navLink('/admin/products', 'Products', $ico['products']); ?>
         <?php $navLink('/admin/categories', 'Categories', $ico['cats']); ?>
         <?php $navLink('/admin/brands', 'Brands', $ico['brands']); ?>
+        <?php $navLink('/admin/import', 'Import & export', $ico['transfer']); ?>
       </div>
 
       <div class="a-side__group">
-        <p class="a-side__label">Content</p>
+        <p class="a-side__label">People &amp; content</p>
+        <?php $navLink('/admin/customers', 'Customers', $ico['people']); ?>
         <?php $navLink('/admin/pages', 'Pages', $ico['pages']); ?>
+        <?php $navLink('/admin/services', 'Services', $ico['services']); ?>
       </div>
 
       <?php if (Auth::isAdmin()): ?>

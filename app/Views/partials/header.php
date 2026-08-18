@@ -61,11 +61,22 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
       </div>
 
       <a class="nav__link" href="<?= e(url('/shop')) ?>" <?= is_active('/shop', true) ? 'aria-current="page"' : '' ?>>Catalog</a>
+      <a class="nav__link" href="<?= e(url('/services')) ?>" <?= is_active('/services') ? 'aria-current="page"' : '' ?>>Services</a>
       <a class="nav__link" href="<?= e(url('/heritage')) ?>" <?= is_active('/heritage') ? 'aria-current="page"' : '' ?>>Heritage</a>
       <a class="nav__link" href="<?= e(url('/contact')) ?>" <?= is_active('/contact') ? 'aria-current="page"' : '' ?>>Contact</a>
     </nav>
 
     <div class="header__actions">
+      <?php $signedIn = App\Core\CustomerAuth::check(); ?>
+      <a class="icon-btn" href="<?= e(url($signedIn ? '/account' : '/account/login')) ?>"
+         aria-label="<?= $signedIn ? 'Your account' : 'Sign in' ?>" title="<?= $signedIn ? 'Your account' : 'Sign in' ?>">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8.5" r="3.6" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 20a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <?php if ($signedIn): ?><span class="icon-btn__dot" aria-hidden="true"></span><?php endif; ?>
+      </a>
+
       <a class="icon-btn" href="<?= e(url('/quote')) ?>" aria-label="Your quote list<?= $quoteQty > 0 ? ' (' . $quoteQty . ' items)' : '' ?>">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M4 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.55L21.5 8H7"
@@ -98,11 +109,22 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
   <?php endforeach; ?>
 
   <div class="drawer__group">
+    <div class="drawer__title">Services</div>
+    <a href="<?= e(url('/services/saddle-fitting')) ?>">Saddle fitting</a>
+    <a href="<?= e(url('/services/repairs')) ?>">Workshop repairs</a>
+  </div>
+
+  <div class="drawer__group">
     <a href="<?= e(url('/shop')) ?>">Full catalog</a>
     <a href="<?= e(url('/heritage')) ?>">Our heritage</a>
     <a href="<?= e(url('/page/how-to-order')) ?>">How to order</a>
     <a href="<?= e(url('/contact')) ?>">Contact us</a>
     <a href="<?= e(url('/quote')) ?>">Quote list<?= $quoteQty > 0 ? ' (' . (int) $quoteQty . ')' : '' ?></a>
+    <?php if (App\Core\CustomerAuth::check()): ?>
+      <a href="<?= e(url('/account')) ?>">My account</a>
+    <?php else: ?>
+      <a href="<?= e(url('/account/login')) ?>">Sign in</a>
+    <?php endif; ?>
   </div>
 
   <a class="btn btn--block" href="<?= e(url('/request-a-quote')) ?>">Request a Quote</a>

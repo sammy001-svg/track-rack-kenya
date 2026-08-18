@@ -1,6 +1,8 @@
 <?php
+use App\Models\Booking;
+use App\Models\Order;
 use App\Models\Quote;
-/** @var array $stats @var array $series @var array $recentQuotes */
+/** @var array $stats @var array $series @var array $recentQuotes @var array $revenue @var array $recentOrders @var array $upcoming */
 ?>
 
 <div class="a-grid a-grid--4 a-mb">
@@ -10,16 +12,43 @@ use App\Models\Quote;
     <small><?= (int) $stats['quotes_open'] ?> open in total</small>
   </dl>
 
-  <dl class="a-stat">
-    <dt>All quote requests</dt>
-    <dd><?= (int) $stats['quotes_total'] ?></dd>
-    <small><?= (int) $stats['quotes_won'] ?> converted to orders</small>
+  <dl class="a-stat <?= $stats['orders_open'] > 0 ? 'a-stat--alert' : '' ?>">
+    <dt>Open orders</dt>
+    <dd><?= (int) $stats['orders_open'] ?></dd>
+    <small><?= e(money($revenue['awaiting'])) ?> awaiting payment</small>
   </dl>
 
   <dl class="a-stat a-stat--good">
+    <dt>Received this month</dt>
+    <dd><?= e(money($revenue['month'])) ?></dd>
+    <small>Cleared payments only</small>
+  </dl>
+
+  <dl class="a-stat <?= ($stats['bookings_new'] + $stats['repairs_open']) > 0 ? 'a-stat--alert' : '' ?>">
+    <dt>Services to action</dt>
+    <dd><?= (int) $stats['bookings_new'] + (int) $stats['repairs_open'] ?></dd>
+    <small><?= (int) $stats['bookings_new'] ?> new fitting<?= (int) $stats['bookings_new'] === 1 ? '' : 's' ?>,
+           <?= (int) $stats['repairs_open'] ?> open repair<?= (int) $stats['repairs_open'] === 1 ? '' : 's' ?></small>
+  </dl>
+</div>
+
+<div class="a-grid a-grid--4 a-mb">
+  <dl class="a-stat">
+    <dt>All quote requests</dt>
+    <dd><?= (int) $stats['quotes_total'] ?></dd>
+    <small><?= (int) $stats['quotes_won'] ?> converted</small>
+  </dl>
+
+  <dl class="a-stat">
     <dt>Live products</dt>
     <dd><?= (int) $stats['products_live'] ?></dd>
-    <small><?= (int) $stats['products_total'] ?> in the catalog, <?= (int) $stats['categories'] ?> categories</small>
+    <small><?= (int) $stats['products_total'] ?> total, <?= (int) $stats['categories'] ?> categories</small>
+  </dl>
+
+  <dl class="a-stat">
+    <dt>Registered customers</dt>
+    <dd><?= (int) $stats['customers'] ?></dd>
+    <small><a href="<?= e(url('/admin/customers')) ?>" style="color:var(--a-tan)">View accounts</a></small>
   </dl>
 
   <dl class="a-stat <?= $stats['messages_new'] > 0 ? 'a-stat--alert' : '' ?>">
@@ -28,6 +57,71 @@ use App\Models\Quote;
     <small><a href="<?= e(url('/admin/messages')) ?>" style="color:var(--a-tan)">Open the inbox</a></small>
   </dl>
 </div>
+
+<?php if ($upcoming !== [] || $recentOrders !== []): ?>
+  <div class="a-grid a-grid--2 a-mb">
+    <?php if ($upcoming !== []): ?>
+      <section class="a-panel">
+        <div class="a-panel__head">
+          <h2>Fittings coming up</h2>
+          <a class="a-btn a-btn--ghost a-btn--sm" href="<?= e(url('/admin/bookings')) ?>">All fittings</a>
+        </div>
+        <div class="a-table-wrap">
+          <table class="a-table">
+            <tbody>
+              <?php foreach ($upcoming as $booking): ?>
+                <tr>
+                  <td style="width:8.5rem">
+                    <strong><?= $booking['scheduled_at']
+                        ? e(pretty_date($booking['scheduled_at'], true))
+                        : e(pretty_date($booking['preferred_date'])) ?></strong>
+                  </td>
+                  <td>
+                    <a class="a-strong" href="<?= e(url('/admin/bookings/' . $booking['id'])) ?>"><?= e($booking['name']) ?></a>
+                    <div class="a-cell-media__meta"><?= e($booking['horse_name'] ?: 'Horse not named') ?></div>
+                  </td>
+                  <td class="a-right">
+                    <span class="a-badge a-badge--<?= e($booking['status']) ?>"><?= e(Booking::STATUSES[$booking['status']]) ?></span>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    <?php if ($recentOrders !== []): ?>
+      <section class="a-panel">
+        <div class="a-panel__head">
+          <h2>Latest orders</h2>
+          <a class="a-btn a-btn--ghost a-btn--sm" href="<?= e(url('/admin/orders')) ?>">All orders</a>
+        </div>
+        <div class="a-table-wrap">
+          <table class="a-table">
+            <tbody>
+              <?php foreach ($recentOrders as $order): ?>
+                <tr>
+                  <td><a class="a-ref" href="<?= e(url('/admin/orders/' . $order['id'])) ?>"><?= e($order['reference']) ?></a></td>
+                  <td>
+                    <?= e($order['customer_name']) ?>
+                    <div class="a-cell-media__meta"><?= e(time_ago($order['created_at'])) ?></div>
+                  </td>
+                  <td class="a-table__num"><strong><?= e(money($order['total'])) ?></strong></td>
+                  <td class="a-right">
+                    <span class="a-badge a-badge--<?= $order['payment_status'] === 'paid' ? 'won' : 'new' ?>">
+                      <?= e(Order::PAYMENT_STATUSES[$order['payment_status']]) ?>
+                    </span>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    <?php endif; ?>
+  </div>
+<?php endif; ?>
 
 <div class="a-split">
   <div class="a-stack">

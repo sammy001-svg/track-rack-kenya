@@ -381,6 +381,201 @@
   /* -------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------
+     Saved-horse quick picker (saddle fitting form)
+     ------------------------------------------------------------------- */
+  function initHorsePicker() {
+    const picker = $('[data-horse-picker]');
+    if (!picker) return;
+
+    const nameField       = $('#horse_name');
+    const detailsField    = $('#horse_details');
+    const disciplineField = $('#discipline');
+
+    $$('button[data-horse-name]', picker).forEach((button) => {
+      button.addEventListener('click', () => {
+        const active = button.classList.contains('is-active');
+
+        $$('button[data-horse-name]', picker).forEach((b) => b.classList.remove('is-active'));
+
+        if (active) {
+          // Second click clears the selection.
+          if (nameField) nameField.value = '';
+          if (detailsField) detailsField.value = '';
+          return;
+        }
+
+        button.classList.add('is-active');
+
+        if (nameField) nameField.value = button.dataset.horseName || '';
+        if (detailsField) detailsField.value = button.dataset.horseDetails || '';
+
+        if (disciplineField && button.dataset.horseDiscipline) {
+          disciplineField.value = button.dataset.horseDiscipline;
+        }
+      });
+    });
+  }
+
+  /* -------------------------------------------------------------------
+     Repair photo drop zone with thumbnails
+     ------------------------------------------------------------------- */
+  function initPhotoDrop() {
+    const zone = $('#photo-drop');
+    if (!zone) return;
+
+    const input   = $('input[type="file"]', zone);
+    const preview = $('.photo-drop__preview', zone);
+    if (!input || !preview) return;
+
+    const MAX = 6;
+
+    const render = () => {
+      preview.innerHTML = '';
+
+      const files = Array.from(input.files || []).slice(0, MAX);
+
+      files.forEach((file) => {
+        if (!file.type.startsWith('image/')) return;
+
+        const img = document.createElement('img');
+        img.alt = '';
+        img.src = URL.createObjectURL(file);
+        img.addEventListener('load', () => URL.revokeObjectURL(img.src), { once: true });
+        preview.appendChild(img);
+      });
+
+      if ((input.files || []).length > MAX) {
+        const note = document.createElement('p');
+        note.className = 'field__hint';
+        note.style.width = '100%';
+        note.textContent = 'Only the first ' + MAX + ' images will be sent.';
+        preview.appendChild(note);
+      }
+    };
+
+    input.addEventListener('change', render);
+
+    ['dragenter', 'dragover'].forEach((type) => {
+      zone.addEventListener(type, (e) => { e.preventDefault(); zone.classList.add('is-over'); });
+    });
+
+    ['dragleave', 'drop'].forEach((type) => {
+      zone.addEventListener(type, (e) => { e.preventDefault(); zone.classList.remove('is-over'); });
+    });
+
+    zone.addEventListener('drop', (e) => {
+      if (!e.dataTransfer || !e.dataTransfer.files.length) return;
+      input.files = e.dataTransfer.files;
+      render();
+    });
+  }
+
+  /* -------------------------------------------------------------------
+     Checkout: live delivery cost in the summary
+     ------------------------------------------------------------------- */
+  function initCheckout() {
+    const form = $('#checkout-form');
+    if (!form) return;
+
+    const fields   = $('#delivery-fields');
+    const deliveryEl = $('#summary-delivery');
+    const totalEl    = $('#summary-total');
+
+    const subtotal = parseFloat(form.dataset.subtotal || '0');
+    const freeOver = parseFloat(form.dataset.freeOver || '0');
+    const costs = {
+      collect: 0,
+      nairobi: parseFloat(form.dataset.nairobi || '0'),
+      courier: parseFloat(form.dataset.courier || '0'),
+    };
+
+    const currency = (n) => 'KSh ' + Math.round(n).toLocaleString('en-KE');
+
+    const update = () => {
+      const chosen = $('input[name="delivery_method"]:checked', form);
+      const method = chosen ? chosen.value : 'collect';
+
+      let cost = costs[method] || 0;
+      if (freeOver > 0 && subtotal >= freeOver) cost = 0;
+
+      if (fields) fields.hidden = method === 'collect';
+      if (deliveryEl) deliveryEl.textContent = cost > 0 ? currency(cost) : 'Free';
+      if (totalEl) totalEl.textContent = currency(subtotal + cost);
+    };
+
+    $$('input[name="delivery_method"]', form).forEach((radio) => {
+      radio.addEventListener('change', update);
+    });
+
+    update();
+  }
+
+  /* -------------------------------------------------------------------
+     Payment page: poll until M-Pesa clears
+     ------------------------------------------------------------------- */
+  function initPaymentPolling() {
+    const panel = $('#pay-waiting');
+    if (!panel || !window.fetch) return;
+
+    const url = panel.dataset.statusUrl;
+    if (!url) return;
+
+    const strong = $('strong', panel);
+    const text   = $('p', panel);
+
+    let attempts = 0;
+    const MAX_ATTEMPTS = 40;   // ~2 minutes at 3s
+    const INTERVAL = 3000;
+
+    const stop = (state, heading, message) => {
+      panel.classList.add(state);
+      if (strong) strong.textContent = heading;
+      if (text) text.textContent = message;
+    };
+
+    const poll = async () => {
+      attempts++;
+
+      if (attempts > MAX_ATTEMPTS) {
+        stop('is-failed', 'Still waiting',
+          'We have not had confirmation yet. If you completed the payment it will appear shortly — ' +
+          'reload this page, or call us and quote your order reference.');
+        return;
+      }
+
+      try {
+        const response = await fetch(url, {
+          headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+          credentials: 'same-origin',
+          cache: 'no-store',
+        });
+
+        const data = await response.json();
+
+        if (data.ok && data.payment_status === 'paid' && data.redirect) {
+          stop('is-done', 'Payment received', 'Taking you to your confirmation…');
+          window.setTimeout(() => { window.location.href = data.redirect; }, 900);
+          return;
+        }
+
+        const latest = data.latest;
+
+        if (latest && (latest.status === 'failed' || latest.status === 'cancelled')) {
+          stop('is-failed', latest.status === 'cancelled' ? 'Payment cancelled' : 'Payment failed',
+            latest.message || 'The prompt was not completed. You can try again below.');
+          return;
+        }
+      } catch (err) {
+        // Network hiccup — keep trying quietly.
+      }
+
+      window.setTimeout(poll, INTERVAL);
+    };
+
+    window.setTimeout(poll, INTERVAL);
+  }
+
   function boot() {
     initHeader();
     initNav();
@@ -392,6 +587,10 @@
     initAccordions();
     initFilters();
     initMarquee();
+    initHorsePicker();
+    initPhotoDrop();
+    initCheckout();
+    initPaymentPolling();
   }
 
   if (document.readyState === 'loading') {

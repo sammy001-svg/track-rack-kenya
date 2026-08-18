@@ -11,12 +11,23 @@ for data. No frameworks, no Composer, no build step.
 
 ## What it is
 
-The site is a **catalog-plus-quote** storefront rather than a checkout store. Customers
-browse the catalog, build a quote list, and send it through; staff price it in the admin
-console and reply. That matches how Tack Rack actually sells — saddles depend on the
-horse, rugs on the measurement, and imported stock moves with freight and duty.
+A **hybrid catalog**: quote-request for anything that needs pricing by hand, direct
+purchase for anything that doesn't.
 
-Prices can still be shown per-product (`price_visible`) when a fixed price makes sense.
+- **Quote-only items** (the default) — saddles, made-to-order rugs, anything needing a
+  fitting. The customer builds a quote list; staff price it and reply. This matches how
+  Tack Rack actually sells: a saddle depends on the horse, a rug on the measurement, and
+  imported stock moves with freight and duty.
+- **Buyable items** — mark a product `buyable` with a visible price and customers can pay
+  for it immediately by M-Pesa.
+
+One list serves both. At checkout it splits automatically: the priced items go to payment,
+everything else stays for a quote request. Neither path blocks the other.
+
+On top of the shop sit the two services that actually distinguish the business —
+**saddle fitting** (booked, scheduled and tracked) and **workshop repairs** (photographed,
+assessed, quoted and tracked) — plus **customer accounts** that tie a person's quotes,
+orders, fittings, repairs and saved horse measurements together.
 
 ### Catalog structure
 
@@ -74,12 +85,25 @@ and reports what it created.
 
 | Flag | Effect |
 |---|---|
-| *(none)* | Create if missing, then apply schema and seed |
+| *(none)* | Create if missing, then apply schema, seed and migrations |
 | `--fresh` | **Drop** and recreate everything — destroys all data |
-| `--schema` | Schema only, no demo catalog |
+| `--schema` | Schema and migrations only, no demo catalog |
 
-You can also load the SQL by hand through phpMyAdmin: run `schema.sql` first, then
-`seed.sql`.
+You can also load the SQL by hand through phpMyAdmin: run `schema.sql`, then `seed.sql`,
+then each file in `database/migrations/` in filename order.
+
+### Upgrading an existing install
+
+`schema.sql` is the Phase 1 baseline; everything added since lives in
+`database/migrations/` and is applied on top. To bring an existing database up to date
+**without touching your data**:
+
+```bash
+php bin/migrate.php --status   # show what is pending
+php bin/migrate.php            # apply it
+```
+
+Each migration is recorded in a `migrations` table, so re-running is safe.
 
 ### 3. Serve it
 
@@ -124,29 +148,41 @@ Then add `127.0.0.1  tackrack.local` to your hosts file.
 ```
 app/
   bootstrap.php          Paths, autoloader, error handling, session, DB
-  Core/                  Database, Router, Controller, Model, Auth, Csrf,
-                         Session, Validator, Uploader, QuoteList, Mailer, helpers
-  Controllers/           Public site controllers
-  Controllers/Admin/     Admin console controllers
-  Models/                Product, Category, Brand, Quote, Message, Page, Setting, User
+  Core/                  Database, Router, Controller, Model, Csrf, Session,
+                         Validator, Uploader, ImageProcessor, QuoteList,
+                         Auth (staff), CustomerAuth (storefront),
+                         Mailer, Smtp, Mpesa, helpers
+  Controllers/           Public: Home, Shop, Product, Quote, Checkout,
+                         Service, Account, Contact, Page, Seo
+  Controllers/Admin/     Dashboard, Product, Category, Brand, Quote, Order,
+                         Booking, Repair, Customer, Service, Message, Page,
+                         Setting, User, Import
+  Models/                Product, Category, Brand, Quote, Order, Payment,
+                         Booking, RepairRequest, Customer, Service,
+                         Message, Page, Setting, User
   Views/
     layouts/             site.php, admin.php, blank.php
-    partials/            header, footer, product-card, admin-pagination
+    partials/            header, footer, product-card, account-nav,
+                         admin-pagination
     site/                Public pages
     admin/               Admin screens
 config/
   config.php             App configuration (config.local.php overrides it)
 database/
-  schema.sql             Tables, keys, constraints
+  schema.sql             Phase 1 baseline — tables, keys, constraints
   seed.sql               Catalog, pages, settings, admin user
+  migrations/            Additive changes applied on top of the baseline
 public/                  >>> the web root <<<
   index.php              Front controller — every route is declared here
-  .htaccess              Rewrites, caching, upload hardening
-  assets/css|js|img      main.css / admin.css, main.js / admin.js, SVG artwork
-  uploads/               Uploaded images (products, brands, categories)
-storage/logs/            PHP and mail logs
+  .htaccess              Rewrites, caching, security headers
+  uploads/.htaccess      Refuses to execute anything in the upload directory
+  assets/css|js|img      main.css + account.css, admin.css, JS, SVG artwork
+  uploads/               Uploaded images (products, brands, categories,
+                         services, repairs, site)
+storage/logs/            PHP, mail and M-Pesa logs
 bin/
-  install.php            Installer
+  install.php            Installer (schema + seed + migrations)
+  migrate.php            Migration runner for existing installs
   router.php             Router for PHP's built-in server
 ```
 
@@ -165,11 +201,68 @@ Routes live in one place: **`public/index.php`**.
 | **Categories** | Manage the pillar → sub-category tree, taglines, images, ordering, visibility |
 | **Brands** | Logos and descriptions for the homepage brand wall and the shop filter |
 | **Pages** | Edit Heritage, How to Order, Quote Process, Privacy and Terms |
-| **Settings** | Contact details, opening hours, social links, WhatsApp number, quote notification address and reference prefix |
+| **Orders** | Filter by status and payment state, see cleared vs outstanding revenue, record bank or cash payments taken off-platform, print a receipt, email the customer on dispatch |
+| **Saddle fittings** | Booking pipeline with an "coming up" view, confirm and schedule a date, set a fee, keep private notes, email the customer on confirmation |
+| **Workshop repairs** | Assess damage from customer photographs, add your own, quote, track through the workshop, email at each stage |
+| **Customers** | Registered accounts with their full history and saved horse measurements; disable or delete an account without losing its business records |
+| **Services** | Edit the copy behind the saddle fitting and repairs pages |
+| **Import & export** | Bulk CSV product import with a dry-run mode, plus CSV export of products, quotes and orders |
+| **Settings** | Contact details, opening hours, social links, WhatsApp number, quote notifications, delivery pricing, M-Pesa credentials and SMTP |
 | **Staff accounts** | Add users, set Administrator or Manager role, reset passwords, disable accounts |
 
 Two roles: **Administrator** (everything, including settings and accounts) and
-**Manager** (catalog, quotes, messages, pages).
+**Manager** (catalog, quotes, orders, services, messages, pages).
+
+---
+
+## Services
+
+**Saddle fitting** (`/services/saddle-fitting`) — a booking form that captures the horse,
+the discipline, the current saddle, whether we travel to the yard, and preferred dates.
+Signed-in customers get one-click fill from their saved horses. Staff confirm a date in the
+admin, which emails the customer; the booking then appears on their account.
+
+**Workshop repairs** (`/services/repairs`) — a request form taking up to six photographs of
+the damage, the item type and urgency. Staff assess, add their own photographs, quote a
+figure and move it through *assessing → quoted → approved → in the workshop → ready*. Each
+stage can email the customer with copy written for that stage.
+
+---
+
+## Payments
+
+M-Pesa via Safaricom's **Daraja STK push**. The customer enters their number, gets a PIN
+prompt, and the page polls until it clears — no manual refresh.
+
+Configure it under **Settings → mpesa**: environment (sandbox or production), short code,
+consumer key and secret, and passkey. Leave `mpesa_enabled` at `0` and the payment page
+falls back to bank transfer and pay-on-collection.
+
+The callback endpoint is `POST /checkout/mpesa/callback`. It is the one route exempt from
+CSRF, because Safaricom posts to it server to server; it is protected instead by requiring
+a `CheckoutRequestID` we generated and are still waiting on. Settlement is **idempotent** —
+Safaricom retries, and a repeated callback for an already-settled payment changes nothing.
+
+Every request and callback is logged to `storage/logs/mpesa.log`.
+
+> Safaricom must be able to reach the callback URL, so it will not fire against
+> `localhost`. For local testing use a tunnel (ngrok or similar) and set `app.url` to the
+> tunnel address, or record payments manually from the admin order screen.
+
+---
+
+## Email
+
+Transactional email prefers **SMTP** (Settings → mail) and falls back to PHP `mail()`.
+There is a small SMTP client in `app/Core/Smtp.php` supporting STARTTLS, implicit SSL and
+AUTH LOGIN — no dependency required.
+
+Messages are wrapped in a branded, table-based HTML shell that survives Outlook, with a
+plain-text alternative generated automatically.
+
+**Nothing is ever lost to a mail failure.** Every quote, order, booking and repair is
+written to the database *before* mail is attempted, and failures are logged to
+`storage/logs/mail.log` rather than thrown.
 
 ---
 
@@ -209,8 +302,15 @@ take over automatically.
 - **Uploads** validated by real MIME type via `finfo`, not the client-supplied name;
   stored with generated filenames; PHP execution disabled in `uploads/` by `.htaccess`
 - **Sessions** — HttpOnly, SameSite=Lax, regenerated on login, `secure` flag ready for HTTPS
-- **Honeypot fields** on both public forms
+- **Honeypot fields** on every public form
 - **Last-administrator guard** — the final active admin cannot be deleted, demoted or disabled
+- **Separate customer and staff sessions** — different session keys, models and guards, so a
+  storefront login can never be mistaken for a staff login
+- **Password reset tokens** stored as SHA-256 hashes with a one-hour expiry; the reset
+  endpoint never reveals whether an address is registered
+- **Order ownership** — an order is viewable only by the account that owns it or the guest
+  session that placed it
+- **Login throttling** on both the staff (6 attempts / 10 min) and customer (8 / 15 min) sides
 
 ---
 
@@ -226,6 +326,14 @@ take over automatically.
   is editable in Settings
 - **The quote list** lives in the session, caps at 60 lines, and silently drops items whose
   product has since been deleted or unpublished
+- **Buyable requires a real price.** Ticking "allow direct purchase" without a visible price
+  above zero is refused and reported, so nothing can ever be sold at KSh 0
+- **Stock is optional.** Leave `stock_qty` blank for made-to-order items. When it is set,
+  paid orders decrement it and the product flips to "currently unavailable" at zero
+- **Registering claims your history.** Past quotes, bookings and repairs sent from the same
+  email address are attached to the new account automatically
+- **Images are optimised where possible.** GD downscales anything over 1600px and writes a
+  WebP alongside. Where GD is missing, files are stored as uploaded rather than failing
 
 ---
 
@@ -235,7 +343,13 @@ take over automatically.
 2. Create `config/config.local.php` with production credentials; set `debug` to `false`
    and `env` to `production`
 3. Point the document root at `public/`, and serve over HTTPS with `session.secure = true`
-4. Set `app.url` to the canonical domain
+4. Set `app.url` to the canonical domain — M-Pesa callbacks and reset links depend on it
 5. Replace the seeded demo catalog with the real inventory and photographs
+   (Admin → Import & export takes a CSV; run it as a dry run first)
 6. Add the Google Maps embed URL and Instagram link in Settings
-7. Enable mail once the server can actually send it
+7. Configure SMTP and send yourself a test — quote and order confirmations depend on it
+8. Set delivery pricing and the free-delivery threshold under Settings → commerce
+9. Enter live Daraja credentials and switch `mpesa_env` to `production`. Test with one real
+   low-value transaction before announcing it
+10. Decide which products are `buyable`. Everything stays quote-only until you say otherwise
+11. Submit `/sitemap.xml` to Google Search Console

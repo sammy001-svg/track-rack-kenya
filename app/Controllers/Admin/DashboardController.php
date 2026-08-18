@@ -3,20 +3,29 @@ namespace App\Controllers\Admin;
 
 use App\Core\Controller;
 use App\Core\Database;
-use App\Models\Category;
+use App\Models\Booking;
 use App\Models\Message;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Quote;
+use App\Models\RepairRequest;
 
 class DashboardController extends Controller
 {
     public function index(): void
     {
-        $db      = Database::instance();
-        $quotes  = new Quote();
+        $db       = Database::instance();
+        $quotes   = new Quote();
+        $orders   = new Order();
+        $bookings = new Booking();
+        $repairs  = new RepairRequest();
+
         $counts  = $quotes->countByStatus();
         $series  = $quotes->dailyCounts(14);
         $peak    = max(1, max(array_column($series, 'total')));
+
+        $bookingCounts = $bookings->countByStatus();
+        $orderCounts   = $orders->countByStatus();
 
         $this->view('admin.dashboard', [
             'pageTitle' => 'Dashboard',
@@ -29,7 +38,14 @@ class DashboardController extends Controller
                 'products_live'  => (int) $db->value('SELECT COUNT(*) FROM products WHERE is_active = 1'),
                 'messages_new'   => (new Message())->unreadCount(),
                 'categories'     => (int) $db->value('SELECT COUNT(*) FROM categories'),
+                'bookings_new'   => $bookingCounts['new'],
+                'repairs_open'   => $repairs->openCount(),
+                'orders_open'    => $orderCounts['pending'] + $orderCounts['confirmed'] + $orderCounts['processing'],
+                'customers'      => (int) $db->value('SELECT COUNT(*) FROM customers'),
             ],
+            'revenue'       => $orders->revenue(),
+            'recentOrders'  => $orders->recent(5),
+            'upcoming'      => $bookings->upcoming(5),
             'statusCounts'  => $counts,
             'series'        => $series,
             'peak'          => $peak,
