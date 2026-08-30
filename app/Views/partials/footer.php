@@ -13,8 +13,9 @@ $wa        = whatsapp_link('Hello Tack Rack, I would like to enquire about');
     <div class="footer__top">
       <div class="footer__brand">
         <div class="brand">
-          <span class="brand__mark"><?= e(setting('site_name', 'Tack Rack')) ?></span>
-          <span class="brand__sub">Est. <?= e(setting('founded_year', '1997')) ?></span>
+          <img class="brand__logo brand__logo--bone" src="<?= e(asset('/assets/img/logo-light.png')) ?>"
+               alt="<?= e(setting('site_name', 'Tack Rack')) ?> Ltd &mdash; Equine Supplies"
+               width="420" height="191" loading="lazy">
         </div>
         <p class="footer__pitch"><?= e(setting('site_intro')) ?></p>
 
@@ -72,7 +73,13 @@ $wa        = whatsapp_link('Hello Tack Rack, I would like to enquire about');
         <div class="footer__contact">
           <p>
             <strong><?= e(setting('contact_address')) ?></strong>
+            <?php if (setting('contact_directions')): ?>
+              <?= e(setting('contact_directions')) ?><br>
+            <?php endif; ?>
             <?= e(setting('contact_postal')) ?>
+            <?php if (setting('map_link')): ?>
+              <br><a href="<?= e(setting('map_link')) ?>" target="_blank" rel="noopener">Get directions &rarr;</a>
+            <?php endif; ?>
           </p>
           <p>
             <a href="tel:<?= e(preg_replace('/\s+/', '', setting('contact_phone'))) ?>"><?= e(setting('contact_phone')) ?></a><br>

@@ -16,8 +16,9 @@ class ContactController extends Controller
         $seo = Seo::make()
             ->title('Contact Us — Ngong Road, Nairobi')
             ->description(
-                'Visit Tack Rack at the MacNaughton Business Centre on Ngong Road, Nairobi. '
-                . 'Call ' . setting('contact_phone') . ', email or message us on WhatsApp.'
+                'Visit Tack Rack at the MacNaughton Centre off Ngong Road, Nairobi — near the '
+                . 'Chequered Flag, opposite St Christopher\'s School. Call '
+                . setting('contact_phone') . ', email or message us on WhatsApp.'
             )
             ->canonical(url('/contact'))
             ->schema(Schema::breadcrumbs(['Home' => url('/'), 'Contact' => null]))

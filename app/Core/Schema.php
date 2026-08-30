@@ -29,7 +29,12 @@ class Schema
             'description' => setting('site_intro'),
             'url'         => url('/'),
             'image'       => asset('/assets/img/og-default.jpg'),
-            'logo'        => asset('/assets/img/favicon.svg'),
+            'logo'        => [
+                '@type'  => 'ImageObject',
+                'url'    => asset('/assets/img/logo.png'),
+                'width'  => 420,
+                'height' => 191,
+            ],
             'foundingDate' => setting('founded_year', '1997'),
             'currenciesAccepted' => 'KES',
             'areaServed'  => ['@type' => 'Country', 'name' => 'Kenya'],

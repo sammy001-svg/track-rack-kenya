@@ -28,7 +28,18 @@ $mapEmbed = setting('map_embed');
         <div class="contact-block">
           <p class="contact-block__label">Visit</p>
           <p class="contact-block__big"><?= e(setting('contact_address')) ?></p>
-          <p class="muted" style="margin-top:.5rem"><?= e(setting('contact_postal')) ?></p>
+          <?php if (setting('contact_directions')): ?>
+            <p class="muted" style="margin-top:.5rem"><?= e(setting('contact_directions')) ?></p>
+          <?php endif; ?>
+          <p class="muted" style="margin-top:.35rem"><?= e(setting('contact_postal')) ?></p>
+          <?php if (setting('map_link')): ?>
+            <a class="link" href="<?= e(setting('map_link')) ?>" target="_blank" rel="noopener" style="margin-top:.9rem">
+              Get directions
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          <?php endif; ?>
         </div>
 
         <div class="contact-block">

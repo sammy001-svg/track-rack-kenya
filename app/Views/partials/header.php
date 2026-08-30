@@ -8,9 +8,14 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
 <header class="header<?= $overClass ?>" id="header">
   <div class="header__inner">
 
-    <a class="brand" href="<?= e(url('/')) ?>" aria-label="<?= e(setting('site_name', 'Tack Rack')) ?> home">
-      <span class="brand__mark"><?= e(setting('site_name', 'Tack Rack')) ?></span>
-      <span class="brand__sub">Est. <?= e(setting('founded_year', '1997')) ?></span>
+    <a class="brand" href="<?= e(url('/')) ?>" aria-label="<?= e(setting('site_name', 'Tack Rack')) ?> &mdash; home">
+      <?php /* Two renditions: ink for the solid header, bone for when the
+                header is transparent over the dark hero. CSS swaps them. */ ?>
+      <img class="brand__logo brand__logo--ink" src="<?= e(asset('/assets/img/logo.png')) ?>"
+           alt="<?= e(setting('site_name', 'Tack Rack')) ?> Ltd &mdash; Equine Supplies"
+           width="420" height="191">
+      <img class="brand__logo brand__logo--bone" src="<?= e(asset('/assets/img/logo-light.png')) ?>"
+           alt="" aria-hidden="true" width="420" height="191">
     </a>
 
     <nav class="nav" aria-label="Primary">

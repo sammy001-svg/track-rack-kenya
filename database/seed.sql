@@ -170,7 +170,9 @@ WHERE p.slug IN ('ridgeway-half-chap','karen-competition-jacket','ngong-softshel
 -- ---------------------------------------------------------------------
 --  Settings
 -- ---------------------------------------------------------------------
-INSERT INTO `settings` (`key_name`,`value`,`group_name`,`label`,`input_type`,`sort_order`) VALUES
+-- IGNORE so this never overwrites settings already customised in the admin,
+-- and never collides with the settings the migrations add.
+INSERT IGNORE INTO `settings` (`key_name`,`value`,`group_name`,`label`,`input_type`,`sort_order`) VALUES
 ('site_name','Tack Rack','general','Site name','text',1),
 ('site_tagline','Premium Equestrian Gear. Trusted Heritage.','general','Hero tagline','text',2),
 ('site_intro','Kenya''s equestrian supplier since 1997. Saddlery, rider apparel and yard essentials - selected, fitted and maintained by specialists.','general','Short introduction','textarea',3),

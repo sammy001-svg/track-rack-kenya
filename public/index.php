@@ -62,6 +62,7 @@ $router->get('/page/{slug}',         'App\Controllers\PageController@show');
 // Discoverability
 $router->get('/sitemap.xml',         'App\Controllers\SeoController@sitemap');
 $router->get('/robots.txt',          'App\Controllers\SeoController@robots');
+$router->get('/site.webmanifest',    'App\Controllers\SeoController@manifest');
 
 // ---------------------------------------------------------------------
 //  Services — saddle fitting & workshop repairs

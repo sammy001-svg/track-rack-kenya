@@ -51,5 +51,19 @@ filename and aspect ratio, and regenerate the `.webp` alongside:
 | `og-default.jpg` | 1200x630 | Preview card when a link is shared |
 | `placeholder-*.jpg` | 4:5 portrait | Products with no photograph yet |
 
-`favicon.svg` is the Tack Rack mark, drawn rather than photographed, and is not a
-placeholder.
+## Logo and icons
+
+`logo.png`, `logo-light.png`, `og-logo.jpg`, `favicon.ico`, `apple-touch-icon.png`
+and `icon-*.png` are all generated from `logo-source.png` by:
+
+```
+php bin/make-logo.php
+```
+
+That script knocks the white background out to transparency, produces an ink version
+for light surfaces and a bone version for dark ones, crops the horse-head mark for the
+favicons and renders them on the brand ink so they stay legible at 16px.
+
+To change the logo, replace `logo-source.png` with a higher-resolution file and run the
+script again. Nothing else needs editing. The current source is 414x190, taken from the
+previous website; a larger original will sharpen every derivative.

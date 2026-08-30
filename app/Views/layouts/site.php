@@ -31,7 +31,7 @@ if (!isset($seo) || !$seo instanceof Seo) {
 <?= $seo->render() ?>
 
 <meta name="theme-color" content="#14110E">
-<link rel="icon" href="<?= e(asset('/assets/img/favicon.svg')) ?>" type="image/svg+xml">
+<?php require APP_PATH . '/Views/partials/favicons.php'; ?>
 
 <?php /* Flag scripting before first paint so scroll-reveal can hide content
          safely. Without JS the class is never set and everything stays visible. */ ?>

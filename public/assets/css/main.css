@@ -356,12 +356,36 @@ p { text-wrap: pretty; }
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: .6rem;
   flex: none;
   margin-right: auto;
 }
 
+/* The logo ships in two renditions — ink for light surfaces, bone for dark.
+   Both are in the markup so the swap is instant with no second request. */
+.brand__logo {
+  display: block;
+  height: 58px;
+  width: auto;
+}
+
+.brand__logo--bone { display: none; }
+
+/* Header sitting transparent over the dark hero */
+.header--over .brand__logo--ink  { display: none; }
+.header--over .brand__logo--bone { display: block; }
+
+/* The footer is always dark */
+.footer .brand__logo--ink  { display: none; }
+.footer .brand__logo--bone { display: block; height: 64px; }
+
+@media (max-width: 640px) {
+  .brand__logo { height: 40px; }
+  .footer .brand__logo--bone { height: 54px; }
+}
+
+/* Retained for any surface still using the wordmark as text */
 .brand__mark {
   font-family: var(--display);
   font-size: 1.42rem;

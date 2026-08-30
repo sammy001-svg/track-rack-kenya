@@ -102,4 +102,32 @@ class SeoController extends Controller
         echo implode("\n", $lines);
         exit;
     }
+
+    /**
+     * GET /site.webmanifest
+     * Lets the site be installed to a phone home screen with the Tack Rack
+     * mark rather than a screenshot.
+     */
+    public function manifest(): void
+    {
+        header("Content-Type: application/manifest+json; charset=utf-8");
+
+        echo json_encode([
+            "name"             => setting("site_name", "Tack Rack") . " — Equine Supplies",
+            "short_name"       => setting("site_name", "Tack Rack"),
+            "description"      => setting("seo_default_desc", setting("site_intro", "")),
+            "start_url"        => url("/"),
+            "scope"            => url("/"),
+            "display"          => "standalone",
+            "background_color" => "#F7F4EF",
+            "theme_color"      => "#14110E",
+            "icons"            => [
+                ["src" => asset("/assets/img/icon-192.png"), "sizes" => "192x192", "type" => "image/png"],
+                ["src" => asset("/assets/img/icon-512.png"), "sizes" => "512x512", "type" => "image/png"],
+                ["src" => asset("/assets/img/icon-512.png"), "sizes" => "512x512", "type" => "image/png", "purpose" => "maskable"],
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+        exit;
+    }
 }
