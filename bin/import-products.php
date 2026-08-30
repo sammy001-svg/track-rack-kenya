@@ -28,6 +28,7 @@ $keep    = in_array('--keep', $options, true);
 
 $db      = Database::instance();
 $catalog = require BASE_PATH . '/database/catalog.php';
+$seoCopy = require BASE_PATH . '/database/seo-copy.php';
 $srcDir  = PUBLIC_PATH . '/assets/img/Products';
 $outDir  = PUBLIC_PATH . '/uploads/products';
 
@@ -89,6 +90,39 @@ foreach ($needed as $slug => $spec) {
     ]);
 
     out("  category ADDED     {$slug}");
+}
+
+// ---------------------------------------------------------------------
+//  1b. Meta titles and descriptions for the category pages
+//
+//  Categories are not rebuilt on every import the way products are, so this
+//  fills in the ones that have no meta of its own rather than overwriting
+//  copy someone has since edited in the admin console.
+// ---------------------------------------------------------------------
+
+foreach ($seoCopy['categories'] as $slug => $meta) {
+    $category = $db->one('SELECT id, meta_title, meta_desc FROM categories WHERE slug = :s', ['s' => $slug]);
+
+    if ($category === null) {
+        out("  category meta SKIPPED {$slug} (no such category)");
+        continue;
+    }
+
+    if (($category['meta_title'] ?? '') !== '' && ($category['meta_desc'] ?? '') !== '') {
+        continue;
+    }
+
+    if ($dryRun) {
+        out("  category meta WOULD SET {$slug}");
+        continue;
+    }
+
+    $db->run(
+        'UPDATE categories SET meta_title = :t, meta_desc = :d WHERE id = :id',
+        ['t' => $meta['title'], 'd' => $meta['desc'], 'id' => $category['id']]
+    );
+
+    out("  category meta SET  {$slug}");
 }
 
 // ---------------------------------------------------------------------
@@ -232,6 +266,10 @@ foreach ($catalog as $item) {
         'is_new'         => 0,
         'is_active'      => 1,
         'sort_order'     => 0,
+        // Hand-written where we have it. Left null otherwise, which lets
+        // ProductController fall back to composing one from the product name.
+        'meta_title'     => $seoCopy['products'][$item['name']]['title'] ?? null,
+        'meta_desc'      => $seoCopy['products'][$item['name']]['desc'] ?? null,
     ]);
 
     $position = 0;

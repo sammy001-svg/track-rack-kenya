@@ -37,3 +37,8 @@ Desktop.ini
 # Database dumps
 *.sql.gz
 /database/backups/
+
+# Build-time assets fetched on demand, not vendored. bin/make-og-image.php
+# renders the share card with the site's own typefaces (Fraunces and Inter);
+# the finished card is committed, so the fonts only matter if it is redrawn.
+/build/
