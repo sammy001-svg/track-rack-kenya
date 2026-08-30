@@ -18,6 +18,10 @@
 !/public/uploads/products/*.jpg
 !/public/uploads/products/*.webp
 
+# This one is security, not media: it stops anything in the uploads directory
+# being executed as PHP. It must ship with the code, not be left to the server.
+!/public/uploads/.htaccess
+
 # Logs
 /storage/logs/*
 !/storage/logs/.gitkeep
