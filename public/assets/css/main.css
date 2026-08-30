@@ -1546,6 +1546,74 @@ body.nav-open { overflow: hidden; }
 
 .gallery__main.is-zoomed img { transform: scale(1.8); cursor: zoom-out; }
 
+/* --- Caption: what this particular photograph shows --- */
+.gallery__caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: .7rem;
+  padding: 2.5rem 1.1rem .9rem;
+  color: var(--bone);
+  font-size: .85rem;
+  line-height: 1.45;
+  background: linear-gradient(to top, rgba(20,17,14,.88) 0%, rgba(20,17,14,.6) 45%, transparent 100%);
+  pointer-events: none;
+  transition: opacity .3s var(--ease);
+}
+
+.gallery__main.is-zoomed .gallery__caption { opacity: 0; }
+
+.gallery__count {
+  flex: none;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  font-variant-numeric: tabular-nums;
+  color: var(--brass);
+}
+
+.gallery__desc { color: rgba(247, 244, 239, .92); }
+
+/* --- Prev / next --- */
+.gallery__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(247, 244, 239, .92);
+  color: var(--ink);
+  cursor: pointer;
+  /* Visible enough to be found, quiet enough not to fight the photograph. */
+  opacity: .62;
+  transition: opacity .3s var(--ease), background-color .3s var(--ease), transform .3s var(--ease);
+  box-shadow: var(--lift-1);
+}
+
+.gallery__arrow--prev { left: .8rem; }
+.gallery__arrow--next { right: .8rem; }
+
+.gallery__main:hover .gallery__arrow,
+.gallery__arrow:focus-visible { opacity: 1; }
+
+.gallery__arrow:hover { background: var(--ink); color: var(--bone); transform: translateY(-50%) scale(1.06); }
+
+@media (hover: none) {
+  .gallery__arrow { opacity: .9; }
+}
+
+.gallery__hint {
+  margin-top: .6rem;
+  font-size: .76rem;
+  color: var(--text-faint);
+}
+
 .gallery__thumbs {
   display: flex;
   gap: .6rem;

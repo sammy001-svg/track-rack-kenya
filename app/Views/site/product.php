@@ -29,17 +29,39 @@ foreach ($variants as $variant) {
   <div class="product">
 
     <!-- Gallery -->
-    <div class="gallery">
+    <?php $imageCount = count($images); ?>
+    <div class="gallery" id="gallery" data-count="<?= $imageCount ?>">
       <div class="gallery__main" id="gallery-main">
         <?= picture(
             image($mainImage, $art),
             $images[0]['alt'] ?? $product['name'],
             ['width' => 900, 'height' => 1125, 'fetchpriority' => 'high', 'decoding' => 'async']
         ) ?>
+
+        <?php if ($imageCount > 1): ?>
+          <button class="gallery__arrow gallery__arrow--prev" type="button" id="gallery-prev" aria-label="Previous image">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="gallery__arrow gallery__arrow--next" type="button" id="gallery-next" aria-label="Next image">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        <?php endif; ?>
+
+        <?php /* What this particular photograph shows, written per image. */ ?>
+        <figcaption class="gallery__caption" id="gallery-caption" aria-live="polite">
+          <?php if ($imageCount > 1): ?>
+            <span class="gallery__count" id="gallery-count">1 / <?= $imageCount ?></span>
+          <?php endif; ?>
+          <span class="gallery__desc" id="gallery-desc"><?= e($images[0]['alt'] ?? $product['name']) ?></span>
+        </figcaption>
       </div>
 
-      <?php if (count($images) > 1): ?>
-        <div class="gallery__thumbs">
+      <?php if ($imageCount > 1): ?>
+        <div class="gallery__thumbs" id="gallery-thumbs">
           <?php foreach ($images as $index => $img): ?>
             <?php
               $full     = image($img['path'], $art);
@@ -47,16 +69,23 @@ foreach ($variants as $variant) {
               $fullWebp = $fullDisk !== null && is_file(preg_replace('/\.[a-z0-9]+$/i', '', $fullDisk) . '.webp')
                   ? preg_replace('/\.[a-z0-9]+$/i', '', $full) . '.webp'
                   : '';
+              $caption  = $img['alt'] ?: $product['name'];
             ?>
             <button class="gallery__thumb <?= $index === 0 ? 'is-active' : '' ?>" type="button"
+                    data-index="<?= $index ?>"
                     data-full="<?= e($full) ?>"
                     data-full-webp="<?= e($fullWebp) ?>"
-                    data-alt="<?= e($img['alt'] ?? $product['name']) ?>"
-                    aria-label="View image <?= $index + 1 ?>">
+                    data-alt="<?= e($caption) ?>"
+                    title="<?= e($caption) ?>"
+                    aria-label="<?= e(sprintf('Image %d of %d — %s', $index + 1, $imageCount, $caption)) ?>">
               <?= picture($full, '', ['loading' => 'lazy', 'width' => 120, 'height' => 120]) ?>
             </button>
           <?php endforeach; ?>
         </div>
+
+        <p class="gallery__hint">
+          <?= $imageCount ?> photographs — use the arrows, swipe, or the arrow keys to move through them.
+        </p>
       <?php endif; ?>
     </div>
 

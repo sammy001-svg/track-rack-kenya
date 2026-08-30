@@ -295,39 +295,115 @@
     const main = $('#gallery-main');
     if (!main) return;
 
-    const image = $('img', main);
+    const image  = $('img', main);
     // When the main image sits inside a <picture>, the WebP <source> wins over
     // img.src — so it has to be swapped in step with it.
     const source = $('source', main);
+    const thumbs = $$('.gallery__thumb');
+    const desc   = $('#gallery-desc');
+    const count  = $('#gallery-count');
+    const total  = thumbs.length;
 
-    $$('.gallery__thumb').forEach((thumb) => {
-      thumb.addEventListener('click', () => {
-        const full = thumb.dataset.full;
-        if (!full || !image) return;
+    let current = 0;
 
-        const webp = thumb.dataset.fullWebp || '';
+    function show(index, viaKeyboard) {
+      if (total === 0) return;
 
-        image.style.opacity = '0';
-        window.setTimeout(() => {
-          if (source) {
-            if (webp) {
-              source.srcset = webp;
-            } else {
-              // No WebP for this one; disable the source so the JPEG shows.
-              source.removeAttribute('srcset');
-            }
+      // Wrap around at both ends.
+      current = (index + total) % total;
+
+      const thumb = thumbs[current];
+      const full  = thumb.dataset.full;
+      if (!full || !image) return;
+
+      const webp = thumb.dataset.fullWebp || '';
+      const alt  = thumb.dataset.alt || '';
+
+      image.style.opacity = '0';
+
+      window.setTimeout(() => {
+        if (source) {
+          if (webp) {
+            source.srcset = webp;
+          } else {
+            // No WebP for this one; drop the source so the JPEG is used.
+            source.removeAttribute('srcset');
           }
-          image.src = full;
-          image.alt = thumb.dataset.alt || image.alt;
-          image.style.opacity = '1';
-        }, 180);
+        }
+        image.src = full;
+        image.alt = alt;
+        image.style.opacity = '1';
+      }, 160);
 
-        $$('.gallery__thumb').forEach((t) => t.classList.toggle('is-active', t === thumb));
-        main.classList.remove('is-zoomed');
-      });
+      // The caption describes the specific photograph, not the product.
+      if (desc)  desc.textContent = alt;
+      if (count) count.textContent = (current + 1) + ' / ' + total;
+
+      thumbs.forEach((t, i) => t.classList.toggle('is-active', i === current));
+
+      // Keep the active thumbnail in view in the scrolling strip.
+      if (thumb.scrollIntoView) {
+        thumb.scrollIntoView({ block: 'nearest', inline: 'nearest',
+          behavior: viaKeyboard ? 'auto' : 'smooth' });
+      }
+
+      main.classList.remove('is-zoomed');
+    }
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => show(i));
     });
 
-    main.addEventListener('click', () => main.classList.toggle('is-zoomed'));
+    const prev = $('#gallery-prev');
+    const next = $('#gallery-next');
+
+    if (prev) prev.addEventListener('click', (e) => { e.stopPropagation(); show(current - 1); });
+    if (next) next.addEventListener('click', (e) => { e.stopPropagation(); show(current + 1); });
+
+    // Arrow keys, once the gallery has been interacted with or is in view.
+    if (total > 1) {
+      document.addEventListener('keydown', (e) => {
+        if (e.target.matches('input, textarea, select')) return;
+
+        const box = main.getBoundingClientRect();
+        const onScreen = box.top < window.innerHeight && box.bottom > 0;
+        if (!onScreen) return;
+
+        if (e.key === 'ArrowLeft')  { show(current - 1, true); }
+        if (e.key === 'ArrowRight') { show(current + 1, true); }
+      });
+
+      // Swipe on touch devices.
+      let startX = 0;
+      let startY = 0;
+      let tracking = false;
+
+      main.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        tracking = true;
+      }, { passive: true });
+
+      main.addEventListener('touchend', (e) => {
+        if (!tracking) return;
+        tracking = false;
+
+        const dx = e.changedTouches[0].clientX - startX;
+        const dy = e.changedTouches[0].clientY - startY;
+
+        // Horizontal intent only, so a vertical page scroll is not hijacked.
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          show(current + (dx < 0 ? 1 : -1));
+        }
+      }, { passive: true });
+    }
+
+    // Click to zoom, but not when the click was on an arrow.
+    main.addEventListener('click', (e) => {
+      if (e.target.closest('.gallery__arrow')) return;
+      main.classList.toggle('is-zoomed');
+    });
 
     // Pan the zoomed image with the pointer.
     main.addEventListener('mousemove', (e) => {
