@@ -19,13 +19,16 @@ return [
 //  SADDLES
 // =====================================================================
 [
-    'name'     => 'Thorowgood Leather General Purpose Saddle',
+    // Frames 5273-5301 are one saddle, not two: both halves of the sequence
+    // carry the Thorowgood maker's label, and 5273, 5290 and 5301 are plainly
+    // the same saddle from three angles.
+    'name'     => 'Thorowgood Leather Saddle',
     'category' => 'saddles-accessories',
     'brand'    => 'Thorowgood',
     'featured' => true,
-    'short'    => 'A soft-leather general purpose saddle with a deep, comfortable seat.',
-    'description' => "A general purpose saddle in soft black leather, cut for riders who school, jump and hack the same horse. The seat is deep enough to feel secure over a fence without locking the rider out of a flatwork position, and the panels are shaped to sit close to the horse.\n\nThorowgood saddles are known for being forgiving to fit and kind on the horse's back. As with every saddle we supply, this one is fitted on the horse before it leaves us.",
-    'specs'    => "Leather: soft-grain black\nSeat: padded, general purpose cut\nPanels: shaped for close contact\nMaker: Thorowgood\nFitting: included, on the horse",
+    'short'    => 'A soft-leather English saddle with a deep, comfortable seat.',
+    'description' => "An English saddle in soft black leather, cut for riders who school, jump and hack the same horse. The seat is deep enough to feel secure over a fence without locking the rider out of a flatwork position, and the panels are shaped to sit close to the horse.\n\nThorowgood saddles are known for being forgiving to fit and kind on the horse's back. As with every saddle we supply, this one is fitted on the horse before it leaves us.",
+    'specs'    => "Leather: soft-grain black\nSeat: padded\nPanels: shaped for close contact\nMaker: Thorowgood\nFitting: included, on the horse",
     'sizing'   => 'Seat size is taken from the rider, gullet and panel from the horse. Book a fitting before ordering — we travel to yards across Kenya.',
     'images'   => [
         ['1S3A5273.png', 'Full side profile of the saddle'],
@@ -34,24 +37,12 @@ return [
         ['1S3A5278.png', 'Cantle and rear seat detail'],
         ['1S3A5281.png', "Thorowgood maker's label on the flap"],
         ['1S3A5284.png', 'Pommel, knee roll and stirrup bar'],
-    ],
-],
-[
-    'name'     => 'Thorowgood Leather Close Contact Saddle',
-    'category' => 'saddles-accessories',
-    'brand'    => 'Thorowgood',
-    'featured' => true,
-    'short'    => 'A close contact jumping saddle in black leather, forward cut.',
-    'description' => "A close contact saddle with a forward-cut flap and a shallower seat, built to let the rider stay light and balanced over a course. The leather is soft from the outset rather than needing months of work to break in.\n\nFitted on the horse by our Society of Master Saddlers qualified fitter before delivery.",
-    'specs'    => "Leather: soft-grain black\nFlap: forward cut for jumping\nSeat: shallow close contact\nMaker: Thorowgood\nFitting: included, on the horse",
-    'sizing'   => 'Seat size from the rider, gullet and panel from the horse. Contact us to arrange a fitting.',
-    'images'   => [
-        ['1S3A5290.png', 'Full side profile of the saddle'],
+        ['1S3A5290.png', 'Three-quarter view from the front'],
         ['1S3A5292.png', 'Seat, cantle and flap together'],
         ['1S3A5293.png', 'Flap and stirrup bar detail'],
-        ['1S3A5296.png', "Thorowgood maker's label"],
+        ['1S3A5296.png', "Thorowgood maker's label, second view"],
         ['1S3A5297.png', 'Cantle close-up'],
-        ['1S3A5301.png', 'Side view showing the forward flap'],
+        ['1S3A5301.png', 'Side view showing the flap cut'],
     ],
 ],
 [
@@ -98,6 +89,8 @@ return [
     ],
 ],
 [
+    // Frames 5336-5349 are one saddle. 5341 and 5342 are consecutive frames,
+    // so the photographer had not changed the item between them.
     'name'     => 'Black Leather Jump Saddle',
     'category' => 'saddles-accessories',
     'short'    => 'A forward-cut jumping saddle in smooth black leather.',
@@ -108,19 +101,9 @@ return [
         ['1S3A5336.png', 'Full side profile of the saddle'],
         ['1S3A5337.png', 'Seat and cantle detail'],
         ['1S3A5341.png', 'Pommel and knee roll from the front'],
-    ],
-],
-[
-    'name'     => 'Black Leather Dressage Saddle',
-    'category' => 'saddles-accessories',
-    'short'    => 'A straight-cut dressage saddle with a deep seat.',
-    'description' => "A dressage saddle with a straight-cut flap and a deep seat, putting the rider in a long, upright position with the leg underneath them.\n\nFitted on the horse before delivery, and re-flocked in our own workshop as the horse changes shape.",
-    'specs'    => "Leather: black\nFlap: straight cut for dressage\nSeat: deep\nFitting: included, on the horse",
-    'sizing'   => 'Seat size from the rider, gullet and panel from the horse.',
-    'images'   => [
-        ['1S3A5342.png', "Maker's badge on the saddle flap"],
-        ['1S3A5345.png', 'Full side profile of the saddle'],
-        ['1S3A5349.png', 'Seat and cantle detail'],
+        ['1S3A5342.png', "Enamel maker's badge on the flap"],
+        ['1S3A5345.png', 'Three-quarter view from the front'],
+        ['1S3A5349.png', 'Seat and cantle, second view'],
     ],
 ],
 [
