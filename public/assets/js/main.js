@@ -457,6 +457,119 @@
   }
 
   /* -------------------------------------------------------------------
+     Hero carousel: arrows, dots and autoplay over a scroll-snap track
+
+     The track already scrolls and snaps on its own, so everything here is an
+     enhancement — without it the hero is still a swipeable row of products.
+     ------------------------------------------------------------------- */
+  function initHeroCarousel() {
+    const root = $('[data-hero-carousel]');
+    if (!root) return;
+
+    const track  = $('[data-hero-track]', root);
+    const slides = $$('.hero-carousel__slide', root);
+    if (!track || slides.length === 0) return;
+
+    const controls = $('[data-hero-controls]', root);
+    const dots     = $$('[data-hero-go]', root);
+    const status   = $('[data-hero-status]', root);
+    const total    = slides.length;
+
+    let current   = 0;
+    let timer     = null;
+    // Hovering pauses; using an arrow or a dot means the visitor is driving,
+    // and autoplay does not come back and fight them for it.
+    let cancelled = false;
+
+    // A single slide needs no controls at all.
+    if (total > 1 && controls) controls.hidden = false;
+
+    function mark(index) {
+      current = index;
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.removeAttribute('aria-current');
+        }
+      });
+
+      if (status) status.textContent = 'Slide ' + (index + 1) + ' of ' + total;
+    }
+
+    function go(index) {
+      // Wrap at both ends so the arrows never dead-end.
+      const target = (index + total) % total;
+
+      // Each slide is exactly one track width, so the scroll position is just
+      // arithmetic. offsetLeft is measured from the nearest positioned
+      // ancestor rather than from the track, which put this in the wrong place.
+      track.scrollTo({
+        left: target * track.clientWidth,
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      });
+    }
+
+    // Track position from the scroll itself rather than from our own clicks, so
+    // a swipe or a keyboard scroll keeps the dots honest.
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) mark(slides.indexOf(entry.target));
+        });
+      }, { root: track, threshold: 0.6 });
+
+      slides.forEach((slide) => observer.observe(slide));
+    }
+
+    mark(0);
+
+    function start() {
+      if (timer || cancelled || reduceMotion || total < 2) return;
+      timer = window.setInterval(() => go(current + 1), 6000);
+    }
+
+    function pause() {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    }
+
+    function cancel() {
+      cancelled = true;
+      pause();
+    }
+
+    $('[data-hero-prev]', root)?.addEventListener('click', () => { cancel(); go(current - 1); });
+    $('[data-hero-next]', root)?.addEventListener('click', () => { cancel(); go(current + 1); });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        cancel();
+        go(Number(dot.dataset.heroGo));
+      });
+    });
+
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft')  { cancel(); go(current - 1); event.preventDefault(); }
+      if (event.key === 'ArrowRight') { cancel(); go(current + 1); event.preventDefault(); }
+    });
+
+    // Autoplay is a courtesy, not a hijack: it yields while someone is reading
+    // or has the tab in the background, and picks up again afterwards.
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', start);
+    root.addEventListener('touchstart', cancel, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { pause(); } else { start(); }
+    });
+
+    start();
+  }
+
+  /* -------------------------------------------------------------------
      Marquee: duplicate the track so the loop is seamless
      ------------------------------------------------------------------- */
   function initMarquee() {
@@ -673,6 +786,7 @@
     initQuoteForms();
     initQty();
     initGallery();
+    initHeroCarousel();
     initAccordions();
     initFilters();
     initMarquee();

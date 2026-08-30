@@ -761,6 +761,237 @@ body.nav-open { overflow: hidden; }
   .hero__visual::after { background: linear-gradient(to bottom, rgba(20,17,14,.9), rgba(20,17,14,.35)); }
 }
 
+/* Hero carousel — real products in place of the static hero photograph.
+   The studio shots are cut out on white, so the panel behind them is white
+   too: on bone the photograph's own background showed as a paler rectangle
+   floating inside the frame. White against the ink copy column also gives the
+   hero a clean split rather than a stock photo bled under a gradient. */
+.hero__visual--carousel {
+  /* Ink behind the panel, so the transparent header keeps a dark ground to sit
+     on right across the page — over the white panel its bone-coloured nav was
+     invisible. */
+  background: var(--ink);
+  /* Taller than the static hero image: this one carries a caption and a row
+     of controls underneath the photograph. */
+  min-height: 62svh;
+}
+
+/* The static hero's dark wash exists to blend a photograph into the copy
+   column. Over a white panel it reads as a smudge, so it goes. */
+.hero__visual--carousel::after { content: none; }
+
+.hero-carousel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #fff;
+}
+
+/* On wide screens the panel starts below the header rather than under it. */
+@media (min-width: 900px) {
+  .hero-carousel {
+    top: var(--header-h);
+    border-left: 1px solid rgba(20, 17, 14, .1);
+  }
+}
+
+/* Native scroll-snap so the carousel is swipeable with no JavaScript at all;
+   the script only adds autoplay, arrows and dots on top. */
+.hero-carousel__track {
+  flex: 1;
+  /* Without this the track refuses to shrink below its content and pushes the
+     caption and controls off the bottom of the hero. */
+  min-height: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+}
+
+.hero-carousel__track::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel__track { scroll-behavior: auto; }
+}
+
+.hero-carousel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  min-width: 0;
+  display: flex;
+}
+
+.hero-carousel__link {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  /* No header allowance on small screens — there the visual sits below the
+     copy, not underneath the transparent header. */
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 0;
+  text-decoration: none;
+  color: var(--ink);
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  /* The panel itself already clears the header, so no extra allowance here. */
+  .hero-carousel__link { padding-top: clamp(1.75rem, 4vh, 3rem); }
+}
+
+.hero-carousel__frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: block;
+  overflow: hidden;
+}
+
+/* Overrides the absolute full-bleed rule the static hero image uses: these are
+   product cut-outs, so they have to be contained, not cropped. */
+.hero__visual--carousel .hero-carousel__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: none;
+  transition: transform .6s var(--ease);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-carousel__link:hover .hero-carousel__frame img,
+  .hero-carousel__link:focus-visible .hero-carousel__frame img { transform: scale(1.04); }
+}
+
+.hero-carousel__link:focus-visible .hero-carousel__frame {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+.hero-carousel__label {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.hero-carousel__cat {
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.hero-carousel__name {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  font-weight: 300;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+
+.hero-carousel__price {
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: rgba(20, 17, 14, .55);
+}
+
+/* Controls sit in the column below the track rather than floating over the
+   caption, which is what they did at first — the two collided. */
+.hero-carousel__controls {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3rem) clamp(1.4rem, 4vh, 2.25rem);
+}
+
+.hero-carousel__controls[hidden] { display: none; }
+
+.hero-carousel__arrow {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(20, 17, 14, .16);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
+}
+
+/* `.hero__visual svg` pins the hero artwork to the corners, which also caught
+   these icons and stacked both chevrons in the top-left of the panel. */
+.hero-carousel__arrow svg {
+  position: static;
+  inset: auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  animation: none;
+}
+
+.hero-carousel__arrow:hover,
+.hero-carousel__arrow:focus-visible {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+/* Everything stays left: the floating WhatsApp button occupies the bottom
+   right corner and would sit on top of a centred or right-aligned control. */
+.hero-carousel__dots {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-carousel__dot {
+  display: block;
+  width: 1.75rem;
+  height: 2px;
+  padding: 0;
+  border: 0;
+  background: rgba(20, 17, 14, .18);
+  cursor: pointer;
+  transition: background .3s var(--ease), transform .3s var(--ease);
+}
+
+/* A larger invisible hit area — a 2px target is unusable on a phone. */
+.hero-carousel__dot::before {
+  content: "";
+  position: absolute;
+  width: 1.75rem;
+  height: 2.25rem;
+  transform: translateY(-1.1rem);
+}
+
+.hero-carousel__dots li { position: relative; display: flex; }
+
+.hero-carousel__dot[aria-current="true"] {
+  background: var(--brass);
+  transform: scaleY(2);
+}
+
+.hero-carousel__dot:hover { background: rgba(20, 17, 14, .45); }
+
 .hero__scroll {
   position: absolute;
   left: 50%;

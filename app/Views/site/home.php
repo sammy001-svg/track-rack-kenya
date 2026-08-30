@@ -1,5 +1,6 @@
 <?php
-/** @var array $pillars @var array $featured @var array $latest @var array $brands */
+/** @var array $pillars @var array $heroSlides @var array $featured @var array $latest @var array $brands */
+$heroSlides = $heroSlides ?? [];
 $spotlight = array_slice($featured, 0, 4);
 $grid      = array_slice($featured, 0, 8);
 if (count($grid) < 4) {
@@ -43,18 +44,100 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
     </dl>
   </div>
 
-  <div class="hero__visual">
-    <?= picture(
-        asset('/assets/img/hero-leather.jpg'),
-        'Close detail of quilted leather with hand-run saddle stitching',
-        ['width' => 1100, 'height' => 1375, 'fetchpriority' => 'high', 'decoding' => 'async']
-    ) ?>
-  </div>
+  <?php if ($heroSlides === []): ?>
+    <div class="hero__visual">
+      <?= picture(
+          asset('/assets/img/hero-leather.jpg'),
+          'Close detail of quilted leather with hand-run saddle stitching',
+          ['width' => 1100, 'height' => 1375, 'fetchpriority' => 'high', 'decoding' => 'async']
+      ) ?>
+    </div>
+  <?php else: ?>
+    <?php $slideCount = count($heroSlides); ?>
+    <div class="hero__visual hero__visual--carousel">
+      <div class="hero-carousel"
+           role="group"
+           aria-roledescription="carousel"
+           aria-label="Selected products from the catalogue"
+           data-hero-carousel>
 
-  <div class="hero__scroll" aria-hidden="true">
-    <span>Scroll</span>
-    <i></i>
-  </div>
+        <?php // Native scroll-snap, so this is swipeable even before the script runs. ?>
+        <ul class="hero-carousel__track" data-hero-track>
+          <?php foreach ($heroSlides as $i => $slide): ?>
+            <?php $showPrice = (int) ($slide['price_visible'] ?? 0) === 1 && $slide['price'] !== null; ?>
+            <li class="hero-carousel__slide"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="<?= $i + 1 ?> of <?= $slideCount ?>">
+              <a class="hero-carousel__link" href="<?= e(url('/product/' . $slide['slug'])) ?>">
+                <span class="hero-carousel__frame">
+                  <?= picture(
+                      image($slide['primary_image'] ?? null, 'product'),
+                      $slide['name'],
+                      [
+                          'width'   => 900,
+                          'height'  => 1125,
+                          'decoding' => 'async',
+                          // Only the first slide is above the fold; the rest can wait.
+                          'loading'  => $i === 0 ? 'eager' : 'lazy',
+                          'fetchpriority' => $i === 0 ? 'high' : 'low',
+                      ]
+                  ) ?>
+                </span>
+
+                <span class="hero-carousel__label">
+                  <?php if (!empty($slide['category_name'])): ?>
+                    <span class="hero-carousel__cat"><?= e($slide['category_name']) ?></span>
+                  <?php endif; ?>
+                  <span class="hero-carousel__name"><?= e($slide['name']) ?></span>
+                  <span class="hero-carousel__price">
+                    <?= $showPrice ? e(money($slide['price'])) : 'Price on request' ?>
+                  </span>
+                </span>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+
+        <?php // Controls are script-driven, so they stay out of the way until it loads. ?>
+        <div class="hero-carousel__controls" hidden data-hero-controls>
+          <button class="hero-carousel__arrow" type="button" data-hero-prev aria-label="Previous product">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <ol class="hero-carousel__dots" data-hero-dots>
+            <?php foreach ($heroSlides as $i => $slide): ?>
+              <li>
+                <button class="hero-carousel__dot" type="button" data-hero-go="<?= $i ?>"
+                        aria-label="Show <?= e($slide['name']) ?>"></button>
+              </li>
+            <?php endforeach; ?>
+          </ol>
+
+          <button class="hero-carousel__arrow" type="button" data-hero-next aria-label="Next product">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <p class="sr-only" aria-live="polite" data-hero-status></p>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <?php // The carousel puts its own controls along the bottom edge, so the
+        // scroll cue would sit on top of them. ?>
+  <?php if ($heroSlides === []): ?>
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <i></i>
+    </div>
+  <?php endif; ?>
 </section>
 
 <!-- Marquee -->

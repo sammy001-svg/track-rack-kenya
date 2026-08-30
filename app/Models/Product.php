@@ -136,6 +136,57 @@ class Product extends Model
         );
     }
 
+    /**
+     * Products for the home page hero carousel.
+     *
+     * Only products that actually own a photograph are eligible — a hero slide
+     * falling back to a category placeholder would put the same picture on
+     * screen twice, which is exactly what the carousel is there to avoid.
+     *
+     * Featured products come first, topped up with recent ones if there are too
+     * few. The result is then dealt out so no two consecutive slides share a
+     * category: straight off the featured list the hero would open with three
+     * saddles in a row and read as a much narrower shop than it is.
+     */
+    public function showcase(int $limit = 6): array
+    {
+        $limit = max(1, min(12, $limit));
+
+        $rows = $this->db()->all(
+            "SELECT " . self::SELECT_CARD . "
+             FROM products p
+             LEFT JOIN categories c ON c.id = p.category_id
+             LEFT JOIN brands b ON b.id = p.brand_id
+             WHERE p.is_active = 1
+               AND EXISTS (SELECT 1 FROM product_images pi WHERE pi.product_id = p.id)
+             ORDER BY p.is_featured DESC, p.sort_order ASC, p.created_at DESC, p.id DESC"
+        );
+
+        // Bucket by category, preserving the order above within each bucket.
+        $buckets = [];
+        foreach ($rows as $row) {
+            $buckets[(string) ($row['category_slug'] ?? '')][] = $row;
+        }
+
+        // Deal one from each bucket in turn until we have enough.
+        $picked = [];
+        while (count($picked) < $limit && $buckets !== []) {
+            foreach ($buckets as $key => $bucket) {
+                $picked[] = array_shift($buckets[$key]);
+
+                if ($buckets[$key] === []) {
+                    unset($buckets[$key]);
+                }
+
+                if (count($picked) >= $limit) {
+                    break;
+                }
+            }
+        }
+
+        return $picked;
+    }
+
     public function bySlug(string $slug): ?array
     {
         return $this->db()->one(

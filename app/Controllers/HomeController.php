@@ -25,6 +25,7 @@ class HomeController extends Controller
             'bodyClass'   => 'page-home',
             'transparentHeader' => true,
             'pillars'     => $categories->tree(),
+            'heroSlides'  => $products->showcase(6),
             'featured'    => $products->featured(6),
             'latest'      => $products->latest(4),
             'brands'      => (new Brand())->active(),
