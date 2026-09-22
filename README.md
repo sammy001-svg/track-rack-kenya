@@ -1,8 +1,8 @@
 # Tack Rack Kenya
 
 A modern quote-request e-commerce website and admin console for **Tack Rack Limited** —
-Kenya's equestrian supplier since 1997, based at the MacNaughton Business Centre on
-Ngong Road, Nairobi.
+Kenya's equestrian supplier since 1997, based off Ngong Road, near the Chequered Flag
+opposite St Christophers School, Nairobi.
 
 Built with **HTML/CSS/JS on the front end, PHP 8 on the back end, and MySQL/MariaDB**
 for data. No frameworks, no Composer, no build step.

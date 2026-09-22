@@ -147,7 +147,7 @@ INSERT INTO `products`
 -- --- STABLE / Leather care --------------------------------------------
 (32,5,'Leather Balm','leather-balm','TR-LC-170','Beeswax and neatsfoot balm for tack in a dry climate.','The single most important product for tack in Kenya. A beeswax and neatsfoot balm that feeds the fibre and holds off the cracking that altitude and dry air cause in a season.','Size: 500 ml tin\nActive: beeswax, neatsfoot oil, lanolin\nUse: apply monthly, more often on new leather\nFinish: soft satin, non-greasy','Clean with saddle soap first, then apply thinly with a cloth and leave overnight.',NULL,0,'in_stock',1,0,1,1),
 (32,5,'Glycerine Saddle Soap','glycerine-saddle-soap','TR-LC-171','Traditional glycerine bar soap for daily tack cleaning.','A traditional glycerine bar used with a damp sponge to lift sweat and grease without stripping the leather.','Size: 250 g bar\nType: glycerine, bar\nUse: damp sponge, daily after riding','Use sparingly with a barely damp sponge - too much water is what damages leather.',NULL,0,'in_stock',0,0,1,2),
-(32,1,'Tack Repair & Tree Repair Service','tack-repair-tree-repair-service','TR-LC-172','In-house repair of saddles, bridles and broken trees.','Our Nairobi workshop repairs what most suppliers replace - broken saddle trees, torn panels, restitched bridles, replacement billets and re-flocking. Bring the item in or send photographs and we will quote before any work begins.','Services: tree repair, re-flocking, panel repair, restitching, billet replacement, nameplate engraving\nTurnaround: quoted per job\nLocation: MacNaughton Centre, Ngong Road, Nairobi','Send photographs of the damage with your quote request for a faster assessment.',NULL,0,'in_stock',1,0,1,3);
+(32,1,'Tack Repair & Tree Repair Service','tack-repair-tree-repair-service','TR-LC-172','In-house repair of saddles, bridles and broken trees.','Our Nairobi workshop repairs what most suppliers replace - broken saddle trees, torn panels, restitched bridles, replacement billets and re-flocking. Bring the item in or send photographs and we will quote before any work begins.','Services: tree repair, re-flocking, panel repair, restitching, billet replacement, nameplate engraving\nTurnaround: quoted per job\nLocation: Off Ngong Road, Nairobi','Send photographs of the damage with your quote request for a faster assessment.',NULL,0,'in_stock',1,0,1,3);
 
 -- ---------------------------------------------------------------------
 --  Variants (sizes offered on the quote form)
@@ -180,7 +180,7 @@ INSERT IGNORE INTO `settings` (`key_name`,`value`,`group_name`,`label`,`input_ty
 ('contact_phone','+254 722 763 279','contact','Primary phone','tel',1),
 ('contact_phone_alt','+254 736 978 963','contact','Secondary phone','tel',2),
 ('contact_email','sales1997@tackrack.co.ke','contact','Email address','email',3),
-('contact_address','MacNaughton Business Centre, Ngong Road','contact','Street address','text',4),
+('contact_address','Off Ngong Road, Near Chequered Flag opposite St Christophers School, Nairobi','contact','Street address','text',4),
 ('contact_postal','P.O. Box 57, Karen 00502, Nairobi, Kenya','contact','Postal address','text',5),
 ('contact_hours','Monday - Friday 8:30am - 5:30pm | Saturday 9:00am - 1:00pm','contact','Opening hours','text',6),
 ('whatsapp_number','254722763279','contact','WhatsApp number (digits only)','text',7),
@@ -197,7 +197,7 @@ INSERT IGNORE INTO `settings` (`key_name`,`value`,`group_name`,`label`,`input_ty
 -- ---------------------------------------------------------------------
 INSERT INTO `pages` (`slug`,`title`,`subtitle`,`body`,`meta_desc`,`is_active`) VALUES
 ('heritage','About Our Heritage','Kenya''s equestrian supplier since 1997.',
-'<p>Tack Rack Limited was founded in 1997 and has served as Kenya''s primary equestrian supplier ever since. We are based at the MacNaughton Business Centre off Ngong Road in Nairobi &mdash; a bright, accessible premises with parking at the door.</p>
+'<p>Tack Rack Limited was founded in 1997 and has served as Kenya''s primary equestrian supplier ever since. We are based off Ngong Road, near the Chequered Flag opposite St Christophers School, Nairobi &mdash; a bright, accessible premises with parking at the door.</p>
 <h3>Every discipline, properly equipped</h3>
 <p>We stock equipment and supplements across every riding discipline practised in Kenya: racing, polo, showjumping, dressage, hacking and safari riding. Our staff ride, and they will tell you plainly what a horse actually needs rather than what is most expensive on the shelf.</p>
 <h3>Saddle fitting by a qualified specialist</h3>

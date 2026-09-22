@@ -13,7 +13,7 @@ $mapEmbed = setting('map_embed');
     <p class="eyebrow" style="margin-top:1.5rem">Ngong Road, Nairobi</p>
     <h1>Come and see us.</h1>
     <p class="lede">
-      The shop is at the MacNaughton Business Centre with parking at the door.
+      The shop is off Ngong Road, near the Chequered Flag opposite St Christophers School, with parking at the door.
       Call, email or message — whichever suits you.
     </p>
   </div>

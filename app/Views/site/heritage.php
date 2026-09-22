@@ -66,7 +66,7 @@
       <div class="timeline__row" data-reveal>
         <div class="timeline__year">Today</div>
         <div class="timeline__body">
-          <h4>MacNaughton Business Centre, Ngong Road</h4>
+          <h4><?= e(setting('contact_address', 'Off Ngong Road, Near Chequered Flag opposite St Christophers School, Nairobi')) ?></h4>
           <p>A bright, accessible premises with parking at the door, stocking equipment and supplements across racing, polo, showjumping, dressage, hacking and safari riding.</p>
         </div>
       </div>

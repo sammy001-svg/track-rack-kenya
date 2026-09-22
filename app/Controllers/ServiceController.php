@@ -189,7 +189,7 @@ class ServiceController extends Controller
                 'How long does a repair take?'
                     => 'Most repairs are turned around within about a week. Tree repairs take longer and we will tell you so up front.',
                 'Do I need to bring the item in?'
-                    => 'Send photographs first if you would rather have a figure before you travel. Otherwise drop the item at the MacNaughton Business Centre on Ngong Road.',
+                    => 'Send photographs first if you would rather have a figure before you travel. Otherwise drop the item at the shop: ' . setting('contact_address') . '.',
             ]));
 
         $this->view('site.service-repairs', [

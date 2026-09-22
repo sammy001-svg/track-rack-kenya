@@ -54,7 +54,9 @@ class Schema
 
         $node['address'] = array_filter([
             '@type'           => 'PostalAddress',
-            'streetAddress'   => setting('contact_address'),
+            // The address setting ends with the city for display; here the city
+            // is its own field, so it comes off the street line.
+            'streetAddress'   => preg_replace('/,\s*Nairobi\s*$/i', '', (string) setting('contact_address')),
             'addressLocality' => 'Nairobi',
             'addressRegion'   => 'Nairobi',
             'addressCountry'  => 'KE',

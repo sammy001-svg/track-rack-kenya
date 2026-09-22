@@ -83,7 +83,7 @@ $awaiting    = (string) ($_GET['awaiting'] ?? '');
         <section class="pay-method">
           <header><h2>Pay on collection</h2></header>
           <div class="pay-method__body">
-            Collect and pay at <?= e(setting('contact_address')) ?>.<br>
+            Collect and pay at the shop: <?= e(setting('contact_address')) ?>.<br>
             Open <?= e(setting('contact_hours')) ?>.
           </div>
           <p class="field__hint">

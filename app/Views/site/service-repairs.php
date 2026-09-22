@@ -144,7 +144,7 @@ $pre = static function (string $field, string $fallback = '') use ($customer) {
             <li>Brass nameplate engraving</li>
           </ul>
           <p class="quote-summary__note">
-            Drop the item at <?= e(setting('contact_address')) ?>, or send photographs first
+            Drop the item at the shop (<?= e(setting('contact_address')) ?>), or send photographs first
             if you would rather have a figure before you travel.
           </p>
         </div>

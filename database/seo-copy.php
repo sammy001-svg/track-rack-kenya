@@ -414,7 +414,7 @@ return [
         ],
         'Stockholm Tar' => [
             'title' => 'Stockholm Tar for Hooves',
-            'desc'  => 'Traditional Stockholm tar for the hoof, distributed by Tack Rack in two bottle sizes. From our shop at the MacNaughton Centre, Ngong Road.',
+            'desc'  => 'Traditional Stockholm tar for the hoof, distributed by Tack Rack in two bottle sizes. From our shop off Ngong Road, Nairobi.',
         ],
         'Keratex 3P Hoof Repair' => [
             'title' => 'Keratex 3P Hoof Repair',
@@ -522,7 +522,7 @@ return [
         ],
         'Sooth-Itch Super Strength Gel' => [
             'title' => 'Sooth-Itch Super Strength Gel',
-            'desc'  => 'A 500ml gel that soothes itching and supports natural hair regrowth. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'A 500ml gel that soothes itching and supports natural hair regrowth. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Equimins Leg Gel' => [
             'title' => 'Equimins Leg Gel',
@@ -550,7 +550,7 @@ return [
         ],
         'Equimins MSM Cream' => [
             'title' => 'Equimins MSM Cream',
-            'desc'  => 'An MSM cream from the Equimins first aid and stable range, in a 500g tub. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'An MSM cream from the Equimins first aid and stable range, in a 500g tub. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Heal-O-Fast Wound Healing Spray' => [
             'title' => 'Heal-O-Fast Wound Healing Spray',
@@ -566,7 +566,7 @@ return [
         ],
         'Red Horse Honeyheel' => [
             'title' => 'Red Horse Honeyheel',
-            'desc'  => 'Honeyheel from Red Horse Products, a honey-based barrier cream in a 500ml pot. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Honeyheel from Red Horse Products, a honey-based barrier cream in a 500ml pot. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
 
         // Health and supplements
@@ -608,7 +608,7 @@ return [
         ],
         'Coligone Liquid' => [
             'title' => 'Coligone Digestive Liquid',
-            'desc'  => 'Coligone equine digestive soothing supplement in liquid form. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Coligone equine digestive soothing supplement in liquid form. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Coligone Balancer' => [
             'title' => 'Coligone Balancer',
@@ -616,7 +616,7 @@ return [
         ],
         'Coligone Powder' => [
             'title' => 'Coligone Digestive Powder',
-            'desc'  => 'Coligone equine digestive soothing supplement in powder form. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Coligone equine digestive soothing supplement in powder form. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Endeavon Flex-O-Joint' => [
             'title' => 'Endeavon Flex-O-Joint',
@@ -636,7 +636,7 @@ return [
         ],
         'Equimins Milk Thistle' => [
             'title' => 'Equimins Milk Thistle',
-            'desc'  => 'Milk thistle from the Equimins nutrition range, in a resealable eco pack. In stock at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Milk thistle from the Equimins nutrition range, in a resealable eco pack. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Equimins Vitamin E & Selenium' => [
             'title' => 'Equimins Vitamin E & Selenium',
@@ -660,7 +660,7 @@ return [
         ],
         'Equimins Garlic & Mint' => [
             'title' => 'Equimins Garlic & Mint',
-            'desc'  => 'A garlic and mint feed supplement from Equimins, supplied by the bag. In stock at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'A garlic and mint feed supplement from Equimins, supplied by the bag. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Lincoln Blood Tonic' => [
             'title' => 'Lincoln Blood Tonic',
@@ -668,11 +668,11 @@ return [
         ],
         'Back to Basics Immuno Hoof' => [
             'title' => 'Back to Basics Immuno Hoof',
-            'desc'  => 'Immuno Hoof from the Back to Basics supplement range, in a 1kg bag. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Immuno Hoof from the Back to Basics supplement range, in a 1kg bag. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Back to Basics Muscle Up' => [
             'title' => 'Back to Basics Muscle Up',
-            'desc'  => 'Muscle Up from the Back to Basics supplement range, in a 1.5kg bag. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Muscle Up from the Back to Basics supplement range, in a 1.5kg bag. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Electrolytes' => [
             'title' => 'Horse Electrolytes',
@@ -714,7 +714,7 @@ return [
         ],
         'Moore’s Aloe Vera Shampoo' => [
             'title' => 'Moore’s Aloe Vera Horse Shampoo',
-            'desc'  => 'Moore’s Quality aloe vera shampoo for washing horses, in a 1 litre bottle. Stocked at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Moore’s Quality aloe vera shampoo for washing horses, in a 1 litre bottle. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Endeavon Lemon Shampoo' => [
             'title' => 'Endeavon Lemon Horse Shampoo',
@@ -744,7 +744,7 @@ return [
         ],
         'Rope Haynet — Yellow' => [
             'title' => 'Yellow Rope Haynet',
-            'desc'  => 'A knotted rope haynet in yellow with a drawstring top for tying up. In stock at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'A knotted rope haynet in yellow with a drawstring top for tying up. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Flexible Tub — Orange' => [
             'title' => 'Orange Flexible Tub',
@@ -756,7 +756,7 @@ return [
         ],
         'Hydrophane Cribox' => [
             'title' => 'Hydrophane Cribox',
-            'desc'  => 'Cribox from Hydrophane prevents crib-biting. Available in 450g and 225g tubs at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Cribox from Hydrophane prevents crib-biting. Available in 450g and 225g tubs at Tack Rack, Ngong Road, Nairobi.',
         ],
 
         // Leather care
@@ -770,7 +770,7 @@ return [
         ],
         'Moore’s Dubbin' => [
             'title' => 'Moore’s Dubbin',
-            'desc'  => 'Moore’s Quality dubbin for leather, in a 500ml tub. In stock at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'Moore’s Quality dubbin for leather, in a 500ml tub. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
         'Moore’s Leather Soap' => [
             'title' => 'Moore’s Leather Soap',
@@ -780,7 +780,7 @@ return [
         // Rider accessories
         'Braided Schooling Whip' => [
             'title' => 'Braided Schooling Whip',
-            'desc'  => 'A braided schooling whip with a flexible tip, a rubber grip and a wrist strap. In stock at Tack Rack, MacNaughton Centre, Ngong Road, Nairobi.',
+            'desc'  => 'A braided schooling whip with a flexible tip, a rubber grip and a wrist strap. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
     ],
 ];

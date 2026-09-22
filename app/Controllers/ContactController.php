@@ -16,8 +16,8 @@ class ContactController extends Controller
         $seo = Seo::make()
             ->title('Contact Us — Ngong Road, Nairobi')
             ->description(
-                'Visit Tack Rack at the MacNaughton Centre off Ngong Road, Nairobi — near the '
-                . 'Chequered Flag, opposite St Christopher\'s School. Call '
+                'Visit Tack Rack off Ngong Road, near the Chequered Flag opposite '
+                . 'St Christophers School, Nairobi. Call '
                 . setting('contact_phone') . ', email or message us on WhatsApp.'
             )
             ->canonical(url('/contact'))

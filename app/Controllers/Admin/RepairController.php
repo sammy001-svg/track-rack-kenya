@@ -202,7 +202,7 @@ class RepairController extends Controller
                 'Your repair is ready — ' . $repair['reference'],
                 '<h2 style="font-family:Georgia,serif;font-weight:normal;">Ready for collection</h2>'
                     . "<p>Hello {$name},</p>"
-                    . "<p>Your {$item} is finished and ready to collect from "
+                    . "<p>Your {$item} is finished and ready to collect from the shop: "
                     . e(setting('contact_address')) . '.</p>'
                     . '<p>We are open ' . e(setting('contact_hours')) . '.</p>'
                     . '<p>Reference <strong>' . $ref . '</strong>.</p>',

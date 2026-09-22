@@ -204,7 +204,7 @@ foreach ($variants as $variant) {
             Delivery &amp; Collection <span class="accordion__icon" aria-hidden="true"></span>
           </button>
           <div class="accordion__panel"><div>
-            <div class="accordion__body">Collect from <?= e(setting('contact_address')) ?>, or have it delivered across Nairobi. We dispatch countrywide by courier — delivery cost is confirmed in your quote before you commit.
+            <div class="accordion__body">Collect from the shop (<?= e(setting('contact_address')) ?>), or have it delivered across Nairobi. We dispatch countrywide by courier — delivery cost is confirmed in your quote before you commit.
 
 Opening hours: <?= e(setting('contact_hours')) ?></div>
           </div></div>
