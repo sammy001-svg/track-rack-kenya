@@ -1,7 +1,7 @@
 <?php
 /**
- * The real Tack Rack catalogue, built from the studio photography in
- * public/assets/img/Products.
+ * The real Tack Rack catalogue. This file holds the first studio shoot, from
+ * public/assets/img/Products; catalog-2.php holds the second, merged below.
  *
  * Every product below was identified by examining the photographs. Where a
  * maker's mark was legible it is recorded as the brand; where it was not, the
@@ -13,7 +13,7 @@
  * Consumed by bin/import-products.php.
  */
 
-return [
+$firstShoot = [
 
 // =====================================================================
 //  SADDLES
@@ -804,3 +804,7 @@ return [
 ],
 
 ];
+
+// The second studio shoot lives in its own file so it can be reviewed on its
+// own. Anything that reads the catalogue gets both.
+return array_merge($firstShoot, require __DIR__ . '/catalog-2.php');

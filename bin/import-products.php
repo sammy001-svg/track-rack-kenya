@@ -29,7 +29,25 @@ $keep    = in_array('--keep', $options, true);
 $db      = Database::instance();
 $catalog = require BASE_PATH . '/database/catalog.php';
 $seoCopy = require BASE_PATH . '/database/seo-copy.php';
-$srcDir  = PUBLIC_PATH . '/assets/img/Products';
+// Studio originals, one folder per shoot, searched in this order. The second
+// folder also carries copies of the first shoot; those are byte-identical, so
+// whichever folder a file is found in first makes no difference.
+$srcDirs = [
+    PUBLIC_PATH . '/assets/img/Products',
+    PUBLIC_PATH . '/uploads/Product 2',
+];
+
+/** Full path to a studio original, or null if no shoot folder has it. */
+function findSource(array $dirs, string $file): ?string
+{
+    foreach ($dirs as $dir) {
+        if (is_file("{$dir}/{$file}")) {
+            return "{$dir}/{$file}";
+        }
+    }
+
+    return null;
+}
 $outDir  = PUBLIC_PATH . '/uploads/products';
 
 if (!is_dir($outDir) && !mkdir($outDir, 0775, true) && !is_dir($outDir)) {
@@ -59,6 +77,45 @@ $needed = [
         'meta_title' => 'Riding Hats, Helmets & Skull Caps',
         'meta_desc'  => 'Riding helmets, velvet show hats, skull caps and hat silks, fitted in person at Tack Rack, Ngong Road, Nairobi.',
         'sort'    => 5,
+    ],
+
+    // The second shoot is mostly horse care. Without these four it would all
+    // have landed in Health & Supplements — over seventy products in one list.
+    'boots-bandages' => [
+        'parent'  => 'horse',
+        'name'    => 'Boots & Bandages',
+        'tagline' => 'Leg Protection & Wraps',
+        'desc'    => 'Brushing boots, overreach boots, fleece and cohesive bandages, and the pads and gamgee that go under them.',
+        'meta_title' => 'Horse Boots, Bandages & Leg Wraps',
+        'meta_desc'  => 'Brushing and overreach boots from ARMA and Shires, Weatherbeeta fleece bandages, cohesive wraps and gamgee. Tack Rack, Ngong Road, Nairobi.',
+        'sort'    => 6,
+    ],
+    'hoof-care' => [
+        'parent'  => 'stable',
+        'name'    => 'Hoof Care',
+        'tagline' => 'Oils, Dressings & Farriery',
+        'desc'    => 'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.',
+        'meta_title' => 'Hoof Care, Hoof Oils & Farriery',
+        'meta_desc'  => 'Keratex, Red Horse and Radiol hoof care, hoof oil and Stockholm tar, treatment boots, horseshoes and nails. From Tack Rack, Nairobi.',
+        'sort'    => 4,
+    ],
+    'fly-control' => [
+        'parent'  => 'stable',
+        'name'    => 'Fly Control',
+        'tagline' => 'Sprays, Masks & Traps',
+        'desc'    => 'Fly and midge repellents, fly masks and outdoor fly traps for the yard.',
+        'meta_title' => 'Fly Repellents, Fly Masks & Traps',
+        'meta_desc'  => 'Fly and midge repellent sprays, fine mesh fly masks and Redtop outdoor fly traps for horses and yards. Stocked at Tack Rack, Nairobi.',
+        'sort'    => 5,
+    ],
+    'first-aid-skin-care' => [
+        'parent'  => 'stable',
+        'name'    => 'First Aid & Skin Care',
+        'tagline' => 'Gels, Clays & Wound Care',
+        'desc'    => 'Cooling gels and clays, wound sprays and dressings, barrier creams and sunscreen for the tack room first aid box.',
+        'meta_title' => 'Equine First Aid & Skin Care',
+        'meta_desc'  => 'Cooling gels, natural clay, wound sprays, barrier creams and sunscreen for horses — a tack room first aid box from Tack Rack, Nairobi.',
+        'sort'    => 6,
     ],
 ];
 
@@ -227,11 +284,13 @@ foreach ($catalog as $item) {
     // Confirm every referenced photograph is present before creating anything.
     $files = [];
     foreach ($item['images'] as [$file, $caption]) {
-        if (!is_file("{$srcDir}/{$file}")) {
+        $path = findSource($srcDirs, $file);
+
+        if ($path === null) {
             $stats['missing'][] = "{$item['name']}: {$file}";
             continue;
         }
-        $files[] = [$file, $caption];
+        $files[] = [$path, $file, $caption];
     }
 
     if ($files === []) {
@@ -274,9 +333,9 @@ foreach ($catalog as $item) {
 
     $position = 0;
 
-    foreach ($files as [$file, $caption]) {
+    foreach ($files as [$path, $file, $caption]) {
         $destName = sprintf('%s-%02d', $slug, $position + 1);
-        $result   = processImage("{$srcDir}/{$file}", "{$outDir}/{$destName}");
+        $result   = processImage($path, "{$outDir}/{$destName}");
 
         if ($result === null) {
             $stats['missing'][] = "{$item['name']}: {$file} (could not process)";

@@ -122,6 +122,9 @@ function picture(string $src, string $alt = '', array $attrs = []): string
 
 function slugify(string $text): string
 {
+    // Drop apostrophes before anything else, so "Moore’s" becomes "moores"
+    // rather than "moore-s".
+    $text = str_replace(["'", "\u{2019}", "\u{2018}"], '', $text);
     $text = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $text) ?: $text;
     $text = strtolower($text);
     $text = preg_replace('/[^a-z0-9]+/', '-', $text) ?? '';
