@@ -1,5 +1,5 @@
 -- Tack Rack — pending database migrations
--- Generated 2026-09-22 12:51 by bin/export-migrations-sql.php. Do not edit by hand.
+-- Generated 2026-09-22 13:20 by bin/export-migrations-sql.php. Do not edit by hand.
 --
 -- Import through phpMyAdmin: select the site database, open the Import tab,
 -- choose this file, and run it. It contains, in this order:
@@ -8,6 +8,7 @@
 --   2026_08_30_000004_seo_share_card.sql
 --   2026_09_22_000005_staff_expertise_wording.sql
 --   2026_09_22_000006_single_line_address.sql
+--   2026_09_22_000007_instagram.sql
 --
 -- Every statement in here is safe to run more than once, so importing it twice
 -- changes nothing the second time.
@@ -193,9 +194,35 @@ UPDATE `products`
  WHERE `meta_desc` LIKE '%MacNaughton Centre%';
 
 
+-- =====================================================================
+--  2026_09_22_000007_instagram.sql
+-- =====================================================================
+
+-- Link Tack Rack's Instagram, confirmed by the shop as its own account:
+-- https://www.instagram.com/tackrackltd/
+--
+-- The footer already shows an Instagram icon whenever this setting has a value,
+-- and it is added to the structured data (schema.org sameAs) Google reads, next
+-- to the Facebook page.
+--
+-- Only fills the setting if it is still empty, so a URL entered in
+-- Admin -> Settings is not overwritten. Safe to run more than once.
+--
+-- Sharon Ashley's X (@tackrack) and LinkedIn were found too, but they are her
+-- personal accounts and the shop chose not to link them.
+
+SET NAMES utf8mb4;
+
+UPDATE `settings`
+   SET `value` = 'https://www.instagram.com/tackrackltd/'
+ WHERE `key_name` = 'social_instagram'
+   AND (`value` IS NULL OR `value` = '');
+
+
 -- Record what was applied, so bin/migrate.php does not offer these again.
 INSERT IGNORE INTO `migrations` (`filename`) VALUES
   ('2026_08_18_000003_location_and_logo.sql'),
   ('2026_08_30_000004_seo_share_card.sql'),
   ('2026_09_22_000005_staff_expertise_wording.sql'),
-  ('2026_09_22_000006_single_line_address.sql');
+  ('2026_09_22_000006_single_line_address.sql'),
+  ('2026_09_22_000007_instagram.sql');
