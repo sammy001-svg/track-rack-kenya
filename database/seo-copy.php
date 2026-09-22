@@ -57,7 +57,7 @@ return [
         ],
         'horse-health-supplements' => [
             'title' => 'Horse Health & Feed Supplements',
-            'desc'  => 'Electrolytes, hoof and joint supplements and first aid for the tack room. Advice from staff who keep horses in Kenya themselves.',
+            'desc'  => 'Electrolytes, hoof and joint supplements and first aid for the tack room, with expert product advice from Tack Rack, Ngong Road, Nairobi.',
         ],
     ],
 

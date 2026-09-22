@@ -1,11 +1,12 @@
 -- Tack Rack — pending database migrations
--- Generated 2026-08-30 22:27 by bin/export-migrations-sql.php. Do not edit by hand.
+-- Generated 2026-09-22 12:21 by bin/export-migrations-sql.php. Do not edit by hand.
 --
 -- Import through phpMyAdmin: select the site database, open the Import tab,
 -- choose this file, and run it. It contains, in this order:
 --
 --   2026_08_18_000003_location_and_logo.sql
 --   2026_08_30_000004_seo_share_card.sql
+--   2026_09_22_000005_staff_expertise_wording.sql
 --
 -- Every statement in here is safe to run more than once, so importing it twice
 -- changes nothing the second time.
@@ -119,7 +120,36 @@ UPDATE `settings`
  WHERE `key_name` = 'seo_home_desc';
 
 
+-- =====================================================================
+--  2026_09_22_000005_staff_expertise_wording.sql
+-- =====================================================================
+
+-- Tack Rack's staff are experts in the products; they are not riders. Two
+-- category descriptions — the text Google shows under the link — said
+-- otherwise. This replaces both.
+--
+-- Each UPDATE matches the old wording exactly, so a description someone has
+-- since rewritten in Admin -> Categories is left alone, and running this file
+-- twice changes nothing the second time.
+--
+-- The same claim was removed from the home page in the same change; that text
+-- lives in app/Views/site/home.php, not the database.
+
+SET NAMES utf8mb4;
+
+UPDATE `categories`
+   SET `meta_desc` = 'Riding boots, breeches, jackets, gloves and helmets for every discipline. Rider apparel from Tack Rack, Nairobi, with expert advice on fit.'
+ WHERE `slug` = 'rider'
+   AND `meta_desc` = 'Riding boots, breeches, jackets, gloves and helmets for every discipline. Rider apparel from Tack Rack, Nairobi — fitted advice from staff who ride.';
+
+UPDATE `categories`
+   SET `meta_desc` = 'Electrolytes, hoof and joint supplements and first aid for the tack room, with expert product advice from Tack Rack, Ngong Road, Nairobi.'
+ WHERE `slug` = 'horse-health-supplements'
+   AND `meta_desc` = 'Electrolytes, hoof and joint supplements and first aid for the tack room. Advice from staff who keep horses in Kenya themselves.';
+
+
 -- Record what was applied, so bin/migrate.php does not offer these again.
 INSERT IGNORE INTO `migrations` (`filename`) VALUES
   ('2026_08_18_000003_location_and_logo.sql'),
-  ('2026_08_30_000004_seo_share_card.sql');
+  ('2026_08_30_000004_seo_share_card.sql'),
+  ('2026_09_22_000005_staff_expertise_wording.sql');

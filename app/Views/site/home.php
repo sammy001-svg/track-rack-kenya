@@ -20,7 +20,7 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
 
     <p class="hero__lede">
       Saddlery, rider apparel and yard essentials for every discipline ridden in Kenya —
-      selected, fitted and maintained by people who ride.
+      selected, fitted and maintained by specialists who know every product we sell.
     </p>
 
     <div class="hero__actions">
@@ -290,7 +290,7 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
           <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h4>Every discipline covered</h4>
-        <p>Racing, polo, showjumping, dressage, hacking and safari riding — stocked and advised on by staff who ride themselves.</p>
+        <p>Racing, polo, showjumping, dressage, hacking and safari riding — stocked by a team that knows the kit for each one inside out.</p>
       </div>
 
       <div class="craft__item" data-reveal>
