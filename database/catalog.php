@@ -557,32 +557,51 @@ $firstShoot = [
     ],
 ],
 [
-    'name'     => 'Rubber Curry Comb',
+    // Listed as rubber until the shop corrected it: this strap-style comb is
+    // plastic. The rubber one is the Shires oval comb below.
+    'name'     => 'Plastic Curry Comb',
     'category' => 'grooming-kits-supplies',
     'featured' => true,
-    'short'    => 'A flexible rubber curry comb with an adjustable hand strap.',
-    'description' => "A flexible rubber curry comb used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing. The adjustable strap holds it against the palm so you are not gripping it all the way round the horse.\n\nThe single most useful item in any grooming kit.",
-    'specs'    => "Material: flexible rubber\nStrap: adjustable hand strap\nUse: circular motion, body only\nCare: rinse clean",
+    'short'    => 'A plastic curry comb with an adjustable hand strap.',
+    'description' => "A plastic curry comb used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing. The adjustable strap holds it against the palm so you are not gripping it all the way round the horse.\n\nThe single most useful item in any grooming kit.",
+    'specs'    => "Material: plastic\nStrap: adjustable hand strap\nUse: circular motion, body only\nCare: rinse clean",
     'sizing'   => 'One size, adjustable strap.',
     'images'   => [
         ['1S3A5453.jpg', 'Curry comb from the front with the strap flat'],
-        ['1S3A5454.jpg', 'Angled view showing the rubber teeth'],
+        ['1S3A5454.jpg', 'Angled view showing the teeth'],
         ['1S3A5456.jpg', 'The teeth face, from above'],
         ['1S3A5461.jpg', 'The smooth back of the comb'],
         ['1S3A5463.jpg', 'Side profile showing the strap mounting'],
-        ['1S3A5466.jpg', 'Close detail of the moulded rubber teeth'],
+        ['1S3A5466.jpg', 'Close detail of the moulded teeth'],
     ],
 ],
 [
-    'name'     => 'Rubber Curry Combs — Colour Range',
+    // Only the strap-style photo belongs here. 1S3A5486, which used to sit
+    // alongside it, shows the oval rubber comb and has moved to that product.
+    'name'     => 'Plastic Curry Combs — Colour Range',
     'category' => 'grooming-kits-supplies',
-    'short'    => 'Rubber curry combs in a choice of colours.',
-    'description' => "The same flexible rubber curry comb, stocked in a range of colours. Useful for colour-coding a kit per horse on a busy yard.",
-    'specs'    => "Material: flexible rubber\nStrap: adjustable hand strap\nColours: several, subject to stock",
+    'short'    => 'Plastic curry combs with a hand strap, in a choice of colours.',
+    'description' => "The same plastic curry comb with an adjustable hand strap, stocked in a range of colours. Useful for colour-coding a kit per horse on a busy yard.",
+    'specs'    => "Material: plastic\nStrap: adjustable hand strap\nColours: blue, black, purple, subject to stock",
     'sizing'   => 'One size, adjustable strap.',
     'images'   => [
         ['1S3A5482.png', 'Curry combs in blue, black and purple'],
-        ['1S3A5486.png', 'Oval curry combs in black, red and purple'],
+    ],
+],
+[
+    // The first two photographs were supplied by the shop rather than taken
+    // in the studio shoot, so they are on a table, not a white backdrop.
+    'name'     => 'Shires Rubber Curry Comb',
+    'category' => 'grooming-kits-supplies',
+    'brand'    => 'Shires',
+    'short'    => 'An oval rubber curry comb from Shires, with a moulded hand grip.',
+    'description' => "An oval rubber curry comb from Shires, with a moulded grip across the back and three rings of rubber teeth. Used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing.\n\nShown in blue, and also stocked in black, red and purple.",
+    'specs'    => "Maker: Shires\nMaterial: rubber\nGrip: moulded handle across the back\nTeeth: three rings\nColours: blue, black, red, purple, subject to stock",
+    'sizing'   => 'One size.',
+    'images'   => [
+        ['shires-rubber-curry-comb-teeth.png', 'The teeth face, showing the three rings of rubber teeth'],
+        ['shires-rubber-curry-comb-grip.png', 'The back of the comb, with the moulded hand grip and Shires tag'],
+        ['1S3A5486.png', 'The same comb in black, red and purple'],
     ],
 ],
 [

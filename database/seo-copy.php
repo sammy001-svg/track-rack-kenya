@@ -239,13 +239,17 @@ return [
             'title' => 'Dandy Brushes, Colour Range',
             'desc'  => 'Stiff dandy brushes in a choice of colours, for lifting mud before the body brush does the shine. In stock in Nairobi.',
         ],
-        'Rubber Curry Comb' => [
-            'title' => 'Rubber Curry Comb',
-            'desc'  => 'A flexible rubber curry comb with an adjustable hand strap, for lifting loose hair and scurf. From Tack Rack, Ngong Road, Nairobi.',
+        'Plastic Curry Comb' => [
+            'title' => 'Plastic Curry Comb',
+            'desc'  => 'A plastic curry comb with an adjustable hand strap, for lifting loose hair and scurf before body brushing. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Rubber Curry Combs — Colour Range' => [
-            'title' => 'Rubber Curry Combs, Colours',
-            'desc'  => 'Rubber curry combs in a choice of colours, with an adjustable strap. Buy several and keep one in every grooming kit. In stock.',
+        'Plastic Curry Combs — Colour Range' => [
+            'title' => 'Plastic Curry Combs, Colours',
+            'desc'  => 'Plastic curry combs with an adjustable strap in blue, black and purple. Buy several and keep one in every grooming kit. In stock.',
+        ],
+        'Shires Rubber Curry Comb' => [
+            'title' => 'Shires Rubber Curry Comb',
+            'desc'  => 'An oval Shires rubber curry comb with a moulded grip and three rings of teeth, in blue, black, red and purple. From Tack Rack, Nairobi.',
         ],
         'Mane and Tail Brush' => [
             'title' => 'Mane and Tail Brush',
