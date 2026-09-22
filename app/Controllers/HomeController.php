@@ -4,7 +4,6 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\Schema;
 use App\Core\Seo;
-use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -28,7 +27,6 @@ class HomeController extends Controller
             'heroSlides'  => $products->showcase(6),
             'featured'    => $products->featured(6),
             'latest'      => $products->latest(4),
-            'brands'      => (new Brand())->active(),
         ]);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-/** @var array $pillars @var array $heroSlides @var array $featured @var array $latest @var array $brands */
+/** @var array $pillars @var array $heroSlides @var array $featured @var array $latest */
 $heroSlides = $heroSlides ?? [];
 $spotlight = array_slice($featured, 0, 4);
 $grid      = array_slice($featured, 0, 8);
@@ -328,34 +328,6 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
     <div class="grid-products grid-products--4">
       <?php foreach (array_slice($grid, 0, 8) as $product): ?>
         <?php require APP_PATH . '/Views/partials/product-card.php'; ?>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
-<?php endif; ?>
-
-<!-- ================================================================
-     Brand wall
-     ================================================================ -->
-<?php if ($brands !== []): ?>
-<section class="section section--tight">
-  <div class="shell shell--wide">
-    <div class="section-head" data-reveal>
-      <div class="section-head__text">
-        <p class="eyebrow">Our Makers</p>
-        <h2>Marques we stand behind.</h2>
-      </div>
-    </div>
-
-    <div class="brand-wall" data-reveal>
-      <?php foreach ($brands as $brand): ?>
-        <div class="brand-wall__item" title="<?= e($brand['description'] ?? $brand['name']) ?>">
-          <?php if (!empty($brand['logo'])): ?>
-            <img src="<?= e(image($brand['logo'])) ?>" alt="<?= e($brand['name']) ?>" loading="lazy">
-          <?php else: ?>
-            <span><?= e($brand['name']) ?></span>
-          <?php endif; ?>
-        </div>
       <?php endforeach; ?>
     </div>
   </div>

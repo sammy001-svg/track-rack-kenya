@@ -1490,42 +1490,6 @@ body.nav-open { overflow: hidden; }
 }
 
 /* ---------------------------------------------------------------------
-   13. Brand wall
-   --------------------------------------------------------------------- */
-.brand-wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1px;
-  background: var(--rule-soft);
-  border: 1px solid var(--rule-soft);
-}
-
-.brand-wall__item {
-  background: var(--bone);
-  min-height: 7rem;
-  display: grid;
-  place-items: center;
-  padding: 1.25rem;
-  text-align: center;
-  transition: background-color .4s var(--ease);
-}
-
-.brand-wall__item:hover { background: var(--paper); }
-
-.brand-wall__item img { max-height: 2.6rem; width: auto; opacity: .62; filter: grayscale(1); transition: opacity .4s, filter .4s; }
-.brand-wall__item:hover img { opacity: 1; filter: grayscale(0); }
-
-.brand-wall__item span {
-  font-family: var(--display);
-  font-size: 1.02rem;
-  letter-spacing: -.01em;
-  color: var(--text-muted);
-  transition: color .4s var(--ease);
-}
-
-.brand-wall__item:hover span { color: var(--ink); }
-
-/* ---------------------------------------------------------------------
    14. CTA banner
    --------------------------------------------------------------------- */
 .cta-banner {
