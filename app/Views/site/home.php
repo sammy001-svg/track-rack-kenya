@@ -6,7 +6,6 @@ $grid      = array_slice($featured, 0, 8);
 if (count($grid) < 4) {
     $grid = array_slice(array_merge($grid, $latest), 0, 8);
 }
-$pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
 ?>
 
 <!-- ================================================================
@@ -174,14 +173,14 @@ $pillarArt = ['rider' => 'rider', 'horse' => 'horse', 'stable' => 'stable'];
   <div class="pillars">
     <?php foreach ($pillars as $index => $pillar): ?>
       <?php
-        $art = $pillarArt[$pillar['slug']] ?? null;
+        $art = pillar_art($pillar['slug']);
         $pillarImage = !empty($pillar['image'])
             ? image($pillar['image'])
-            : asset('/assets/img/' . ($art !== null ? 'pillar-' . $art : 'placeholder-product') . '.jpg');
+            : asset('/assets/img/' . ($art !== 'product' ? 'pillar-' . $art : 'placeholder-product') . '.jpg');
         $pillarAlt = [
             'rider'  => 'A showjumping rider clearing a fence',
             'horse'  => 'An English saddle fitted with a sheepskin numnah',
-            'stable' => 'Grooming a horse with a body brush',
+            'yard'   => 'Grooming a horse with a body brush',
         ][$pillar['slug']] ?? $pillar['name'];
       ?>
       <article class="pillar" data-reveal>

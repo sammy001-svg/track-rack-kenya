@@ -17,11 +17,45 @@ class ShopController extends Controller
     }
 
     /** A pillar (rider/horse/stable) or one of its child categories. */
+    /**
+     * Where the catalogue's old sections went when it was regrouped to follow
+     * the shop's own departments. Anyone holding a link to one of these — a
+     * bookmark, a WhatsApp message, a search result — lands on the section
+     * that replaced it instead of a dead end.
+     */
+    private const RETIRED_CATEGORIES = [
+        'stable'                   => 'yard',
+        'footwear'                 => 'clothing',
+        'breeches-tights'          => 'clothing',
+        'gloves-accessories'       => 'clothing',
+        'riding-jackets-vests'     => 'safety-equipment',
+        'helmets-head-protection'  => 'safety-equipment',
+        'saddles-accessories'      => 'saddles',
+        'bridles-bits-reins'       => 'bridles-reins',
+        'saddle-pads-blankets'     => 'numnahs-saddlepads',
+        'halters-lead-ropes'       => 'headcollars-lead-ropes',
+        'boots-bandages'           => 'horse-boots',
+        'horse-health-supplements' => 'feed-supplements',
+        'grooming-kits-supplies'   => 'grooming-equipment',
+        'stable-equipment'         => 'yard-equipment',
+        'leather-care-maintenance' => 'leather-care',
+        'first-aid-skin-care'      => 'first-aid',
+        'fly-control'              => 'fly-repellent',
+    ];
+
     public function category(string $slug): void
     {
         $category = (new Category())->bySlug($slug);
 
         if ($category === null) {
+            // Only redirect if the replacement is actually there; otherwise
+            // fall through to the 404 rather than bouncing to another one.
+            $moved = self::RETIRED_CATEGORIES[$slug] ?? null;
+
+            if ($moved !== null && (new Category())->bySlug($moved) !== null) {
+                $this->redirect('/shop/' . $moved);
+            }
+
             $this->notFound('That category is no longer part of our catalog.');
         }
 
@@ -144,8 +178,8 @@ class ShopController extends Controller
 
         if ($category !== null && !empty($category['image'])) {
             $seo->image(image($category['image']), $category['name']);
-        } elseif ($pillar !== null && in_array($pillar['slug'], ['rider', 'horse', 'stable'], true)) {
-            $seo->image(asset('/assets/img/pillar-' . $pillar['slug'] . '.jpg'), $pillar['name']);
+        } elseif ($pillar !== null && pillar_art($pillar['slug']) !== 'product') {
+            $seo->image(asset('/assets/img/pillar-' . pillar_art($pillar['slug']) . '.jpg'), $pillar['name']);
         }
 
         return $seo;

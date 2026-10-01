@@ -66,64 +66,132 @@ out('  ' . str_repeat('=', 56));
 out();
 
 // ---------------------------------------------------------------------
-//  1. Make sure every category used by the catalogue exists
+//  1. The category tree
+//
+//  This mirrors Tack Rack's own stock sheets, which are organised into three
+//  departments — HORSE, RIDER and YARD — each with its own sections. The
+//  sheets photographed for us stop part way down the yard list, so the four
+//  sections they do not reach (hoof care, feed supplements, first aid and
+//  yard equipment) are ours, added so nothing is left without a home.
+//
+//  Products are assigned to these by slug in database/catalog.php. Meta
+//  titles and descriptions come from database/seo-copy.php.
 // ---------------------------------------------------------------------
-$needed = [
-    'helmets-head-protection' => [
-        'parent'  => 'rider',
-        'name'    => 'Helmets & Head Protection',
-        'tagline' => 'Hats, Skull Caps & Silks',
-        'desc'    => 'Riding hats, skull caps and silks — fitted properly, because a hat that moves cannot do its job.',
-        'meta_title' => 'Riding Hats, Helmets & Skull Caps',
-        'meta_desc'  => 'Riding helmets, velvet show hats, skull caps and hat silks, fitted in person at Tack Rack, Ngong Road, Nairobi.',
-        'sort'    => 5,
-    ],
 
-    // The second shoot is mostly horse care. Without these four it would all
-    // have landed in Health & Supplements — over seventy products in one list.
-    'boots-bandages' => [
-        'parent'  => 'horse',
-        'name'    => 'Boots & Bandages',
-        'tagline' => 'Leg Protection & Wraps',
-        'desc'    => 'Brushing boots, overreach boots, fleece and cohesive bandages, and the pads and gamgee that go under them.',
-        'meta_title' => 'Horse Boots, Bandages & Leg Wraps',
-        'meta_desc'  => 'Brushing and overreach boots from ARMA and Shires, Weatherbeeta fleece bandages, cohesive wraps and gamgee. Tack Rack, Ngong Road, Nairobi.',
-        'sort'    => 6,
-    ],
-    'hoof-care' => [
-        'parent'  => 'stable',
-        'name'    => 'Hoof Care',
-        'tagline' => 'Oils, Dressings & Farriery',
-        'desc'    => 'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.',
-        'meta_title' => 'Hoof Care, Hoof Oils & Farriery',
-        'meta_desc'  => 'Keratex, Red Horse and Radiol hoof care, hoof oil and Stockholm tar, treatment boots, horseshoes and nails. From Tack Rack, Nairobi.',
-        'sort'    => 4,
-    ],
-    'fly-control' => [
-        'parent'  => 'stable',
-        'name'    => 'Fly Control',
-        'tagline' => 'Sprays, Masks & Traps',
-        'desc'    => 'Fly and midge repellents, fly masks and outdoor fly traps for the yard.',
-        'meta_title' => 'Fly Repellents, Fly Masks & Traps',
-        'meta_desc'  => 'Fly and midge repellent sprays, fine mesh fly masks and Redtop outdoor fly traps for horses and yards. Stocked at Tack Rack, Nairobi.',
-        'sort'    => 5,
-    ],
-    'first-aid-skin-care' => [
-        'parent'  => 'stable',
-        'name'    => 'First Aid & Skin Care',
-        'tagline' => 'Gels, Clays & Wound Care',
-        'desc'    => 'Cooling gels and clays, wound sprays and dressings, barrier creams and sunscreen for the tack room first aid box.',
-        'meta_title' => 'Equine First Aid & Skin Care',
-        'meta_desc'  => 'Cooling gels, natural clay, wound sprays, barrier creams and sunscreen for horses — a tack room first aid box from Tack Rack, Nairobi.',
-        'sort'    => 6,
-    ],
+// The shop calls the third department the yard, not the stable.
+$pillarRenames = ['stable' => ['slug' => 'yard', 'name' => 'Yard']];
+
+foreach ($pillarRenames as $from => $to) {
+    $row = $db->one('SELECT id, slug FROM categories WHERE slug = :s', ['s' => $from]);
+
+    if ($row === null) {
+        continue;
+    }
+
+    if ($dryRun) {
+        out("  pillar WOULD RENAME {$from} -> {$to['slug']}");
+        continue;
+    }
+
+    // The old meta described a "stable" department, so it is replaced rather
+    // than left to the fill-only pass below.
+    $meta = $seoCopy['categories'][$to['slug']] ?? null;
+
+    $db->run(
+        'UPDATE categories
+            SET slug = :slug, name = :name, meta_title = :mt, meta_desc = :md
+          WHERE id = :id',
+        [
+            'slug' => $to['slug'],
+            'name' => $to['name'],
+            'mt'   => $meta['title'] ?? null,
+            'md'   => $meta['desc'] ?? null,
+            'id'   => $row['id'],
+        ]
+    );
+
+    out("  pillar RENAMED     {$from} -> {$to['slug']}");
+}
+
+$tree = [
+    // ---- Rider ----
+    'clothing' => ['rider', 1, 'Clothing', 'Jodhpurs, Boots & Chaps',
+        'Breeches and jodhpurs, jodhpur boots, half chaps and gaiters, hat silks and competition numbers.'],
+    'safety-equipment' => ['rider', 2, 'Safety Equipment', 'Helmets & Body Protectors',
+        'Riding hats, skull caps and BETA-certified body protectors — fitted in person, because kit that moves cannot do its job.'],
+    'whips' => ['rider', 3, 'Whips', 'Schooling, Lunge & Short',
+        'Dressage and schooling whips, lunge whips and short whips, balanced to carry without moving the hand.'],
+
+    // ---- Horse ----
+    'saddles' => ['horse', 1, 'Saddles', 'Fitted on the Horse',
+        'Leather and synthetic saddles for every discipline, fitted on the horse by our Society of Master Saddlers qualified fitter.'],
+    'bridles-reins' => ['horse', 2, 'Bridles & Reins', 'Leather & Webbed',
+        'Leather snaffle bridles supplied with reins, plus webbed, rubber and leather reins and schooling draw reins.'],
+    'bits-accessories' => ['horse', 3, 'Bits & Accessories', 'Snaffles, Gags & Guards',
+        'Loose ring and jointed snaffles, lozenge and training bits, and the guards and keepers that go with them.'],
+    'martingales-stirrups-leathers' => ['horse', 4, 'Martingales, Stirrups & Leathers', 'Irons, Treads & Straps',
+        'Stirrup irons including safety and composite patterns, rubber treads, stirrup leathers and martingales.'],
+    'girths' => ['horse', 5, 'Girths', 'Fleece, Elastic & Dressage',
+        'Fleece lined, elastic, anti-chafe and short dressage girths, with leather buckle guards to protect the saddle flap.'],
+    'numnahs-saddlepads' => ['horse', 6, 'Numnahs & Saddlepads', 'Shaped, Square & Blankets',
+        'Shaped GP numnahs, dressage squares, non-slip and Prolite pads, and fleece blankets.'],
+    'headcollars-lead-ropes' => ['horse', 7, 'Headcollars & Lead Ropes', 'Foal, Pony, Cob & Full',
+        'Nylon and fleece-lined headcollars, lead ropes, lunge cavessons and lunge reins for the yard and the lorry.'],
+    'horse-boots' => ['horse', 8, 'Horse Boots', 'Brushing, Overreach & Bandages',
+        'Brushing and overreach boots, fetlock rings and temporary shoe boots, with bandages, leg pads and cohesive wrap.'],
+
+    // ---- Yard ----
+    'shampoo-skin-care' => ['yard', 1, 'Shampoo & Skin Care', 'Washing, Detangling & Sun',
+        'Shampoos, detanglers, mane and tail lotions, soothing gels and sunscreen for the Kenyan sun.'],
+    'fly-repellent' => ['yard', 2, 'Fly Repellent', 'Sprays, Masks & Traps',
+        'Fly and midge repellent sprays, fine mesh fly masks, and outdoor fly traps and bait for the yard.'],
+    'joint-muscle-care' => ['yard', 3, 'Joint & Muscle Care', 'Supplements, Gels & Clays',
+        'Joint supplements and the gels, clays and creams that go on afterwards — devils claw, arnica, MSM and cooling clay.'],
+    'digestive' => ['yard', 4, 'Digestive', 'Gut Balancers & Soothers',
+        'Digestive balancers, soothers and yeast cultures for horses that need settling from the inside.'],
+    'calming' => ['yard', 5, 'Calming', 'Focus & Temperament',
+        'Powders, solutions and pastes to take the edge off a nervous or moody horse without dulling it.'],
+    'feed-supplements' => ['yard', 6, 'Feed Supplements', 'Vitamins, Minerals & Electrolytes',
+        'Electrolytes, vitamin and mineral premixes, biotin, garlic, limestone, salts and licks for the feed room.'],
+    'hoof-care' => ['yard', 7, 'Hoof Care', 'Oils, Dressings & Farriery',
+        'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.'],
+    'first-aid' => ['yard', 8, 'First Aid', 'Wound & Skin Care',
+        'Wound sprays, dressings and gels for the tack room first aid box.'],
+    'grooming-equipment' => ['yard', 9, 'Grooming Equipment', 'Brushes, Combs & Boxes',
+        'Body and dandy brushes, rubber and plastic curry combs, mane combs, sweat scrapers, plaiting bands and tack boxes.'],
+    'leather-care' => ['yard', 10, 'Leather Care', 'Soaps, Dressings & Dubbin',
+        'Saddle soaps, leather dressings and dubbin that keep tack alive in a dry, high-altitude climate.'],
+    'yard-equipment' => ['yard', 11, 'Yard Equipment', 'Buckets, Haynets & Tubs',
+        'Feed buckets and tubs, haynets and the everyday kit that keeps a yard running.'],
 ];
 
-foreach ($needed as $slug => $spec) {
-    $exists = $db->one('SELECT id FROM categories WHERE slug = :s', ['s' => $slug]);
+foreach ($tree as $slug => [$parentSlug, $sort, $name, $tagline, $desc]) {
+    $parent = $db->one('SELECT id FROM categories WHERE slug = :s', ['s' => $parentSlug]);
 
-    if ($exists !== null) {
-        out("  category ok        {$slug}");
+    if ($parent === null) {
+        out("  !! parent not found: {$parentSlug} (for {$slug})");
+        continue;
+    }
+
+    $meta     = $seoCopy['categories'][$slug] ?? null;
+    $existing = $db->one('SELECT id, parent_id, sort_order FROM categories WHERE slug = :s', ['s' => $slug]);
+
+    if ($existing !== null) {
+        // Keep the placing right without touching copy anyone may have edited.
+        if ((int) $existing['parent_id'] !== (int) $parent['id'] || (int) $existing['sort_order'] !== $sort) {
+            if ($dryRun) {
+                out("  category WOULD MOVE {$slug}");
+            } else {
+                $db->run(
+                    'UPDATE categories SET parent_id = :p, sort_order = :o WHERE id = :id',
+                    ['p' => $parent['id'], 'o' => $sort, 'id' => $existing['id']]
+                );
+                out("  category MOVED     {$slug}");
+            }
+        } else {
+            out("  category ok        {$slug}");
+        }
+
         continue;
     }
 
@@ -132,17 +200,15 @@ foreach ($needed as $slug => $spec) {
         continue;
     }
 
-    $parent = $db->one('SELECT id FROM categories WHERE slug = :s', ['s' => $spec['parent']]);
-
     $db->insert('categories', [
-        'parent_id'   => $parent['id'] ?? null,
-        'name'        => $spec['name'],
+        'parent_id'   => $parent['id'],
+        'name'        => $name,
         'slug'        => $slug,
-        'tagline'     => $spec['tagline'],
-        'description' => $spec['desc'],
-        'meta_title'  => $spec['meta_title'],
-        'meta_desc'   => $spec['meta_desc'],
-        'sort_order'  => $spec['sort'],
+        'tagline'     => $tagline,
+        'description' => $desc,
+        'meta_title'  => $meta['title'] ?? null,
+        'meta_desc'   => $meta['desc'] ?? null,
+        'sort_order'  => $sort,
         'is_active'   => 1,
     ]);
 
@@ -152,8 +218,7 @@ foreach ($needed as $slug => $spec) {
 // ---------------------------------------------------------------------
 //  1b. Meta titles and descriptions for the category pages
 //
-//  Categories are not rebuilt on every import the way products are, so this
-//  fills in the ones that have no meta of its own rather than overwriting
+//  Fills in any category that has no meta of its own rather than overwriting
 //  copy someone has since edited in the admin console.
 // ---------------------------------------------------------------------
 
@@ -357,6 +422,40 @@ foreach ($catalog as $item) {
 
     $stats['products']++;
     out(sprintf('  %-52s %2d image(s)', $item['name'], $position));
+}
+
+// ---------------------------------------------------------------------
+//  6. Retire sections the catalogue has outgrown
+//
+//  Regrouping the catalogue leaves the old sections behind, empty. This drops
+//  any sub-category the tree above no longer defines, but only when nothing
+//  is filed under it — a category with products is never touched, so a
+//  section added by hand in the admin survives.
+// ---------------------------------------------------------------------
+
+$obsolete = $db->all(
+    'SELECT c.id, c.slug, (SELECT COUNT(*) FROM products p WHERE p.category_id = c.id) AS n
+       FROM categories c
+      WHERE c.parent_id IS NOT NULL'
+);
+
+foreach ($obsolete as $row) {
+    if (isset($tree[$row['slug']])) {
+        continue;
+    }
+
+    if ((int) $row['n'] > 0) {
+        out("  category KEPT      {$row['slug']} ({$row['n']} product(s) still in it)");
+        continue;
+    }
+
+    if ($dryRun) {
+        out("  category WOULD DROP {$row['slug']}");
+        continue;
+    }
+
+    $db->run('DELETE FROM categories WHERE id = :id', ['id' => $row['id']]);
+    out("  category DROPPED   {$row['slug']}");
 }
 
 // ---------------------------------------------------------------------

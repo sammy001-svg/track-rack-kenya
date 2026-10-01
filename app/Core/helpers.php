@@ -65,6 +65,22 @@ function image(?string $path, string $fallback = 'product'): string
  * Turn a URL produced by asset() or image() back into its path on disk, so we
  * can look for sibling files. Returns null for anything outside this site.
  */
+/**
+ * The placeholder artwork key for a department, or 'product' for anything else.
+ *
+ * The picture files are still named pillar-stable.jpg and placeholder-stable.jpg
+ * from when that department was called the stable; the shop calls it the yard,
+ * so the slug is mapped rather than the files renamed.
+ */
+function pillar_art(?string $slug): string
+{
+    return [
+        'rider' => 'rider',
+        'horse' => 'horse',
+        'yard'  => 'stable',
+    ][$slug] ?? 'product';
+}
+
 function local_path(string $url): ?string
 {
     $url  = strtok($url, '?') ?: $url;

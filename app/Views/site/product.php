@@ -1,8 +1,7 @@
 <?php
 /** @var array $product @var array $images @var array $variants @var array $related */
 $showPrice = (int) $product['price_visible'] === 1 && $product['price'] !== null;
-$art       = $pillar['slug'] ?? 'product';
-$art       = in_array($art, ['rider', 'horse', 'stable'], true) ? $art : 'product';
+$art       = pillar_art($pillar['slug'] ?? null);
 $mainImage = $images[0]['path'] ?? null;
 
 // Variants grouped by their label ("Size", "Colour", ...)

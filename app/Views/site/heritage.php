@@ -90,8 +90,8 @@
       <?php
         $pillarImage = !empty($pillar['image'])
             ? image($pillar['image'])
-            : asset('/assets/img/' . (in_array($pillar['slug'], ['rider', 'horse', 'stable'], true)
-                ? 'pillar-' . $pillar['slug'] : 'placeholder-product') . '.jpg');
+            : asset('/assets/img/' . (pillar_art($pillar['slug']) !== 'product'
+                ? 'pillar-' . pillar_art($pillar['slug']) : 'placeholder-product') . '.jpg');
       ?>
       <article class="pillar" data-reveal>
         <div class="pillar__media">

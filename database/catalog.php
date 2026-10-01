@@ -23,7 +23,7 @@ $firstShoot = [
     // carry the Thorowgood maker's label, and 5273, 5290 and 5301 are plainly
     // the same saddle from three angles.
     'name'     => 'Thorowgood Leather Saddle',
-    'category' => 'saddles-accessories',
+    'category' => 'saddles',
     'brand'    => 'Thorowgood',
     'featured' => true,
     'short'    => 'A soft-leather English saddle with a deep, comfortable seat.',
@@ -47,7 +47,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Wintec Synthetic Saddle',
-    'category' => 'saddles-accessories',
+    'category' => 'saddles',
     'brand'    => 'Wintec',
     'short'    => 'A hard-wearing synthetic saddle with a grippy suede-effect seat.',
     'description' => "A synthetic saddle built for riders who want low maintenance without giving up fit. The suede-effect seat gives real grip, and the whole saddle can be washed down after a dusty ride rather than needing oiling.\n\nSynthetic saddles suit the Kenyan climate particularly well — they do not dry out and crack the way leather can at altitude.",
@@ -60,7 +60,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Jeffries Elite Leather Saddle',
-    'category' => 'saddles-accessories',
+    'category' => 'saddles',
     'brand'    => 'Jeffries',
     'featured' => true,
     'short'    => 'A havana brown English saddle, hand finished, with the Elite embossing.',
@@ -76,7 +76,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Leather General Purpose Saddle',
-    'category' => 'saddles-accessories',
+    'category' => 'saddles',
     'short'    => 'A classic black leather GP saddle with a padded seat.',
     'description' => "A straightforward black leather general purpose saddle — the saddle most riders in Kenya end up using day to day. Comfortable enough for a long hack, secure enough for a lesson and a small course.\n\nFitted on the horse before it leaves the shop.",
     'specs'    => "Leather: black\nSeat: padded general purpose\nFittings: stainless steel\nFitting: included, on the horse",
@@ -92,7 +92,7 @@ $firstShoot = [
     // Frames 5336-5349 are one saddle. 5341 and 5342 are consecutive frames,
     // so the photographer had not changed the item between them.
     'name'     => 'Black Leather Jump Saddle',
-    'category' => 'saddles-accessories',
+    'category' => 'saddles',
     'short'    => 'A forward-cut jumping saddle in smooth black leather.',
     'description' => "A jumping saddle with a forward-cut flap and a light, shallow seat that keeps the rider off the horse's back over a fence. Smooth black leather throughout.\n\nEvery saddle we supply is fitted on the horse before delivery.",
     'specs'    => "Leather: smooth black\nFlap: forward cut\nSeat: shallow, close contact\nFitting: included, on the horse",
@@ -108,7 +108,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Wintec 2000 All Purpose Saddle',
-    'category' => 'saddles-accessories',
+    'category' => 'saddles',
     'brand'    => 'Wintec',
     'featured' => true,
     'short'    => 'The Wintec 2000 — adjustable, washable and genuinely low maintenance.',
@@ -129,7 +129,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Black Skull Cap',
-    'category' => 'helmets-head-protection',
+    'category' => 'safety-equipment',
     'short'    => 'A plain black skull cap, the standard for cross country and racing.',
     'description' => "A classic skull cap shape with no fixed peak, so a silk can be fitted over it. This is the hat of choice for cross country, racing work and anyone who wants maximum coverage at the back of the head.\n\nAlways buy a hat that has been fitted to your head. A hat that moves is a hat that will not do its job.",
     'specs'    => "Shell: hard, textured finish\nShape: skull cap, no fixed peak\nSilk: fits a standard hat silk (sold separately)",
@@ -141,7 +141,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'HKM Velvet Riding Hat',
-    'category' => 'helmets-head-protection',
+    'category' => 'safety-equipment',
     'brand'    => 'HKM',
     'short'    => 'A traditional black velvet riding hat with a fixed peak.',
     'description' => "The traditional show hat: black velvet finish with a fixed peak and a neat, low profile. Correct turnout for the show ring, Pony Club and everyday schooling.\n\nSupplied by HKM.",
@@ -155,7 +155,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Matt Black Vented Riding Helmet',
-    'category' => 'helmets-head-protection',
+    'category' => 'safety-equipment',
     'featured' => true,
     'short'    => 'A modern low-profile helmet with front venting, in matt black.',
     'description' => "A modern riding helmet with a low, clean profile and front vents that make a real difference schooling in the sun. The matt black finish is understated and does not show dust the way a gloss shell does.\n\nA good everyday helmet for schooling, hacking and lessons.",
@@ -174,7 +174,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'USG Body Protector — BETA 2018 Level 3',
-    'category' => 'riding-jackets-vests',
+    'category' => 'safety-equipment',
     'brand'    => 'USG',
     'featured' => true,
     'short'    => 'Certified BETA 2018 Level 3 body protection, the standard for cross country.',
@@ -191,7 +191,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Whitaker Body Protector',
-    'category' => 'riding-jackets-vests',
+    'category' => 'safety-equipment',
     'brand'    => 'Whitaker',
     'short'    => 'A close-fitting body protector with a full-length front zip.',
     'description' => "A body protector from Whitaker with a full-length front zip and a mesh back panel for airflow. The zip makes it far easier to get in and out of than a pull-over design, particularly for younger riders.\n\nFitted at the shop — the protection only works if it sits correctly on the body.",
@@ -209,7 +209,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Black Leather Snaffle Bridle',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bridles-reins',
     'featured' => true,
     'short'    => 'A complete black leather snaffle bridle with reins.',
     'description' => "A full black leather snaffle bridle supplied with reins — headpiece, browband, cheekpieces, cavesson noseband and throatlash. Stainless steel fittings throughout.\n\nGood leather, kept fed, will outlast several cheaper bridles. In this climate a monthly balm is the difference between a bridle that lasts a decade and one that cracks in a season.",
@@ -224,7 +224,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Havana Leather Snaffle Bridle',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bridles-reins',
     'short'    => 'The same bridle in warm havana brown leather.',
     'description' => "A complete snaffle bridle in havana brown leather with stainless steel fittings. Brown tack suits a bay or chestnut particularly well and is correct for hunting and most showing classes.\n\nSupplied with matching reins.",
     'specs'    => "Leather: havana brown\nFittings: stainless steel\nIncludes: headpiece, browband, cheekpieces, noseband, throatlash and reins\nNoseband: cavesson",
@@ -235,7 +235,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Shires Loose Ring Snaffle with Copper Lozenge',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bits-accessories',
     'brand'    => 'Shires',
     'short'    => 'A double-jointed loose ring snaffle with a copper lozenge centre.',
     'description' => "A loose ring snaffle with a double joint and a copper lozenge in the centre. The double joint removes the nutcracker action of a single-jointed bit, and the copper encourages the horse to salivate and soften.\n\nA fair, mild bit and a sensible first choice for a young horse.",
@@ -247,7 +247,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Shires Stainless Steel Snaffle Bit',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bits-accessories',
     'brand'    => 'Shires',
     'short'    => 'A solid stainless steel snaffle from Shires.',
     'description' => "A well-made stainless steel snaffle from Shires. Solid stainless takes the wear, does not rust in a damp tack room and cleans up with nothing more than hot water.\n\nCome in and we will help you match the bit to the horse rather than to a catalogue.",
@@ -259,7 +259,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Loose Ring Jointed Snaffle',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bits-accessories',
     'short'    => 'A single-jointed loose ring snaffle in stainless steel.',
     'description' => "The most widely used bit there is: a single-jointed loose ring snaffle in stainless steel. Simple, mild in a quiet hand, and the right starting point for most horses.",
     'specs'    => "Material: stainless steel\nMouthpiece: single jointed\nRings: loose ring",
@@ -270,7 +270,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Training Bit with Rope Cheeks',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bits-accessories',
     'short'    => 'A gag-action training bit with rope cheeks and a pulley.',
     'description' => "A training bit with rope cheeks running through the bit rings, giving a gag action that lifts the head rather than pulling back. Supplied with the cord, pulley and buckles as shown.\n\nA bit like this is a schooling tool, not a shortcut. Please talk to us about whether it is the right answer for your horse before buying.",
     'specs'    => "Material: stainless steel rings, corded cheeks\nAction: gag / poll lift\nIncludes: cord, pulley and adjusting buckles",
@@ -281,7 +281,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Rubber Bit Guards',
-    'category' => 'bridles-bits-reins',
+    'category' => 'bits-accessories',
     'short'    => 'Bit guards that stop the bit rubbing at the corners of the mouth.',
     'description' => "Round guards that sit between the bit ring and the horse's cheek, stopping the bit pinching or rubbing at the corners of the mouth. Particularly worth having on a loose ring bit or a young horse still settling into the contact.\n\nSold in pairs, in black and brown.",
     'specs'    => "Fitting: sold in pairs\nColours: black, brown\nUse: loose ring and eggbutt bits",
@@ -296,7 +296,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Fleece Lined Girth',
-    'category' => 'saddles-accessories',
+    'category' => 'girths',
     'short'    => 'A girth lined with soft fleece, for horses prone to girth galls.',
     'description' => "A girth with a soft fleece lining against the horse. The fleece spreads the pressure and stops the rubbing that causes girth galls, which makes it a sensible choice for a thin-skinned horse or one coming back into work.\n\nThe lining comes off and washes.",
     'specs'    => "Lining: soft fleece\nBuckles: stainless steel roller\nElastic: both ends\nCare: lining is washable",
@@ -307,7 +307,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Elastic Girth',
-    'category' => 'saddles-accessories',
+    'category' => 'girths',
     'short'    => 'A hard-wearing black girth with elastic at both ends.',
     'description' => "A straightforward black girth with elastic ends, which lets the horse's ribcage expand as it works rather than being held rigid. Stainless steel roller buckles make it easy to do up single-handed.",
     'specs'    => "Material: hard-wearing webbing\nElastic: both ends\nBuckles: stainless steel roller",
@@ -319,7 +319,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Padded Anti-Chafe Girth',
-    'category' => 'saddles-accessories',
+    'category' => 'girths',
     'featured' => true,
     'short'    => 'A shaped, padded girth designed to reduce rubbing behind the elbow.',
     'description' => "A shaped girth with a padded, textured lining that grips without chafing. The curve behind the elbow gives the horse room to move its foreleg freely, which matters a great deal to a horse that jumps.\n\nOne of the more worthwhile upgrades you can make to an otherwise ordinary set of tack.",
@@ -332,7 +332,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Short Dressage Girth',
-    'category' => 'saddles-accessories',
+    'category' => 'girths',
     'short'    => 'A short girth for dressage saddles with long billets.',
     'description' => "A short, padded girth for use with a dressage saddle on long billet straps, keeping the buckles clear of the rider's leg. Neoprene lined so it grips without slipping.",
     'specs'    => "Type: short / dressage girth\nLining: padded neoprene\nBuckles: stainless steel roller",
@@ -343,7 +343,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Leather Girth Buckle Guards',
-    'category' => 'saddles-accessories',
+    'category' => 'girths',
     'short'    => 'Leather guards that protect the saddle flap from girth buckles.',
     'description' => "Flat leather ovals that slide onto the girth billets and sit between the buckles and the saddle flap. Without them the buckles wear a permanent mark into the underside of the flap — a small item that quietly protects an expensive saddle.\n\nSold in pairs, in black and havana.",
     'specs'    => "Material: leather\nFitting: slides onto the girth billets\nColours: black, havana\nSold: in pairs",
@@ -356,7 +356,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Korsteel Stainless Steel Stirrup Irons',
-    'category' => 'saddles-accessories',
+    'category' => 'martingales-stirrups-leathers',
     'brand'    => 'Korsteel',
     'featured' => true,
     'short'    => 'Solid stainless steel irons from Korsteel, with a wide tread.',
@@ -370,7 +370,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Peacock Safety Stirrup Irons',
-    'category' => 'saddles-accessories',
+    'category' => 'martingales-stirrups-leathers',
     'short'    => 'Safety irons with a rubber release band — the sensible choice for children.',
     'description' => "Peacock safety irons have a rubber band on the outside instead of a solid branch, so if a rider comes off the band releases and the foot comes free rather than being dragged.\n\nWe would put every child on these, and plenty of adults too.",
     'specs'    => "Material: stainless steel with rubber release band\nTread: white rubber tread pad\nUse: recommended for children and novice riders",
@@ -381,7 +381,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Compositi Lightweight Stirrups',
-    'category' => 'saddles-accessories',
+    'category' => 'martingales-stirrups-leathers',
     'short'    => 'Light composite stirrups with a wide grippy tread, in several colours.',
     'description' => "Composite stirrups that weigh a fraction of a steel iron and will not rust. The wide tread is deeply grooved and grips a boot well, which makes a real difference to a rider who struggles to keep their foot still.\n\nAvailable in a range of tread colours.",
     'specs'    => "Material: reinforced composite\nTread: wide, deeply grooved\nWeight: considerably lighter than steel\nColours: several tread colours available",
@@ -393,7 +393,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Rubber Stirrup Treads',
-    'category' => 'saddles-accessories',
+    'category' => 'martingales-stirrups-leathers',
     'short'    => 'Replacement rubber treads to bring worn irons back to grip.',
     'description' => "Replacement rubber treads for stainless steel irons. A worn, polished tread is genuinely dangerous in the wet — replacing it costs very little and takes a minute.\n\nAvailable in black and white.",
     'specs'    => "Material: ribbed rubber\nColours: black, white\nSold: in pairs\nUse: standard stainless steel irons",
@@ -405,7 +405,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Leather Draw Reins',
-    'category' => 'saddles-accessories',
+    'category' => 'bridles-reins',
     'short'    => 'Draw reins for schooling, with clips at both ends.',
     'description' => "Draw reins for schooling work, running from the girth through the bit rings back to the rider's hand. Used correctly and briefly they can help a horse find a rounder outline; used badly they teach it to lean.\n\nPlease speak to us, or to your instructor, before schooling in them.",
     'specs'    => "Material: leather with clip ends\nFitting: girth to bit ring to hand\nUse: schooling only, not for jumping",
@@ -418,7 +418,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Leather Bib Martingale',
-    'category' => 'saddles-accessories',
+    'category' => 'martingales-stirrups-leathers',
     'short'    => 'A bib martingale in brown leather, safer than a standing pair.',
     'description' => "A bib martingale — a running martingale with a leather bib filling the space between the two straps, so the horse cannot get a foreleg caught through it. Standard for racing and cross country for exactly that reason.\n\nBrown leather with stainless fittings.",
     'specs'    => "Material: brown leather\nType: bib (running martingale with filled bib)\nFittings: stainless steel\nIncludes: neck strap",
@@ -433,7 +433,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Quilted GP Numnah — Red',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'A shaped, quilted numnah in red, cut for a GP saddle.',
     'description' => "A shaped numnah cut to follow the line of a general purpose saddle, quilted cotton with a soft lining and girth and billet straps. Washes clean and holds its colour.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -445,7 +445,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Teal',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'The same shaped GP numnah in teal.',
     'description' => "A shaped GP numnah in teal, quilted cotton with a soft lining. A colour that looks well on a grey or a bay without being loud.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -456,7 +456,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Black',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'A shaped GP numnah in black — the one that always looks tidy.',
     'description' => "A shaped GP numnah in black. It does not show dust or a stray hoof mark the way a white one does, which makes it the pad most people reach for day to day.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -467,7 +467,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Navy',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'A shaped GP numnah in navy.',
     'description' => "A shaped GP numnah in navy, quilted cotton with a soft lining and girth and billet straps.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -479,7 +479,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Square — White',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'featured' => true,
     'short'    => 'A crisp white dressage square for the competition ring.',
     'description' => "A square-cut dressage pad in white — correct turnout for a dressage test and smart enough for a clinic. Quilted cotton with a wicking lining that pulls sweat away from the back.\n\nWashes clean without going grey, which is more than can be said for some.",
@@ -491,7 +491,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Square — Black',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'A square-cut dressage pad in black, for schooling.',
     'description' => "A square-cut dressage pad in black — the everyday schooling pad, keeping the white one clean for competition day.",
     'specs'    => "Shape: dressage square\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -506,7 +506,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Ezi-Groom Body Brush',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'brand'    => 'Shires',
     'featured' => true,
     'short'    => 'A soft body brush with a chunky grip, from the Ezi-Groom range.',
@@ -521,7 +521,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Ezi-Groom Dandy Brush',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'brand'    => 'Shires',
     'short'    => 'A stiff dandy brush for lifting mud and dried sweat.',
     'description' => "A stiff-bristled dandy brush for getting dried mud and sweat off the coat before you start with the softer brushes. The moulded grip takes the effort out of it.\n\nToo stiff for the face or any clipped area — keep it for the body and legs.",
@@ -536,7 +536,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Body Brushes — Colour Range',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'short'    => 'Soft body brushes with a moulded grip, in a choice of colours.',
     'description' => "Soft body brushes with a moulded grip, stocked in a range of colours so every horse on the yard can have its own. Keeping one kit per horse is the simplest way to stop skin conditions moving between animals.",
     'specs'    => "Bristle: soft, for body brushing\nGrip: moulded with a hand strap\nColours: several, subject to stock",
@@ -547,7 +547,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dandy Brushes — Colour Range',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'short'    => 'Stiff dandy brushes in a choice of colours.',
     'description' => "Stiff-bristled dandy brushes for mud and dried sweat, stocked in several colours. A hard-working brush that earns its keep on a wet-season yard.",
     'specs'    => "Bristle: stiff\nColours: several, subject to stock",
@@ -560,7 +560,7 @@ $firstShoot = [
     // Listed as rubber until the shop corrected it: this strap-style comb is
     // plastic. The rubber one is the Shires oval comb below.
     'name'     => 'Plastic Curry Comb',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'featured' => true,
     'short'    => 'A plastic curry comb with an adjustable hand strap.',
     'description' => "A plastic curry comb used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing. The adjustable strap holds it against the palm so you are not gripping it all the way round the horse.\n\nThe single most useful item in any grooming kit.",
@@ -579,7 +579,7 @@ $firstShoot = [
     // Only the strap-style photo belongs here. 1S3A5486, which used to sit
     // alongside it, shows the oval rubber comb and has moved to that product.
     'name'     => 'Plastic Curry Combs — Colour Range',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'short'    => 'Plastic curry combs with a hand strap, in a choice of colours.',
     'description' => "The same plastic curry comb with an adjustable hand strap, stocked in a range of colours. Useful for colour-coding a kit per horse on a busy yard.",
     'specs'    => "Material: plastic\nStrap: adjustable hand strap\nColours: blue, black, purple, subject to stock",
@@ -592,7 +592,7 @@ $firstShoot = [
     // The first two photographs were supplied by the shop rather than taken
     // in the studio shoot, so they are on a table, not a white backdrop.
     'name'     => 'Shires Rubber Curry Comb',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'brand'    => 'Shires',
     'short'    => 'An oval rubber curry comb from Shires, with a moulded hand grip.',
     'description' => "An oval rubber curry comb from Shires, with a moulded grip across the back and three rings of rubber teeth. Used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing.\n\nShown in blue, and also stocked in black, red and purple.",
@@ -606,7 +606,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Mane and Tail Brush',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'short'    => 'A cushioned brush for working through mane and tail without breaking hair.',
     'description' => "A cushioned brush with rounded pins for working through a mane and tail. Start at the bottom and work up, and you will keep far more tail than you will with a comb.\n\nAvailable in several colours.",
     'specs'    => "Pins: rounded, cushioned pad\nHandle: moulded grip\nColours: several, subject to stock",
@@ -618,7 +618,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Stainless Steel Mane Comb',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'short'    => 'A traditional metal mane comb for pulling and plaiting.',
     'description' => "A solid stainless steel mane comb for pulling a mane and for sectioning it up when plaiting. Small, cheap and it will outlast almost everything else in the kit.",
     'specs'    => "Material: stainless steel\nUse: mane pulling and plaiting",
@@ -629,7 +629,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Ezi-Groom Plaiting Bands',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'brand'    => 'Shires',
     'short'    => 'Plaiting bands in white and black, sold by the bag.',
     'description' => "Plaiting bands for manes and tails, sold in generous bags. White for a light mane, black for a dark one — matched properly they disappear completely in the plait.\n\nBuy more than you think you need; they are never where you left them.",
@@ -642,7 +642,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'HY Grooming and Tack Box',
-    'category' => 'stable-equipment',
+    'category' => 'grooming-equipment',
     'brand'    => 'HY',
     'featured' => true,
     'short'    => 'A sturdy plastic tack box with a lift-out tray and a lockable catch.',
@@ -660,7 +660,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Beige Riding Breeches',
-    'category' => 'breeches-tights',
+    'category' => 'clothing',
     'featured' => true,
     'short'    => 'Classic beige breeches with a knee patch — correct for the show ring.',
     'description' => "Beige breeches cut for riding, with a shaped knee patch and enough stretch to be comfortable through a long schooling session. Beige is correct turnout for showing and most competition, and smart enough to teach in.",
@@ -673,7 +673,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Navy Riding Breeches',
-    'category' => 'breeches-tights',
+    'category' => 'clothing',
     'short'    => 'Navy breeches with a contrast panel, for schooling.',
     'description' => "Navy breeches with a bright contrast panel down the leg — a schooling breech rather than a competition one, and hard-wearing enough for daily use.",
     'specs'    => "Colour: navy with contrast panel\nFabric: stretch riding fabric\nWaist: mid rise",
@@ -685,7 +685,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Full Seat Breeches',
-    'category' => 'breeches-tights',
+    'category' => 'clothing',
     'short'    => 'Black breeches with a full grip seat, for flatwork.',
     'description' => "Black breeches with a full grip seat — the patterned panel runs from the knee up through the seat, holding the rider in the saddle without gluing them to it. The choice for dressage and serious flatwork.",
     'specs'    => "Colour: black\nSeat: full grip seat\nFabric: four-way stretch\nWaist: mid rise",
@@ -700,7 +700,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'HY Leather Jodhpur Boots — Black',
-    'category' => 'footwear',
+    'category' => 'clothing',
     'brand'    => 'HY',
     'featured' => true,
     'short'    => 'Black leather jodhpur boots with elasticated sides.',
@@ -714,7 +714,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'HY Leather Jodhpur Boots — Brown',
-    'category' => 'footwear',
+    'category' => 'clothing',
     'brand'    => 'HY',
     'short'    => 'The same leather jodhpur boot in warm brown.',
     'description' => "Leather jodhpur boots in brown, with elasticated sides and a pull tab. Brown boots suit brown tack and are the traditional choice for showing and Pony Club.",
@@ -729,7 +729,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Half Chaps',
-    'category' => 'footwear',
+    'category' => 'clothing',
     'short'    => 'Zip-up half chaps in black, worn over jodhpur boots.',
     'description' => "Half chaps in black, worn over jodhpur boots to protect the lower leg and give the grip a long boot would. A rear zip with a guard keeps the pull tab clear of the girth.",
     'specs'    => "Closure: rear zip with guard\nColour: black\nUse: worn over jodhpur boots",
@@ -740,7 +740,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Brown Leather Gaiters',
-    'category' => 'footwear',
+    'category' => 'clothing',
     'short'    => 'Leather gaiters in brown, studded, for a smarter turnout.',
     'description' => "Leather gaiters in brown, fastening with studs rather than a zip. Worn over jodhpur boots they give the clean line of a long boot at a fraction of the cost, and they break in beautifully.",
     'specs'    => "Material: leather\nClosure: studs\nColour: brown\nUse: worn over jodhpur boots",
@@ -755,7 +755,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Competition Number Holder',
-    'category' => 'gloves-accessories',
+    'category' => 'clothing',
     'short'    => 'A clear armband holder for competition numbers.',
     'description' => "A clear plastic holder with an elastic strap, worn on the arm to display a competition number. Small, cheap, and the thing everyone forgets until the morning of the show.",
     'specs'    => "Material: clear plastic with elastic strap\nWear: on the upper arm\nIncludes: number card where shown",
@@ -767,7 +767,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'LeMieux Hat Silk',
-    'category' => 'gloves-accessories',
+    'category' => 'clothing',
     'brand'    => 'LeMieux',
     'short'    => 'A navy hat silk with a pom-pom, from LeMieux.',
     'description' => "A hat silk that pulls over a skull cap to smarten it up and keep the sun off. Navy with a contrast peak and a pom-pom on top.\n\nA silk is also the easiest way to show yard or team colours.",
@@ -779,7 +779,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Hat Silk — Red',
-    'category' => 'gloves-accessories',
+    'category' => 'clothing',
     'short'    => 'A plain red hat silk for a skull cap.',
     'description' => "A plain red hat silk that pulls over a skull cap. Bright, easy to spot across a cross country course, and a simple way to run yard colours.",
     'specs'    => "Fit: pulls over a standard skull cap\nColour: red",
@@ -790,7 +790,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Schooling Whip',
-    'category' => 'gloves-accessories',
+    'category' => 'whips',
     'short'    => 'A long schooling whip with a moulded handle.',
     'description' => "A long dressage schooling whip, light enough in the hand to be used without disturbing the rein contact. Long enough to reach behind the leg without taking the hand off the rein.",
     'specs'    => "Type: dressage / schooling whip\nHandle: moulded grip with wrist detail\nColour: navy",
@@ -801,7 +801,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Lunge Whip',
-    'category' => 'gloves-accessories',
+    'category' => 'whips',
     'short'    => 'A long lunge whip for groundwork.',
     'description' => "A long lunge whip for working a horse on a circle. Used to guide and position rather than to chase — the length is there so you can stay at the centre of the circle and still direct the horse.",
     'specs'    => "Type: lunge whip\nColour: green\nUse: groundwork and lungeing",
@@ -812,7 +812,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Riding Crop',
-    'category' => 'gloves-accessories',
+    'category' => 'whips',
     'short'    => 'A short jumping crop with a wrist loop.',
     'description' => "A short riding crop with a broad keeper at the end and a wrist loop on the handle. The length suits jumping and general riding, where a long schooling whip would be in the way.",
     'specs'    => "Type: short crop\nHandle: wrist loop\nEnd: broad leather keeper",

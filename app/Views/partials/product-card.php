@@ -6,9 +6,8 @@
  */
 // Prefer the product's own section so a mixed grid does not repeat one image.
 $pillarSlug = $product['pillar_slug'] ?? null;
-$fallback   = in_array($pillarSlug, ['rider', 'horse', 'stable'], true)
-    ? $pillarSlug
-    : ($cardFallback ?? 'product');
+$art        = pillar_art($pillarSlug);
+$fallback   = $art !== 'product' ? $art : ($cardFallback ?? 'product');
 
 $showPrice = (int) ($product['price_visible'] ?? 0) === 1 && $product['price'] !== null;
 $reveal    = $cardReveal ?? true;

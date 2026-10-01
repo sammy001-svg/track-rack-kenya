@@ -23,41 +23,109 @@
 return [
 
     // ---------------------------------------------------------------
-    // Categories. Only the eight that had no meta of their own — the
-    // other eight were written earlier and are left alone.
+    // Categories, keyed by slug. The three departments and the sections
+    // under them follow Tack Rack's own stock sheets.
     // ---------------------------------------------------------------
     'categories' => [
-        'grooming-kits-supplies' => [
-            'title' => 'Grooming Kits, Brushes & Supplies',
-            'desc'  => 'Body brushes, dandy brushes, curry combs, mane combs and tack boxes. Everything for a proper grooming kit, stocked in Nairobi since 1997.',
+
+        // The yard department, renamed from "stable" to match the sheets.
+        'yard' => [
+            'title' => 'Yard, Grooming & Leather Care',
+            'desc'  => 'Shampoos, fly repellents, supplements, hoof care, grooming kit and leather care for the Kenyan yard. From Tack Rack, Nairobi.',
         ],
-        'riding-jackets-vests' => [
-            'title' => 'Body Protectors & Riding Jackets',
-            'desc'  => 'BETA-certified body protectors, competition jackets and schooling vests, fitted in person at Tack Rack, Ngong Road, Nairobi.',
+
+        // ---- Rider ----
+        'clothing' => [
+            'title' => 'Riding Clothing, Jodhpurs & Chaps',
+            'desc'  => 'Breeches and jodhpurs, jodhpur boots, half chaps, gaiters and hat silks. Sized in person at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'stable-equipment' => [
-            'title' => 'Stable & Yard Equipment',
-            'desc'  => 'Tack boxes, buckets and the everyday kit that keeps a yard running. Chosen to survive Kenyan yards, stocked in Nairobi since 1997.',
+        'safety-equipment' => [
+            'title' => 'Riding Helmets & Body Protectors',
+            'desc'  => 'Riding hats, skull caps and BETA 2018 body protectors, fitted in person at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'breeches-tights' => [
-            'title' => 'Breeches, Jodhpurs & Riding Tights',
-            'desc'  => 'Show breeches, schooling jodhpurs and full-seat tights for adults and children. Sized in person at Tack Rack, Ngong Road, Nairobi.',
+        'whips' => [
+            'title' => 'Riding Whips & Lunge Whips',
+            'desc'  => 'Dressage and schooling whips, lunge whips and short whips, balanced to reach without moving the hand. Stocked in Nairobi.',
         ],
-        'saddle-pads-blankets' => [
-            'title' => 'Numnahs, Saddle Pads & Blankets',
-            'desc'  => 'Quilted GP numnahs, dressage squares and saddle blankets in every colour. Shaped to sit clear of the withers. Stocked in Nairobi.',
+
+        // ---- Horse ----
+        'saddles' => [
+            'title' => 'Saddles & Saddle Fitting, Nairobi',
+            'desc'  => 'Leather and synthetic saddles fitted on the horse by the only Society of Master Saddlers qualified fitter in East Africa.',
         ],
-        'gloves-accessories' => [
-            'title' => 'Gloves, Whips & Riding Accessories',
-            'desc'  => 'Riding gloves, hat silks, schooling whips, lunge whips and number holders — the small things that finish a turnout. In Nairobi.',
+        'bridles-reins' => [
+            'title' => 'Bridles & Reins',
+            'desc'  => 'Leather snaffle bridles supplied with reins, plus webbed, rubber and leather reins and draw reins. From Tack Rack, Nairobi.',
         ],
-        'halters-lead-ropes' => [
-            'title' => 'Headcollars, Halters & Lead Ropes',
-            'desc'  => 'Leather and webbing headcollars, halters and lead ropes for the yard and the lorry. From Tack Rack, Ngong Road, Nairobi.',
+        'bits-accessories' => [
+            'title' => 'Horse Bits & Bit Accessories',
+            'desc'  => 'Loose ring and jointed snaffles, copper lozenge and training bits, and rubber bit guards. Bitting advice included, Nairobi.',
         ],
-        'horse-health-supplements' => [
-            'title' => 'Horse Health & Feed Supplements',
-            'desc'  => 'Electrolytes, hoof and joint supplements and first aid for the tack room, with expert product advice from Tack Rack, Ngong Road, Nairobi.',
+        'martingales-stirrups-leathers' => [
+            'title' => 'Stirrups, Leathers & Martingales',
+            'desc'  => 'Stirrup irons including safety and composite patterns, rubber treads, stirrup leathers and martingales. Stocked in Nairobi.',
+        ],
+        'girths' => [
+            'title' => 'Horse Girths',
+            'desc'  => 'Fleece lined, elastic, anti-chafe and short dressage girths, with leather buckle guards. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'numnahs-saddlepads' => [
+            'title' => 'Numnahs, Saddlepads & Blankets',
+            'desc'  => 'Shaped GP numnahs, dressage squares, non-slip and Prolite pads and fleece blankets. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'headcollars-lead-ropes' => [
+            'title' => 'Headcollars & Lead Ropes',
+            'desc'  => 'Nylon and fleece-lined headcollars, lead ropes, lunge cavessons and lunge reins. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'horse-boots' => [
+            'title' => 'Horse Boots & Bandages',
+            'desc'  => 'Brushing and overreach boots, fetlock rings, temporary shoe boots, bandages, leg pads and cohesive wrap. Stocked in Nairobi.',
+        ],
+
+        // ---- Yard ----
+        'shampoo-skin-care' => [
+            'title' => 'Horse Shampoo & Skin Care',
+            'desc'  => 'Shampoos, detanglers, mane and tail lotions, soothing gels and sunscreen for the Kenyan sun. From Tack Rack, Nairobi.',
+        ],
+        'fly-repellent' => [
+            'title' => 'Fly Repellent, Masks & Traps',
+            'desc'  => 'Fly and midge repellent sprays, fine mesh fly masks and outdoor fly traps for horses and yards. Stocked at Tack Rack, Nairobi.',
+        ],
+        'joint-muscle-care' => [
+            'title' => 'Joint & Muscle Care for Horses',
+            'desc'  => 'Joint supplements with the gels, clays and creams that go on afterwards — devils claw, arnica, MSM and cooling clay. In Nairobi.',
+        ],
+        'digestive' => [
+            'title' => 'Equine Digestive Supplements',
+            'desc'  => 'Digestive balancers, soothers and yeast cultures for horses that need settling from the inside. From Tack Rack, Nairobi.',
+        ],
+        'calming' => [
+            'title' => 'Calming Supplements for Horses',
+            'desc'  => 'Powders, solutions and pastes that take the edge off a nervous or moody horse without dulling it. Stocked in Nairobi.',
+        ],
+        'feed-supplements' => [
+            'title' => 'Horse Feed Supplements',
+            'desc'  => 'Electrolytes, vitamin and mineral premixes, biotin, garlic, limestone, salts and licks for the feed room. From Tack Rack, Nairobi.',
+        ],
+        'hoof-care' => [
+            'title' => 'Hoof Care, Hoof Oils & Farriery',
+            'desc'  => 'Keratex, Red Horse and Radiol hoof care, hoof oil and Stockholm tar, treatment boots, horseshoes and nails. From Tack Rack, Nairobi.',
+        ],
+        'first-aid' => [
+            'title' => 'Equine First Aid & Wound Care',
+            'desc'  => 'Wound sprays, dressings and skin gels for the tack room first aid box. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'grooming-equipment' => [
+            'title' => 'Grooming Kits, Brushes & Combs',
+            'desc'  => 'Body and dandy brushes, rubber and plastic curry combs, mane combs, sweat scrapers and tack boxes. In Nairobi since 1997.',
+        ],
+        'leather-care' => [
+            'title' => 'Leather Care & Tack Cleaning',
+            'desc'  => 'Saddle soaps, leather dressings and dubbin that keep tack alive in a dry, high-altitude climate. From Tack Rack, Nairobi.',
+        ],
+        'yard-equipment' => [
+            'title' => 'Yard & Stable Equipment',
+            'desc'  => 'Feed buckets and tubs, haynets and the everyday kit that keeps a yard running. Chosen to survive Kenyan yards, stocked in Nairobi.',
         ],
     ],
 

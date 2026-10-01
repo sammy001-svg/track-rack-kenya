@@ -13,8 +13,7 @@ $stockOptions = [
     'low_stock'    => 'Low stock',
     'on_order'     => 'Available on order',
 ];
-$fallbackArt = $pillar['slug'] ?? 'product';
-$cardFallback = in_array($fallbackArt, ['rider', 'horse', 'stable'], true) ? $fallbackArt : 'product';
+$cardFallback = pillar_art($pillar['slug'] ?? null);
 ?>
 
 <header class="page-head">

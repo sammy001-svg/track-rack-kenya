@@ -21,7 +21,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Prolite Saddle Pad',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'brand'    => 'Prolite',
     'short'    => 'A shaped black Prolite pad with a spine channel, worn under the saddle.',
     'description' => "A shaped pad from Prolite, cut to follow the saddle and split down the spine so it stays off the horse's back.\n\nBring the saddle in and we will check how the pad changes the fit before you buy.",
@@ -32,7 +32,7 @@ return [
 ],
 [
     'name'     => 'Non-Slip Gel Pad',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'A dimpled black gel pad that stops the saddle slipping.',
     'description' => "A flexible gel pad with a dimpled surface that grips on both sides, used to keep the saddle from sliding and to take some of the jar out of the ride.\n\nIt wipes clean with a damp cloth.",
     'specs'    => "Material: gel\nColour: black\nSurface: dimpled, non-slip",
@@ -42,7 +42,7 @@ return [
 ],
 [
     'name'     => 'Tartan Fleece Rug',
-    'category' => 'saddle-pads-blankets',
+    'category' => 'numnahs-saddlepads',
     'short'    => 'A red, yellow and black tartan fleece rug with front straps.',
     'description' => "A warm fleece rug in a bold red and yellow tartan, bound in black, with adjustable straps across the chest.\n\nUseful as a cooler after work or as a light layer on a cold Nairobi morning.",
     'specs'    => "Material: fleece\nPattern: red, yellow and black tartan\nFastening: chest straps",
@@ -57,7 +57,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Nylon Headcollar — Colour Range',
-    'category' => 'halters-lead-ropes',
+    'category' => 'headcollars-lead-ropes',
     'short'    => 'An adjustable nylon headcollar with brass fittings, in several colours.',
     'description' => "A hard-wearing nylon headcollar with brass buckles and rings, adjustable at the headpiece and noseband.\n\nShown here in red, black and royal blue.",
     'specs'    => "Material: nylon webbing\nFittings: brass\nColours: red, black, royal blue",
@@ -69,7 +69,7 @@ return [
 ],
 [
     'name'     => 'Fleece-Lined Headcollar',
-    'category' => 'halters-lead-ropes',
+    'category' => 'headcollars-lead-ropes',
     'short'    => 'A black headcollar padded with grey fleece at the noseband and headpiece.',
     'description' => "A black nylon headcollar with grey fleece padding over the noseband and headpiece, so it does not rub on a horse that wears one for long periods.\n\nBrass fittings throughout.",
     'specs'    => "Material: nylon webbing, fleece lining\nColour: black with grey fleece\nFittings: brass",
@@ -80,7 +80,7 @@ return [
 ],
 [
     'name'     => 'Rope Lead Ropes',
-    'category' => 'halters-lead-ropes',
+    'category' => 'headcollars-lead-ropes',
     'short'    => 'Soft twisted lead ropes with brass trigger clips, in several colours.',
     'description' => "Thick, soft twisted lead ropes that are comfortable to hold, each finished with a brass trigger clip.\n\nShown here in purple, sky blue and black.",
     'specs'    => "Material: twisted rope\nClip: brass trigger clip\nColours: purple, sky blue, black",
@@ -90,7 +90,7 @@ return [
 ],
 [
     'name'     => 'Cotton Lunge Line — Red',
-    'category' => 'halters-lead-ropes',
+    'category' => 'headcollars-lead-ropes',
     'short'    => 'A long red cotton lunge line with a swivel clip.',
     'description' => "A flat cotton lunge line in red, soft on the hands and long enough for a proper circle, finished with a swivel clip at one end and a hand loop at the other.",
     'specs'    => "Material: cotton webbing\nColour: red\nClip: swivel",
@@ -104,7 +104,7 @@ return [
 // =====================================================================
 [
     'name'     => 'ARMA Brushing Boots — Navy',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'brand'    => 'ARMA',
     'short'    => 'Navy brushing boots with a moulded ARMA strike guard.',
     'description' => "Brushing boots with a moulded outer shell over a soft lining, to protect the inside of the leg from knocks by the opposite hoof.\n\nThree touch-close straps keep them secure.",
@@ -117,7 +117,7 @@ return [
 ],
 [
     'name'     => 'ARMA Anatomic Brushing Boots',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'brand'    => 'ARMA',
     'short'    => 'Black brushing boots with red straps and a moulded shell.',
     'description' => "Brushing boots from the ARMA Anatomic range, with a moulded shell on the inside of the leg and wide red touch-close straps.\n\nA soft neoprene-style body keeps them close to the leg without rubbing.",
@@ -130,7 +130,7 @@ return [
 ],
 [
     'name'     => 'Shires Rubber Overreach Boots',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'brand'    => 'Shires',
     'short'    => 'Black ribbed rubber overreach boots with a touch-close fastening.',
     'description' => "Ribbed rubber overreach boots that sit over the hoof to protect the heel and coronet from a hind foot catching them.\n\nThe touch-close fastening means they go on without being pulled over the foot.",
@@ -142,7 +142,7 @@ return [
 ],
 [
     'name'     => 'ARMA Overreach Boots — Red',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'brand'    => 'ARMA',
     'short'    => 'Black and red neoprene overreach boots from ARMA.',
     'description' => "Soft overreach boots with a red strike panel, lighter and quieter than rubber, protecting the heel and coronet from the hind feet.",
@@ -155,7 +155,7 @@ return [
 ],
 [
     'name'     => 'Weatherbeeta Fleece Bandages',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'brand'    => 'Weatherbeeta',
     'short'    => 'Soft fleece leg bandages with a suede-effect tab, in two colours.',
     'description' => "Fleece bandages from Weatherbeeta for exercise or the stable, with a suede-effect end tab and touch-close fastening.\n\nShown here in navy with grey, and in lime green.",
@@ -168,7 +168,7 @@ return [
 ],
 [
     'name'     => 'Cohesive Bandages',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'short'    => 'Self-adhesive cohesive bandages in blue and purple.',
     'description' => "Cohesive bandage sticks to itself but not to hair, so it holds a dressing or a tail in place without pins or tape.\n\nTears by hand. Shown in blue and purple.",
     'specs'    => "Type: self-adhesive cohesive bandage\nColours: blue, purple",
@@ -180,7 +180,7 @@ return [
 ],
 [
     'name'     => 'Quilted Bandage Pads',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'short'    => 'White quilted pads to wear under stable and travel bandages.',
     'description' => "Quilted pads that go under a stable or travel bandage, spreading the pressure evenly down the leg.\n\nSold as a set.",
     'specs'    => "Colour: white\nConstruction: quilted",
@@ -190,7 +190,7 @@ return [
 ],
 [
     'name'     => 'Rubber Sausage Boot',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'short'    => 'A padded rubber ring worn at the pastern to prevent capped elbows.',
     'description' => "A sausage boot, or shoe boil ring, is buckled round the pastern of a horse that lies down with a foot tucked under the elbow, keeping the heel of the shoe off the elbow.",
     'specs'    => "Material: rubber\nColour: black\nFastening: strap through the split",
@@ -200,7 +200,7 @@ return [
 ],
 [
     'name'     => 'Robinson Veterinary Gamgee',
-    'category' => 'boots-bandages',
+    'category' => 'horse-boots',
     'brand'    => 'Robinson',
     'short'    => 'A roll of veterinary gamgee for padding bandages and dressings.',
     'description' => "Absorbent cotton wool wrapped in gauze, used under bandages for support and protection and over wound dressings.\n\nCut to the length you need.",
@@ -240,7 +240,7 @@ return [
 ],
 [
     'name'     => 'Trail Hoof Boot',
-    'category' => 'hoof-care',
+    'category' => 'horse-boots',
     'short'    => 'A treaded hoof boot for riding a barefoot horse over rough ground.',
     'description' => "A strapped hoof boot with a deep treaded sole, for a barefoot horse on stony tracks or a horse that has lost a shoe.\n\nFit is everything with a hoof boot, so bring measurements of the hoof.",
     'specs'    => "Sole: treaded rubber\nUpper: mesh and synthetic\nFastening: straps",
@@ -466,7 +466,7 @@ return [
 // =====================================================================
 [
     'name'     => 'VetsBrands Summer Spray',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'brand'    => 'VetsBrands',
     'short'    => 'A spray-on repellent against midges, mosquitoes and stable flies.',
     'description' => "A spray-on repellent for protection against midges, mosquitoes and stable flies on horses. Contains DEET and contains no citronella oil.\n\nFor external animal use only. Available in 1 litre and a larger can.",
@@ -478,7 +478,7 @@ return [
 ],
 [
     'name'     => 'Equimins Fly & Midge Repellent',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'brand'    => 'Equimins',
     'short'    => 'An Equimins spray to help repel biting flies, midges and mosquitoes.',
     'description' => "A fly and midge repellent spray from Equimins, formulated to help repel biting flies, midges and mosquitoes.",
@@ -489,7 +489,7 @@ return [
 ],
 [
     'name'     => 'Dudu-Krin Fly Repellent',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'short'    => 'A 250ml fly repellent concentrate for horses.',
     'description' => "A fly repellent for horses, supplied as a 5% emulsifiable concentrate.\n\nIngredients as labelled: E. citriodora, piperonyl butoxide, DEET, sumithrin, soap and emulsifier.",
     'specs'    => "Size: 250ml\nFormulation: 5.0% EC",
@@ -499,7 +499,7 @@ return [
 ],
 [
     'name'     => 'Buzz Off Fly Repellent',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'brand'    => 'Buzz Off',
     'short'    => 'Fly repellent spray for dogs and horses, in a spray bottle or a large can.',
     'description' => "Buzz Off fly repellent spray for dogs and horses.\n\nAvailable in a ready-to-use trigger spray and a large refill can.",
@@ -511,7 +511,7 @@ return [
 ],
 [
     'name'     => 'FlyGuard Pro Fine Mesh Fly Mask',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'brand'    => 'FlyGuard Pro',
     'short'    => 'A fine mesh fly mask with ear holes and a contoured nose.',
     'description' => "A fine mesh fly mask from the FlyGuard Pro range, with ear holes and a contoured nose. The mesh blocks around 70% of UV on average.",
@@ -523,7 +523,7 @@ return [
 ],
 [
     'name'     => 'Redtop Outdoor Flytrap',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'brand'    => 'Redtop',
     'short'    => 'A re-usable outdoor fly trap from Redtop.',
     'description' => "A re-usable outdoor fly trap from Redtop, hung around the yard to catch flies without sprays.\n\nRefill with the Redtop Bait & Bag pack.",
@@ -534,7 +534,7 @@ return [
 ],
 [
     'name'     => 'Redtop Bait & Bag Refill',
-    'category' => 'fly-control',
+    'category' => 'fly-repellent',
     'brand'    => 'Redtop',
     'short'    => 'The refill pack for the re-usable Redtop outdoor fly trap.',
     'description' => "A service pack for the re-usable Redtop Outdoor Flytrap, containing a fresh bag and a sachet of bait.",
@@ -549,7 +549,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Lincoln Sun Bloc',
-    'category' => 'first-aid-skin-care',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Lincoln',
     'short'    => 'A water-resistant UVA and UVB sunscreen with aloe vera.',
     'description' => "An effective, water-resistant UV sunscreen from Lincoln, with aloe vera. Filters, protects and soothes — worth having for pink noses under the Kenyan sun.",
@@ -560,7 +560,7 @@ return [
 ],
 [
     'name'     => 'Sooth-Itch Super Strength Gel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'shampoo-skin-care',
     'short'    => 'A gel that soothes itching and supports natural hair regrowth.',
     'description' => "Sooth-Itch Super Strength Gel soothes itching and supports natural hair regrowth.",
     'specs'    => "Size: 500ml",
@@ -570,7 +570,7 @@ return [
 ],
 [
     'name'     => 'Equimins Leg Gel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equimins',
     'short'    => 'A cool, refreshing leg gel with camphor and menthol.',
     'description' => "A first aid and stable leg gel from Equimins, ideal for use after training or exercise. Contains camphor and menthol.",
@@ -581,7 +581,7 @@ return [
 ],
 [
     'name'     => 'Natural Clay',
-    'category' => 'first-aid-skin-care',
+    'category' => 'joint-muscle-care',
     'short'    => 'A cooling natural clay dressing, distributed by Tack Rack.',
     'description' => "A non-irritating, natural dressing that is extra cooling and soothing, and helps in the relief of minor soreness and stiffness caused by over-exertion.\n\nDistributed by Tack Rack, in a tub and a larger bucket.",
     'specs'    => "Distributed by: Tack Rack Ltd\nSizes: tub, bucket",
@@ -592,7 +592,7 @@ return [
 ],
 [
     'name'     => 'Equimins Arnica & Witch Hazel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equimins',
     'short'    => 'Arnica and witch hazel with MSM and allantoin, for bruises and sprains.',
     'description' => "A first aid and stable preparation from Equimins with arnica, witch hazel, MSM and allantoin — great for bruises and sprains.",
@@ -603,7 +603,7 @@ return [
 ],
 [
     'name'     => 'Moore’s Herbal Cooling Gel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Moore’s',
     'short'    => 'A herbal cooling gel for fast relief from inflammation and sore muscles.',
     'description' => "Moore's Quality Herbal Cooling Gel, for fast relief from inflammation and sore muscles.",
@@ -616,7 +616,7 @@ return [
 ],
 [
     'name'     => 'Equimins Devils Claw Gel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equimins',
     'short'    => 'An easily absorbed, cooling devils claw gel for joints.',
     'description' => "An easy-to-apply joint gel from Equimins that is quickly absorbed through the skin, very cooling and soothing, using the properties of devils claw herb.",
@@ -627,7 +627,7 @@ return [
 ],
 [
     'name'     => 'Equimins Aloe Vera Gel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'first-aid',
     'brand'    => 'Equimins',
     'short'    => 'A soothing aloe vera gel for skin disorders.',
     'description' => "A soothing first aid and stable gel from Equimins for skin disorders, with aloe vera.",
@@ -638,7 +638,7 @@ return [
 ],
 [
     'name'     => 'Equimins MSM Cream',
-    'category' => 'first-aid-skin-care',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equimins',
     'short'    => 'An Equimins MSM cream from the first aid and stable range.',
     'description' => "A first aid and stable cream from Equimins, made with MSM.",
@@ -649,7 +649,7 @@ return [
 ],
 [
     'name'     => 'Heal-O-Fast Wound Healing Spray',
-    'category' => 'first-aid-skin-care',
+    'category' => 'first-aid',
     'brand'    => 'Heal-O-Fast',
     'short'    => 'A herbal wound healing spray.',
     'description' => "Heal-O-Fast Herbal wound healing spray, sprayed straight on to the wound.",
@@ -660,7 +660,7 @@ return [
 ],
 [
     'name'     => 'Wound Magic',
-    'category' => 'first-aid-skin-care',
+    'category' => 'first-aid',
     'brand'    => 'Wound Magic',
     'short'    => 'A wound dressing for animal emergencies.',
     'description' => "Wound Magic, for animal emergencies. Worth keeping in the tack room first aid box.",
@@ -671,7 +671,7 @@ return [
 ],
 [
     'name'     => 'Veterinus Derma Gel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'first-aid',
     'brand'    => 'Veterinus',
     'short'    => 'A 4-in-1 animal skin care gel.',
     'description' => "Veterinus Derma Gel is a 4-in-1 animal skin care gel: moist environment, intensive skin care, bacterial control and a protective film effect.",
@@ -682,7 +682,7 @@ return [
 ],
 [
     'name'     => 'Red Horse Honeyheel',
-    'category' => 'first-aid-skin-care',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Red Horse',
     'short'    => 'A honey-based barrier cream from Red Horse.',
     'description' => "Honeyheel from Red Horse Products is a honey-based barrier cream.",
@@ -697,7 +697,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Equine America Glucosamine HCl 12,000',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equine America',
     'short'    => 'Extra strength glucosamine powder with MSM and hyaluronic acid.',
     'description' => "Glucosamine HCl 12,000 Xtra Strength Powder from Equine America, for equine joint support, with MSM and hyaluronic acid.\n\nThe label gives a 66-day supply.",
@@ -708,7 +708,7 @@ return [
 ],
 [
     'name'     => 'Equine America Cortaflex HA',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equine America',
     'short'    => 'Regular strength joint powder to support joint mobility.',
     'description' => "Cortaflex HA Regular Strength Powder from Equine America, to support joint mobility.\n\nThe label gives a four-month supply.",
@@ -719,7 +719,7 @@ return [
 ],
 [
     'name'     => 'Equine America Buteless',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equine America',
     'short'    => 'A high strength solution for joint comfort and mobility.',
     'description' => "Buteless High Strength Solution from Equine America, for joint comfort and mobility support.",
@@ -730,7 +730,7 @@ return [
 ],
 [
     'name'     => 'Equine America Magnitude',
-    'category' => 'horse-health-supplements',
+    'category' => 'calming',
     'brand'    => 'Equine America',
     'short'    => 'A behavioural powder for a more relaxed horse.',
     'description' => "Magnitude Powder from Equine America, for a more relaxed horse. Helps reduce nervous tension.\n\nThe label gives a six-month supply.",
@@ -741,7 +741,7 @@ return [
 ],
 [
     'name'     => 'Equine America No More Moods',
-    'category' => 'horse-health-supplements',
+    'category' => 'calming',
     'brand'    => 'Equine America',
     'short'    => 'A behavioural solution for moody mares and temperamental horses.',
     'description' => "No More Moods Solution from Equine America, nutritional support for moody mares and temperamental stallions.",
@@ -752,7 +752,7 @@ return [
 ],
 [
     'name'     => 'Equine America Focus',
-    'category' => 'horse-health-supplements',
+    'category' => 'calming',
     'brand'    => 'Equine America',
     'short'    => 'A powder to support concentration, relaxation and hormonal balance.',
     'description' => "Focus Powder from Equine America, to support concentration, relaxation and hormonal balance.\n\nThe label gives a 30-day supply.",
@@ -763,7 +763,7 @@ return [
 ],
 [
     'name'     => 'Equine America So-Kalm Paste',
-    'category' => 'horse-health-supplements',
+    'category' => 'calming',
     'brand'    => 'Equine America',
     'short'    => 'A paste to support concentration and focus.',
     'description' => "So-Kalm paste from Equine America, to support concentration and focus.",
@@ -774,7 +774,7 @@ return [
 ],
 [
     'name'     => 'Equine America Biotin Xtra',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equine America',
     'short'    => 'A hoof care powder with biotin, zinc and methionine.',
     'description' => "Biotin Xtra Powder from Equine America, fortified with zinc and methionine to support hoof health.\n\nThe label gives a 50-day supply.",
@@ -785,7 +785,7 @@ return [
 ],
 [
     'name'     => 'Coligone ColiFLEX Gastro-Joint Care',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Coligone',
     'short'    => 'A combined digestive and joint care feed supplement.',
     'description' => "ColiFLEX from Coligone is a multifunctional equine digestive feed supplement combined with joint care. Competition safe under FEI and Jockey Club rules, according to the label.",
@@ -796,7 +796,7 @@ return [
 ],
 [
     'name'     => 'Coligone Liquid',
-    'category' => 'horse-health-supplements',
+    'category' => 'digestive',
     'brand'    => 'Coligone',
     'short'    => 'An equine digestive soothing supplement in liquid form.',
     'description' => "Coligone equine digestive soothing supplement, in liquid form.",
@@ -807,7 +807,7 @@ return [
 ],
 [
     'name'     => 'Coligone Balancer',
-    'category' => 'horse-health-supplements',
+    'category' => 'digestive',
     'brand'    => 'Coligone',
     'short'    => 'A daily digestive balancer for every horse, every day.',
     'description' => "Coligone Balancer — \"every horse, every day\" — a daily digestive feed supplement.",
@@ -818,7 +818,7 @@ return [
 ],
 [
     'name'     => 'Coligone Powder',
-    'category' => 'horse-health-supplements',
+    'category' => 'digestive',
     'brand'    => 'Coligone',
     'short'    => 'An equine digestive soothing supplement in powder form.',
     'description' => "Coligone equine digestive soothing supplement, in powder form.",
@@ -829,7 +829,7 @@ return [
 ],
 [
     'name'     => 'Endeavon Flex-O-Joint',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Endeavon',
     'short'    => 'A joint supplement for horses and dogs, distributed by Tack Rack.',
     'description' => "Flex-O-Joint is a vitamin supplement for horses and dogs, with chondroitin sulphate, glucosamine, MSM and vitamin C.\n\nThe label recommends 50g a day for 30 days. Distributed by Tack Rack.",
@@ -840,7 +840,7 @@ return [
 ],
 [
     'name'     => 'Endeavon Biotin Supplement H',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Endeavon',
     'short'    => 'A biotin supplement for horses, distributed by Tack Rack.',
     'description' => "Endeavon Biotin Supplement H for horses. Store below 30°C, in a cool, dry place.\n\nDistributed by Tack Rack.",
@@ -851,7 +851,7 @@ return [
 ],
 [
     'name'     => 'Keratex Zeolite',
-    'category' => 'horse-health-supplements',
+    'category' => 'digestive',
     'brand'    => 'Keratex',
     'short'    => 'A Keratex feed supplement; one tub gives up to three months’ supply.',
     'description' => "Keratex Zeolite. According to the label, one tub gives up to three months' supply.",
@@ -862,7 +862,7 @@ return [
 ],
 [
     'name'     => 'Equimins Devils Claw Root Herb',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Equimins',
     'short'    => 'Devils claw root herb in an Equimins eco pack.',
     'description' => "Devils claw root herb from Equimins, in a resealable eco pack, for joint support.",
@@ -873,7 +873,7 @@ return [
 ],
 [
     'name'     => 'Equimins Milk Thistle',
-    'category' => 'horse-health-supplements',
+    'category' => 'digestive',
     'brand'    => 'Equimins',
     'short'    => 'Milk thistle in an Equimins eco pack.',
     'description' => "Milk thistle from the Equimins nutrition range, in a resealable eco pack.",
@@ -884,7 +884,7 @@ return [
 ],
 [
     'name'     => 'Equimins Vitamin E & Selenium',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equimins',
     'short'    => 'A vitamin E and selenium supplement for horses in hard training.',
     'description' => "A vitamin E and selenium supplement from Equimins, for increased stamina in horses in hard training.",
@@ -895,7 +895,7 @@ return [
 ],
 [
     'name'     => 'Equimins Young Stock Formula',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equimins',
     'short'    => 'A supplement for mares, foals and growing young horses.',
     'description' => "Young Stock Formula Supplement from Equimins' mare, foal and old range — advanced nutrition for young foals and growing horses.",
@@ -906,7 +906,7 @@ return [
 ],
 [
     'name'     => 'Equimins B-Plus Liquid',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equimins',
     'short'    => 'A B vitamin supplement to aid recovery and stimulate appetite.',
     'description' => "B-Plus Liquid from the Equimins performance range, a B vitamin supplement to aid recovery after illness and to stimulate appetite.",
@@ -917,7 +917,7 @@ return [
 ],
 [
     'name'     => 'Equimins Respiratory Air Power Booster',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equimins',
     'short'    => 'A soothing blend of natural ingredients for the respiratory system.',
     'description' => "Respiratory Air Power Booster from Equimins, a soothing blend of natural ingredients to help with coughs and blocked airways.",
@@ -928,7 +928,7 @@ return [
 ],
 [
     'name'     => 'Equimins Garlic Extract Liquid',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equimins',
     'short'    => 'Concentrated liquid garlic extract from Equimins.',
     'description' => "Garlic Extract Liquid from the Equimins nutrition range, a complementary feedstuff for horses.",
@@ -939,7 +939,7 @@ return [
 ],
 [
     'name'     => 'Equimins Garlic & Mint',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Equimins',
     'short'    => 'Garlic and mint feed supplement from Equimins.',
     'description' => "A garlic and mint feed supplement from Equimins, supplied in a clear bag.",
@@ -950,7 +950,7 @@ return [
 ],
 [
     'name'     => 'Lincoln Blood Tonic',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Lincoln',
     'short'    => 'An iron-rich tonic with yucca and kelp, in two sizes.',
     'description' => "Blood Tonic from Lincoln, with yucca and kelp — iron rich, to support red blood cells, energy and vitality.\n\nAvailable in a large can and a 1 litre dosing bottle.",
@@ -962,7 +962,7 @@ return [
 ],
 [
     'name'     => 'Back to Basics Immuno Hoof',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Back to Basics',
     'short'    => 'A hoof supplement from Back to Basics.',
     'description' => "Immuno Hoof from the Back to Basics supplement range.",
@@ -973,7 +973,7 @@ return [
 ],
 [
     'name'     => 'Back to Basics Muscle Up',
-    'category' => 'horse-health-supplements',
+    'category' => 'joint-muscle-care',
     'brand'    => 'Back to Basics',
     'short'    => 'A muscle supplement from Back to Basics.',
     'description' => "Muscle Up from the Back to Basics supplement range.",
@@ -984,7 +984,7 @@ return [
 ],
 [
     'name'     => 'Electrolytes',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'short'    => 'Electrolytes with vitamins and minerals, distributed by Tack Rack.',
     'description' => "Electrolytes with vitamins and minerals, to replace the salts lost in sweat. Added to feed or drinking water.\n\nDistributed by Tack Rack, in a tub or a bag.",
     'specs'    => "Distributed by: Tack Rack Ltd\nSizes: tub, bag",
@@ -995,7 +995,7 @@ return [
 ],
 [
     'name'     => 'Electrolyte Paste Oral Syringe',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'short'    => 'Electrolyte paste in a ready-to-use oral syringe.',
     'description' => "Electrolyte paste in an oral syringe, for giving electrolytes directly by mouth when a horse will not drink.",
     'specs'    => "Form: paste\nPack: oral syringe",
@@ -1005,7 +1005,7 @@ return [
 ],
 [
     'name'     => 'Tamfeeds Horse & Pony Vitamin & Mineral Premix',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'brand'    => 'Tamfeeds',
     'short'    => 'A vitamin and mineral premix for horses and ponies, from Tamfeeds.',
     'description' => "A horse and pony vitamin and mineral premix from Tamfeeds, included at 2.5kg per ton of feed. The full vitamin and mineral analysis is printed on the bag.",
@@ -1017,7 +1017,7 @@ return [
 ],
 [
     'name'     => 'Epsom Salts',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'short'    => 'Magnesium sulphate heptahydrate, distributed by Tack Rack.',
     'description' => "Epsom salts (magnesium sulphate heptahydrate). Use as required and keep dry.\n\nDistributed by Tack Rack, in a tub or a bag.",
     'specs'    => "Contents: magnesium sulphate heptahydrate\nDistributed by: Tack Rack Ltd\nSizes: tub, bag",
@@ -1028,7 +1028,7 @@ return [
 ],
 [
     'name'     => 'Calavite',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'short'    => 'Processed high calcium limestone, distributed by Tack Rack.',
     'description' => "Calavite is a processed high calcium limestone, developed for horses and other animals. Feeding instructions are on the label.\n\nDistributed by Tack Rack, in a tub or a bag.",
     'specs'    => "Contents: high calcium limestone\nDistributed by: Tack Rack Ltd\nSizes: tub, bag",
@@ -1039,7 +1039,7 @@ return [
 ],
 [
     'name'     => 'Sodium Bicarbonate',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'short'    => 'Sodium bicarbonate (bi-carb), distributed by Tack Rack.',
     'description' => "Sodium bicarbonate. Use as required and keep dry.\n\nDistributed by Tack Rack, in a tub or a bag.",
     'specs'    => "Distributed by: Tack Rack Ltd\nSizes: tub, bag",
@@ -1050,7 +1050,7 @@ return [
 ],
 [
     'name'     => 'Mineral Licks',
-    'category' => 'horse-health-supplements',
+    'category' => 'feed-supplements',
     'short'    => 'Mineral licks and stock lick mix, including Maclik and Morendat.',
     'description' => "Mineral blocks and stock lick mix for the stable or paddock.\n\nShown here: Morendat Stock Lick Mineral Mix, Maclik Plus, and Ideal Block and Maclik mineral bricks.",
     'specs'    => "Brands shown: Morendat, Maclik, Ideal Block",
@@ -1060,7 +1060,7 @@ return [
 ],
 [
     'name'     => 'Alltech Yea-Sacc Conc',
-    'category' => 'horse-health-supplements',
+    'category' => 'digestive',
     'brand'    => 'Alltech',
     'short'    => 'A viable yeast culture for use in livestock feeds.',
     'description' => "Yea-Sacc Conc from Alltech is a viable yeast culture for use in livestock feeds, including horses. Rates for each type of animal are on the label.",
@@ -1075,7 +1075,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Sweat Scraper — Colour Range',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'grooming-equipment',
     'short'    => 'A curved sweat scraper with a flexible rubber blade, in several colours.',
     'description' => "A curved sweat scraper with a flexible rubber blade, for taking water off after a wash so the horse dries faster.\n\nShown in black, red and purple.",
     'specs'    => "Blade: flexible rubber\nColours: black, red, purple",
@@ -1089,7 +1089,7 @@ return [
 ],
 [
     'name'     => 'Moore’s Aloe Vera Shampoo',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality aloe vera shampoo, 1 litre.',
     'description' => "Aloe vera shampoo from Moore's Quality, for washing horses.",
@@ -1100,7 +1100,7 @@ return [
 ],
 [
     'name'     => 'Endeavon Lemon Shampoo',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Endeavon',
     'short'    => 'Lemon shampoo from Endeavon, in three sizes.',
     'description' => "Endeavon lemon shampoo for horses, distributed by Tack Rack.\n\nAvailable in a large can and two bottle sizes.",
@@ -1114,7 +1114,7 @@ return [
 ],
 [
     'name'     => 'Calro Organic Neem Oil Shampoo & Conditioner',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Calro',
     'short'    => 'Organic neem oil shampoo and conditioner with apple fragrance.',
     'description' => "Calro organic neem oil shampoo and conditioner with apple fragrance, carrying the Tack Rack label.\n\nAvailable in 5 litre and 1 litre sizes.",
@@ -1126,7 +1126,7 @@ return [
 ],
 [
     'name'     => 'Equimins Ultra Silky Detangler',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Equimins',
     'short'    => 'A silky detangling spray for manes and tails.',
     'description' => "Ultra Silky Detangler from the Equimins grooming line, sprayed on to loosen tangles in manes and tails before brushing.",
@@ -1137,7 +1137,7 @@ return [
 ],
 [
     'name'     => 'Botanica Mane & Tail 6-in-1 Spray',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Botanica',
     'short'    => 'A 750ml multi-purpose mane and tail spray.',
     'description' => "Botanica's 6-in-1 multi-purpose spray: body sheen, dandruff and flaky skin, detangler, insects, wounds.",
@@ -1148,7 +1148,7 @@ return [
 ],
 [
     'name'     => 'Gold Label Mane, Coat & Tail Lotion',
-    'category' => 'grooming-kits-supplies',
+    'category' => 'shampoo-skin-care',
     'brand'    => 'Gold Label',
     'short'    => 'A show lotion that imparts a quick, healthy shine, in two sizes.',
     'description' => "Gold Label Mane, Coat & Tail Lotion for show animals. Imparts a quick, healthy shine and assists in removing stains, knots and tangles.\n\nAvailable as a 500ml spray and a 2.5 litre refill.",
@@ -1164,7 +1164,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Feed Scoop — Colour Range',
-    'category' => 'stable-equipment',
+    'category' => 'grooming-equipment',
     'short'    => 'A round plastic feed scoop with a long handle, in several colours.',
     'description' => "A deep round feed scoop with a long, easy-grip handle.\n\nShown in black, green, purple, orange and red — one colour per horse keeps the feeds straight.",
     'specs'    => "Material: plastic\nColours: black, green, purple, orange, red",
@@ -1177,7 +1177,7 @@ return [
 ],
 [
     'name'     => 'Rope Haynet — Yellow',
-    'category' => 'stable-equipment',
+    'category' => 'yard-equipment',
     'short'    => 'A knotted rope haynet in yellow.',
     'description' => "A knotted rope haynet in yellow, with a drawstring top for tying up.",
     'specs'    => "Material: knotted rope\nColour: yellow",
@@ -1187,7 +1187,7 @@ return [
 ],
 [
     'name'     => 'Flexible Tub — Orange',
-    'category' => 'stable-equipment',
+    'category' => 'yard-equipment',
     'short'    => 'A deep, flexible plastic tub with two handles.',
     'description' => "A deep, flexible plastic tub with two carry handles — for water, feed or carrying kit round the yard. It will not crack if it is trodden on.",
     'specs'    => "Material: flexible plastic\nColour: orange\nHandles: two",
@@ -1197,7 +1197,7 @@ return [
 ],
 [
     'name'     => 'Shallow Feed Tub — Green',
-    'category' => 'stable-equipment',
+    'category' => 'yard-equipment',
     'short'    => 'A shallow, flexible feed tub with two handles.',
     'description' => "A shallow, flexible feed tub with two handles, low enough for a horse to eat from on the ground.",
     'specs'    => "Material: flexible plastic\nColour: green\nHandles: two",
@@ -1207,7 +1207,7 @@ return [
 ],
 [
     'name'     => 'Hydrophane Cribox',
-    'category' => 'stable-equipment',
+    'category' => 'yard-equipment',
     'brand'    => 'Hydrophane',
     'short'    => 'A paste that prevents crib-biting, in two sizes.',
     'description' => "Cribox from Hydrophane prevents crib-biting.\n\nAvailable in 450g and 225g tubs.",
@@ -1223,7 +1223,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Moore’s Leather Dressing',
-    'category' => 'leather-care-maintenance',
+    'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality leather dressing that softens and preserves, 1 litre.',
     'description' => "Leather dressing from Moore's Quality that softens and preserves leather. Directions are on the label.",
@@ -1234,7 +1234,7 @@ return [
 ],
 [
     'name'     => 'Moore’s Glycerine Leather & Saddle Soap',
-    'category' => 'leather-care-maintenance',
+    'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'A bar of Moore’s Quality glycerine leather and saddle soap.',
     'description' => "A bar of glycerine leather and saddle soap from Moore's Quality, for everyday cleaning of saddles and bridles.",
@@ -1245,7 +1245,7 @@ return [
 ],
 [
     'name'     => 'Moore’s Dubbin',
-    'category' => 'leather-care-maintenance',
+    'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality dubbin, 500ml.',
     'description' => "Dubbin from Moore's Quality for leather.",
@@ -1257,7 +1257,7 @@ return [
 ],
 [
     'name'     => 'Moore’s Leather Soap',
-    'category' => 'leather-care-maintenance',
+    'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality leather soap, 500ml.',
     'description' => "Leather soap from Moore's Quality, in a 500ml tub.",
@@ -1275,7 +1275,7 @@ return [
     // (5708, 5712, 5715). It is a different whip from the Shires-carded
     // dressage whip at 5708: shorter, with a grip and a wrist strap.
     'name'     => 'Braided Schooling Whip',
-    'category' => 'gloves-accessories',
+    'category' => 'whips',
     'short'    => 'A braided schooling whip with a rubber grip and wrist strap.',
     'description' => "A braided schooling whip with a flexible tip, a rubber grip and a wrist strap.",
     'specs'    => "Shaft: braided\nHandle: rubber grip\nWrist strap: yes",
