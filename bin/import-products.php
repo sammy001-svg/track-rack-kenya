@@ -298,6 +298,72 @@ out();
 // ---------------------------------------------------------------------
 //  4. Image processing
 // ---------------------------------------------------------------------
+/**
+ * The product's bounding box within the studio backdrop, or null to leave the
+ * frame alone.
+ *
+ * The margin around each product varies from frame to frame, so on a card one
+ * product floats small while the next fills the tile. Trimming the backdrop
+ * here means every card can give the product the same breathing room.
+ *
+ * The backdrop colour is sampled from the four corners rather than assumed
+ * white — some frames sit on a light grey sweep. A result covering nearly the
+ * whole frame or nearly none of it is refused, so a photograph that does not
+ * fit the assumption keeps its original framing.
+ */
+function productBox($img, int $tolerance = 10): ?array
+{
+    $w = imagesx($img);
+    $h = imagesy($img);
+
+    $bg = [0, 0, 0];
+    foreach ([[2, 2], [$w - 3, 2], [2, $h - 3], [$w - 3, $h - 3]] as [$cx, $cy]) {
+        $c = imagecolorat($img, $cx, $cy);
+        $bg[0] += ($c >> 16) & 0xFF;
+        $bg[1] += ($c >> 8) & 0xFF;
+        $bg[2] += $c & 0xFF;
+    }
+    $bg = array_map(static fn ($v) => (int) round($v / 4), $bg);
+
+    $step = max(1, (int) floor(min($w, $h) / 500));
+    $minX = $w; $minY = $h; $maxX = -1; $maxY = -1;
+
+    for ($y = 0; $y < $h; $y += $step) {
+        for ($x = 0; $x < $w; $x += $step) {
+            $c = imagecolorat($img, $x, $y);
+
+            if (abs((($c >> 16) & 0xFF) - $bg[0]) <= $tolerance
+                && abs((($c >> 8) & 0xFF) - $bg[1]) <= $tolerance
+                && abs(($c & 0xFF) - $bg[2]) <= $tolerance) {
+                continue;
+            }
+
+            if ($x < $minX) { $minX = $x; }
+            if ($x > $maxX) { $maxX = $x; }
+            if ($y < $minY) { $minY = $y; }
+            if ($y > $maxY) { $maxY = $y; }
+        }
+    }
+
+    if ($maxX < 0) {
+        return null;
+    }
+
+    // A little of the backdrop is kept so nothing looks guillotined.
+    $bw  = $maxX - $minX + 1;
+    $bh  = $maxY - $minY + 1;
+    $pad = (int) round(max($bw, $bh) * 0.02);
+
+    $minX = max(0, $minX - $pad);
+    $minY = max(0, $minY - $pad);
+    $bw   = min($w - $minX, $bw + 2 * $pad);
+    $bh   = min($h - $minY, $bh + 2 * $pad);
+
+    $area = ($bw * $bh) / ($w * $h);
+
+    return ($area > 0.97 || $area < 0.02) ? null : [$minX, $minY, $bw, $bh];
+}
+
 function processImage(string $srcPath, string $destBase): ?array
 {
     $info = @getimagesize($srcPath);
@@ -309,8 +375,10 @@ function processImage(string $srcPath, string $destBase): ?array
 
     if ($img === false) { return null; }
 
-    $w = imagesx($img);
-    $h = imagesy($img);
+    // Crop the studio margin away before resizing, so the stored image is the
+    // product and little else.
+    [$sx, $sy, $w, $h] = productBox($img) ?? [0, 0, imagesx($img), imagesy($img)];
+
     $scale = min(1.0, LONG_EDGE / max($w, $h));
     $nw = max(1, (int) round($w * $scale));
     $nh = max(1, (int) round($h * $scale));
@@ -319,7 +387,7 @@ function processImage(string $srcPath, string $destBase): ?array
     // Product shots are on white; flatten any transparency onto white.
     imagefilledrectangle($dst, 0, 0, $nw, $nh, imagecolorallocate($dst, 255, 255, 255));
     imagealphablending($dst, true);
-    imagecopyresampled($dst, $img, 0, 0, 0, 0, $nw, $nh, $w, $h);
+    imagecopyresampled($dst, $img, 0, 0, $sx, $sy, $nw, $nh, $w, $h);
 
     imagejpeg($dst, $destBase . '.jpg', JPEG_Q);
     if (function_exists('imagewebp')) {

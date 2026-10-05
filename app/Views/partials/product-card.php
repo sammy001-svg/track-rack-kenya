@@ -14,10 +14,21 @@ $reveal    = $cardReveal ?? true;
 ?>
 <article class="card"<?= $reveal ? ' data-reveal' : '' ?>>
   <div class="card__media">
+    <?php
+      // A product photograph is shown whole; a section placeholder is a
+      // photograph in its own right and fills the tile instead.
+      $hasOwnPhoto = !empty($product['primary_image']);
+    ?>
     <?= picture(
         image($product['primary_image'] ?? null, $fallback),
         $product['name'],
-        ['loading' => 'lazy', 'width' => 480, 'height' => 600, 'decoding' => 'async']
+        [
+            'loading'  => 'lazy',
+            'width'    => 600,
+            'height'   => 600,
+            'decoding' => 'async',
+            'class'    => $hasOwnPhoto ? null : 'is-placeholder',
+        ]
     ) ?>
 
     <?php if (!empty($product['is_new']) || ($product['stock_status'] ?? '') === 'out_of_stock' || !empty($product['is_featured'])): ?>

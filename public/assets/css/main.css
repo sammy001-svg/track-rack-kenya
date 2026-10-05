@@ -1205,26 +1205,57 @@ body.nav-open { overflow: hidden; }
   position: relative;
   display: flex;
   flex-direction: column;
-  background: transparent;
+  /* White, like the backdrop the products were photographed on, so the tile
+     and the photograph read as one surface. */
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .45s var(--ease-out), box-shadow .45s var(--ease),
+              border-color .45s var(--ease);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-4px);
+    border-color: var(--rule);
+    box-shadow: 0 22px 44px -28px rgba(20, 17, 14, .5);
+  }
 }
 
 .card__media {
   position: relative;
-  aspect-ratio: 4 / 5;
+  /* Square, because the catalogue is a mix: 80 of the photographs are
+     landscape and 43 are tall. A square tile wastes the least room on both,
+     and nothing is cropped now that they are contained rather than covered. */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: var(--bone-deep);
-  border-radius: 3px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule-soft);
   isolation: isolate;
 }
 
 .card__media img, .card__media svg {
   width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .9s var(--ease-out), opacity .5s var(--ease);
+  /* `cover` cropped the ends off every wide product — a boxed gel, a roll of
+     gamgee, a paste syringe. `contain` shows the whole thing. */
+  object-fit: contain;
+  padding: 9%;
+  transition: transform .7s var(--ease-out), opacity .5s var(--ease);
 }
 
-.card:hover .card__media img,
-.card:hover .card__media svg { transform: scale(1.05); }
+/* Category placeholders are photographs in their own right, so they still
+   fill the tile rather than sitting in the middle of it. */
+.card__media img.is-placeholder {
+  object-fit: cover;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card:hover .card__media img,
+  .card:hover .card__media svg { transform: scale(1.045); }
+}
 
 .card__flags {
   position: absolute;
@@ -1270,14 +1301,19 @@ body.nav-open { overflow: hidden; }
 
 .card__quick .btn {
   width: 100%;
-  background: rgba(247, 244, 239, .94);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--bone);
   border-color: transparent;
-  backdrop-filter: blur(8px);
   padding-block: .8rem;
+  box-shadow: 0 10px 24px -16px rgba(20, 17, 14, .8);
 }
 
-.card__body { padding-top: 1.05rem; }
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.05rem 1.15rem 1.2rem;
+}
 
 .card__cat {
   font-size: .64rem;
@@ -1309,7 +1345,11 @@ body.nav-open { overflow: hidden; }
 }
 
 .card__foot {
-  margin-top: .7rem;
+  /* Pinned to the bottom so the price line sits level across a row of cards
+     whatever the length of the name above it. */
+  margin-top: auto;
+  padding-top: .85rem;
+  border-top: 1px solid var(--rule-soft);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1868,16 +1908,21 @@ body.header-hidden .filters { top: 0; }
 
 .gallery__main {
   position: relative;
-  aspect-ratio: 4 / 5;
-  background: var(--bone-deep);
-  border-radius: 4px;
+  aspect-ratio: 1 / 1;
+  /* White, like the backdrop the products were shot on. */
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+  border-radius: 10px;
   overflow: hidden;
   cursor: zoom-in;
 }
 
 .gallery__main img, .gallery__main svg {
   width: 100%; height: 100%;
-  object-fit: cover;
+  /* The stored photographs are cropped tight to the product, so `cover` cut
+     the ends off them here just as it did on the cards. */
+  object-fit: contain;
+  padding: 6%;
   transition: transform .7s var(--ease-out), opacity .35s var(--ease);
 }
 
@@ -1967,14 +2012,14 @@ body.header-hidden .filters { top: 0; }
   border-radius: 3px;
   overflow: hidden;
   border: 1px solid transparent;
-  background: var(--bone-deep);
+  background: var(--paper);
   cursor: pointer;
   padding: 0;
   opacity: .6;
   transition: opacity .3s var(--ease), border-color .3s var(--ease);
 }
 
-.gallery__thumb img, .gallery__thumb svg { width: 100%; height: 100%; object-fit: cover; }
+.gallery__thumb img, .gallery__thumb svg { width: 100%; height: 100%; object-fit: contain; padding: 8%; }
 .gallery__thumb:hover { opacity: .9; }
 .gallery__thumb.is-active { opacity: 1; border-color: var(--ink); }
 
