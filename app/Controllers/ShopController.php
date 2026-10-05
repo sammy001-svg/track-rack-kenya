@@ -103,9 +103,19 @@ class ShopController extends Controller
             : [];
 
         $heading = $category['name'] ?? 'The Catalog';
-        $tagline = $category['tagline'] ?? 'Rider, Horse and Stable - the complete Tack Rack range.';
+        $tagline = $category['tagline'] ?? 'Rider, Horse and Yard — the complete Tack Rack range.';
+
+        // The catalogue and the three department pages are browsed by section
+        // rather than as one long list: a filter is something you reach for,
+        // not the only way to find a girth. Inside a single section, or once a
+        // filter is applied, the flat grid is the right answer.
+        $isLeaf  = $category !== null && $category['parent_id'] !== null;
+        $groups  = (!$this->isFiltered($filters, $subCategoryId) && !$isLeaf)
+            ? $this->groupByCategory($category, $categoryModel, $productModel)
+            : null;
 
         $this->view('site.shop', [
+            'groups'        => $groups,
             'seo'           => $this->buildSeo($category, $pillar, $filters, $subCategoryId, $result),
             'bodyClass'     => 'page-shop',
             'heading'       => $heading,
@@ -124,6 +134,69 @@ class ShopController extends Controller
         ]);
     }
 
+    /** Has the visitor narrowed the catalogue in any way? */
+    private function isFiltered(array $filters, int $subCategoryId): bool
+    {
+        return ($filters['q'] ?? '') !== ''
+            || !empty($filters['brand_id'])
+            || !empty($filters['stock'])
+            || ($filters['sort'] ?? '') !== ''
+            || $subCategoryId > 0;
+    }
+
+    /**
+     * The catalogue arranged the way the shop is: departments, then the
+     * sections inside them, each showing a few products and a link to the rest.
+     *
+     * @return array<int, array{department: ?array, sections: array}>
+     */
+    private function groupByCategory(?array $category, Category $categories, Product $products): array
+    {
+        // A department page shows only its own sections, and more of each,
+        // because it has the room.
+        $departments = $category !== null ? [$category] : $categories->pillars();
+        $perSection  = $category !== null ? 8 : 4;
+
+        $groups = [];
+
+        foreach ($departments as $department) {
+            $sections = [];
+
+            foreach ($categories->childrenWithCounts((int) $department['id']) as $section) {
+                if ((int) $section['product_count'] === 0) {
+                    continue;
+                }
+
+                $result = $products->catalog(
+                    ['category_ids' => $categories->descendantIds((int) $section['id'])],
+                    1,
+                    $perSection
+                );
+
+                if ($result['items'] === []) {
+                    continue;
+                }
+
+                $sections[] = [
+                    'category' => $section,
+                    'products' => $result['items'],
+                    'total'    => (int) $result['total'],
+                ];
+            }
+
+            if ($sections !== []) {
+                $groups[] = [
+                    // On a department page the heading above is already the
+                    // department, so it is not repeated over the sections.
+                    'department' => $category !== null ? null : $department,
+                    'sections'   => $sections,
+                ];
+            }
+        }
+
+        return $groups;
+    }
+
     /**
      * Search-engine handling for a catalog page.
      *
@@ -136,11 +209,7 @@ class ShopController extends Controller
     {
         $cleanPath = $category !== null ? '/shop/' . $category['slug'] : '/shop';
 
-        $isFiltered = ($filters['q'] ?? '') !== ''
-            || !empty($filters['brand_id'])
-            || !empty($filters['stock'])
-            || ($filters['sort'] ?? '') !== ''
-            || $subCategoryId > 0;
+        $isFiltered = $this->isFiltered($filters, $subCategoryId);
 
         $page = (int) $result['page'];
 

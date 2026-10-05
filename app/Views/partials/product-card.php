@@ -41,7 +41,8 @@ $reveal    = $cardReveal ?? true;
   </div>
 
   <div class="card__body">
-    <?php if (!empty($product['category_name'])): ?>
+    <?php // Redundant under a section heading that already names the category. ?>
+    <?php if (($cardShowCat ?? true) && !empty($product['category_name'])): ?>
       <span class="card__cat"><?= e($product['category_name']) ?></span>
     <?php endif; ?>
 

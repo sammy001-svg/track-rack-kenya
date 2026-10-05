@@ -570,6 +570,30 @@
   }
 
   /* -------------------------------------------------------------------
+     Filter bar: shadow only once it is stuck under the header
+
+     A sentinel above the bar tells us when the bar has left its place in the
+     page, which is cheaper and steadier than measuring on every scroll.
+     ------------------------------------------------------------------- */
+  function initFilterBar() {
+    const bar = $('[data-filter-bar]');
+    if (!bar || !('IntersectionObserver' in window)) return;
+
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'height:1px;margin-bottom:-1px;pointer-events:none';
+    bar.parentNode.insertBefore(sentinel, bar);
+
+    const header = $('#header');
+    const offset = header ? header.offsetHeight : 0;
+
+    new IntersectionObserver(
+      (entries) => entries.forEach((e) => bar.classList.toggle('is-stuck', !e.isIntersecting)),
+      { rootMargin: `-${offset + 1}px 0px 0px 0px`, threshold: 0 }
+    ).observe(sentinel);
+  }
+
+  /* -------------------------------------------------------------------
      Marquee: duplicate the track so the loop is seamless
      ------------------------------------------------------------------- */
   function initMarquee() {
@@ -789,6 +813,7 @@
     initHeroCarousel();
     initAccordions();
     initFilters();
+    initFilterBar();
     initMarquee();
     initHorsePicker();
     initPhotoDrop();

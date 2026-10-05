@@ -82,7 +82,10 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* `clip` keeps stray wide elements from causing sideways scroll without
+     making the body a scroll container — `hidden` here does, and that quietly
+     breaks every position: sticky on the page, including the filter bar. */
+  overflow-x: clip;
 }
 
 img, svg, video { display: block; max-width: 100%; height: auto; }
@@ -1578,12 +1581,19 @@ body.nav-open { overflow: hidden; }
 .filters {
   position: sticky;
   top: var(--header-h);
-  z-index: 40;
-  background: rgba(247,244,239,.9);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  /* Above the product cards, which are positioned for their overlay links. */
+  z-index: 60;
+  /* Opaque: at 90% with a blur behind it, dark product photographs showed
+     through the bar as grey smears while scrolling. */
+  background: var(--bone);
   border-bottom: 1px solid var(--rule);
-  padding-block: .9rem;
+  padding-block: .85rem;
+  transition: box-shadow .3s var(--ease);
+}
+
+/* Lifted off the page only once it is actually stuck. */
+.filters.is-stuck {
+  box-shadow: 0 10px 24px -18px rgba(20, 17, 14, .55);
 }
 
 .filters__row {
@@ -1591,6 +1601,129 @@ body.nav-open { overflow: hidden; }
   flex-wrap: wrap;
   align-items: center;
   gap: .65rem;
+}
+
+/* Active filters, shown as removable chips under the controls. */
+.filters__active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .7rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.filters__active-label {
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .6rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: #fff;
+  font-size: .78rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color .25s var(--ease), background-color .25s var(--ease);
+}
+
+.chip:hover { border-color: var(--ink); background: var(--paper); }
+.chip svg { opacity: .5; }
+.chip:hover svg { opacity: 1; }
+
+.filters__clear {
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-underline-offset: 3px;
+}
+
+.filters__clear:hover { color: var(--ink); }
+
+/* ---------------------------------------------------------------------
+   Catalogue browsed by section
+   --------------------------------------------------------------------- */
+.catalog-dept + .catalog-dept { padding-top: 0; }
+
+.catalog-dept__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+
+.catalog-dept__head h2 {
+  margin-top: .4rem;
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+}
+
+.catalog-row + .catalog-row {
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  padding-top: clamp(2.5rem, 5vw, 3.75rem);
+  border-top: 1px solid var(--rule-soft);
+}
+
+.catalog-row__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: .35rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.catalog-row__title {
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.1vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+
+.catalog-row__title a { color: inherit; text-decoration: none; }
+.catalog-row__title a:hover { color: var(--brass); }
+
+.catalog-row__tagline {
+  grid-column: 1;
+  font-size: .86rem;
+  color: var(--text-muted);
+}
+
+.catalog-row__all {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  white-space: nowrap;
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: .2rem;
+  transition: color .25s var(--ease), border-color .25s var(--ease);
+}
+
+.catalog-row__all:hover { color: var(--brass); border-color: var(--brass); }
+
+@media (max-width: 599px) {
+  .catalog-row__head { grid-template-columns: 1fr; }
+  .catalog-row__all { grid-column: 1; grid-row: auto; justify-self: start; margin-top: .4rem; }
 }
 
 .filters__count {

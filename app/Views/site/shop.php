@@ -37,8 +37,42 @@ $cardFallback = pillar_art($pillar['slug'] ?? null);
   </div>
 </header>
 
+<?php
+// Chips summarising what the visitor has narrowed the catalogue to, so the
+// state is visible rather than hidden inside four closed dropdowns.
+$activeChips = [];
+
+if (($filters['q'] ?? '') !== '') {
+    $activeChips[] = ['label' => '“' . $filters['q'] . '”', 'drop' => 'q'];
+}
+
+if (!empty($filters['brand_id'])) {
+    foreach ($brands as $b) {
+        if ((int) $b['id'] === (int) $filters['brand_id']) {
+            $activeChips[] = ['label' => $b['name'], 'drop' => 'brand'];
+        }
+    }
+}
+
+if (!empty($filters['stock'])) {
+    $activeChips[] = ['label' => $stockOptions[$filters['stock']] ?? $filters['stock'], 'drop' => 'stock'];
+}
+
+if (($filters['sort'] ?? '') !== '') {
+    $activeChips[] = ['label' => $sortOptions[$filters['sort']] ?? $filters['sort'], 'drop' => 'sort'];
+}
+
+if ($activeSubId > 0) {
+    foreach ($subCategories as $sub) {
+        if ((int) $sub['id'] === $activeSubId) {
+            $activeChips[] = ['label' => $sub['name'], 'drop' => 'category'];
+        }
+    }
+}
+?>
+
 <!-- Filter bar -->
-<div class="filters">
+<div class="filters" data-filter-bar>
   <div class="shell shell--wide">
     <form class="filters__row" id="filter-form" method="get" action="<?= e(url($category !== null ? '/shop/' . $category['slug'] : '/shop')) ?>">
       <input type="hidden" name="page" value="1">
@@ -117,12 +151,93 @@ $cardFallback = pillar_art($pillar['slug'] ?? null);
 
       <noscript><button class="btn btn--sm" type="submit">Apply</button></noscript>
 
-      <p class="filters__count">
-        <?= (int) $total ?> item<?= $total === 1 ? '' : 's' ?>
-      </p>
+      <?php
+        $countLabel = (int) $total . ' item' . ($total === 1 ? '' : 's');
+
+        if ($groups !== null) {
+            $countLabel .= $category === null
+                ? ' in ' . count($pillars) . ' departments'
+                : ' in ' . count($subCategories) . ' sections';
+        }
+      ?>
+      <p class="filters__count"><?= e($countLabel) ?></p>
     </form>
+
+    <?php if ($activeChips !== []): ?>
+      <div class="filters__active">
+        <span class="filters__active-label">Filtered by</span>
+        <?php foreach ($activeChips as $chip): ?>
+          <?php
+            // query_string() returns '' when nothing is left, and an empty href
+            // reloads the current URL complete with the filter being removed.
+            $chipHref = query_string([$chip['drop'] => null, 'page' => null])
+                ?: url($category !== null ? '/shop/' . $category['slug'] : '/shop');
+          ?>
+          <a class="chip" href="<?= e($chipHref) ?>">
+            <?= e($chip['label']) ?>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+            <span class="sr-only">Remove this filter</span>
+          </a>
+        <?php endforeach; ?>
+        <a class="filters__clear" href="<?= e(url($category !== null ? '/shop/' . $category['slug'] : '/shop')) ?>">Clear all</a>
+      </div>
+    <?php endif; ?>
   </div>
 </div>
+
+<?php if ($groups !== null): ?>
+
+  <!-- Browsed by section, the way the shop itself is arranged -->
+  <?php foreach ($groups as $group): ?>
+    <section class="section section--tight catalog-dept">
+      <div class="shell shell--wide">
+        <?php if ($group['department'] !== null): ?>
+          <div class="catalog-dept__head" data-reveal>
+            <div>
+              <p class="eyebrow"><?= e($group['department']['tagline'] ?? 'Department') ?></p>
+              <h2><?= e($group['department']['name']) ?></h2>
+            </div>
+            <a class="link" href="<?= e(url('/shop/' . $group['department']['slug'])) ?>">
+              All <?= e($group['department']['name']) ?>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        <?php endif; ?>
+
+        <?php foreach ($group['sections'] as $section): ?>
+          <div class="catalog-row" data-reveal>
+            <div class="catalog-row__head">
+              <h3 class="catalog-row__title">
+                <a href="<?= e(url('/shop/' . $section['category']['slug'])) ?>"><?= e($section['category']['name']) ?></a>
+              </h3>
+              <?php if (!empty($section['category']['tagline'])): ?>
+                <p class="catalog-row__tagline"><?= e($section['category']['tagline']) ?></p>
+              <?php endif; ?>
+              <a class="catalog-row__all" href="<?= e(url('/shop/' . $section['category']['slug'])) ?>">
+                View all <?= (int) $section['total'] ?>
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                  <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <div class="grid-products">
+              <?php foreach ($section['products'] as $product): ?>
+                <?php $cardReveal = false; $cardShowCat = false; ?>
+                <?php require APP_PATH . '/Views/partials/product-card.php'; ?>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
+  <?php endforeach; ?>
+
+<?php else: ?>
 
 <section class="section section--tight">
   <div class="shell shell--wide">
@@ -179,6 +294,8 @@ $cardFallback = pillar_art($pillar['slug'] ?? null);
     <?php endif; ?>
   </div>
 </section>
+
+<?php endif; ?>
 
 <section class="cta-banner">
   <div class="shell shell--wide">
