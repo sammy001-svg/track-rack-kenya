@@ -38,6 +38,13 @@
         header.classList.remove('header--hidden');
       }
 
+      // Anything stuck below the header — the catalogue's filter bar — has to
+      // follow it up, or it is left hanging with a header-high gap above it.
+      document.body.classList.toggle(
+        'header-hidden',
+        header.classList.contains('header--hidden')
+      );
+
       lastY = y;
       ticking = false;
     }

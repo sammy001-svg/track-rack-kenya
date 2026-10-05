@@ -1588,7 +1588,16 @@ body.nav-open { overflow: hidden; }
   background: var(--bone);
   border-bottom: 1px solid var(--rule);
   padding-block: .85rem;
-  transition: box-shadow .3s var(--ease);
+  /* `top` moves in step with the header sliding away, below. */
+  transition: box-shadow .3s var(--ease), top .5s var(--ease);
+}
+
+/* The header hides on the way down the page; the bar closes the gap it
+   leaves rather than floating with empty space above it. */
+body.header-hidden .filters { top: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .filters { transition: none; }
 }
 
 /* Lifted off the page only once it is actually stuck. */
