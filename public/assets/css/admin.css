@@ -908,9 +908,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   display: grid;
   place-items: center;
   padding: 2rem 1.25rem;
-  background:
-    radial-gradient(70% 55% at 50% 0%, rgba(185,145,73,.16), transparent 62%),
-    var(--a-ink);
+  background: var(--a-ink);
 }
 
 .a-login__card {

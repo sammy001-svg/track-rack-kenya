@@ -522,7 +522,6 @@ p { text-wrap: pretty; }
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
-  background-image: radial-gradient(120% 100% at 100% 0%, rgba(185,145,73,.28), transparent 60%);
 }
 
 .mega__feature p {
@@ -757,18 +756,19 @@ body.nav-open { overflow: hidden; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, var(--ink) 0%, rgba(20,17,14,.55) 28%, rgba(20,17,14,.12) 62%, transparent 100%);
+  /* A flat scrim keeps the hero copy legible over the photograph. */
+  background: rgba(20, 17, 14, .5);
 }
 
 @media (max-width: 899px) {
-  .hero__visual::after { background: linear-gradient(to bottom, rgba(20,17,14,.9), rgba(20,17,14,.35)); }
+  .hero__visual::after { background: rgba(20, 17, 14, .55); }
 }
 
 /* Hero carousel — real products in place of the static hero photograph.
    The studio shots are cut out on white, so the panel behind them is white
    too: on bone the photograph's own background showed as a paler rectangle
    floating inside the frame. White against the ink copy column also gives the
-   hero a clean split rather than a stock photo bled under a gradient. */
+   hero a clean split rather than a stock photo behind a scrim. */
 .hero__visual--carousel {
   /* Ink behind the panel, so the transparent header keeps a dark ground to sit
      on right across the page — over the white panel its bone-coloured nav was
@@ -1015,7 +1015,7 @@ body.nav-open { overflow: hidden; }
 .hero__scroll i {
   display: block;
   width: 1px; height: 42px;
-  background: linear-gradient(to bottom, transparent, rgba(247,244,239,.7));
+  background: rgba(247, 244, 239, .55);
   animation: scroll-pulse 2.4s var(--ease) infinite;
 }
 
@@ -1113,7 +1113,8 @@ body.nav-open { overflow: hidden; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to top, rgba(20,17,14,.94) 0%, rgba(20,17,14,.55) 42%, rgba(20,17,14,.18) 100%);
+  /* Flat scrim: the pillar name and copy sit on the photograph. */
+  background: rgba(20, 17, 14, .55);
   transition: background .6s var(--ease);
 }
 
@@ -1121,7 +1122,7 @@ body.nav-open { overflow: hidden; }
 .pillar:hover .pillar__media svg { transform: scale(1.07); filter: grayscale(0) contrast(1.05); }
 
 .pillar:hover::after {
-  background: linear-gradient(to top, rgba(20,17,14,.96) 0%, rgba(20,17,14,.62) 48%, rgba(20,17,14,.22) 100%);
+  background: rgba(20, 17, 14, .64);
 }
 
 .pillar__index {
@@ -1396,14 +1397,6 @@ body.nav-open { overflow: hidden; }
   overflow: hidden;
 }
 
-.spotlight::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(80% 60% at 82% 12%, rgba(185,145,73,.20), transparent 62%);
-  pointer-events: none;
-}
-
 .spotlight__inner {
   position: relative;
   display: grid;
@@ -1548,9 +1541,7 @@ body.nav-open { overflow: hidden; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(60% 120% at 12% 0%, rgba(255,255,255,.16), transparent 60%),
-    linear-gradient(120deg, #7A4E24 0%, #A8703A 52%, #8A5A2B 100%);
+  background: var(--tan);
 }
 
 .cta-banner__inner {
@@ -1940,7 +1931,8 @@ body.header-hidden .filters { top: 0; }
   color: var(--bone);
   font-size: .85rem;
   line-height: 1.45;
-  background: linear-gradient(to top, rgba(20,17,14,.88) 0%, rgba(20,17,14,.6) 45%, transparent 100%);
+  /* Flat bar: the caption sits over the photograph. */
+  background: rgba(20, 17, 14, .8);
   pointer-events: none;
   transition: opacity .3s var(--ease);
 }
@@ -2505,7 +2497,7 @@ body.header-hidden .filters { top: 0; }
 .heritage-hero::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(20,17,14,.95), rgba(20,17,14,.5) 55%, rgba(20,17,14,.25));
+  background: rgba(20, 17, 14, .62);
 }
 .heritage-hero .shell { position: relative; z-index: 2; }
 .heritage-hero h1 { font-weight: 300; margin-top: 1.2rem; }
