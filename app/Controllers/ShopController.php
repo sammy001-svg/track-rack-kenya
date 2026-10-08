@@ -4,7 +4,6 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\Schema;
 use App\Core\Seo;
-use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -72,7 +71,6 @@ class ShopController extends Controller
 
         $filters = [
             'q'        => trim((string) ($_GET['q'] ?? '')),
-            'brand_id' => (int) ($_GET['brand'] ?? 0) ?: null,
             'stock'    => in_array($_GET['stock'] ?? '', ['in_stock', 'low_stock', 'on_order', 'out_of_stock'], true)
                 ? $_GET['stock'] : null,
             'sort'     => in_array($_GET['sort'] ?? '', ['name_asc', 'name_desc', 'newest', 'popular'], true)
@@ -124,7 +122,6 @@ class ShopController extends Controller
             'pillar'        => $pillar,
             'pillars'       => $categoryModel->pillars(),
             'subCategories' => $subCategories,
-            'brands'        => (new Brand())->active(),
             'products'      => $result['items'],
             'total'         => $result['total'],
             'pages'         => $result['pages'],
@@ -138,7 +135,6 @@ class ShopController extends Controller
     private function isFiltered(array $filters, int $subCategoryId): bool
     {
         return ($filters['q'] ?? '') !== ''
-            || !empty($filters['brand_id'])
             || !empty($filters['stock'])
             || ($filters['sort'] ?? '') !== ''
             || $subCategoryId > 0;
@@ -200,7 +196,7 @@ class ShopController extends Controller
     /**
      * Search-engine handling for a catalog page.
      *
-     * Filter combinations (search terms, brand, availability, sort) generate an
+     * Filter combinations (search terms, availability, sort) generate an
      * effectively unlimited number of near-identical URLs, so those are marked
      * noindex and pointed back at the clean category page. Genuine pagination
      * stays indexable with a self-referencing canonical.

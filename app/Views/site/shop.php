@@ -1,5 +1,5 @@
 <?php
-/** @var array $products @var array $filters @var array $subCategories @var array $brands */
+/** @var array $products @var array $filters @var array $subCategories */
 $sortOptions = [
     ''          => 'Curated order',
     'newest'    => 'Newest first',
@@ -44,14 +44,6 @@ $activeChips = [];
 
 if (($filters['q'] ?? '') !== '') {
     $activeChips[] = ['label' => '“' . $filters['q'] . '”', 'drop' => 'q'];
-}
-
-if (!empty($filters['brand_id'])) {
-    foreach ($brands as $b) {
-        if ((int) $b['id'] === (int) $filters['brand_id']) {
-            $activeChips[] = ['label' => $b['name'], 'drop' => 'brand'];
-        }
-    }
 }
 
 if (!empty($filters['stock'])) {
@@ -118,18 +110,6 @@ if ($activeSubId > 0) {
           </select>
         </div>
       <?php endif; ?>
-
-      <div class="select">
-        <label class="sr-only" for="f-brand">Brand</label>
-        <select id="f-brand" name="brand">
-          <option value="">All makers</option>
-          <?php foreach ($brands as $brand): ?>
-            <option value="<?= (int) $brand['id'] ?>" <?= (int) ($filters['brand_id'] ?? 0) === (int) $brand['id'] ? 'selected' : '' ?>>
-              <?= e($brand['name']) ?>
-            </option>
-          <?php endforeach; ?>
-        </select>
-      </div>
 
       <div class="select">
         <label class="sr-only" for="f-stock">Availability</label>
