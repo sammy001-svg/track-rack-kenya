@@ -199,7 +199,7 @@ INSERT INTO `pages` (`slug`,`title`,`subtitle`,`body`,`meta_desc`,`is_active`) V
 ('heritage','About Our Heritage','Kenya''s equestrian supplier since 1997.',
 '<p>Tack Rack Limited was founded in 1997 and has served as Kenya''s primary equestrian supplier ever since. We are based off Ngong Road, near the Chequered Flag opposite St Christophers School, Nairobi &mdash; a bright, accessible premises with parking at the door.</p>
 <h3>Every discipline, properly equipped</h3>
-<p>We stock equipment and supplements across every riding discipline practised in Kenya: racing, polo, showjumping, dressage, hacking and safari riding. Our staff ride, and they will tell you plainly what a horse actually needs rather than what is most expensive on the shelf.</p>
+<p>We stock equipment and supplements across every riding discipline practised in Kenya: racing, polo, showjumping, dressage, hacking and safari riding. Our staff know the kit inside out, and will tell you plainly what a horse actually needs rather than what is most expensive on the shelf.</p>
 <h3>Saddle fitting by a qualified specialist</h3>
 <p>Sharon Ashley is the only Saddle Fitter in East Africa qualified with the Society of Master Saddlers. A saddle that does not fit will damage a horse''s back long before the rider notices, which is why every saddle we supply is fitted on the horse &mdash; and why we travel to yards across the country to do it.</p>
 <h3>Our own workshop</h3>
@@ -210,7 +210,7 @@ INSERT INTO `pages` (`slug`,`title`,`subtitle`,`body`,`meta_desc`,`is_active`) V
 
 ('how-to-order','How to Order','From catalog to yard, in four steps.',
 '<ol>
-<li><strong>Browse the catalog.</strong> Work through Rider, Horse and Stable, or filter by category and brand to narrow the field.</li>
+<li><strong>Browse the catalog.</strong> Work through Rider, Horse and Yard, or filter by category and brand to narrow the field.</li>
 <li><strong>Build a quote list.</strong> Add each item you are interested in, with the size or specification you need. Nothing is charged and nothing is committed at this stage.</li>
 <li><strong>Send the request.</strong> Give us your contact details and any sizing notes. You will receive a reference number immediately.</li>
 <li><strong>We respond with a quote.</strong> Usually within one working day, with current pricing, availability and lead times on anything we need to order in.</li>

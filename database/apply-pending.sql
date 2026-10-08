@@ -1,5 +1,5 @@
 -- Tack Rack — pending database migrations
--- Generated 2026-09-22 13:20 by bin/export-migrations-sql.php. Do not edit by hand.
+-- Generated 2026-10-08 11:54 by bin/export-migrations-sql.php. Do not edit by hand.
 --
 -- Import through phpMyAdmin: select the site database, open the Import tab,
 -- choose this file, and run it. It contains, in this order:
@@ -9,6 +9,7 @@
 --   2026_09_22_000005_staff_expertise_wording.sql
 --   2026_09_22_000006_single_line_address.sql
 --   2026_09_22_000007_instagram.sql
+--   2026_10_05_000008_heritage_wording.sql
 --
 -- Every statement in here is safe to run more than once, so importing it twice
 -- changes nothing the second time.
@@ -219,10 +220,43 @@ UPDATE `settings`
    AND (`value` IS NULL OR `value` = '');
 
 
+-- =====================================================================
+--  2026_10_05_000008_heritage_wording.sql
+-- =====================================================================
+
+-- Two corrections to page copy.
+--
+-- 1. The Heritage page still said "Our staff ride". The staff are experts in
+--    the products, not riders; the same claim was removed from the home page
+--    and two category descriptions in migration 000005, but this phrasing was
+--    missed there.
+--
+-- 2. "Rider, Horse and Stable" predates the catalogue being regrouped to the
+--    shop's own departments, where the third is the Yard.
+--
+-- Both match the old wording exactly, so anything rewritten in the admin since
+-- is left alone, and running this twice changes nothing.
+
+SET NAMES utf8mb4;
+
+UPDATE `pages`
+   SET `body` = REPLACE(
+         `body`,
+         'Our staff ride, and they will tell you plainly what a horse actually needs',
+         'Our staff know the kit inside out, and will tell you plainly what a horse actually needs'
+       )
+ WHERE `slug` = 'heritage';
+
+UPDATE `pages`
+   SET `body` = REPLACE(`body`, 'Rider, Horse and Stable', 'Rider, Horse and Yard')
+ WHERE `body` LIKE '%Rider, Horse and Stable%';
+
+
 -- Record what was applied, so bin/migrate.php does not offer these again.
 INSERT IGNORE INTO `migrations` (`filename`) VALUES
   ('2026_08_18_000003_location_and_logo.sql'),
   ('2026_08_30_000004_seo_share_card.sql'),
   ('2026_09_22_000005_staff_expertise_wording.sql'),
   ('2026_09_22_000006_single_line_address.sql'),
-  ('2026_09_22_000007_instagram.sql');
+  ('2026_09_22_000007_instagram.sql'),
+  ('2026_10_05_000008_heritage_wording.sql');

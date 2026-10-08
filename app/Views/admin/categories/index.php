@@ -11,7 +11,7 @@
     <div class="a-empty">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
       <h3>No categories yet</h3>
-      <p>Create Rider, Horse and Stable as top-level sections, then add sub-categories beneath them.</p>
+      <p>Create Rider, Horse and Yard as top-level sections, then add sub-categories beneath them.</p>
       <a class="a-btn" href="<?= e(url('/admin/categories/create')) ?>">Add a category</a>
     </div>
   <?php else: ?>
