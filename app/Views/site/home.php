@@ -176,7 +176,8 @@ $chapterAlt = [
       <h2 class="hp-head__title">Photographed where they sit.</h2>
       <p class="hp-head__lede">
         Every photograph on this site is of the thing itself, in our own studio on
-        Ngong Road. Pricing comes back with your quote.
+        Ngong Road, and every size and colour we carry is listed on the product
+        rather than left to be asked about. Pricing comes back with your quote.
       </p>
     </div>
 
@@ -289,6 +290,26 @@ $chapterAlt = [
           Send us a list and we will come back with pricing, availability and lead
           times &mdash; usually within a working day. No account, no obligation.
         </p>
+        <?php // Nothing on the site carries a price, so how buying works is
+              // spelled out rather than left to be worked out. ?>
+        <ol class="hp-steps">
+          <li>
+            <span class="hp-steps__n">1</span>
+            <span><strong>Build a list.</strong> Add anything from the catalogue, with the
+              size and colour you want. No account needed.</span>
+          </li>
+          <li>
+            <span class="hp-steps__n">2</span>
+            <span><strong>We price it.</strong> Current pricing, availability and lead times
+              come back, usually within a working day.</span>
+          </li>
+          <li>
+            <span class="hp-steps__n">3</span>
+            <span><strong>Collect or we deliver.</strong> From Ngong Road, across Nairobi, or
+              countrywide by courier.</span>
+          </li>
+        </ol>
+
         <a class="hp-cta hp-cta--dark" href="<?= e(url('/request-a-quote')) ?>">
           Request a quote
           <svg width="15" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">

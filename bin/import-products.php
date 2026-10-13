@@ -133,7 +133,7 @@ $tree = [
         'Stirrup irons including safety and composite patterns, rubber treads, stirrup leathers and martingales.'],
     'girths' => ['horse', 5, 'Girths', 'Standard & Dressage',
         'Fleece lined, elastic and anti-chafe girths in the standard run, and short girths for a dressage saddle.'],
-    'numnahs-saddlepads' => ['horse', 6, 'Numnahs & Saddlepads', 'Shaped, Square & Blankets',
+    'numnahs-saddle-pads' => ['horse', 6, 'Numnahs & Saddle Pads', 'Shaped, Square & Non-Slip',
         'Shaped GP numnahs, dressage squares, non-slip and Prolite pads, and fleece blankets.'],
     'headcollars-lead-ropes' => ['horse', 7, 'Headcollars & Lead Ropes', 'Foal, Pony, Cob & Full',
         'Nylon and fleece-lined headcollars, lead ropes, lunge cavessons and lunge reins for the yard and the lorry.'],
@@ -211,11 +211,11 @@ $tree = [
         'Hat silks and competition number holders — the small things that finish a turnout.'],
 
     // Numnahs & Saddlepads (9)
-    'numnahs' => ['numnahs-saddlepads', 1, 'Numnahs', 'Shaped & Square Cut',
+    'numnahs' => ['numnahs-saddle-pads', 1, 'Numnahs', 'Shaped & Square Cut',
         'Quilted GP numnahs shaped to follow the saddle, and square-cut dressage pads.'],
-    'saddle-pads' => ['numnahs-saddlepads', 2, 'Saddle Pads', 'Riser & Fleece',
+    'saddle-pads' => ['numnahs-saddle-pads', 2, 'Saddle Pads', 'Riser & Fleece',
         'Pads that sit between the saddle and the horse, and fleece for after work.'],
-    'non-slip-gel-pads' => ['numnahs-saddlepads', 3, 'Non-Slip Gel Pads', 'Grip Both Sides',
+    'non-slip-gel-pads' => ['numnahs-saddle-pads', 3, 'Non-Slip Gel Pads', 'Grip Both Sides',
         'Dimpled gel pads that grip on both sides, to stop a saddle sliding and take the jar out of the ride.'],
 
     // Safety Equipment (5) — split by what the kit protects

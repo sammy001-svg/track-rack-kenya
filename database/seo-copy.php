@@ -69,7 +69,7 @@ return [
             'title' => 'Horse Girths',
             'desc'  => 'Fleece lined, elastic, anti-chafe and short dressage girths, with leather buckle guards. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'numnahs-saddlepads' => [
+        'numnahs-saddle-pads' => [
             'title' => 'Numnahs, Saddlepads & Blankets',
             'desc'  => 'Shaped GP numnahs, dressage squares, non-slip and Prolite pads and fleece blankets. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],

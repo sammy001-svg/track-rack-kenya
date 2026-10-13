@@ -2816,7 +2816,9 @@ body.header-hidden .filters { top: 0; }
 .hp-chapter + .hp-chapter { border-top: 1px solid var(--rule-soft); }
 
 @media (min-width: 900px) {
-  .hp-chapter { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  /* The photograph takes the larger share. Two equal columns left the list of
+     sections stranded against a wide empty margin on a big screen. */
+  .hp-chapter { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); }
   /* The photograph changes sides down the page so the three do not read
      as one repeated row. */
   .hp-chapter:nth-child(even) .hp-chapter__figure { order: 2; }
@@ -2868,7 +2870,7 @@ body.header-hidden .filters { top: 0; }
   list-style: none;
   margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
   padding: 0;
-  max-width: 27rem;
+  max-width: 34rem;
   border-top: 1px solid var(--rule-soft);
 }
 
@@ -2958,7 +2960,13 @@ body.header-hidden .filters { top: 0; }
   margin-top: clamp(2rem, 4vw, 3.25rem);
   display: grid;
   gap: clamp(1.25rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Three across, so six pieces read as two considered rows rather than a row
+   of five and an orphan. */
+@media (min-width: 900px) {
+  .hp-pieces__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .hp-piece { margin: 0; }
@@ -3085,6 +3093,35 @@ body.header-hidden .filters { top: 0; }
 @media (min-width: 860px) {
   .hp-visit__grid { grid-template-columns: 1.05fr .95fr; align-items: start; }
 }
+
+/* How a quote works, under the invitation to ask for one. */
+.hp-steps {
+  list-style: none;
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+  padding: 0;
+  max-width: 44ch;
+  border-top: 1px solid var(--rule);
+}
+
+.hp-steps li {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: .9rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: .92rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.hp-steps__n {
+  font-family: var(--display);
+  font-size: .95rem;
+  line-height: 1.7;
+  color: var(--tan);
+}
+
+.hp-steps strong { color: var(--ink); font-weight: 600; }
 
 .hp-visit__lede {
   margin-top: 1.2rem;

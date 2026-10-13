@@ -58,6 +58,7 @@ class ShopController extends Controller
         'girths-standard'          => 'girths',
         'girths-dressage'          => 'dressage-girths',
         'brushes'                  => 'body-brushes',
+        'numnahs-saddlepads'       => 'numnahs-saddle-pads',
     ];
 
     public function category(string $slug): void

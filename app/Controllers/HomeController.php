@@ -42,7 +42,7 @@ class HomeController extends Controller
             'services'    => (new Service())->active(),
             // Three pieces to stand for the catalogue. showcase() spreads
             // its picks across categories, so they are not three girths.
-            'selected'    => array_slice($products->showcase(3), 0, 3),
+            'selected'    => array_slice($products->showcase(6), 0, 6),
         ]);
     }
 }
