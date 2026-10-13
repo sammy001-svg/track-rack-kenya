@@ -41,8 +41,10 @@ class HomeController extends Controller
             'departments' => $departments,
             'services'    => (new Service())->active(),
             'heroSlides'  => $products->showcase(6),
-            'featured'    => $products->featured(6),
-            'latest'      => $products->latest(4),
+            // More than the page shows: the three product sections pick from
+            // these and each takes what the ones above it have not used.
+            'featured'    => $products->featured(16),
+            'latest'      => $products->latest(30),
         ]);
     }
 }

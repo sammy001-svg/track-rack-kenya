@@ -1,10 +1,67 @@
 <?php
 /** @var array $departments @var array $services @var array $heroSlides @var array $featured @var array $latest */
 $heroSlides = $heroSlides ?? [];
-$spotlight = array_slice($featured, 0, 4);
-$grid      = array_slice($featured, 0, 8);
+
+/*
+ * Three product sections, three different sets of products.
+ *
+ * The hero carousel, the spotlight and the new arrivals were all fed from the
+ * featured list, which is also what the carousel leads with — so the same four
+ * products appeared three times on the way down the page, the third time under
+ * a heading that said they had just come in. Each section now takes what the
+ * ones above it have not used.
+ */
+$taken = static function (array $pool, array $used, int $limit, bool $spread = false): array {
+    $out = [];
+
+    // When spreading, the first pass takes at most one product per category
+    // and the second fills whatever is still short. Everything was imported on
+    // the same day, so "most recent" otherwise means "the last rows of the
+    // file" — which is four tins of leather soap under a heading about new
+    // arrivals.
+    $passes = $spread ? [true, false] : [false];
+
+    foreach ($passes as $onePerCategory) {
+        foreach ($pool as $item) {
+            if (count($out) >= $limit) {
+                return $out;
+            }
+
+            $id = (int) $item['id'];
+
+            if (in_array($id, $used, true) || in_array($id, array_column($out, 'id'), true)) {
+                continue;
+            }
+
+            $category = (string) ($item['category_slug'] ?? '');
+
+            if ($onePerCategory && $category !== ''
+                && in_array($category, array_column($out, 'category_slug'), true)) {
+                continue;
+            }
+
+            $out[] = $item;
+        }
+    }
+
+    return $out;
+};
+
+$used      = array_map(static fn (array $s): int => (int) $s['id'], $heroSlides);
+$spotlight = $taken($featured, $used, 4);
+
+$used      = array_merge($used, array_map(static fn (array $s): int => (int) $s['id'], $spotlight));
+$grid      = $taken($latest, $used, 4, true);
+
+// If the catalogue is too small for three distinct sets, fall back to showing
+// something rather than an empty section.
 if (count($grid) < 4) {
-    $grid = array_slice(array_merge($grid, $latest), 0, 8);
+    $grid = array_merge($grid, $taken($featured, array_merge($used, array_map(
+        static fn (array $s): int => (int) $s['id'], $grid
+    )), 4 - count($grid)));
+}
+if ($spotlight === []) {
+    $spotlight = array_slice($featured, 0, 4);
 }
 ?>
 
@@ -168,6 +225,25 @@ if (count($grid) < 4) {
         </svg>
       </a>
     </div>
+
+    <?php
+      // How much there is to search, counted rather than claimed.
+      $catalogueCount = 0;
+      foreach ($departments as $d) {
+          foreach ($d['sections'] as $sec) { $catalogueCount += (int) $sec['product_count']; }
+      }
+    ?>
+    <form class="home-search" action="<?= e(url('/shop')) ?>" method="get" role="search" data-reveal>
+      <label class="sr-only" for="home-search">Search the catalogue</label>
+      <svg class="home-search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <input class="home-search__input" id="home-search" type="search" name="q"
+             placeholder="Search <?= $catalogueCount ?> products &mdash; girths, bits, hoof oil&hellip;"
+             autocomplete="off">
+      <button class="home-search__go" type="submit">Search</button>
+    </form>
 
     <div class="departments">
       <?php foreach ($departments as $index => $dept): ?>
@@ -417,7 +493,7 @@ if (count($grid) < 4) {
     </div>
 
     <div class="grid-products grid-products--4">
-      <?php foreach (array_slice($grid, 0, 4) as $product): ?>
+      <?php foreach ($grid as $product): ?>
         <?php require APP_PATH . '/Views/partials/product-card.php'; ?>
       <?php endforeach; ?>
     </div>

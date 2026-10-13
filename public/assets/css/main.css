@@ -724,6 +724,10 @@ body.nav-open { overflow: hidden; }
    the value takes the body face at a size that fits the column. */
 @media (max-width: 899px) {
   .hero__meta { gap: .9rem; }
+  /* Labels wrap to different numbers of lines, so the values are pushed to a
+     common baseline instead of each sitting under its own label. */
+  .hero__stat { display: flex; flex-direction: column; height: 100%; }
+  .hero__stat dd { margin-top: auto; }
   .hero__stat dt { font-size: .56rem; letter-spacing: .1em; line-height: 1.35; }
   .hero__stat dd {
     font-family: var(--sans);
@@ -1592,6 +1596,71 @@ body.nav-open { overflow: hidden; }
    that on a phone, where there is no hover, they could not be reached at
    all. Every section is listed here instead.
    --------------------------------------------------------------------- */
+/* One field, on the page people land on. The catalogue runs to 164 products
+   and the only way into it by name was the filter bar inside the shop. */
+.home-search {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  /* Held to the width of the paragraph above it: a field running the
+     full 90rem reads as a page element rather than something to type in. */
+  max-width: 46rem;
+  padding: .4rem .4rem .4rem 1.1rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+.home-search:focus-within {
+  border-color: var(--tan);
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, .12);
+}
+
+.home-search__icon { flex: none; color: var(--text-faint); }
+
+.home-search__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  padding: .75rem 0;
+  font: inherit;
+  font-size: .95rem;
+  color: var(--ink);
+}
+
+.home-search__input::placeholder { color: var(--text-faint); }
+.home-search__input:focus { outline: none; }
+
+/* Safari draws its own clear button inside a type=search field. */
+.home-search__input::-webkit-search-decoration,
+.home-search__input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.home-search__go {
+  flex: none;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bone);
+  padding: .72rem 1.4rem;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color .3s var(--ease);
+}
+
+.home-search__go:hover { background: var(--tan); }
+
+@media (max-width: 479px) {
+  .home-search { padding-left: .9rem; gap: .45rem; }
+  .home-search__input { font-size: .88rem; }
+  .home-search__go { padding: .7rem 1rem; font-size: .66rem; letter-spacing: .08em; }
+}
+
 .departments {
   display: grid;
   gap: clamp(2rem, 3.5vw, 3rem);
