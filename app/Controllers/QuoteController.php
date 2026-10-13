@@ -23,6 +23,24 @@ class QuoteController extends Controller
         $quantity  = max(1, (int) ($_POST['quantity'] ?? 1));
         $variant   = trim((string) ($_POST['variant'] ?? ''));
 
+        // The product page sends one selector per group, so they are joined
+        // into the single line the quote list carries. Kept inside the 160
+        // characters the column holds; anything longer belongs in the notes.
+        if ($variant === '' && is_array($_POST['variant_options'] ?? null)) {
+            $chosen = [];
+
+            foreach ($_POST['variant_options'] as $label => $value) {
+                $label = trim((string) $label);
+                $value = trim(is_scalar($value) ? (string) $value : '');
+
+                if ($label !== '' && $value !== '') {
+                    $chosen[] = $label . ': ' . $value;
+                }
+            }
+
+            $variant = mb_substr(implode(' · ', $chosen), 0, 160);
+        }
+
         $product = $productId > 0 ? (new Product())->find($productId) : null;
 
         if ($product === null || (int) $product['is_active'] !== 1) {

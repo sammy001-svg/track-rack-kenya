@@ -209,7 +209,7 @@ return [
             'title' => 'Horse Bandages & Wraps',
             'desc'  => 'Fleece and cohesive bandages, with the quilted pads and gamgee that go underneath. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'numnahs-squares' => [
+        'shaped-numnahs' => [
             'title' => 'Numnahs & Dressage Squares',
             'desc'  => 'Shaped GP numnahs and square-cut dressage pads, washable and cut clear of the withers. Stocked in Nairobi since 1997.',
         ],
@@ -228,6 +228,20 @@ return [
         'skin-care' => [
             'title' => 'Horse Skin & Sun Care',
             'desc'  => 'Sunscreen for pink noses, soothing gels for itching and barrier creams for heels. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+
+        // ---- Added from the sizes & colours sheet ----
+        'dressage-squares' => [
+            'title' => 'Dressage Square Numnahs',
+            'desc'  => 'Square-cut dressage pads in white, green, red and blue, 17 to 18 inches. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'girths-standard' => [
+            'title' => 'Girths, 42" to 50"',
+            'desc'  => 'Fleece lined, elastic and anti-chafe girths in the standard run, 42 to 50 inches, in brown and black. From Tack Rack, Nairobi.',
+        ],
+        'girths-dressage' => [
+            'title' => 'Short Dressage Girths',
+            'desc'  => 'Short girths for a dressage saddle, 22 to 30 inches, in brown and black. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
 
         // ---- Added in the October 2026 regrouping ----
@@ -582,7 +596,7 @@ return [
         ],
 
         // Boots and bandages
-        'Brushing Boots — Navy' => [
+        'Brushing Boots' => [
             'title' => 'ARMA Brushing Boots, Navy',
             'desc'  => 'Navy ARMA brushing boots with a moulded strike guard and three touch-close straps, protecting the inside of the leg. In stock in Nairobi.',
         ],
@@ -590,11 +604,11 @@ return [
             'title' => 'ARMA Anatomic Brushing Boots',
             'desc'  => 'Black ARMA Anatomic brushing boots with a moulded shell and wide red straps, close to the leg without rubbing. From Tack Rack, Nairobi.',
         ],
-        'Shires Rubber Overreach Boots' => [
+        'Rubber Overreach Boots' => [
             'title' => 'Shires Rubber Overreach Boots',
             'desc'  => 'Ribbed rubber overreach boots from Shires with a touch-close fastening, protecting heels and coronets from the hind feet. Stocked in Nairobi.',
         ],
-        'Overreach Boots — Red' => [
+        'Neoprene Overreach Boots' => [
             'title' => 'ARMA Overreach Boots, Red',
             'desc'  => 'Soft black and red ARMA overreach boots — lighter and quieter than rubber, protecting the heel and coronet. In stock at Tack Rack, Nairobi.',
         ],

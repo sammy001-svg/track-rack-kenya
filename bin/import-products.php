@@ -131,14 +131,14 @@ $tree = [
         'Loose ring and jointed snaffles, lozenge and training bits, and the guards and keepers that go with them.'],
     'martingales-stirrups-leathers' => ['horse', 4, 'Martingales, Stirrups & Leathers', 'Irons, Treads & Straps',
         'Stirrup irons including safety and composite patterns, rubber treads, stirrup leathers and martingales.'],
-    'girths' => ['horse', 5, 'Girths', 'Fleece, Elastic & Dressage',
-        'Fleece lined, elastic, anti-chafe and short dressage girths, cut to sit clear of the elbow.'],
+    'girths' => ['horse', 5, 'Girths', 'Standard & Dressage',
+        'Fleece lined, elastic and anti-chafe girths in the standard run, and short girths for a dressage saddle.'],
     'numnahs-saddlepads' => ['horse', 6, 'Numnahs & Saddlepads', 'Shaped, Square & Blankets',
         'Shaped GP numnahs, dressage squares, non-slip and Prolite pads, and fleece blankets.'],
     'headcollars-lead-ropes' => ['horse', 7, 'Headcollars & Lead Ropes', 'Foal, Pony, Cob & Full',
         'Nylon and fleece-lined headcollars, lead ropes, lunge cavessons and lunge reins for the yard and the lorry.'],
-    'horse-boots' => ['horse', 8, 'Horse Boots', 'Brushing, Overreach & Bandages',
-        'Brushing and overreach boots, fetlock rings and temporary shoe boots, with bandages, leg pads and cohesive wrap.'],
+    'horse-boots' => ['horse', 8, 'Horse Boots', 'Brushing & Overreach',
+        'Brushing boots and neoprene and rubber overreach boots, sized pony, cob and full, with fetlock rings and sausage boots.'],
 
     // ---- Yard ----
     'shampoo-skin-care' => ['yard', 1, 'Shampoo & Skin Care', 'Washing, Detangling & Sun',
@@ -155,8 +155,8 @@ $tree = [
         'Electrolytes, vitamin and mineral premixes, garlic, limestone, salts and licks for the feed room.'],
     'hoof-care' => ['yard', 7, 'Hoof Care', 'Oils, Dressings & Farriery',
         'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.'],
-    'first-aid' => ['yard', 8, 'First Aid', 'Wound & Skin Care',
-        'Wound sprays, dressings and gels for the tack room first aid box.'],
+    'first-aid' => ['yard', 8, 'First Aid', 'Wounds, Dressings & Bandages',
+        'Wound sprays, gels and dressings, with the bandages, gamgee and quilted pads that go over them.'],
     'grooming-equipment' => ['yard', 9, 'Grooming Equipment', 'Brushes, Combs & Boxes',
         'Body and dandy brushes, rubber and plastic curry combs, mane combs, sweat scrapers, plaiting bands and tack boxes.'],
     'leather-care' => ['yard', 10, 'Leather Care', 'Soaps, Dressings & Dubbin',
@@ -214,16 +214,12 @@ $tree = [
     'hat-silks-numbers' => ['clothing', 3, 'Hat Silks & Numbers', 'Finishing the Turnout',
         'Hat silks and competition number holders — the small things that finish a turnout.'],
 
-    // Horse Boots (10)
-    'brushing-overreach-boots' => ['horse-boots', 1, 'Boots', 'Brushing, Overreach & Hoof',
-        'Brushing and overreach boots, fetlock rings and temporary shoe boots.'],
-    'bandages-wraps' => ['horse-boots', 2, 'Bandages & Wraps', 'Fleece, Cohesive & Pads',
-        'Fleece and cohesive bandages, with the quilted pads and gamgee that go underneath.'],
-
     // Numnahs & Saddlepads (9)
-    'numnahs-squares' => ['numnahs-saddlepads', 1, 'Numnahs & Squares', 'Shaped & Square Cut',
-        'Shaped GP numnahs and square-cut dressage pads, washable and cut clear of the withers.'],
-    'pads-blankets' => ['numnahs-saddlepads', 2, 'Pads & Blankets', 'Riser, Gel & Fleece',
+    'shaped-numnahs' => ['numnahs-saddlepads', 1, 'Shaped Numnahs', 'Cut to the Saddle',
+        'Quilted GP numnahs shaped to follow the saddle, in two size runs and washable at 30 degrees.'],
+    'dressage-squares' => ['numnahs-saddlepads', 2, 'Dressage Squares', 'Square Cut',
+        'Square-cut dressage pads, cut clear of the withers and deep enough for a long flap.'],
+    'pads-blankets' => ['numnahs-saddlepads', 3, 'Pads & Blankets', 'Riser, Gel & Fleece',
         'Prolite and gel pads that sit under the saddle, and fleece rugs for after work.'],
 
     // Safety Equipment (5) — split by what the kit protects
@@ -261,6 +257,12 @@ $tree = [
         'Stainless steel, peacock safety and lightweight composite stirrup irons.'],
     'stirrup-treads' => ['martingales-stirrups-leathers', 3, 'Stirrup Treads', 'Sold in Pairs',
         'Rubber treads that grip the boot, sold in pairs to replace worn or missing ones.'],
+
+    // Girths (4) — the sheet runs them as two different size ranges
+    'girths-standard' => ['girths', 1, 'Standard Girths', '42" to 50"',
+        'Fleece lined, elastic and anti-chafe girths in the standard run, 42 to 50 inches.'],
+    'girths-dressage' => ['girths', 2, 'Dressage Girths', '22" to 30"',
+        'Short girths for a dressage saddle, 22 to 30 inches, so the buckles sit clear of the leg.'],
 
     // Shampoo & Skin Care (9)
     'shampoo' => ['shampoo-skin-care', 1, 'Shampoo', 'Washing Down',
@@ -569,6 +571,22 @@ foreach ($catalog as $item) {
         'meta_title'     => $seoCopy['products'][$item['name']]['title'] ?? null,
         'meta_desc'      => $seoCopy['products'][$item['name']]['desc'] ?? null,
     ]);
+
+    // Sizes and colours, from the shop's own stock sheet. Each group becomes a
+    // selector on the product page and travels with the line onto the quote.
+    $variantSort = 0;
+
+    foreach ($item['variants'] ?? [] as $label => $values) {
+        foreach ($values as $value) {
+            $db->insert('product_variants', [
+                'product_id' => $productId,
+                'label'      => $label,
+                'value'      => $value,
+                'sort_order' => $variantSort++,
+            ]);
+            $stats['variants'] = ($stats['variants'] ?? 0) + 1;
+        }
+    }
 
     $position = 0;
 

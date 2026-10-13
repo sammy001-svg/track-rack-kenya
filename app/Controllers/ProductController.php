@@ -45,6 +45,11 @@ class ProductController extends Controller
         'moores-leather-soap'                          => 'leather-soap',
         'calro-organic-neem-oil-shampoo-conditioner'   => 'organic-neem-oil-shampoo-conditioner',
 
+        // Renamed to match the stock sheet: one boot, several colours
+        'brushing-boots-navy'                          => 'brushing-boots',
+        'overreach-boots-red'                          => 'neoprene-overreach-boots',
+        'shires-rubber-overreach-boots'                => 'rubber-overreach-boots',
+
         // Merged into one schooling whip
         'braided-schooling-whip'                       => 'schooling-whip',
         'dressage-schooling-whip'                      => 'schooling-whip',

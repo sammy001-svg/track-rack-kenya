@@ -47,6 +47,10 @@ class ShopController extends Controller
         'mane-tail-care'           => 'detanglers',
         'skin-sun-care'            => 'skin-care',
         'hoof-coat-supplements'    => 'hoof-supplements',
+        // Regrouped from the client's sizes & colours sheet.
+        'bandages-wraps'           => 'first-aid',
+        'brushing-overreach-boots' => 'horse-boots',
+        'numnahs-squares'          => 'shaped-numnahs',
     ];
 
     public function category(string $slug): void

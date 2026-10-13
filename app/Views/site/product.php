@@ -129,19 +129,25 @@ foreach ($variants as $variant) {
         <?= csrf_field() ?>
         <input type="hidden" name="product_id" value="<?= (int) $product['id'] ?>">
 
+        <?php // A selector for each thing that varies — size, colour, pack —
+              // rather than one for the first and a note asking for the rest. ?>
         <?php if ($variantGroups !== []): ?>
-          <?php foreach ($variantGroups as $label => $values): ?>
-            <label class="field">
-              <span class="field__label"><?= e($label) ?></span>
-              <select class="field__select" name="variant">
-                <option value="">Select <?= e(strtolower($label)) ?> — or ask us to advise</option>
-                <?php foreach ($values as $value): ?>
-                  <option value="<?= e($label . ': ' . $value) ?>"><?= e($value) ?></option>
-                <?php endforeach; ?>
-              </select>
-            </label>
-            <?php break; // one selector; further specifics go in the notes field ?>
-          <?php endforeach; ?>
+          <div class="product__variants">
+            <?php foreach ($variantGroups as $label => $values): ?>
+              <label class="field">
+                <span class="field__label"><?= e($label) ?></span>
+                <select class="field__select" name="variant_options[<?= e($label) ?>]">
+                  <option value="">Select <?= e(strtolower($label)) ?></option>
+                  <?php foreach ($values as $value): ?>
+                    <option value="<?= e($value) ?>"><?= e($value) ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </label>
+            <?php endforeach; ?>
+            <p class="product__variants-note">
+              Not sure which? Leave it blank and we will advise with the quote.
+            </p>
+          </div>
         <?php endif; ?>
 
         <div class="qty-row">

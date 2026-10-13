@@ -2509,6 +2509,22 @@ body.header-hidden .filters { top: 0; }
 
 .product__form { margin-top: 1.75rem; display: grid; gap: 1rem; }
 
+/* Size, colour and pack sit side by side where there is room for them.
+   A product with three of them should not push the quote button off the
+   screen. */
+.product__variants { display: grid; gap: .9rem; }
+
+@media (min-width: 560px) {
+  .product__variants { grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+}
+
+.product__variants-note {
+  grid-column: 1 / -1;
+  margin: -.15rem 0 0;
+  font-size: .78rem;
+  color: var(--text-faint);
+}
+
 .qty-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: stretch; }
 
 .qty {

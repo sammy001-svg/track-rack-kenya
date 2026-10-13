@@ -63,6 +63,9 @@ $categories = $db->all('SELECT * FROM categories ORDER BY id');
 $brands     = $db->all('SELECT * FROM brands ORDER BY id');
 $products   = $db->all('SELECT * FROM products ORDER BY id');
 $images     = $db->all('SELECT * FROM product_images ORDER BY product_id, sort_order');
+// Sizes, colours and packs. The file already clears this table, so without
+// exporting them an import would strip every selector off the live site.
+$variants   = $db->all('SELECT * FROM product_variants ORDER BY product_id, sort_order');
 
 // Guard against exporting a half-built local database over the live one.
 if (count($products) === 0 || count($images) === 0) {
@@ -130,6 +133,9 @@ $sql .= insert('products', $products, $pdo) . "\n\n";
 $sql .= "-- Product images (" . count($images) . ")\n";
 $sql .= insert('product_images', $images, $pdo) . "\n\n";
 
+$sql .= "-- Sizes, colours and packs (" . count($variants) . ")\n";
+$sql .= insert('product_variants', $variants, $pdo) . "\n\n";
+
 $sql .= "COMMIT;\n";
 
 file_put_contents($out, $sql);
@@ -138,4 +144,5 @@ printf("%-18s %d\n", 'categories', count($categories));
 printf("%-18s %d\n", 'brands', count($brands));
 printf("%-18s %d\n", 'products', count($products));
 printf("%-18s %d\n", 'images', count($images));
+printf("%-18s %d\n", 'variants', count($variants));
 printf("\n%s  (%s KB)\n", realpath($out), round(strlen($sql) / 1024));
