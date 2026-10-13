@@ -88,17 +88,22 @@ class ShopController extends Controller
 
         $result = $productModel->catalog($filters, $page, $perPage);
 
-        // Which sub-categories to offer in the dropdown.
-        $pillar = null;
-        if ($category !== null) {
-            $pillar = $category['parent_id'] === null
-                ? $category
-                : $categoryModel->find((int) $category['parent_id']);
-        }
+        // The department this page sits under, however deep the category is.
+        $pillar = $category !== null ? $categoryModel->departmentOf($category) : null;
 
-        $subCategories = $pillar !== null
-            ? $categoryModel->childrenWithCounts((int) $pillar['id'])
+        // The dropdown offers what is one level below where you are: the
+        // sections of a department, or the sub-categories of a section.
+        $subCategories = $category !== null
+            ? $categoryModel->childrenWithCounts((int) $category['id'])
             : [];
+
+        // Whatever those options belong to, so the "All …" entry names it.
+        $subCategoryOf = $subCategories !== [] ? $category : null;
+
+        if ($subCategories === [] && $pillar !== null) {
+            $subCategories = $categoryModel->childrenWithCounts((int) $pillar['id']);
+            $subCategoryOf = $pillar;
+        }
 
         $heading = $category['name'] ?? 'The Catalog';
         $tagline = $category['tagline'] ?? 'Rider, Horse and Yard — the complete Tack Rack range.';
@@ -107,13 +112,25 @@ class ShopController extends Controller
         // rather than as one long list: a filter is something you reach for,
         // not the only way to find a girth. Inside a single section, or once a
         // filter is applied, the flat grid is the right answer.
-        $isLeaf  = $category !== null && $category['parent_id'] !== null;
+        // A page is a leaf when nothing sits beneath it — not when it happens
+        // to have a parent, now that sections can have sub-categories of
+        // their own.
+        $isLeaf  = $category !== null && $categoryModel->children((int) $category['id']) === [];
         $groups  = (!$this->isFiltered($filters, $subCategoryId) && !$isLeaf)
             ? $this->groupByCategory($category, $categoryModel, $productModel)
             : null;
 
+        // The section between the department and a sub-category, for the trail.
+        $parentCategory = null;
+        if ($category !== null && $category['parent_id'] !== null
+            && (int) $category['parent_id'] !== (int) ($pillar['id'] ?? 0)) {
+            $parentCategory = $categoryModel->find((int) $category['parent_id']);
+        }
+
         $this->view('site.shop', [
             'groups'        => $groups,
+            'parentCategory' => $parentCategory,
+            'subCategoryOf' => $subCategoryOf,
             'seo'           => $this->buildSeo($category, $pillar, $filters, $subCategoryId, $result),
             'bodyClass'     => 'page-shop',
             'heading'       => $heading,

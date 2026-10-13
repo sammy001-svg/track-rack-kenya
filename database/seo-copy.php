@@ -127,6 +127,108 @@ return [
             'title' => 'Yard & Stable Equipment',
             'desc'  => 'Feed buckets and tubs, haynets and the everyday kit that keeps a yard running. Chosen to survive Kenyan yards, stocked in Nairobi.',
         ],
+
+        // ---- Sub-categories ----
+        'hoof-oils-dressings' => [
+            'title' => 'Hoof Oils & Dressings',
+            'desc'  => 'Hoof oils, moisturisers and dressings brushed on to keep the wall and sole in condition. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'frog-sole-care' => [
+            'title' => 'Frog & Sole Care',
+            'desc'  => 'Cleansers, clay putties and sole paints for the frog and the underside of the hoof. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'hoof-repair' => [
+            'title' => 'Hoof Repair & Nail Hole Care',
+            'desc'  => 'Keratex waxes and compounds that seal cavities, rebuild missing horn and repair damage around nail holes. In stock in Nairobi.',
+        ],
+        'poultice-treatment-boots' => [
+            'title' => 'Poultices & Treatment Boots',
+            'desc'  => 'Ready-made hoof poultices and the rigid and fabric boots that hold a dressing on the hoof. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'farriery' => [
+            'title' => 'Farriery — Horseshoes & Nails',
+            'desc'  => 'Steel and aluminium horseshoes and Optima farrier nails, bundled by size. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'vitamins-minerals' => [
+            'title' => 'Vitamins, Minerals & Licks',
+            'desc'  => 'Vitamin and mineral premixes, limestone, Epsom salts, bicarbonate and mineral licks for the feed room. From Tack Rack, Nairobi.',
+        ],
+        'electrolytes' => [
+            'title' => 'Horse Electrolytes',
+            'desc'  => 'Electrolytes to replace the salts lost in sweat — in a tub, a bag or a ready-to-use oral syringe. Stocked in Nairobi.',
+        ],
+        'hoof-coat-supplements' => [
+            'title' => 'Hoof & Coat Supplements',
+            'desc'  => 'Biotin and the supplements fed to improve hoof horn and coat condition from the inside. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'herbs-tonics' => [
+            'title' => 'Herbs & Tonics for Horses',
+            'desc'  => 'Garlic, iron tonics and respiratory support, fed daily or through a hard spell. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'joint-supplements' => [
+            'title' => 'Joint Supplements for Horses',
+            'desc'  => 'Glucosamine, Cortaflex, devils claw and the rest of the joint range, fed in the feed. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'gels-clays-creams' => [
+            'title' => 'Leg Gels, Clays & Creams',
+            'desc'  => 'Cooling gels, natural clay, arnica and MSM creams that go on the leg after work. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'brushes' => [
+            'title' => 'Horse Brushes',
+            'desc'  => 'Body brushes for the shine, dandy brushes for the mud, and brushes for mane and tail. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'curry-combs' => [
+            'title' => 'Rubber & Plastic Curry Combs',
+            'desc'  => 'Curry combs in rubber and plastic, used in a circular motion to lift dust and loose hair before body brushing. In Nairobi.',
+        ],
+        'combs-plaiting' => [
+            'title' => 'Mane Combs & Plaiting Bands',
+            'desc'  => 'Metal mane combs and plaiting bands, for pulling, plaiting and turning out tidily. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'grooming-tools' => [
+            'title' => 'Sweat Scrapers, Scoops & Boxes',
+            'desc'  => 'Sweat scrapers, feed scoops and the tack box that keeps a grooming kit together. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'breeches-jodhpurs' => [
+            'title' => 'Breeches & Jodhpurs',
+            'desc'  => 'Show breeches, schooling jodhpurs and full-seat tights, sized in person at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'footwear-chaps' => [
+            'title' => 'Jodhpur Boots, Chaps & Gaiters',
+            'desc'  => 'Jodhpur boots, half chaps and leather gaiters, fitted to the foot and the calf at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'hat-silks-numbers' => [
+            'title' => 'Hat Silks & Competition Numbers',
+            'desc'  => 'Hat silks and competition number holders — the small things that finish a turnout. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'brushing-overreach-boots' => [
+            'title' => 'Brushing & Overreach Boots',
+            'desc'  => 'Brushing and overreach boots, fetlock rings and temporary shoe boots. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'bandages-wraps' => [
+            'title' => 'Horse Bandages & Wraps',
+            'desc'  => 'Fleece and cohesive bandages, with the quilted pads and gamgee that go underneath. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'numnahs-squares' => [
+            'title' => 'Numnahs & Dressage Squares',
+            'desc'  => 'Shaped GP numnahs and square-cut dressage pads, washable and cut clear of the withers. Stocked in Nairobi since 1997.',
+        ],
+        'pads-blankets' => [
+            'title' => 'Saddle Pads & Blankets',
+            'desc'  => 'Prolite and gel pads that sit under the saddle, and fleece rugs for after work. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'shampoos-conditioners' => [
+            'title' => 'Horse Shampoos & Conditioners',
+            'desc'  => 'Aloe vera, lemon and neem oil shampoos and conditioners for washing horses down. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'mane-tail-care' => [
+            'title' => 'Mane & Tail Care',
+            'desc'  => 'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'skin-sun-care' => [
+            'title' => 'Horse Skin & Sun Care',
+            'desc'  => 'Sunscreen for pink noses, soothing gels for itching and barrier creams for heels. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
     ],
 
     // ---------------------------------------------------------------

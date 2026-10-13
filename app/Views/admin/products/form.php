@@ -274,7 +274,7 @@ $stockStatuses = ['in_stock' => 'In stock', 'low_stock' => 'Low stock', 'on_orde
               <option value="">Uncategorised</option>
               <?php foreach ($categories as $cat): ?>
                 <option value="<?= (int) $cat['id'] ?>" <?= (int) $val('category_id', 0) === $cat['id'] ? 'selected' : '' ?>>
-                  <?= $cat['depth'] > 0 ? '— ' : '' ?><?= e($cat['name']) ?>
+                  <?= str_repeat('— ', (int) $cat['depth']) ?><?= e($cat['name']) ?>
                 </option>
               <?php endforeach; ?>
             </select>

@@ -29,11 +29,22 @@ class ProductController extends Controller
             Session::set('_viewed_products', $seen);
         }
 
-        $pillar = null;
-        if (!empty($product['category_parent_id'])) {
-            $pillar = (new Category())->find((int) $product['category_parent_id']);
-        } elseif (!empty($product['category_id'])) {
-            $pillar = (new Category())->find((int) $product['category_id']);
+        // The department, and the section in between when the product sits in
+        // a sub-category — department > section > sub-category.
+        $categories = new Category();
+        $pillar     = null;
+        $section    = null;
+
+        if (!empty($product['category_id'])) {
+            $own = $categories->find((int) $product['category_id']);
+
+            if ($own !== null) {
+                $pillar = $categories->departmentOf($own);
+
+                if ($own['parent_id'] !== null && (int) $own['parent_id'] !== (int) $pillar['id']) {
+                    $section = $categories->find((int) $own['parent_id']);
+                }
+            }
         }
 
         $images = $model->images($productId);
@@ -49,6 +60,9 @@ class ProductController extends Controller
         $trail['Catalog'] = url('/shop');
         if ($pillar !== null) {
             $trail[$pillar['name']] = url('/shop/' . $pillar['slug']);
+        }
+        if ($section !== null) {
+            $trail[$section['name']] = url('/shop/' . $section['slug']);
         }
         if (!empty($product['category_slug']) && ($pillar['slug'] ?? null) !== $product['category_slug']) {
             $trail[$product['category_name']] = url('/shop/' . $product['category_slug']);

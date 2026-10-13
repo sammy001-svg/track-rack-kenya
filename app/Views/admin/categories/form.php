@@ -108,15 +108,17 @@ $action = $isNew ? url('/admin/categories/store') : url('/admin/categories/' . $
           <label class="a-field">
             <span class="a-label">Parent section</span>
             <select class="a-select" name="parent_id">
-              <option value="">Top level (a pillar)</option>
-              <?php foreach ($pillars as $pillar): ?>
-                <?php if (!$isNew && (int) $pillar['id'] === (int) $category['id']) continue; ?>
-                <option value="<?= (int) $pillar['id'] ?>" <?= (int) $val('parent_id', 0) === (int) $pillar['id'] ? 'selected' : '' ?>>
-                  <?= e($pillar['name']) ?>
+              <option value="">Top level (a department)</option>
+              <?php foreach ($parentOptions as $option): ?>
+                <option value="<?= (int) $option['id'] ?>" <?= (int) $val('parent_id', 0) === (int) $option['id'] ? 'selected' : '' ?>>
+                  <?= str_repeat('— ', (int) $option['depth']) ?><?= e($option['name']) ?>
                 </option>
               <?php endforeach; ?>
             </select>
-            <span class="a-hint">Top-level categories appear as pillars on the homepage.</span>
+            <span class="a-hint">
+              Top level is a department (Rider, Horse, Yard). Choose a department to make a
+              section, or a section to make a sub-category. Three levels is the limit.
+            </span>
           </label>
 
           <label class="a-field">

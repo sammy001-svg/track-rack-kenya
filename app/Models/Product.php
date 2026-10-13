@@ -18,9 +18,12 @@ class Product extends Model
           LIMIT 1) AS primary_image,
         -- Top-level section (rider/horse/stable) this product sits under, so a
         -- card with no photograph can fall back to the right section image.
-        (SELECT COALESCE(parent.slug, self.slug)
+        -- Climbs to the top-level department, which may now be two hops up:
+        -- department > section > sub-category.
+        (SELECT COALESCE(grandparent.slug, parent.slug, self.slug)
            FROM categories self
            LEFT JOIN categories parent ON parent.id = self.parent_id
+           LEFT JOIN categories grandparent ON grandparent.id = parent.parent_id
           WHERE self.id = p.category_id) AS pillar_slug";
 
     /**

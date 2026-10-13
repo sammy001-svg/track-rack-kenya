@@ -24,6 +24,9 @@ $cardFallback = pillar_art($pillar['slug'] ?? null);
       <?php if ($pillar !== null && ($category['id'] ?? 0) !== ($pillar['id'] ?? 0)): ?>
         <li><a href="<?= e(url('/shop/' . $pillar['slug'])) ?>"><?= e($pillar['name']) ?></a></li>
       <?php endif; ?>
+      <?php if (!empty($parentCategory)): ?>
+        <li><a href="<?= e(url('/shop/' . $parentCategory['slug'])) ?>"><?= e($parentCategory['name']) ?></a></li>
+      <?php endif; ?>
       <?php if ($category !== null): ?><li><?= e($category['name']) ?></li><?php endif; ?>
     </ul>
 
@@ -82,7 +85,7 @@ if ($activeSubId > 0) {
         <div class="select">
           <label class="sr-only" for="f-category">Category</label>
           <select id="f-category" name="category">
-            <option value="">All <?= e($pillar['name'] ?? 'categories') ?></option>
+            <option value="">All <?= e($subCategoryOf['name'] ?? $pillar['name'] ?? 'categories') ?></option>
             <?php foreach ($subCategories as $sub): ?>
               <option value="<?= (int) $sub['id'] ?>" <?= $activeSubId === (int) $sub['id'] ? 'selected' : '' ?>>
                 <?= e($sub['name']) ?> (<?= (int) $sub['product_count'] ?>)

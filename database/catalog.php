@@ -433,7 +433,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Quilted GP Numnah — Red',
-    'category' => 'numnahs-saddlepads',
+    'category' => 'numnahs-squares',
     'short'    => 'A shaped, quilted numnah in red, cut for a GP saddle.',
     'description' => "A shaped numnah cut to follow the line of a general purpose saddle, quilted cotton with a soft lining and girth and billet straps. Washes clean and holds its colour.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -445,7 +445,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Teal',
-    'category' => 'numnahs-saddlepads',
+    'category' => 'numnahs-squares',
     'short'    => 'The same shaped GP numnah in teal.',
     'description' => "A shaped GP numnah in teal, quilted cotton with a soft lining. A colour that looks well on a grey or a bay without being loud.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -456,7 +456,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Black',
-    'category' => 'numnahs-saddlepads',
+    'category' => 'numnahs-squares',
     'short'    => 'A shaped GP numnah in black — the one that always looks tidy.',
     'description' => "A shaped GP numnah in black. It does not show dust or a stray hoof mark the way a white one does, which makes it the pad most people reach for day to day.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -467,7 +467,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Navy',
-    'category' => 'numnahs-saddlepads',
+    'category' => 'numnahs-squares',
     'short'    => 'A shaped GP numnah in navy.',
     'description' => "A shaped GP numnah in navy, quilted cotton with a soft lining and girth and billet straps.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -479,7 +479,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Square — White',
-    'category' => 'numnahs-saddlepads',
+    'category' => 'numnahs-squares',
     'featured' => true,
     'short'    => 'A crisp white dressage square for the competition ring.',
     'description' => "A square-cut dressage pad in white — correct turnout for a dressage test and smart enough for a clinic. Quilted cotton with a wicking lining that pulls sweat away from the back.\n\nWashes clean without going grey, which is more than can be said for some.",
@@ -491,7 +491,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Square — Black',
-    'category' => 'numnahs-saddlepads',
+    'category' => 'numnahs-squares',
     'short'    => 'A square-cut dressage pad in black, for schooling.',
     'description' => "A square-cut dressage pad in black — the everyday schooling pad, keeping the white one clean for competition day.",
     'specs'    => "Shape: dressage square\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -506,7 +506,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Ezi-Groom Body Brush',
-    'category' => 'grooming-equipment',
+    'category' => 'brushes',
     'brand'    => 'Shires',
     'featured' => true,
     'short'    => 'A soft body brush with a chunky grip, from the Ezi-Groom range.',
@@ -521,7 +521,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Ezi-Groom Dandy Brush',
-    'category' => 'grooming-equipment',
+    'category' => 'brushes',
     'brand'    => 'Shires',
     'short'    => 'A stiff dandy brush for lifting mud and dried sweat.',
     'description' => "A stiff-bristled dandy brush for getting dried mud and sweat off the coat before you start with the softer brushes. The moulded grip takes the effort out of it.\n\nToo stiff for the face or any clipped area — keep it for the body and legs.",
@@ -536,7 +536,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Body Brushes — Colour Range',
-    'category' => 'grooming-equipment',
+    'category' => 'brushes',
     'short'    => 'Soft body brushes with a moulded grip, in a choice of colours.',
     'description' => "Soft body brushes with a moulded grip, stocked in a range of colours so every horse on the yard can have its own. Keeping one kit per horse is the simplest way to stop skin conditions moving between animals.",
     'specs'    => "Bristle: soft, for body brushing\nGrip: moulded with a hand strap\nColours: several, subject to stock",
@@ -547,7 +547,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dandy Brushes — Colour Range',
-    'category' => 'grooming-equipment',
+    'category' => 'brushes',
     'short'    => 'Stiff dandy brushes in a choice of colours.',
     'description' => "Stiff-bristled dandy brushes for mud and dried sweat, stocked in several colours. A hard-working brush that earns its keep on a wet-season yard.",
     'specs'    => "Bristle: stiff\nColours: several, subject to stock",
@@ -560,7 +560,7 @@ $firstShoot = [
     // Listed as rubber until the shop corrected it: this strap-style comb is
     // plastic. The rubber one is the Shires oval comb below.
     'name'     => 'Plastic Curry Comb',
-    'category' => 'grooming-equipment',
+    'category' => 'curry-combs',
     'featured' => true,
     'short'    => 'A plastic curry comb with an adjustable hand strap.',
     'description' => "A plastic curry comb used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing. The adjustable strap holds it against the palm so you are not gripping it all the way round the horse.\n\nThe single most useful item in any grooming kit.",
@@ -579,7 +579,7 @@ $firstShoot = [
     // Only the strap-style photo belongs here. 1S3A5486, which used to sit
     // alongside it, shows the oval rubber comb and has moved to that product.
     'name'     => 'Plastic Curry Combs — Colour Range',
-    'category' => 'grooming-equipment',
+    'category' => 'curry-combs',
     'short'    => 'Plastic curry combs with a hand strap, in a choice of colours.',
     'description' => "The same plastic curry comb with an adjustable hand strap, stocked in a range of colours. Useful for colour-coding a kit per horse on a busy yard.",
     'specs'    => "Material: plastic\nStrap: adjustable hand strap\nColours: blue, black, purple, subject to stock",
@@ -592,7 +592,7 @@ $firstShoot = [
     // The first two photographs were supplied by the shop rather than taken
     // in the studio shoot, so they are on a table, not a white backdrop.
     'name'     => 'Shires Rubber Curry Comb',
-    'category' => 'grooming-equipment',
+    'category' => 'curry-combs',
     'brand'    => 'Shires',
     'short'    => 'An oval rubber curry comb from Shires, with a moulded hand grip.',
     'description' => "An oval rubber curry comb from Shires, with a moulded grip across the back and three rings of rubber teeth. Used in a circular motion to lift dust, loose hair and scurf out of the coat before body brushing.\n\nShown in blue, and also stocked in black, red and purple.",
@@ -606,7 +606,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Mane and Tail Brush',
-    'category' => 'grooming-equipment',
+    'category' => 'brushes',
     'short'    => 'A cushioned brush for working through mane and tail without breaking hair.',
     'description' => "A cushioned brush with rounded pins for working through a mane and tail. Start at the bottom and work up, and you will keep far more tail than you will with a comb.\n\nAvailable in several colours.",
     'specs'    => "Pins: rounded, cushioned pad\nHandle: moulded grip\nColours: several, subject to stock",
@@ -618,7 +618,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Stainless Steel Mane Comb',
-    'category' => 'grooming-equipment',
+    'category' => 'combs-plaiting',
     'short'    => 'A traditional metal mane comb for pulling and plaiting.',
     'description' => "A solid stainless steel mane comb for pulling a mane and for sectioning it up when plaiting. Small, cheap and it will outlast almost everything else in the kit.",
     'specs'    => "Material: stainless steel\nUse: mane pulling and plaiting",
@@ -629,7 +629,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Ezi-Groom Plaiting Bands',
-    'category' => 'grooming-equipment',
+    'category' => 'combs-plaiting',
     'brand'    => 'Shires',
     'short'    => 'Plaiting bands in white and black, sold by the bag.',
     'description' => "Plaiting bands for manes and tails, sold in generous bags. White for a light mane, black for a dark one — matched properly they disappear completely in the plait.\n\nBuy more than you think you need; they are never where you left them.",
@@ -642,7 +642,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'HY Grooming and Tack Box',
-    'category' => 'grooming-equipment',
+    'category' => 'grooming-tools',
     'brand'    => 'HY',
     'featured' => true,
     'short'    => 'A sturdy plastic tack box with a lift-out tray and a lockable catch.',
@@ -660,7 +660,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Beige Riding Breeches',
-    'category' => 'clothing',
+    'category' => 'breeches-jodhpurs',
     'featured' => true,
     'short'    => 'Classic beige breeches with a knee patch — correct for the show ring.',
     'description' => "Beige breeches cut for riding, with a shaped knee patch and enough stretch to be comfortable through a long schooling session. Beige is correct turnout for showing and most competition, and smart enough to teach in.",
@@ -673,7 +673,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Navy Riding Breeches',
-    'category' => 'clothing',
+    'category' => 'breeches-jodhpurs',
     'short'    => 'Navy breeches with a contrast panel, for schooling.',
     'description' => "Navy breeches with a bright contrast panel down the leg — a schooling breech rather than a competition one, and hard-wearing enough for daily use.",
     'specs'    => "Colour: navy with contrast panel\nFabric: stretch riding fabric\nWaist: mid rise",
@@ -685,7 +685,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Full Seat Breeches',
-    'category' => 'clothing',
+    'category' => 'breeches-jodhpurs',
     'short'    => 'Black breeches with a full grip seat, for flatwork.',
     'description' => "Black breeches with a full grip seat — the patterned panel runs from the knee up through the seat, holding the rider in the saddle without gluing them to it. The choice for dressage and serious flatwork.",
     'specs'    => "Colour: black\nSeat: full grip seat\nFabric: four-way stretch\nWaist: mid rise",
@@ -700,7 +700,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'HY Leather Jodhpur Boots — Black',
-    'category' => 'clothing',
+    'category' => 'footwear-chaps',
     'brand'    => 'HY',
     'featured' => true,
     'short'    => 'Black leather jodhpur boots with elasticated sides.',
@@ -714,7 +714,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'HY Leather Jodhpur Boots — Brown',
-    'category' => 'clothing',
+    'category' => 'footwear-chaps',
     'brand'    => 'HY',
     'short'    => 'The same leather jodhpur boot in warm brown.',
     'description' => "Leather jodhpur boots in brown, with elasticated sides and a pull tab. Brown boots suit brown tack and are the traditional choice for showing and Pony Club.",
@@ -729,7 +729,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Half Chaps',
-    'category' => 'clothing',
+    'category' => 'footwear-chaps',
     'short'    => 'Zip-up half chaps in black, worn over jodhpur boots.',
     'description' => "Half chaps in black, worn over jodhpur boots to protect the lower leg and give the grip a long boot would. A rear zip with a guard keeps the pull tab clear of the girth.",
     'specs'    => "Closure: rear zip with guard\nColour: black\nUse: worn over jodhpur boots",
@@ -740,7 +740,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Brown Leather Gaiters',
-    'category' => 'clothing',
+    'category' => 'footwear-chaps',
     'short'    => 'Leather gaiters in brown, studded, for a smarter turnout.',
     'description' => "Leather gaiters in brown, fastening with studs rather than a zip. Worn over jodhpur boots they give the clean line of a long boot at a fraction of the cost, and they break in beautifully.",
     'specs'    => "Material: leather\nClosure: studs\nColour: brown\nUse: worn over jodhpur boots",
@@ -755,7 +755,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Competition Number Holder',
-    'category' => 'clothing',
+    'category' => 'hat-silks-numbers',
     'short'    => 'A clear armband holder for competition numbers.',
     'description' => "A clear plastic holder with an elastic strap, worn on the arm to display a competition number. Small, cheap, and the thing everyone forgets until the morning of the show.",
     'specs'    => "Material: clear plastic with elastic strap\nWear: on the upper arm\nIncludes: number card where shown",
@@ -767,7 +767,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'LeMieux Hat Silk',
-    'category' => 'clothing',
+    'category' => 'hat-silks-numbers',
     'brand'    => 'LeMieux',
     'short'    => 'A navy hat silk with a pom-pom, from LeMieux.',
     'description' => "A hat silk that pulls over a skull cap to smarten it up and keep the sun off. Navy with a contrast peak and a pom-pom on top.\n\nA silk is also the easiest way to show yard or team colours.",
@@ -779,7 +779,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Hat Silk — Red',
-    'category' => 'clothing',
+    'category' => 'hat-silks-numbers',
     'short'    => 'A plain red hat silk for a skull cap.',
     'description' => "A plain red hat silk that pulls over a skull cap. Bright, easy to spot across a cross country course, and a simple way to run yard colours.",
     'specs'    => "Fit: pulls over a standard skull cap\nColour: red",

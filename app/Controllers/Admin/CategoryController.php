@@ -37,11 +37,24 @@ class CategoryController extends Controller
 
     private function form(?array $category): void
     {
+        $model = new Category();
+
+        // Anything that may legally be a parent: departments and sections, but
+        // not sub-categories (three levels is the limit), and never the
+        // category itself or one of its own descendants.
+        $blocked = $category !== null ? $model->descendantIds((int) $category['id']) : [];
+
+        $parentOptions = array_values(array_filter(
+            $model->flatList(),
+            static fn (array $c): bool => $c['depth'] < 2 && !in_array((int) $c['id'], $blocked, true)
+        ));
+
         $this->view('admin.categories.form', [
-            'pageTitle' => $category === null ? 'New category' : 'Edit category',
-            'category'  => $category,
-            'pillars'   => (new Category())->pillars(false),
-            'errors'    => Session::errors(),
+            'pageTitle'     => $category === null ? 'New category' : 'Edit category',
+            'category'      => $category,
+            'pillars'       => $model->pillars(false),
+            'parentOptions' => $parentOptions,
+            'errors'        => Session::errors(),
         ], 'layouts.admin');
 
         Session::clearOld();
@@ -87,10 +100,32 @@ class CategoryController extends Controller
             $data['parent_id'] = null;
         }
 
-        // A pillar with children may not be demoted into a child itself.
-        if ($data['parent_id'] !== null && $model->children($categoryId, false) !== []) {
-            Session::flash('error', 'This category has sub-categories, so it must stay a top-level section.');
-            $data['parent_id'] = null;
+        // A category may not be filed under one of its own descendants — that
+        // would cut the branch off the tree.
+        if ($data['parent_id'] !== null
+            && in_array((int) $data['parent_id'], $model->descendantIds($categoryId), true)) {
+            Session::flash('error', 'A category cannot sit inside itself or one of its own sub-categories.');
+            $data['parent_id'] = $existing['parent_id'] ?? null;
+        }
+
+        // Three levels is the limit: department > section > sub-category. So a
+        // category can sit one level below a department, and anything that has
+        // sub-categories of its own has to stay a section.
+        if ($data['parent_id'] !== null) {
+            $parent = $model->find((int) $data['parent_id']);
+
+            if ($parent !== null) {
+                $parentDepth = (int) count($model->ancestorIds((int) $parent['id']));
+                $hasChildren = $model->children($categoryId, false) !== [];
+                $wouldBe     = $parentDepth + 1;
+
+                if ($wouldBe > 2 || ($hasChildren && $wouldBe > 1)) {
+                    Session::flash('error', $hasChildren
+                        ? 'This category has sub-categories of its own, so it must stay directly under a department.'
+                        : 'Categories go three levels deep at most: department, section, sub-category.');
+                    $data['parent_id'] = $existing['parent_id'] ?? null;
+                }
+            }
         }
 
         $data['slug'] = $model->uniqueSlug(trim((string) ($_POST['slug'] ?? '')) ?: $data['name'], $categoryId);

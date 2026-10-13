@@ -163,6 +163,76 @@ $tree = [
         'Saddle soaps, leather dressings and dubbin that keep tack alive in a dry, high-altitude climate.'],
     'yard-equipment' => ['yard', 11, 'Yard Equipment', 'Buckets, Haynets & Tubs',
         'Feed buckets and tubs, haynets and the everyday kit that keeps a yard running.'],
+
+    // ---- Sub-categories, under the eight largest sections ----
+    // The shop's stock sheets stop at section level; these split the long
+    // ones so no page runs to twenty-odd products in a single list.
+
+    // Hoof Care (21)
+    'hoof-oils-dressings' => ['hoof-care', 1, 'Oils & Dressings', 'Daily Conditioning',
+        'Hoof oils, moisturisers and dressings brushed on to keep the wall and sole in condition.'],
+    'frog-sole-care' => ['hoof-care', 2, 'Frog & Sole Care', 'Cleansers, Pastes & Paints',
+        'Cleansers, clay putties and sole paints for the frog and the underside of the hoof.'],
+    'hoof-repair' => ['hoof-care', 3, 'Hoof Repair', 'Cavities, Cracks & Nail Holes',
+        'Waxes and compounds that seal cavities, rebuild missing horn and repair damage around nail holes.'],
+    'poultice-treatment-boots' => ['hoof-care', 4, 'Poultices & Treatment Boots', 'Soaking & Dressing',
+        'Ready-made poultices, and the rigid and fabric boots that hold a dressing on the hoof.'],
+    'farriery' => ['hoof-care', 5, 'Farriery', 'Shoes & Nails',
+        'Steel and aluminium horseshoes and farrier nails, bundled by size.'],
+
+    // Feed Supplements (17)
+    'vitamins-minerals' => ['feed-supplements', 1, 'Vitamins & Minerals', 'Premixes, Salts & Licks',
+        'Vitamin and mineral premixes, limestone, salts, bicarbonate and mineral licks for the feed room.'],
+    'electrolytes' => ['feed-supplements', 2, 'Electrolytes', 'Powders & Pastes',
+        'Electrolytes to replace the salts lost in sweat, in a tub, a bag or a ready-to-use syringe.'],
+    'hoof-coat-supplements' => ['feed-supplements', 3, 'Hoof & Coat', 'Biotin & Conditioning',
+        'Biotin and the supplements fed to improve hoof horn and coat condition from the inside.'],
+    'herbs-tonics' => ['feed-supplements', 4, 'Herbs & Tonics', 'Garlic, Iron & Respiratory',
+        'Garlic, iron tonics and respiratory support, fed daily or through a hard spell.'],
+
+    // Joint & Muscle Care (13)
+    'joint-supplements' => ['joint-muscle-care', 1, 'Joint Supplements', 'Fed Daily',
+        'Glucosamine, devils claw and the rest of the joint range, fed in the feed.'],
+    'gels-clays-creams' => ['joint-muscle-care', 2, 'Gels, Clays & Creams', 'Applied to the Leg',
+        'Cooling gels, clays, arnica and MSM creams that go on the leg after work.'],
+
+    // Grooming Equipment (13)
+    'brushes' => ['grooming-equipment', 1, 'Brushes', 'Body & Dandy',
+        'Body brushes for the shine, dandy brushes for the mud, and brushes for mane and tail.'],
+    'curry-combs' => ['grooming-equipment', 2, 'Curry Combs', 'Rubber & Plastic',
+        'Rubber and plastic curry combs, used in a circular motion to lift dust and loose hair.'],
+    'combs-plaiting' => ['grooming-equipment', 3, 'Combs & Plaiting', 'Manes & Tails',
+        'Metal mane combs and plaiting bands, for pulling, plaiting and turning out tidily.'],
+    'grooming-tools' => ['grooming-equipment', 4, 'Grooming Tools', 'Scrapers, Scoops & Boxes',
+        'Sweat scrapers, feed scoops and the tack box that keeps a grooming kit together.'],
+
+    // Clothing (10)
+    'breeches-jodhpurs' => ['clothing', 1, 'Breeches & Jodhpurs', 'Show & Schooling',
+        'Show breeches, schooling jodhpurs and full-seat tights, sized in person at the shop.'],
+    'footwear-chaps' => ['clothing', 2, 'Footwear & Chaps', 'Boots, Chaps & Gaiters',
+        'Jodhpur boots, half chaps and leather gaiters, fitted to the foot and the calf.'],
+    'hat-silks-numbers' => ['clothing', 3, 'Hat Silks & Numbers', 'Finishing the Turnout',
+        'Hat silks and competition number holders — the small things that finish a turnout.'],
+
+    // Horse Boots (10)
+    'brushing-overreach-boots' => ['horse-boots', 1, 'Boots', 'Brushing, Overreach & Hoof',
+        'Brushing and overreach boots, fetlock rings and temporary shoe boots.'],
+    'bandages-wraps' => ['horse-boots', 2, 'Bandages & Wraps', 'Fleece, Cohesive & Pads',
+        'Fleece and cohesive bandages, with the quilted pads and gamgee that go underneath.'],
+
+    // Numnahs & Saddlepads (9)
+    'numnahs-squares' => ['numnahs-saddlepads', 1, 'Numnahs & Squares', 'Shaped & Square Cut',
+        'Shaped GP numnahs and square-cut dressage pads, washable and cut clear of the withers.'],
+    'pads-blankets' => ['numnahs-saddlepads', 2, 'Pads & Blankets', 'Riser, Gel & Fleece',
+        'Prolite and gel pads that sit under the saddle, and fleece rugs for after work.'],
+
+    // Shampoo & Skin Care (9)
+    'shampoos-conditioners' => ['shampoo-skin-care', 1, 'Shampoos & Conditioners', 'Washing Down',
+        'Aloe vera, lemon and neem oil shampoos and conditioners for washing horses down.'],
+    'mane-tail-care' => ['shampoo-skin-care', 2, 'Mane & Tail', 'Detangling & Shine',
+        'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day.'],
+    'skin-sun-care' => ['shampoo-skin-care', 3, 'Skin & Sun', 'Soothing & Protecting',
+        'Sunscreen for pink noses, soothing gels for itching, and barrier creams for heels.'],
 ];
 
 foreach ($tree as $slug => [$parentSlug, $sort, $name, $tagline, $desc]) {

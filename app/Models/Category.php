@@ -47,18 +47,24 @@ class Category extends Model
     {
         $where = $activeOnly ? 'AND c.`is_active` = 1' : '';
 
+        // The count takes in sub-categories too, so a section whose products
+        // all live one level further down does not read as empty.
         return $this->db()->all(
-            "SELECT c.*, COUNT(p.id) AS product_count
+            "SELECT c.*, (
+                 SELECT COUNT(*) FROM `products` p
+                  WHERE p.is_active = 1
+                    AND (p.category_id = c.id
+                         OR p.category_id IN (SELECT g.id FROM `categories` g WHERE g.parent_id = c.id))
+             ) AS product_count
              FROM `categories` c
-             LEFT JOIN `products` p ON p.category_id = c.id AND p.is_active = 1
              WHERE c.`parent_id` = :pid {$where}
-             GROUP BY c.id
              ORDER BY c.`sort_order` ASC, c.`name` ASC",
             ['pid' => $parentId]
         );
     }
 
     /** Flat list for <select> menus, children prefixed for readability. */
+    /** Every category in tree order, with its depth, for admin selects. */
     public function flatList(): array
     {
         $flat = [];
@@ -68,6 +74,12 @@ class Category extends Model
 
             foreach ($this->children((int) $pillar['id'], false) as $child) {
                 $flat[] = ['id' => (int) $child['id'], 'name' => $child['name'], 'depth' => 1];
+
+                // Sections can have sub-categories, and a product is usually
+                // filed on one of those, so they have to be selectable.
+                foreach ($this->children((int) $child['id'], false) as $grandchild) {
+                    $flat[] = ['id' => (int) $grandchild['id'], 'name' => $grandchild['name'], 'depth' => 2];
+                }
             }
         }
 
@@ -83,19 +95,73 @@ class Category extends Model
     }
 
     /** The category itself plus, for a pillar, all of its children. */
+    /**
+     * A category and everything beneath it, however deep.
+     *
+     * Sections can have sub-categories, so one hop down is not enough: a
+     * product filed under Hoof Care > Farriery has to appear on the Hoof Care
+     * page and on the Yard page as well.
+     */
     public function descendantIds(int $categoryId): array
     {
-        $ids  = [$categoryId];
-        $rows = $this->db()->all(
-            'SELECT `id` FROM `categories` WHERE `parent_id` = :pid',
-            ['pid' => $categoryId]
-        );
+        $ids   = [$categoryId];
+        $front = [$categoryId];
 
-        foreach ($rows as $row) {
-            $ids[] = (int) $row['id'];
+        // Bounded in case a parent is ever pointed at its own descendant.
+        for ($depth = 0; $depth < 5 && $front !== []; $depth++) {
+            $rows = $this->db()->all(
+                'SELECT `id` FROM `categories` WHERE `parent_id` IN (' . implode(',', array_map('intval', $front)) . ')'
+            );
+
+            $front = [];
+            foreach ($rows as $row) {
+                $id = (int) $row['id'];
+                if (!in_array($id, $ids, true)) {
+                    $ids[]   = $id;
+                    $front[] = $id;
+                }
+            }
         }
 
         return $ids;
+    }
+
+    /**
+     * The ids above a category, nearest first. Its length is the category's
+     * depth: empty for a department, one for a section, two for a
+     * sub-category.
+     *
+     * @return array<int, int>
+     */
+    public function ancestorIds(int $categoryId): array
+    {
+        $ids     = [];
+        $current = $this->find($categoryId);
+
+        for ($depth = 0; $depth < 5 && $current !== null && $current['parent_id'] !== null; $depth++) {
+            $ids[]   = (int) $current['parent_id'];
+            $current = $this->find((int) $current['parent_id']);
+        }
+
+        return $ids;
+    }
+
+    /** The top-level department a category sits under — itself if it is one. */
+    public function departmentOf(array $category): array
+    {
+        $current = $category;
+
+        for ($depth = 0; $depth < 5 && $current['parent_id'] !== null; $depth++) {
+            $parent = $this->find((int) $current['parent_id']);
+
+            if ($parent === null) {
+                break;
+            }
+
+            $current = $parent;
+        }
+
+        return $current;
     }
 
     public function parentOf(?int $parentId): ?array
