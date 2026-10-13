@@ -40,11 +40,9 @@ class HomeController extends Controller
             'transparentHeader' => true,
             'departments' => $departments,
             'services'    => (new Service())->active(),
-            'heroSlides'  => $products->showcase(6),
-            // More than the page shows: the three product sections pick from
-            // these and each takes what the ones above it have not used.
-            'featured'    => $products->featured(16),
-            'latest'      => $products->latest(30),
+            // Three pieces to stand for the catalogue. showcase() spreads
+            // its picks across categories, so they are not three girths.
+            'selected'    => array_slice($products->showcase(3), 0, 3),
         ]);
     }
 }
