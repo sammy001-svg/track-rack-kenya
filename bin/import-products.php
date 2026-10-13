@@ -572,22 +572,6 @@ foreach ($catalog as $item) {
         'meta_desc'      => $seoCopy['products'][$item['name']]['desc'] ?? null,
     ]);
 
-    // Sizes and colours, from the shop's own stock sheet. Each group becomes a
-    // selector on the product page and travels with the line onto the quote.
-    $variantSort = 0;
-
-    foreach ($item['variants'] ?? [] as $label => $values) {
-        foreach ($values as $value) {
-            $db->insert('product_variants', [
-                'product_id' => $productId,
-                'label'      => $label,
-                'value'      => $value,
-                'sort_order' => $variantSort++,
-            ]);
-            $stats['variants'] = ($stats['variants'] ?? 0) + 1;
-        }
-    }
-
     $position = 0;
 
     foreach ($files as [$path, $file, $caption]) {
@@ -624,6 +608,48 @@ foreach ($catalog as $item) {
 //  is filed under it — a category with products is never touched, so a
 //  section added by hand in the admin survives.
 // ---------------------------------------------------------------------
+
+// ---------------------------------------------------------------------
+//  Sizes, colours and packs
+//
+//  These come from the client's sizes & colours sheet rather than from each
+//  product's own entry, because the sheet describes types of product — every
+//  girth takes the same size run — and because the live site, whose products
+//  are named differently, has to be able to apply the same list. The one copy
+//  lives in database/variants.php and is keyed by slug.
+// ---------------------------------------------------------------------
+$sheet = require __DIR__ . '/../database/variants.php';
+
+foreach ($sheet as $label => $row) {
+    foreach ($row['products'] as $slug) {
+        $product = $db->one('SELECT id FROM products WHERE slug = :s', ['s' => $slug]);
+
+        if ($product === null) {
+            continue;   // a slug that belongs to the live catalogue, not ours
+        }
+
+        if ($dryRun) {
+            continue;
+        }
+
+        $sort = 0;
+
+        foreach ($row['variants'] as $group => $values) {
+            foreach ($values as $value) {
+                $db->insert('product_variants', [
+                    'product_id' => (int) $product['id'],
+                    'label'      => $group,
+                    'value'      => $value,
+                    'sort_order' => $sort++,
+                ]);
+                $stats['variants'] = ($stats['variants'] ?? 0) + 1;
+            }
+        }
+    }
+}
+
+out(sprintf('  variants          %d option(s) from the sizes sheet', $stats['variants'] ?? 0));
+out();
 
 $obsolete = $db->all(
     'SELECT c.id, c.slug, (SELECT COUNT(*) FROM products p WHERE p.category_id = c.id) AS n

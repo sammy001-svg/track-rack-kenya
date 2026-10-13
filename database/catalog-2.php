@@ -62,10 +62,6 @@ return [
     'description' => "A hard-wearing nylon headcollar with brass buckles and rings, adjustable at the headpiece and noseband.\n\nShown here in red, black and royal blue.",
     'specs'    => "Material: nylon webbing\nFittings: brass\nColours: red, black, royal blue",
     'sizing'   => 'Sized pony, cob and full. If in doubt, bring the old headcollar in and we will match it.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-        'Colour' => ['Black', 'Blue', 'Navy', 'Green', 'Red', 'Purple'],
-    ],
     'images'   => [
         ['1S3A5730.png', 'The red headcollar, showing the brass buckles'],
         ['1S3A5732.png', 'The same headcollar in black and in royal blue'],
@@ -78,9 +74,6 @@ return [
     'description' => "A lunging cavesson for groundwork, with grey fleece padding over the noseband and headpiece so it does not rub on a horse being worked on a circle.\n\nBrass fittings throughout.",
     'specs'    => "Material: nylon webbing, fleece lining\nColour: black with grey fleece\nFittings: brass",
     'sizing'   => 'Sized pony, cob and full.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-    ],
     'images'   => [
         ['1S3A5743.png', 'The cavesson showing the fleece-padded noseband and headpiece'],
     ],
@@ -91,10 +84,6 @@ return [
     'short'    => 'Soft twisted lead ropes with brass trigger clips, in several colours.',
     'description' => "Thick, soft twisted lead ropes that are comfortable to hold, each finished with a brass trigger clip.\n\nShown here in purple, sky blue and black.",
     'specs'    => "Material: twisted rope\nClip: brass trigger clip\nColours: purple, sky blue, black",
-    'variants' => [
-        'Length' => ['3m'],
-        'Colour' => ['Black', 'Green', 'Purple', 'Red', 'Sky blue'],
-    ],
     'images'   => [
         ['1S3A5738.png', 'Lead ropes in purple, sky blue and black, with brass trigger clips'],
     ],
@@ -121,10 +110,6 @@ return [
     'description' => "Brushing boots with a moulded outer shell over a soft lining, to protect the inside of the leg from knocks by the opposite hoof.\n\nThree touch-close straps keep them secure.",
     'specs'    => "Maker: ARMA\nColours: black, grey, green, navy, red\nFastening: three touch-close straps\nSizes: pony, cob, full",
     'sizing'   => 'Sold by leg size. Tell us the horse’s height and build and we will find the right pair.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-        'Colour' => ['Black', 'Grey', 'Green', 'Navy', 'Red'],
-    ],
     'images'   => [
         ['1S3A5764.png', 'The boot from the outside, showing the moulded strike guard'],
         ['1S3A5754.png', 'The boot in its ARMA packaging'],
@@ -138,10 +123,6 @@ return [
     'description' => "Brushing boots from the ARMA Anatomic range, with a moulded shell on the inside of the leg and wide red touch-close straps.\n\nA soft neoprene-style body keeps them close to the leg without rubbing.",
     'specs'    => "Maker: ARMA\nRange: Anatomic\nColour: black with red straps\nFastening: two touch-close straps",
     'sizing'   => 'Sold by leg size. Tell us the horse’s height and build and we will find the right pair.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-        'Colour' => ['Black', 'Grey', 'Green', 'Red'],
-    ],
     'images'   => [
         ['1S3A5760.png', 'The boot from the shell side, showing the ARMA strike guard'],
         ['1S3A5762.png', 'The strap side, with the ARMA Anatomic branding'],
@@ -155,9 +136,6 @@ return [
     'description' => "Ribbed rubber overreach boots that sit over the hoof to protect the heel and coronet from a hind foot catching them.\n\nThe touch-close fastening means they go on without being pulled over the foot.",
     'specs'    => "Maker: Shires\nMaterial: rubber\nColour: black\nFastening: touch-close\nSizes: pony, cob, full",
     'sizing'   => 'Sized by hoof. Bring the horse’s shoe size or measure around the pastern.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-    ],
     'images'   => [
         ['1S3A5770.png', 'The overreach boot with its Shires tag'],
     ],
@@ -170,10 +148,6 @@ return [
     'description' => "Soft overreach boots with a red strike panel, lighter and quieter than rubber, protecting the heel and coronet from the hind feet.",
     'specs'    => "Maker: ARMA\nMaterial: neoprene\nColours: black, blue, green, red\nFastening: touch-close\nSizes: pony, cob, full",
     'sizing'   => 'Sized by hoof. Bring the horse’s shoe size or measure around the pastern.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-        'Colour' => ['Black', 'Blue', 'Green', 'Red'],
-    ],
     'images'   => [
         ['1S3A5777.png', 'The pair of overreach boots'],
         ['1S3A5775.png', 'A single boot, showing the ARMA badge'],
@@ -257,9 +231,6 @@ return [
     'short'    => 'Hoof oil distributed by Tack Rack, in two bottle sizes.',
     'description' => "Hoof oil brushed on to the wall and sole to help keep the hoof in good condition and looking smart.\n\nDistributed by Tack Rack from our shop on Ngong Road.",
     'specs'    => "Distributed by: Tack Rack Ltd\nSizes: two bottle sizes",
-    'variants' => [
-        'Size' => ['500ml', '1 litre'],
-    ],
     'images'   => [
         ['1S3A6058.jpg', 'The large bottle of hoof oil'],
         ['1S3A6066.jpg', 'The smaller bottle'],
@@ -271,9 +242,6 @@ return [
     'short'    => 'Stockholm tar for the hoof, distributed by Tack Rack, in two sizes.',
     'description' => "A traditional hoof preparation, labelled here as a corrective hoof supplement for horses.\n\nDistributed by Tack Rack.",
     'specs'    => "Distributed by: Tack Rack Ltd\nSizes: two bottle sizes",
-    'variants' => [
-        'Size' => ['500ml', '1 litre'],
-    ],
     'images'   => [
         ['1S3A6063.jpg', 'The large bottle of Stockholm tar'],
         ['1S3A6059.jpg', 'The smaller bottle'],
@@ -442,10 +410,6 @@ return [
     'short'    => 'Optima horseshoe nails, boxed, in several head types and sizes.',
     'description' => "Horseshoe nails from Optima for farriers, sold by the box.\n\nShown here in E-3, E-4, Crown Head and ASV patterns.",
     'specs'    => "Maker: Optima\nPatterns shown: E-3, E-4, Crown Head, ASV",
-    'variants' => [
-        'Size' => ['E3', 'E4', 'Crown Head I', 'ASV 1 3/4', 'FJ1'],
-        'Pack' => ['Packet of 50', 'Box of 250'],
-    ],
     'images'   => [
         ['1S3A6271.jpg', 'Four boxes of Optima horseshoe nails'],
     ],
@@ -457,9 +421,6 @@ return [
     'description' => "Lightweight aluminium horseshoes with a toe clip, bundled by size for farriers.",
     'specs'    => "Material: aluminium\nClip: toe clip",
     'sizing'   => 'Sold by size. Your farrier will know what to ask for.',
-    'variants' => [
-        'Size' => ['4', '5', '6'],
-    ],
     'images'   => [
         ['1S3A6276.jpg', 'A bundle of aluminium horseshoes, showing the toe clips'],
     ],
@@ -471,9 +432,6 @@ return [
     'description' => "Standard steel horseshoes with a toe clip, bundled by size for farriers.",
     'specs'    => "Material: steel\nClip: toe clip",
     'sizing'   => 'Sold by size. Your farrier will know what to ask for.',
-    'variants' => [
-        'Size' => ['3', '4', '5', '6', '7', '8'],
-    ],
     'images'   => [
         ['1S3A6280.jpg', 'A bundle of steel horseshoes, showing the toe clips'],
     ],
@@ -489,9 +447,6 @@ return [
     'short'    => 'A spray-on repellent against midges, mosquitoes and stable flies.',
     'description' => "A spray-on repellent for protection against midges, mosquitoes and stable flies on horses. Contains DEET and contains no citronella oil.\n\nFor external animal use only. Available in 1 litre and a larger can.",
     'specs'    => "Maker: VetsBrands\nContains: DEET 15% m/v, piperonyl butoxide, eucalyptus oil\nSizes: 1 litre and a larger can",
-    'variants' => [
-        'Size' => ['1 litre', '5 litres'],
-    ],
     'images'   => [
         ['1S3A5916.jpg', 'The 1 litre bottle of Summer Spray'],
         ['1S3A5915.jpg', 'The larger can'],
@@ -504,9 +459,6 @@ return [
     'short'    => 'An Equimins spray to help repel biting flies, midges and mosquitoes.',
     'description' => "A fly and midge repellent spray from Equimins, formulated to help repel biting flies, midges and mosquitoes.",
     'specs'    => "Maker: Equimins\nSize: 750ml\nApplicator: trigger spray",
-    'variants' => [
-        'Size' => ['750ml', '5 litres'],
-    ],
     'images'   => [
         ['1S3A5919.jpg', 'The 750ml Equimins Fly & Midge Repellent spray'],
     ],
@@ -528,9 +480,6 @@ return [
     'short'    => 'Fly repellent spray for dogs and horses, in a spray bottle or a large can.',
     'description' => "Buzz Off fly repellent spray for dogs and horses.\n\nAvailable in a ready-to-use trigger spray and a large refill can.",
     'specs'    => "Maker: Buzz Off\nFor: dogs and horses\nSizes: trigger spray, large can",
-    'variants' => [
-        'Size' => ['750ml', '5 litres'],
-    ],
     'images'   => [
         ['1S3A5928.jpg', 'The Buzz Off trigger spray'],
         ['1S3A5930.jpg', 'The large refill can'],
@@ -544,10 +493,6 @@ return [
     'description' => "A fine mesh fly mask from the FlyGuard Pro range, with ear holes and a contoured nose. The mesh blocks around 70% of UV on average.",
     'specs'    => "Maker: FlyGuard Pro\nRange: Pro-Series\nMesh: fine\nUV blocking: 70% average",
     'sizing'   => 'Sized pony, cob and full.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-        'Style' => ['With ears', 'Without ears'],
-    ],
     'images'   => [
         ['1S3A5934.jpg', 'The fly mask in its FlyGuard Pro box'],
     ],
@@ -616,9 +561,6 @@ return [
     'short'    => 'A cooling natural clay dressing, distributed by Tack Rack.',
     'description' => "A non-irritating, natural dressing that is extra cooling and soothing, and helps in the relief of minor soreness and stiffness caused by over-exertion.\n\nDistributed by Tack Rack, in a tub and a larger bucket.",
     'specs'    => "Distributed by: Tack Rack Ltd\nSizes: tub, bucket",
-    'variants' => [
-        'Size' => ['2kg', '4kg'],
-    ],
     'images'   => [
         ['1S3A5957.jpg', 'The tub of Natural Clay'],
         ['1S3A5961.jpg', 'The larger bucket'],
@@ -1139,9 +1081,6 @@ return [
     'short'    => 'Lemon shampoo from Endeavon, in three sizes.',
     'description' => "Endeavon lemon shampoo for horses, distributed by Tack Rack.\n\nAvailable in a large can and two bottle sizes.",
     'specs'    => "Maker: Endeavon\nDistributed by: Tack Rack Ltd\nSizes: large can, two bottles",
-    'variants' => [
-        'Size' => ['500ml', '5 litres'],
-    ],
     'images'   => [
         ['1S3A5872.jpg', 'The two bottle sizes side by side'],
         ['1S3A5865.jpg', 'The large can'],
@@ -1190,9 +1129,6 @@ return [
     'short'    => 'A show lotion that imparts a quick, healthy shine, in two sizes.',
     'description' => "Gold Label Mane, Coat & Tail Lotion for show animals. Imparts a quick, healthy shine and assists in removing stains, knots and tangles.\n\nAvailable as a 500ml spray and a 2.5 litre refill.",
     'specs'    => "Maker: Gold Label\nSizes: 500ml spray, 2.5L refill",
-    'variants' => [
-        'Size' => ['500ml', '2.5 litres', '5 litres'],
-    ],
     'images'   => [
         ['1S3A5891.jpg', 'The 500ml spray'],
         ['1S3A5888.jpg', 'The 2.5 litre refill'],
@@ -1268,9 +1204,6 @@ return [
     'short'    => 'Moore’s Quality leather dressing that softens and preserves, 1 litre.',
     'description' => "Leather dressing from Moore's Quality that softens and preserves leather. Directions are on the label.",
     'specs'    => "Maker: Moore’s Quality\nSize: 1 litre",
-    'variants' => [
-        'Size' => ['500ml', '1 litre'],
-    ],
     'images'   => [
         ['1S3A5989.jpg', 'The 1 litre can of Moore’s Leather Dressing'],
     ],
@@ -1293,9 +1226,6 @@ return [
     'short'    => 'Moore’s Quality dubbin, 500ml.',
     'description' => "Dubbin from Moore's Quality for leather.",
     'specs'    => "Maker: Moore’s Quality\nSize: 500ml",
-    'variants' => [
-        'Size' => ['250ml tub', '500ml tub'],
-    ],
     'images'   => [
         ['1S3A5998.jpg', 'The 500ml tub of Moore’s Dubbin'],
         ['1S3A5999.jpg', 'The tub from a lower angle'],
@@ -1308,9 +1238,6 @@ return [
     'short'    => 'Moore’s Quality leather soap, 500ml.',
     'description' => "Leather soap from Moore's Quality, in a 500ml tub.",
     'specs'    => "Maker: Moore’s Quality\nSize: 500ml",
-    'variants' => [
-        'Size' => ['Bar', '500ml tub'],
-    ],
     'images'   => [
         ['1S3A6006.jpg', 'The 500ml tub of Moore’s Leather Soap'],
     ],

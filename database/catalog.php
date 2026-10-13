@@ -30,9 +30,6 @@ $firstShoot = [
     'description' => "An English saddle in soft black leather, cut for riders who school, jump and hack the same horse. The seat is deep enough to feel secure over a fence without locking the rider out of a flatwork position, and the panels are shaped to sit close to the horse.\n\nThorowgood saddles are known for being forgiving to fit and kind on the horse's back. As with every saddle we supply, this one is fitted on the horse before it leaves us.",
     'specs'    => "Leather: soft-grain black\nSeat: padded\nGullet: interchangeable\nPanels: shaped for close contact\nMaker: Thorowgood\nFitting: included, on the horse",
     'sizing'   => 'Seat size is taken from the rider, gullet and panel from the horse. Book a fitting before ordering — we travel to yards across Kenya.',
-    'variants' => [
-        'Seat size' => ['16"', '16 1/2"', '17"', '17 1/2"'],
-    ],
     'images'   => [
         ['1S3A5273.png', 'Full side profile of the saddle'],
         ['1S3A5276.png', 'Seat and cantle, showing the padded seam'],
@@ -56,9 +53,6 @@ $firstShoot = [
     'description' => "A synthetic saddle built for riders who want low maintenance without giving up fit. The suede-effect seat gives real grip, and the whole saddle can be washed down after a dusty ride rather than needing oiling.\n\nSynthetic saddles suit the Kenyan climate particularly well — they do not dry out and crack the way leather can at altitude.",
     'specs'    => "Material: synthetic with suede-effect seat\nGullet: interchangeable\nCare: wipe or wash clean, no oiling\nMaker: Wintec\nFitting: included, on the horse",
     'sizing'   => 'Fitted on the horse. Wintec gullets are adjustable, which makes them a sensible choice for a young or changing horse.',
-    'variants' => [
-        'Seat size' => ['16"', '16 1/2"', '17"', '17 1/2"'],
-    ],
     'images'   => [
         ['1S3A5306.png', 'Seat and flap, showing the suede-effect surface'],
         ['1S3A5308.png', 'Wintec badge on the seat'],
@@ -73,9 +67,6 @@ $firstShoot = [
     'description' => "A traditional English saddle in rich havana brown leather from Jeffries, one of the long-standing Walsall saddlery names. The Elite model is hand finished, with a warm, deep colour that comes up beautifully with regular feeding.\n\nA saddle of this quality is a long-term purchase. It is worth having it fitted properly and re-checked as the horse changes shape.",
     'specs'    => "Leather: havana brown, hand finished\nModel: Elite, embossed on the flap\nGullet: interchangeable\nMaker: Jeffries Saddlery, England\nFittings: stainless steel\nFitting: included, on the horse",
     'sizing'   => 'Seat size from the rider, gullet and panel from the horse. We recommend a fitting before purchase and an annual re-check.',
-    'variants' => [
-        'Seat size' => ['16"', '16 1/2"', '17"', '17 1/2"'],
-    ],
     'images'   => [
         ['1S3A5315.png', 'Seat and cantle in havana brown leather'],
         ['1S3A5316.png', 'ELITE embossing and hand hole on the flap'],
@@ -90,9 +81,6 @@ $firstShoot = [
     'description' => "A straightforward black leather general purpose saddle — the saddle most riders in Kenya end up using day to day. Comfortable enough for a long hack, secure enough for a lesson and a small course.\n\nFitted on the horse before it leaves the shop.",
     'specs'    => "Leather: black\nSeat: padded general purpose\nFittings: stainless steel\nFitting: included, on the horse",
     'sizing'   => 'Seat size from the rider, gullet and panel from the horse.',
-    'variants' => [
-        'Seat size' => ['16"', '16 1/2"', '17"', '17 1/2"'],
-    ],
     'images'   => [
         ['1S3A5325.png', 'Full side profile of the saddle'],
         ['1S3A5326.png', 'Seat, flap and stirrup bar'],
@@ -109,9 +97,6 @@ $firstShoot = [
     'description' => "The Wintec 2000 is an all purpose synthetic saddle with an adjustable gullet, so the same saddle can be re-fitted as a horse changes shape or moved between horses of similar build. It washes clean, does not dry out, and weighs noticeably less than a leather equivalent.\n\nA sensible first saddle, and a practical choice for a busy yard.",
     'specs'    => "Material: synthetic, washable\nGullet: adjustable (EASY-CHANGE system)\nSeat: all purpose\nMaker: Wintec\nFitting: included, on the horse",
     'sizing'   => 'The adjustable gullet is changed to suit the horse at fitting. Seat size is taken from the rider.',
-    'variants' => [
-        'Seat size' => ['16"', '16 1/2"', '17"', '17 1/2"'],
-    ],
     'images'   => [
         ['1S3A5354.png', 'Full side profile of the Wintec 2000'],
         ['1S3A5356.png', 'Seat and cantle, showing the suede-effect grip'],
@@ -131,9 +116,6 @@ $firstShoot = [
     'description' => "A classic skull cap shape with no fixed peak, so a silk can be fitted over it. This is the hat of choice for cross country, racing work and anyone who wants maximum coverage at the back of the head.\n\nAlways buy a hat that has been fitted to your head. A hat that moves is a hat that will not do its job.",
     'specs'    => "Shell: hard, textured finish\nShape: skull cap, no fixed peak\nSilk: fits a standard hat silk (sold separately)",
     'sizing'   => 'Measure around the head just above the ears. Come in and be fitted if you possibly can — head shapes differ as much as sizes.',
-    'variants' => [
-        'Size' => ['Small', 'Medium', 'Large'],
-    ],
     'images'   => [
         ['1S3A5368.png', 'Skull cap from the side'],
         ['1S3A5370.png', 'Close detail of the textured shell'],
@@ -147,9 +129,6 @@ $firstShoot = [
     'description' => "The traditional show hat: black velvet finish with a fixed peak and a neat, low profile. Correct turnout for the show ring, Pony Club and everyday schooling.\n\nSupplied by HKM.",
     'specs'    => "Finish: black velvet\nPeak: fixed\nHarness: adjustable\nMaker: HKM",
     'sizing'   => 'Measure around the head just above the ears, and have it fitted before you ride in it.',
-    'variants' => [
-        'Size' => ['Small', 'Medium', 'Large'],
-    ],
     'images'   => [
         ['1S3A5372.jpg', 'Velvet riding hat from the side'],
         ['1S3A5374.jpg', 'Close detail of the velvet finish and ribbing'],
@@ -164,9 +143,6 @@ $firstShoot = [
     'description' => "A modern riding helmet with a low, clean profile and front vents that make a real difference schooling in the sun. The matt black finish is understated and does not show dust the way a gloss shell does.\n\nA good everyday helmet for schooling, hacking and lessons.",
     'specs'    => "Shell: matt black, low profile\nVentilation: front vents\nPeak: short moulded peak\nHarness: adjustable retention system",
     'sizing'   => 'Measure around the head just above the ears. We fit every helmet we sell — bring your head, not just a tape measure.',
-    'variants' => [
-        'Size' => ['Small', 'Medium', 'Large'],
-    ],
     'images'   => [
         ['1S3A5383.jpg', 'Front view with the vent detail'],
         ['1S3A5380.jpg', 'Helmet from the side, showing the short peak'],
@@ -221,9 +197,6 @@ $firstShoot = [
     'description' => "A full black leather snaffle bridle supplied with reins — headpiece, browband, cheekpieces, cavesson noseband and throatlash. Stainless steel fittings throughout.\n\nGood leather, kept fed, will outlast several cheaper bridles. In this climate a monthly balm is the difference between a bridle that lasts a decade and one that cracks in a season.",
     'specs'    => "Leather: black\nFittings: stainless steel\nIncludes: headpiece, browband, cheekpieces, noseband, throatlash and reins\nNoseband: cavesson",
     'sizing'   => 'Available in pony, cob and full. Cob fits the majority of horses in Kenya. Measure from the corner of the mouth over the poll and back.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-    ],
     'images'   => [
         ['1S3A5415.jpg', 'Complete bridle with reins, laid flat'],
         ['1S3A5416.jpg', 'Bridle shown from the other side'],
@@ -238,9 +211,6 @@ $firstShoot = [
     'description' => "A complete snaffle bridle in havana brown leather with stainless steel fittings. Brown tack suits a bay or chestnut particularly well and is correct for hunting and most showing classes.\n\nSupplied with matching reins.",
     'specs'    => "Leather: havana brown\nFittings: stainless steel\nIncludes: headpiece, browband, cheekpieces, noseband, throatlash and reins\nNoseband: cavesson",
     'sizing'   => 'Available in pony, cob and full. Measure from the corner of the mouth over the poll and back.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-    ],
     'images'   => [
         ['1S3A5421.png', 'Complete havana bridle with reins'],
     ],
@@ -253,9 +223,6 @@ $firstShoot = [
     'description' => "A loose ring snaffle with a double joint and a copper lozenge in the centre. The double joint removes the nutcracker action of a single-jointed bit, and the copper encourages the horse to salivate and soften.\n\nA fair, mild bit and a sensible first choice for a young horse.",
     'specs'    => "Material: stainless steel with copper lozenge\nMouthpiece: double jointed\nRings: loose ring\nMaker: Shires",
     'sizing'   => 'Measure the horse\'s mouth with a bit gauge, or bring the current bit in to compare. Sizes generally run 4.5in to 6in.',
-    'variants' => [
-        'Size' => ['4.5"', '5"', '5.5"'],
-    ],
     'images'   => [
         ['1S3A5604.png', 'Loose ring snaffle with the copper lozenge visible'],
     ],
@@ -268,9 +235,6 @@ $firstShoot = [
     'description' => "A well-made stainless steel snaffle from Shires. Solid stainless takes the wear, does not rust in a damp tack room and cleans up with nothing more than hot water.\n\nCome in and we will help you match the bit to the horse rather than to a catalogue.",
     'specs'    => "Material: solid stainless steel\nMaker: Shires\nFinish: polished",
     'sizing'   => 'Measure the horse\'s mouth with a bit gauge, or bring the current bit in to compare.',
-    'variants' => [
-        'Size' => ['4.5"', '5"', '5.5"'],
-    ],
     'images'   => [
         ['1S3A5608.png', 'Snaffle bit with the Shires tag attached'],
     ],
@@ -282,9 +246,6 @@ $firstShoot = [
     'description' => "The most widely used bit there is: a single-jointed loose ring snaffle in stainless steel. Simple, mild in a quiet hand, and the right starting point for most horses.",
     'specs'    => "Material: stainless steel\nMouthpiece: single jointed\nRings: loose ring",
     'sizing'   => 'Measure the horse\'s mouth with a bit gauge, or bring the current bit in to compare.',
-    'variants' => [
-        'Size' => ['4.5"', '5"', '5.5"'],
-    ],
     'images'   => [
         ['1S3A5593.png', 'Loose ring jointed snaffle'],
     ],
@@ -296,9 +257,6 @@ $firstShoot = [
     'description' => "A training bit with rope cheeks running through the bit rings, giving a gag action that lifts the head rather than pulling back. Supplied with the cord, pulley and buckles as shown.\n\nA bit like this is a schooling tool, not a shortcut. Please talk to us about whether it is the right answer for your horse before buying.",
     'specs'    => "Material: stainless steel rings, corded cheeks\nAction: gag / poll lift\nIncludes: cord, pulley and adjusting buckles",
     'sizing'   => 'Measure the horse\'s mouth with a bit gauge. We would rather discuss the problem with you than sell you the wrong bit.',
-    'variants' => [
-        'Size' => ['4.5"', '5"', '5.5"'],
-    ],
     'images'   => [
         ['1S3A5599.png', 'Training bit showing the rope cheeks and pulley'],
     ],
@@ -325,10 +283,6 @@ $firstShoot = [
     'description' => "A girth with a soft fleece lining against the horse. The fleece spreads the pressure and stops the rubbing that causes girth galls, which makes it a sensible choice for a thin-skinned horse or one coming back into work.\n\nThe lining comes off and washes.",
     'specs'    => "Lining: soft fleece\nBuckles: stainless steel roller\nElastic: both ends\nCare: lining is washable",
     'sizing'   => 'Measure an existing girth from buckle to buckle, or measure the horse from four fingers below the saddle flap on one side to the same point on the other.',
-    'variants' => [
-        'Size' => ['42"', '44"', '46"', '48"', '50"'],
-        'Colour' => ['Black', 'Brown'],
-    ],
     'images'   => [
         ['1S3A5620.png', 'Fleece lined girth, showing the soft lining'],
     ],
@@ -340,9 +294,6 @@ $firstShoot = [
     'description' => "A straightforward black girth with elastic ends, which lets the horse's ribcage expand as it works rather than being held rigid. Stainless steel roller buckles make it easy to do up single-handed.",
     'specs'    => "Material: hard-wearing webbing\nElastic: both ends\nBuckles: stainless steel roller",
     'sizing'   => 'Measure an existing girth buckle to buckle. Sizes generally run 40in to 54in.',
-    'variants' => [
-        'Size' => ['42"', '44"', '46"', '48"', '50"'],
-    ],
     'images'   => [
         ['1S3A5623.png', 'Black elastic girth with the buckle detail'],
         ['1S3A5626.png', 'The same girth laid flat'],
@@ -356,10 +307,6 @@ $firstShoot = [
     'description' => "A shaped girth with a padded, textured lining that grips without chafing. The curve behind the elbow gives the horse room to move its foreleg freely, which matters a great deal to a horse that jumps.\n\nOne of the more worthwhile upgrades you can make to an otherwise ordinary set of tack.",
     'specs'    => "Shape: curved for elbow clearance\nLining: padded, anti-chafe texture\nBuckles: stainless steel roller\nElastic: both ends",
     'sizing'   => 'Measure an existing girth buckle to buckle.',
-    'variants' => [
-        'Size' => ['42"', '44"', '46"', '48"', '50"'],
-        'Colour' => ['Black', 'Brown'],
-    ],
     'images'   => [
         ['1S3A5629.png', 'Padded girth, showing the shaped elbow cut-out'],
         ['1S3A5632.png', 'The lining and buckle detail'],
@@ -372,10 +319,6 @@ $firstShoot = [
     'description' => "A short, padded girth for use with a dressage saddle on long billet straps, keeping the buckles clear of the rider's leg. Neoprene lined so it grips without slipping.",
     'specs'    => "Type: short / dressage girth\nLining: padded neoprene\nBuckles: stainless steel roller",
     'sizing'   => 'Short girths generally run 20in to 34in. Measure an existing girth buckle to buckle.',
-    'variants' => [
-        'Size' => ['22"', '24"', '26"', '28"', '30"'],
-        'Colour' => ['Black', 'Brown'],
-    ],
     'images'   => [
         ['1S3A5637.png', 'Short dressage girth from the side'],
     ],
@@ -402,9 +345,6 @@ $firstShoot = [
     'description' => "Solid stainless steel stirrup irons from Korsteel — heavy enough to hang correctly and find again if you lose one, and hard-wearing enough to last for years.\n\nAlways buy irons that leave roughly a centimetre either side of the boot. Too narrow and the foot jams; too wide and it can slide right through.",
     'specs'    => "Material: solid stainless steel\nTread: wide, with a rubber tread pad\nMaker: Korsteel",
     'sizing'   => 'Measured across the inside of the iron. Allow about 1cm clearance either side of your riding boot.',
-    'variants' => [
-        'Size' => ['4"', '4 1/4"', '4 1/2"'],
-    ],
     'images'   => [
         ['1S3A5567.png', 'Stainless steel iron showing the size stamp'],
         ['1S3A5570.png', 'The same iron from a second angle'],
@@ -417,9 +357,6 @@ $firstShoot = [
     'description' => "Peacock safety irons have a rubber band on the outside instead of a solid branch, so if a rider comes off the band releases and the foot comes free rather than being dragged.\n\nWe would put every child on these, and plenty of adults too.",
     'specs'    => "Material: stainless steel with rubber release band\nTread: white rubber tread pad\nUse: recommended for children and novice riders",
     'sizing'   => 'Measured across the inside of the iron. Allow about 1cm clearance either side of the boot.',
-    'variants' => [
-        'Size' => ['4"', '4 1/4"', '4 1/2"'],
-    ],
     'images'   => [
         ['1S3A5573.png', 'Peacock safety iron with the rubber release band'],
     ],
@@ -431,9 +368,6 @@ $firstShoot = [
     'description' => "Composite stirrups that weigh a fraction of a steel iron and will not rust. The wide tread is deeply grooved and grips a boot well, which makes a real difference to a rider who struggles to keep their foot still.\n\nAvailable in a range of tread colours.",
     'specs'    => "Material: reinforced composite\nTread: wide, deeply grooved\nWeight: considerably lighter than steel\nColours: several tread colours available",
     'sizing'   => 'Measured across the inside of the stirrup. Allow about 1cm clearance either side of the boot.',
-    'variants' => [
-        'Size' => ['4"', '4 1/4"', '4 1/2"'],
-    ],
     'images'   => [
         ['1S3A5578.png', 'Composite stirrup with a blue tread'],
         ['1S3A5583.png', 'The range shown in purple and blue'],
@@ -471,9 +405,6 @@ $firstShoot = [
     'description' => "A bib martingale — a running martingale with a leather bib filling the space between the two straps, so the horse cannot get a foreleg caught through it. Standard for racing and cross country for exactly that reason.\n\nBrown leather with stainless fittings.",
     'specs'    => "Material: brown leather\nType: bib (running martingale with filled bib)\nFittings: stainless steel\nIncludes: neck strap",
     'sizing'   => 'Available in pony, cob and full. Adjust so that the rein runs in a straight line from bit to hand when the horse\'s head is at the correct height.',
-    'variants' => [
-        'Size' => ['Pony', 'Cob', 'Full'],
-    ],
     'images'   => [
         ['1S3A5551.png', 'Bib martingale laid flat, showing the leather bib'],
     ],
@@ -489,9 +420,6 @@ $firstShoot = [
     'description' => "A shaped numnah cut to follow the line of a general purpose saddle, quilted cotton with a soft lining and girth and billet straps. Washes clean and holds its colour.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
     'sizing'   => 'Available in cob and full. Full fits most horses of 15.2hh and over.',
-    'variants' => [
-        'Size' => ['15" — 16 1/2"', '17" — 18"'],
-    ],
     'images'   => [
         ['1S3A5513.png', 'Red GP numnah laid flat'],
         ['1S3A5529.png', 'Close detail of the quilting and binding'],
@@ -504,9 +432,6 @@ $firstShoot = [
     'description' => "A shaped GP numnah in teal, quilted cotton with a soft lining. A colour that looks well on a grey or a bay without being loud.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
     'sizing'   => 'Available in cob and full.',
-    'variants' => [
-        'Size' => ['15" — 16 1/2"', '17" — 18"'],
-    ],
     'images'   => [
         ['1S3A5515.png', 'Teal GP numnah laid flat'],
     ],
@@ -518,9 +443,6 @@ $firstShoot = [
     'description' => "A shaped GP numnah in black. It does not show dust or a stray hoof mark the way a white one does, which makes it the pad most people reach for day to day.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
     'sizing'   => 'Available in cob and full.',
-    'variants' => [
-        'Size' => ['15" — 16 1/2"', '17" — 18"'],
-    ],
     'images'   => [
         ['1S3A5517.png', 'Black GP numnah laid flat'],
     ],
@@ -532,9 +454,6 @@ $firstShoot = [
     'description' => "A shaped GP numnah in navy, quilted cotton with a soft lining and girth and billet straps.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
     'sizing'   => 'Available in cob and full.',
-    'variants' => [
-        'Size' => ['15" — 16 1/2"', '17" — 18"'],
-    ],
     'images'   => [
         ['1S3A5518.png', 'Navy GP numnah laid flat'],
         ['1S3A5527.png', 'Close detail of the navy quilting'],
@@ -548,9 +467,6 @@ $firstShoot = [
     'description' => "A square-cut dressage pad in white — correct turnout for a dressage test and smart enough for a clinic. Quilted cotton with a wicking lining that pulls sweat away from the back.\n\nWashes clean without going grey, which is more than can be said for some.",
     'specs'    => "Shape: dressage square\nFace: quilted cotton\nLining: wicking\nAttachment: girth and billet straps\nCare: machine washable",
     'sizing'   => 'Available in cob and full.',
-    'variants' => [
-        'Size' => ['17" — 18"'],
-    ],
     'images'   => [
         ['1S3A5521.png', 'White dressage square laid flat'],
     ],
@@ -562,9 +478,6 @@ $firstShoot = [
     'description' => "A square-cut dressage pad in black — the everyday schooling pad, keeping the white one clean for competition day.",
     'specs'    => "Shape: dressage square\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
     'sizing'   => 'Available in cob and full.',
-    'variants' => [
-        'Size' => ['17" — 18"'],
-    ],
     'images'   => [
         ['1S3A5525.png', 'Black dressage square laid flat'],
     ],
@@ -735,9 +648,6 @@ $firstShoot = [
     'description' => "Beige breeches cut for riding, with a shaped knee patch and enough stretch to be comfortable through a long schooling session. Beige is correct turnout for showing and most competition, and smart enough to teach in.",
     'specs'    => "Colour: beige\nPatch: knee patch\nFabric: stretch riding fabric\nWaist: mid rise",
     'sizing'   => 'Take your usual size. Riding breeches are cut close — if you are between sizes, try both.',
-    'variants' => [
-        'Fit' => ['Children', 'Maids / Boys', 'Ladies', 'Gents'],
-    ],
     'images'   => [
         ['1S3A5643.png', 'Beige breeches folded, showing the knee patch'],
         ['1S3A5656.png', 'The breeches laid flat, full length'],
@@ -750,9 +660,6 @@ $firstShoot = [
     'description' => "Navy breeches with a bright contrast panel down the leg — a schooling breech rather than a competition one, and hard-wearing enough for daily use.",
     'specs'    => "Colour: navy with contrast panel\nFabric: stretch riding fabric\nWaist: mid rise",
     'sizing'   => 'Take your usual size.',
-    'variants' => [
-        'Fit' => ['Children', 'Maids / Boys', 'Ladies', 'Gents'],
-    ],
     'images'   => [
         ['1S3A5647.png', 'Navy breeches folded, showing the contrast panel'],
         ['1S3A5648.png', 'The breeches laid flat'],
@@ -765,9 +672,6 @@ $firstShoot = [
     'description' => "Black breeches with a full grip seat — the patterned panel runs from the knee up through the seat, holding the rider in the saddle without gluing them to it. The choice for dressage and serious flatwork.",
     'specs'    => "Colour: black\nSeat: full grip seat\nFabric: four-way stretch\nWaist: mid rise",
     'sizing'   => 'Take your usual size. Full seat breeches are cut close by design.',
-    'variants' => [
-        'Fit' => ['Children', 'Maids / Boys', 'Ladies', 'Gents'],
-    ],
     'images'   => [
         ['1S3A5654.png', 'Black breeches laid flat, showing the full grip seat'],
     ],
@@ -785,9 +689,6 @@ $firstShoot = [
     'description' => "Leather jodhpur boots in black, with elasticated side gussets and a pull tab so they go on easily. Worn on their own for schooling or under half chaps for longer work.\n\nA proper leather boot will mould to the foot and last; a synthetic one rarely does either.",
     'specs'    => "Upper: leather\nSides: elasticated gussets\nSole: rubber, riding heel\nMaker: HY\nColour: black",
     'sizing'   => 'Measure the foot flat, heel to longest toe, late in the day. Between sizes, take the larger.',
-    'variants' => [
-        'Size' => ['Child 12', 'Child 13', 'Child 1', 'Child 2', 'Child 3', 'Adult 4', 'Adult 5', 'Adult 6', 'Adult 7', 'Adult 8'],
-    ],
     'images'   => [
         ['1S3A5661.png', 'Black jodhpur boot from the side'],
         ['1S3A5664.png', 'A pair shown together'],
@@ -801,9 +702,6 @@ $firstShoot = [
     'description' => "Leather jodhpur boots in brown, with elasticated sides and a pull tab. Brown boots suit brown tack and are the traditional choice for showing and Pony Club.",
     'specs'    => "Upper: leather\nSides: elasticated gussets\nSole: rubber, riding heel\nMaker: HY\nColour: brown",
     'sizing'   => 'Measure the foot flat, heel to longest toe, late in the day. Between sizes, take the larger.',
-    'variants' => [
-        'Size' => ['Child 12', 'Child 13', 'Child 1', 'Child 2', 'Child 3', 'Adult 4', 'Adult 5', 'Adult 6', 'Adult 7', 'Adult 8'],
-    ],
     'images'   => [
         ['1S3A5668.png', 'Brown jodhpur boot from the side'],
         ['1S3A5670.png', 'Angled view showing the pull tabs'],
@@ -818,9 +716,6 @@ $firstShoot = [
     'description' => "Half chaps in black, worn over jodhpur boots to protect the lower leg and give the grip a long boot would. A rear zip with a guard keeps the pull tab clear of the girth.",
     'specs'    => "Closure: rear zip with guard\nColour: black\nUse: worn over jodhpur boots",
     'sizing'   => 'Measure the calf at its widest point and from the floor to the back of the knee, wearing your riding boots.',
-    'variants' => [
-        'Size' => ['XS', 'Small', 'Medium', 'Large', 'XL'],
-    ],
     'images'   => [
         ['1S3A5676.png', 'Black half chaps folded, showing the zip'],
     ],
@@ -832,9 +727,6 @@ $firstShoot = [
     'description' => "Leather gaiters in brown, fastening with studs rather than a zip. Worn over jodhpur boots they give the clean line of a long boot at a fraction of the cost, and they break in beautifully.",
     'specs'    => "Material: leather\nClosure: studs\nColour: brown\nUse: worn over jodhpur boots",
     'sizing'   => 'Measure the calf at its widest point and from the floor to the back of the knee, wearing your riding boots.',
-    'variants' => [
-        'Size' => ['XS', 'Small', 'Medium', 'Large', 'XL'],
-    ],
     'images'   => [
         ['1S3A5681.png', 'A pair of brown leather gaiters, showing the studs'],
     ],
