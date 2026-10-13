@@ -68,14 +68,14 @@ return [
     ],
 ],
 [
-    'name'     => 'Fleece-Lined Headcollar',
+    'name'     => 'Lunging Cavesson',
     'category' => 'headcollars-lead-ropes',
-    'short'    => 'A black headcollar padded with grey fleece at the noseband and headpiece.',
-    'description' => "A black nylon headcollar with grey fleece padding over the noseband and headpiece, so it does not rub on a horse that wears one for long periods.\n\nBrass fittings throughout.",
+    'short'    => 'A padded lunging cavesson, fleece lined at the noseband and headpiece.',
+    'description' => "A lunging cavesson for groundwork, with grey fleece padding over the noseband and headpiece so it does not rub on a horse being worked on a circle.\n\nBrass fittings throughout.",
     'specs'    => "Material: nylon webbing, fleece lining\nColour: black with grey fleece\nFittings: brass",
     'sizing'   => 'Sized pony, cob and full.',
     'images'   => [
-        ['1S3A5743.png', 'The headcollar showing the fleece-padded noseband and headpiece'],
+        ['1S3A5743.png', 'The cavesson showing the fleece-padded noseband and headpiece'],
     ],
 ],
 [
@@ -103,7 +103,7 @@ return [
 //  BOOTS AND BANDAGES
 // =====================================================================
 [
-    'name'     => 'ARMA Brushing Boots — Navy',
+    'name'     => 'Brushing Boots — Navy',
     'category' => 'brushing-overreach-boots',
     'brand'    => 'ARMA',
     'short'    => 'Navy brushing boots with a moulded ARMA strike guard.',
@@ -116,7 +116,7 @@ return [
     ],
 ],
 [
-    'name'     => 'ARMA Anatomic Brushing Boots',
+    'name'     => 'Anatomic Brushing Boots',
     'category' => 'brushing-overreach-boots',
     'brand'    => 'ARMA',
     'short'    => 'Black brushing boots with red straps and a moulded shell.',
@@ -141,7 +141,7 @@ return [
     ],
 ],
 [
-    'name'     => 'ARMA Overreach Boots — Red',
+    'name'     => 'Overreach Boots — Red',
     'category' => 'brushing-overreach-boots',
     'brand'    => 'ARMA',
     'short'    => 'Black and red neoprene overreach boots from ARMA.',
@@ -151,19 +151,6 @@ return [
     'images'   => [
         ['1S3A5777.png', 'The pair of overreach boots'],
         ['1S3A5775.png', 'A single boot, showing the ARMA badge'],
-    ],
-],
-[
-    'name'     => 'Weatherbeeta Fleece Bandages',
-    'category' => 'bandages-wraps',
-    'brand'    => 'Weatherbeeta',
-    'short'    => 'Soft fleece leg bandages with a suede-effect tab, in two colours.',
-    'description' => "Fleece bandages from Weatherbeeta for exercise or the stable, with a suede-effect end tab and touch-close fastening.\n\nShown here in navy with grey, and in lime green.",
-    'specs'    => "Maker: Weatherbeeta\nMaterial: fleece\nColours: navy with grey, lime green\nFastening: touch-close",
-    'images'   => [
-        ['1S3A5781.png', 'A pair of navy bandages with the grey Weatherbeeta tab'],
-        ['1S3A5783.png', 'A single navy bandage, rolled'],
-        ['1S3A5786.png', 'The same bandage in lime green'],
     ],
 ],
 [
@@ -200,7 +187,7 @@ return [
 ],
 [
     'name'     => 'Robinson Veterinary Gamgee',
-    'category' => 'bandages-wraps',
+    'category' => 'first-aid',
     'brand'    => 'Robinson',
     'short'    => 'A roll of veterinary gamgee for padding bandages and dressings.',
     'description' => "Absorbent cotton wool wrapped in gauze, used under bandages for support and protection and over wound dressings.\n\nCut to the length you need.",
@@ -236,17 +223,6 @@ return [
     'sizing'   => 'Sized by hoof. Bring the horse’s shoe size.',
     'images'   => [
         ['1S3A5807.png', 'The Medi-Boot with its ARMA badge'],
-    ],
-],
-[
-    'name'     => 'Trail Hoof Boot',
-    'category' => 'brushing-overreach-boots',
-    'short'    => 'A treaded hoof boot for riding a barefoot horse over rough ground.',
-    'description' => "A strapped hoof boot with a deep treaded sole, for a barefoot horse on stony tracks or a horse that has lost a shoe.\n\nFit is everything with a hoof boot, so bring measurements of the hoof.",
-    'specs'    => "Sole: treaded rubber\nUpper: mesh and synthetic\nFastening: straps",
-    'sizing'   => 'Measure the hoof length and width after a trim.',
-    'images'   => [
-        ['1S3A5814.png', 'The hoof boot, showing the treaded sole and straps'],
     ],
 ],
 [
@@ -429,7 +405,7 @@ return [
 ],
 [
     'name'     => 'Optima Horseshoe Nails',
-    'category' => 'farriery',
+    'category' => 'shoes-nails',
     'brand'    => 'Optima',
     'short'    => 'Optima horseshoe nails, boxed, in several head types and sizes.',
     'description' => "Horseshoe nails from Optima for farriers, sold by the box.\n\nShown here in E-3, E-4, Crown Head and ASV patterns.",
@@ -440,7 +416,7 @@ return [
 ],
 [
     'name'     => 'Aluminium Horseshoes',
-    'category' => 'farriery',
+    'category' => 'shoes-nails',
     'short'    => 'Lightweight aluminium horseshoes with a toe clip.',
     'description' => "Lightweight aluminium horseshoes with a toe clip, bundled by size for farriers.",
     'specs'    => "Material: aluminium\nClip: toe clip",
@@ -451,7 +427,7 @@ return [
 ],
 [
     'name'     => 'Steel Horseshoes',
-    'category' => 'farriery',
+    'category' => 'shoes-nails',
     'short'    => 'Steel horseshoes with a toe clip, bundled by size.',
     'description' => "Standard steel horseshoes with a toe clip, bundled by size for farriers.",
     'specs'    => "Material: steel\nClip: toe clip",
@@ -549,7 +525,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Lincoln Sun Bloc',
-    'category' => 'skin-sun-care',
+    'category' => 'skin-care',
     'brand'    => 'Lincoln',
     'short'    => 'A water-resistant UVA and UVB sunscreen with aloe vera.',
     'description' => "An effective, water-resistant UV sunscreen from Lincoln, with aloe vera. Filters, protects and soothes — worth having for pink noses under the Kenyan sun.",
@@ -560,7 +536,7 @@ return [
 ],
 [
     'name'     => 'Sooth-Itch Super Strength Gel',
-    'category' => 'skin-sun-care',
+    'category' => 'skin-care',
     'short'    => 'A gel that soothes itching and supports natural hair regrowth.',
     'description' => "Sooth-Itch Super Strength Gel soothes itching and supports natural hair regrowth.",
     'specs'    => "Size: 500ml",
@@ -569,7 +545,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equimins Leg Gel',
+    'name'     => 'Leg Gel',
     'category' => 'gels-clays-creams',
     'brand'    => 'Equimins',
     'short'    => 'A cool, refreshing leg gel with camphor and menthol.',
@@ -591,7 +567,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equimins Arnica & Witch Hazel',
+    'name'     => 'Arnica & Witch Hazel',
     'category' => 'gels-clays-creams',
     'brand'    => 'Equimins',
     'short'    => 'Arnica and witch hazel with MSM and allantoin, for bruises and sprains.',
@@ -602,7 +578,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Moore’s Herbal Cooling Gel',
+    'name'     => 'Herbal Cooling Gel',
     'category' => 'gels-clays-creams',
     'brand'    => 'Moore’s',
     'short'    => 'A herbal cooling gel for fast relief from inflammation and sore muscles.',
@@ -615,7 +591,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equimins Devils Claw Gel',
+    'name'     => 'Devils Claw Gel',
     'category' => 'gels-clays-creams',
     'brand'    => 'Equimins',
     'short'    => 'An easily absorbed, cooling devils claw gel for joints.',
@@ -637,7 +613,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equimins MSM Cream',
+    'name'     => 'MSM Cream',
     'category' => 'gels-clays-creams',
     'brand'    => 'Equimins',
     'short'    => 'An Equimins MSM cream from the first aid and stable range.',
@@ -682,7 +658,7 @@ return [
 ],
 [
     'name'     => 'Red Horse Honeyheel',
-    'category' => 'skin-sun-care',
+    'category' => 'skin-care',
     'brand'    => 'Red Horse',
     'short'    => 'A honey-based barrier cream from Red Horse.',
     'description' => "Honeyheel from Red Horse Products is a honey-based barrier cream.",
@@ -696,7 +672,7 @@ return [
 //  HEALTH AND SUPPLEMENTS
 // =====================================================================
 [
-    'name'     => 'Equine America Glucosamine HCl 12,000',
+    'name'     => 'Glucosamine HCl 12,000',
     'category' => 'joint-supplements',
     'brand'    => 'Equine America',
     'short'    => 'Extra strength glucosamine powder with MSM and hyaluronic acid.',
@@ -707,7 +683,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equine America Cortaflex HA',
+    'name'     => 'Cortaflex HA',
     'category' => 'joint-supplements',
     'brand'    => 'Equine America',
     'short'    => 'Regular strength joint powder to support joint mobility.',
@@ -718,7 +694,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equine America Buteless',
+    'name'     => 'Buteless',
     'category' => 'joint-supplements',
     'brand'    => 'Equine America',
     'short'    => 'A high strength solution for joint comfort and mobility.',
@@ -774,7 +750,7 @@ return [
 ],
 [
     'name'     => 'Equine America Biotin Xtra',
-    'category' => 'hoof-coat-supplements',
+    'category' => 'hoof-supplements',
     'brand'    => 'Equine America',
     'short'    => 'A hoof care powder with biotin, zinc and methionine.',
     'description' => "Biotin Xtra Powder from Equine America, fortified with zinc and methionine to support hoof health.\n\nThe label gives a 50-day supply.",
@@ -784,7 +760,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Coligone ColiFLEX Gastro-Joint Care',
+    'name'     => 'ColiFLEX Gastro-Joint Care',
     'category' => 'joint-supplements',
     'brand'    => 'Coligone',
     'short'    => 'A combined digestive and joint care feed supplement.',
@@ -796,7 +772,7 @@ return [
 ],
 [
     'name'     => 'Coligone Liquid',
-    'category' => 'digestive',
+    'category' => 'gut-health',
     'brand'    => 'Coligone',
     'short'    => 'An equine digestive soothing supplement in liquid form.',
     'description' => "Coligone equine digestive soothing supplement, in liquid form.",
@@ -807,7 +783,7 @@ return [
 ],
 [
     'name'     => 'Coligone Balancer',
-    'category' => 'digestive',
+    'category' => 'gut-health',
     'brand'    => 'Coligone',
     'short'    => 'A daily digestive balancer for every horse, every day.',
     'description' => "Coligone Balancer — \"every horse, every day\" — a daily digestive feed supplement.",
@@ -818,7 +794,7 @@ return [
 ],
 [
     'name'     => 'Coligone Powder',
-    'category' => 'digestive',
+    'category' => 'gut-health',
     'brand'    => 'Coligone',
     'short'    => 'An equine digestive soothing supplement in powder form.',
     'description' => "Coligone equine digestive soothing supplement, in powder form.",
@@ -828,7 +804,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Endeavon Flex-O-Joint',
+    'name'     => 'Flex-O-Joint',
     'category' => 'joint-supplements',
     'brand'    => 'Endeavon',
     'short'    => 'A joint supplement for horses and dogs, distributed by Tack Rack.',
@@ -840,7 +816,7 @@ return [
 ],
 [
     'name'     => 'Endeavon Biotin Supplement H',
-    'category' => 'hoof-coat-supplements',
+    'category' => 'hoof-supplements',
     'brand'    => 'Endeavon',
     'short'    => 'A biotin supplement for horses, distributed by Tack Rack.',
     'description' => "Endeavon Biotin Supplement H for horses. Store below 30°C, in a cool, dry place.\n\nDistributed by Tack Rack.",
@@ -851,7 +827,7 @@ return [
 ],
 [
     'name'     => 'Keratex Zeolite',
-    'category' => 'digestive',
+    'category' => 'gut-health',
     'brand'    => 'Keratex',
     'short'    => 'A Keratex feed supplement; one tub gives up to three months’ supply.',
     'description' => "Keratex Zeolite. According to the label, one tub gives up to three months' supply.",
@@ -861,7 +837,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Equimins Devils Claw Root Herb',
+    'name'     => 'Devils Claw Root Herb',
     'category' => 'joint-supplements',
     'brand'    => 'Equimins',
     'short'    => 'Devils claw root herb in an Equimins eco pack.',
@@ -873,7 +849,7 @@ return [
 ],
 [
     'name'     => 'Equimins Milk Thistle',
-    'category' => 'digestive',
+    'category' => 'gut-health',
     'brand'    => 'Equimins',
     'short'    => 'Milk thistle in an Equimins eco pack.',
     'description' => "Milk thistle from the Equimins nutrition range, in a resealable eco pack.",
@@ -962,7 +938,7 @@ return [
 ],
 [
     'name'     => 'Back to Basics Immuno Hoof',
-    'category' => 'hoof-coat-supplements',
+    'category' => 'hoof-supplements',
     'brand'    => 'Back to Basics',
     'short'    => 'A hoof supplement from Back to Basics.',
     'description' => "Immuno Hoof from the Back to Basics supplement range.",
@@ -972,7 +948,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Back to Basics Muscle Up',
+    'name'     => 'Muscle Up',
     'category' => 'joint-supplements',
     'brand'    => 'Back to Basics',
     'short'    => 'A muscle supplement from Back to Basics.',
@@ -1060,7 +1036,7 @@ return [
 ],
 [
     'name'     => 'Alltech Yea-Sacc Conc',
-    'category' => 'digestive',
+    'category' => 'gut-health',
     'brand'    => 'Alltech',
     'short'    => 'A viable yeast culture for use in livestock feeds.',
     'description' => "Yea-Sacc Conc from Alltech is a viable yeast culture for use in livestock feeds, including horses. Rates for each type of animal are on the label.",
@@ -1089,7 +1065,7 @@ return [
 ],
 [
     'name'     => 'Moore’s Aloe Vera Shampoo',
-    'category' => 'shampoos-conditioners',
+    'category' => 'shampoo',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality aloe vera shampoo, 1 litre.',
     'description' => "Aloe vera shampoo from Moore's Quality, for washing horses.",
@@ -1100,7 +1076,7 @@ return [
 ],
 [
     'name'     => 'Endeavon Lemon Shampoo',
-    'category' => 'shampoos-conditioners',
+    'category' => 'shampoo',
     'brand'    => 'Endeavon',
     'short'    => 'Lemon shampoo from Endeavon, in three sizes.',
     'description' => "Endeavon lemon shampoo for horses, distributed by Tack Rack.\n\nAvailable in a large can and two bottle sizes.",
@@ -1113,8 +1089,8 @@ return [
     ],
 ],
 [
-    'name'     => 'Calro Organic Neem Oil Shampoo & Conditioner',
-    'category' => 'shampoos-conditioners',
+    'name'     => 'Organic Neem Oil Shampoo & Conditioner',
+    'category' => 'shampoo',
     'brand'    => 'Calro',
     'short'    => 'Organic neem oil shampoo and conditioner with apple fragrance.',
     'description' => "Calro organic neem oil shampoo and conditioner with apple fragrance, carrying the Tack Rack label.\n\nAvailable in 5 litre and 1 litre sizes.",
@@ -1126,7 +1102,7 @@ return [
 ],
 [
     'name'     => 'Equimins Ultra Silky Detangler',
-    'category' => 'mane-tail-care',
+    'category' => 'detanglers',
     'brand'    => 'Equimins',
     'short'    => 'A silky detangling spray for manes and tails.',
     'description' => "Ultra Silky Detangler from the Equimins grooming line, sprayed on to loosen tangles in manes and tails before brushing.",
@@ -1137,7 +1113,7 @@ return [
 ],
 [
     'name'     => 'Botanica Mane & Tail 6-in-1 Spray',
-    'category' => 'mane-tail-care',
+    'category' => 'detanglers',
     'brand'    => 'Botanica',
     'short'    => 'A 750ml multi-purpose mane and tail spray.',
     'description' => "Botanica's 6-in-1 multi-purpose spray: body sheen, dandruff and flaky skin, detangler, insects, wounds.",
@@ -1148,7 +1124,7 @@ return [
 ],
 [
     'name'     => 'Gold Label Mane, Coat & Tail Lotion',
-    'category' => 'mane-tail-care',
+    'category' => 'detanglers',
     'brand'    => 'Gold Label',
     'short'    => 'A show lotion that imparts a quick, healthy shine, in two sizes.',
     'description' => "Gold Label Mane, Coat & Tail Lotion for show animals. Imparts a quick, healthy shine and assists in removing stains, knots and tangles.\n\nAvailable as a 500ml spray and a 2.5 litre refill.",
@@ -1164,7 +1140,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Feed Scoop — Colour Range',
-    'category' => 'grooming-tools',
+    'category' => 'yard-equipment',
     'short'    => 'A round plastic feed scoop with a long handle, in several colours.',
     'description' => "A deep round feed scoop with a long, easy-grip handle.\n\nShown in black, green, purple, orange and red — one colour per horse keeps the feeds straight.",
     'specs'    => "Material: plastic\nColours: black, green, purple, orange, red",
@@ -1222,7 +1198,7 @@ return [
 //  LEATHER CARE
 // =====================================================================
 [
-    'name'     => 'Moore’s Leather Dressing',
+    'name'     => 'Leather Dressing',
     'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality leather dressing that softens and preserves, 1 litre.',
@@ -1233,7 +1209,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Moore’s Glycerine Leather & Saddle Soap',
+    'name'     => 'Glycerine Leather & Saddle Soap',
     'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'A bar of Moore’s Quality glycerine leather and saddle soap.',
@@ -1244,7 +1220,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Moore’s Dubbin',
+    'name'     => 'Dubbin',
     'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality dubbin, 500ml.',
@@ -1256,7 +1232,7 @@ return [
     ],
 ],
 [
-    'name'     => 'Moore’s Leather Soap',
+    'name'     => 'Leather Soap',
     'category' => 'leather-care',
     'brand'    => 'Moore’s',
     'short'    => 'Moore’s Quality leather soap, 500ml.',
@@ -1264,23 +1240,6 @@ return [
     'specs'    => "Maker: Moore’s Quality\nSize: 500ml",
     'images'   => [
         ['1S3A6006.jpg', 'The 500ml tub of Moore’s Leather Soap'],
-    ],
-],
-
-// =====================================================================
-//  RIDER ACCESSORIES
-// =====================================================================
-[
-    // Frame 5718 follows the three whips at the end of the first shoot
-    // (5708, 5712, 5715). It is a different whip from the Shires-carded
-    // dressage whip at 5708: shorter, with a grip and a wrist strap.
-    'name'     => 'Braided Schooling Whip',
-    'category' => 'whips',
-    'short'    => 'A braided schooling whip with a rubber grip and wrist strap.',
-    'description' => "A braided schooling whip with a flexible tip, a rubber grip and a wrist strap.",
-    'specs'    => "Shaft: braided\nHandle: rubber grip\nWrist strap: yes",
-    'images'   => [
-        ['1S3A5718.jpg', 'The whip full length, showing the grip and wrist strap'],
     ],
 ],
 

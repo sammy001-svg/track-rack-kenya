@@ -1,5 +1,5 @@
 -- Tack Rack — pending database migrations
--- Generated 2026-10-08 11:54 by bin/export-migrations-sql.php. Do not edit by hand.
+-- Generated 2026-10-13 10:31 by bin/export-migrations-sql.php. Do not edit by hand.
 --
 -- Import through phpMyAdmin: select the site database, open the Import tab,
 -- choose this file, and run it. It contains, in this order:
@@ -10,6 +10,7 @@
 --   2026_09_22_000006_single_line_address.sql
 --   2026_09_22_000007_instagram.sql
 --   2026_10_05_000008_heritage_wording.sql
+--   2026_10_13_000009_review_minutes.sql
 --
 -- Every statement in here is safe to run more than once, so importing it twice
 -- changes nothing the second time.
@@ -252,6 +253,54 @@ UPDATE `pages`
  WHERE `body` LIKE '%Rider, Horse and Stable%';
 
 
+-- =====================================================================
+--  2026_10_13_000009_review_minutes.sql
+-- =====================================================================
+
+-- Corrections from the review meeting of 8 October 2026.
+--
+-- 1. "Catalog" becomes "Catalogue" throughout, including in page copy.
+--
+-- 2. Saddle fitting is not done at the shop. Three pieces of copy offered it
+--    there — the how-to-order page, the saddle fitting service and the fee
+--    note under the booking form — and the booking form itself was worded as
+--    though bringing the horse in were the default. Fittings happen at the
+--    yard, so all four now say so.
+--
+-- Each statement matches the old wording exactly, so anything rewritten in the
+-- admin since is left alone, and running this twice changes nothing.
+
+SET NAMES utf8mb4;
+
+-- 1. Spelling
+UPDATE `pages`
+   SET `subtitle` = REPLACE(`subtitle`, 'From catalog to yard', 'From catalogue to yard'),
+       `body`     = REPLACE(`body`, 'Browse the catalog.', 'Browse the catalogue.')
+ WHERE `slug` = 'how-to-order';
+
+-- 2. Fitting happens at the yard, not at the shop
+UPDATE `pages`
+   SET `body` = REPLACE(
+         `body`,
+         'we will arrange a fitting &mdash; at the shop or at your yard',
+         'we will arrange a fitting at your yard'
+       )
+ WHERE `slug` = 'how-to-order';
+
+UPDATE `services`
+   SET `description` = REPLACE(
+         `description`,
+         'every saddle we supply is fitted on the horse — at the shop or at your yard',
+         'every saddle we supply is fitted on the horse, at your yard'
+       )
+ WHERE `slug` = 'saddle-fitting';
+
+UPDATE `settings`
+   SET `value` = 'Fitting is included with a saddle purchase. The yard visit is charged by distance, confirmed before we travel.'
+ WHERE `key_name` = 'fitting_fee_note'
+   AND `value` LIKE 'Fitting at the shop is free%';
+
+
 -- Record what was applied, so bin/migrate.php does not offer these again.
 INSERT IGNORE INTO `migrations` (`filename`) VALUES
   ('2026_08_18_000003_location_and_logo.sql'),
@@ -259,4 +308,5 @@ INSERT IGNORE INTO `migrations` (`filename`) VALUES
   ('2026_09_22_000005_staff_expertise_wording.sql'),
   ('2026_09_22_000006_single_line_address.sql'),
   ('2026_09_22_000007_instagram.sql'),
-  ('2026_10_05_000008_heritage_wording.sql');
+  ('2026_10_05_000008_heritage_wording.sql'),
+  ('2026_10_13_000009_review_minutes.sql');

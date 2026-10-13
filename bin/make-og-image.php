@@ -38,7 +38,7 @@ $sans    = $base . '/build/fonts/Inter-SemiBold.ttf';
 
 // The saddle: the single most recognisable thing they sell, and the item their
 // saddle fitting service is built around.
-$photo   = $base . '/public/uploads/products/thorowgood-leather-saddle-01.jpg';
+$photo   = $base . '/public/uploads/products/thorowgood-saddle-01.jpg';
 $logo    = $base . '/public/assets/img/logo-light.png';
 $out     = $base . '/public/assets/img/og-default';
 

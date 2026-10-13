@@ -40,6 +40,13 @@ class ShopController extends Controller
         'leather-care-maintenance' => 'leather-care',
         'first-aid-skin-care'      => 'first-aid',
         'fly-control'              => 'fly-repellent',
+        // Renamed in the October 2026 regrouping.
+        'digestive'                => 'gut-health',
+        'farriery'                 => 'shoes-nails',
+        'shampoos-conditioners'    => 'shampoo',
+        'mane-tail-care'           => 'detanglers',
+        'skin-sun-care'            => 'skin-care',
+        'hoof-coat-supplements'    => 'hoof-supplements',
     ];
 
     public function category(string $slug): void
@@ -194,7 +201,29 @@ class ShopController extends Controller
                     'category' => $section,
                     'products' => $result['items'],
                     'total'    => (int) $result['total'],
+                    'url'      => url('/shop/' . $section['slug']),
                 ];
+            }
+
+            // Anything filed directly against the section itself rather than
+            // one of its sub-categories, so nothing is hidden by the grouping.
+            if ($sections !== []) {
+                $own = $products->catalog(
+                    ['category_ids' => [(int) $department['id']]],
+                    1,
+                    $perSection
+                );
+
+                if ($own['items'] !== []) {
+                    $sections[] = [
+                        'category' => ['name' => 'Also in ' . $department['name'], 'slug' => $department['slug'], 'tagline' => null],
+                        'products' => $own['items'],
+                        'total'    => (int) $own['total'],
+                        // The one URL that shows this category's own products
+                        // without those of its sub-categories.
+                        'url'      => url('/shop/' . $department['slug']) . '?category=' . (int) $department['id'],
+                    ];
+                }
             }
 
             if ($sections !== []) {

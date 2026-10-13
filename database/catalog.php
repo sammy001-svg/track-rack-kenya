@@ -22,8 +22,8 @@ $firstShoot = [
     // Frames 5273-5301 are one saddle, not two: both halves of the sequence
     // carry the Thorowgood maker's label, and 5273, 5290 and 5301 are plainly
     // the same saddle from three angles.
-    'name'     => 'Thorowgood Leather Saddle',
-    'category' => 'saddles',
+    'name'     => 'Thorowgood Saddle',
+    'category' => 'saddles-thorowgood',
     'brand'    => 'Thorowgood',
     'featured' => true,
     'short'    => 'A soft-leather English saddle with a deep, comfortable seat.',
@@ -47,7 +47,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Wintec Synthetic Saddle',
-    'category' => 'saddles',
+    'category' => 'saddles-wintec',
     'brand'    => 'Wintec',
     'short'    => 'A hard-wearing synthetic saddle with a grippy suede-effect seat.',
     'description' => "A synthetic saddle built for riders who want low maintenance without giving up fit. The suede-effect seat gives real grip, and the whole saddle can be washed down after a dusty ride rather than needing oiling.\n\nSynthetic saddles suit the Kenyan climate particularly well — they do not dry out and crack the way leather can at altitude.",
@@ -60,7 +60,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Jeffries Elite Leather Saddle',
-    'category' => 'saddles',
+    'category' => 'saddles-jeffries',
     'brand'    => 'Jeffries',
     'featured' => true,
     'short'    => 'A havana brown English saddle, hand finished, with the Elite embossing.',
@@ -89,26 +89,8 @@ $firstShoot = [
     ],
 ],
 [
-    // Frames 5336-5349 are one saddle. 5341 and 5342 are consecutive frames,
-    // so the photographer had not changed the item between them.
-    'name'     => 'Black Leather Jump Saddle',
-    'category' => 'saddles',
-    'short'    => 'A forward-cut jumping saddle in smooth black leather.',
-    'description' => "A jumping saddle with a forward-cut flap and a light, shallow seat that keeps the rider off the horse's back over a fence. Smooth black leather throughout.\n\nEvery saddle we supply is fitted on the horse before delivery.",
-    'specs'    => "Leather: smooth black\nFlap: forward cut\nSeat: shallow, close contact\nFitting: included, on the horse",
-    'sizing'   => 'Seat size from the rider, gullet and panel from the horse.',
-    'images'   => [
-        ['1S3A5336.png', 'Full side profile of the saddle'],
-        ['1S3A5337.png', 'Seat and cantle detail'],
-        ['1S3A5341.png', 'Pommel and knee roll from the front'],
-        ['1S3A5342.png', "Enamel maker's badge on the flap"],
-        ['1S3A5345.png', 'Three-quarter view from the front'],
-        ['1S3A5349.png', 'Seat and cantle, second view'],
-    ],
-],
-[
     'name'     => 'Wintec 2000 All Purpose Saddle',
-    'category' => 'saddles',
+    'category' => 'saddles-wintec',
     'brand'    => 'Wintec',
     'featured' => true,
     'short'    => 'The Wintec 2000 — adjustable, washable and genuinely low maintenance.',
@@ -129,7 +111,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Black Skull Cap',
-    'category' => 'safety-equipment',
+    'category' => 'skull-caps',
     'short'    => 'A plain black skull cap, the standard for cross country and racing.',
     'description' => "A classic skull cap shape with no fixed peak, so a silk can be fitted over it. This is the hat of choice for cross country, racing work and anyone who wants maximum coverage at the back of the head.\n\nAlways buy a hat that has been fitted to your head. A hat that moves is a hat that will not do its job.",
     'specs'    => "Shell: hard, textured finish\nShape: skull cap, no fixed peak\nSilk: fits a standard hat silk (sold separately)",
@@ -141,7 +123,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'HKM Velvet Riding Hat',
-    'category' => 'safety-equipment',
+    'category' => 'riding-helmets',
     'brand'    => 'HKM',
     'short'    => 'A traditional black velvet riding hat with a fixed peak.',
     'description' => "The traditional show hat: black velvet finish with a fixed peak and a neat, low profile. Correct turnout for the show ring, Pony Club and everyday schooling.\n\nSupplied by HKM.",
@@ -155,15 +137,15 @@ $firstShoot = [
 ],
 [
     'name'     => 'Matt Black Vented Riding Helmet',
-    'category' => 'safety-equipment',
+    'category' => 'riding-helmets',
     'featured' => true,
     'short'    => 'A modern low-profile helmet with front venting, in matt black.',
     'description' => "A modern riding helmet with a low, clean profile and front vents that make a real difference schooling in the sun. The matt black finish is understated and does not show dust the way a gloss shell does.\n\nA good everyday helmet for schooling, hacking and lessons.",
     'specs'    => "Shell: matt black, low profile\nVentilation: front vents\nPeak: short moulded peak\nHarness: adjustable retention system",
     'sizing'   => 'Measure around the head just above the ears. We fit every helmet we sell — bring your head, not just a tape measure.',
     'images'   => [
-        ['1S3A5380.jpg', 'Helmet from the side, showing the short peak'],
         ['1S3A5383.jpg', 'Front view with the vent detail'],
+        ['1S3A5380.jpg', 'Helmet from the side, showing the short peak'],
         ['1S3A5387.jpg', 'Close-up of the front vents'],
         ['1S3A5390.jpg', 'Rear view with the adjuster'],
     ],
@@ -174,7 +156,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'USG Body Protector — BETA 2018 Level 3',
-    'category' => 'safety-equipment',
+    'category' => 'body-protectors',
     'brand'    => 'USG',
     'featured' => true,
     'short'    => 'Certified BETA 2018 Level 3 body protection, the standard for cross country.',
@@ -191,7 +173,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Whitaker Body Protector',
-    'category' => 'safety-equipment',
+    'category' => 'body-protectors',
     'brand'    => 'Whitaker',
     'short'    => 'A close-fitting body protector with a full-length front zip.',
     'description' => "A body protector from Whitaker with a full-length front zip and a mesh back panel for airflow. The zip makes it far easier to get in and out of than a pull-over design, particularly for younger riders.\n\nFitted at the shop — the protection only works if it sits correctly on the body.",
@@ -209,7 +191,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Black Leather Snaffle Bridle',
-    'category' => 'bridles-reins',
+    'category' => 'bridles',
     'featured' => true,
     'short'    => 'A complete black leather snaffle bridle with reins.',
     'description' => "A full black leather snaffle bridle supplied with reins — headpiece, browband, cheekpieces, cavesson noseband and throatlash. Stainless steel fittings throughout.\n\nGood leather, kept fed, will outlast several cheaper bridles. In this climate a monthly balm is the difference between a bridle that lasts a decade and one that cracks in a season.",
@@ -224,7 +206,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Havana Leather Snaffle Bridle',
-    'category' => 'bridles-reins',
+    'category' => 'bridles',
     'short'    => 'The same bridle in warm havana brown leather.',
     'description' => "A complete snaffle bridle in havana brown leather with stainless steel fittings. Brown tack suits a bay or chestnut particularly well and is correct for hunting and most showing classes.\n\nSupplied with matching reins.",
     'specs'    => "Leather: havana brown\nFittings: stainless steel\nIncludes: headpiece, browband, cheekpieces, noseband, throatlash and reins\nNoseband: cavesson",
@@ -235,7 +217,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Shires Loose Ring Snaffle with Copper Lozenge',
-    'category' => 'bits-accessories',
+    'category' => 'bits',
     'brand'    => 'Shires',
     'short'    => 'A double-jointed loose ring snaffle with a copper lozenge centre.',
     'description' => "A loose ring snaffle with a double joint and a copper lozenge in the centre. The double joint removes the nutcracker action of a single-jointed bit, and the copper encourages the horse to salivate and soften.\n\nA fair, mild bit and a sensible first choice for a young horse.",
@@ -247,7 +229,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Shires Stainless Steel Snaffle Bit',
-    'category' => 'bits-accessories',
+    'category' => 'bits',
     'brand'    => 'Shires',
     'short'    => 'A solid stainless steel snaffle from Shires.',
     'description' => "A well-made stainless steel snaffle from Shires. Solid stainless takes the wear, does not rust in a damp tack room and cleans up with nothing more than hot water.\n\nCome in and we will help you match the bit to the horse rather than to a catalogue.",
@@ -259,7 +241,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Loose Ring Jointed Snaffle',
-    'category' => 'bits-accessories',
+    'category' => 'bits',
     'short'    => 'A single-jointed loose ring snaffle in stainless steel.',
     'description' => "The most widely used bit there is: a single-jointed loose ring snaffle in stainless steel. Simple, mild in a quiet hand, and the right starting point for most horses.",
     'specs'    => "Material: stainless steel\nMouthpiece: single jointed\nRings: loose ring",
@@ -270,7 +252,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Training Bit with Rope Cheeks',
-    'category' => 'bits-accessories',
+    'category' => 'bits',
     'short'    => 'A gag-action training bit with rope cheeks and a pulley.',
     'description' => "A training bit with rope cheeks running through the bit rings, giving a gag action that lifts the head rather than pulling back. Supplied with the cord, pulley and buckles as shown.\n\nA bit like this is a schooling tool, not a shortcut. Please talk to us about whether it is the right answer for your horse before buying.",
     'specs'    => "Material: stainless steel rings, corded cheeks\nAction: gag / poll lift\nIncludes: cord, pulley and adjusting buckles",
@@ -281,7 +263,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Rubber Bit Guards',
-    'category' => 'bits-accessories',
+    'category' => 'bit-accessories',
     'short'    => 'Bit guards that stop the bit rubbing at the corners of the mouth.',
     'description' => "Round guards that sit between the bit ring and the horse's cheek, stopping the bit pinching or rubbing at the corners of the mouth. Particularly worth having on a loose ring bit or a young horse still settling into the contact.\n\nSold in pairs, in black and brown.",
     'specs'    => "Fitting: sold in pairs\nColours: black, brown\nUse: loose ring and eggbutt bits",
@@ -342,21 +324,21 @@ $firstShoot = [
     ],
 ],
 [
-    'name'     => 'Leather Girth Buckle Guards',
-    'category' => 'girths',
-    'short'    => 'Leather guards that protect the saddle flap from girth buckles.',
-    'description' => "Flat leather ovals that slide onto the girth billets and sit between the buckles and the saddle flap. Without them the buckles wear a permanent mark into the underside of the flap — a small item that quietly protects an expensive saddle.\n\nSold in pairs, in black and havana.",
-    'specs'    => "Material: leather\nFitting: slides onto the girth billets\nColours: black, havana\nSold: in pairs",
+    'name'     => 'Rubber Guards',
+    'category' => 'martingales',
+    'short'    => 'Rubber guards that protect the saddle flap from the girth buckles.',
+    'description' => "Flat rubber ovals that slide onto the girth billets and sit between the buckles and the saddle flap. Without them the buckles wear a permanent mark into the underside of the flap — a small item that quietly protects an expensive saddle.\n\nSold in pairs, in black and havana.",
+    'specs'    => "Material: rubber\nFitting: slides onto the girth billets\nColours: black, havana\nSold: in pairs",
     'sizing'   => 'One size fits standard billet straps.',
     'images'   => [
-        ['1S3A5538.png', 'Buckle guards in black and havana, showing the billet slot'],
+        ['1S3A5538.png', 'Guards in black and havana, showing the billet slot'],
         ['1S3A5561.png', 'A padded pair in black and havana'],
         ['1S3A5563.png', 'Side view showing the thickness of the padded pair'],
     ],
 ],
 [
     'name'     => 'Korsteel Stainless Steel Stirrup Irons',
-    'category' => 'martingales-stirrups-leathers',
+    'category' => 'stirrup-irons',
     'brand'    => 'Korsteel',
     'featured' => true,
     'short'    => 'Solid stainless steel irons from Korsteel, with a wide tread.',
@@ -370,7 +352,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Peacock Safety Stirrup Irons',
-    'category' => 'martingales-stirrups-leathers',
+    'category' => 'stirrup-irons',
     'short'    => 'Safety irons with a rubber release band — the sensible choice for children.',
     'description' => "Peacock safety irons have a rubber band on the outside instead of a solid branch, so if a rider comes off the band releases and the foot comes free rather than being dragged.\n\nWe would put every child on these, and plenty of adults too.",
     'specs'    => "Material: stainless steel with rubber release band\nTread: white rubber tread pad\nUse: recommended for children and novice riders",
@@ -381,7 +363,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Compositi Lightweight Stirrups',
-    'category' => 'martingales-stirrups-leathers',
+    'category' => 'stirrup-irons',
     'short'    => 'Light composite stirrups with a wide grippy tread, in several colours.',
     'description' => "Composite stirrups that weigh a fraction of a steel iron and will not rust. The wide tread is deeply grooved and grips a boot well, which makes a real difference to a rider who struggles to keep their foot still.\n\nAvailable in a range of tread colours.",
     'specs'    => "Material: reinforced composite\nTread: wide, deeply grooved\nWeight: considerably lighter than steel\nColours: several tread colours available",
@@ -393,7 +375,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Rubber Stirrup Treads',
-    'category' => 'martingales-stirrups-leathers',
+    'category' => 'stirrup-treads',
     'short'    => 'Replacement rubber treads to bring worn irons back to grip.',
     'description' => "Replacement rubber treads for stainless steel irons. A worn, polished tread is genuinely dangerous in the wet — replacing it costs very little and takes a minute.\n\nAvailable in black and white.",
     'specs'    => "Material: ribbed rubber\nColours: black, white\nSold: in pairs\nUse: standard stainless steel irons",
@@ -405,7 +387,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Leather Draw Reins',
-    'category' => 'bridles-reins',
+    'category' => 'reins',
     'short'    => 'Draw reins for schooling, with clips at both ends.',
     'description' => "Draw reins for schooling work, running from the girth through the bit rings back to the rider's hand. Used correctly and briefly they can help a horse find a rounder outline; used badly they teach it to lean.\n\nPlease speak to us, or to your instructor, before schooling in them.",
     'specs'    => "Material: leather with clip ends\nFitting: girth to bit ring to hand\nUse: schooling only, not for jumping",
@@ -418,7 +400,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Leather Bib Martingale',
-    'category' => 'martingales-stirrups-leathers',
+    'category' => 'martingales',
     'short'    => 'A bib martingale in brown leather, safer than a standing pair.',
     'description' => "A bib martingale — a running martingale with a leather bib filling the space between the two straps, so the horse cannot get a foreleg caught through it. Standard for racing and cross country for exactly that reason.\n\nBrown leather with stainless fittings.",
     'specs'    => "Material: brown leather\nType: bib (running martingale with filled bib)\nFittings: stainless steel\nIncludes: neck strap",
@@ -789,14 +771,18 @@ $firstShoot = [
     ],
 ],
 [
-    'name'     => 'Dressage Schooling Whip',
+    // The braided whip (frame 5718) and the dressage whip (5708) are the same
+    // item to a customer — a schooling whip — so they are one product with a
+    // photograph of each pattern.
+    'name'     => 'Schooling Whip',
     'category' => 'whips',
-    'short'    => 'A long schooling whip with a moulded handle.',
-    'description' => "A long dressage schooling whip, light enough in the hand to be used without disturbing the rein contact. Long enough to reach behind the leg without taking the hand off the rein.",
-    'specs'    => "Type: dressage / schooling whip\nHandle: moulded grip with wrist detail\nColour: navy",
+    'short'    => 'A long schooling whip, in a smooth or a braided pattern.',
+    'description' => "A long schooling whip, light enough in the hand to be used without disturbing the rein contact, and long enough to reach behind the leg without taking the hand off the rein.\n\nStocked in a smooth navy pattern with a moulded handle, and in a braided pattern with a rubber grip and wrist strap.",
+    'specs'    => "Type: schooling whip\nShaft: smooth or braided\nHandle: moulded grip, or rubber grip with wrist strap\nColours: navy, black",
     'sizing'   => 'One length. A schooling whip should reach the horse\'s hindquarters with the hand in a normal rein position.',
     'images'   => [
-        ['1S3A5708.png', 'Navy dressage schooling whip, full length'],
+        ['1S3A5708.png', 'The smooth navy pattern, full length'],
+        ['1S3A5718.jpg', 'The braided pattern, showing the grip and wrist strap'],
     ],
 ],
 [

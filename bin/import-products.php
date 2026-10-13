@@ -132,7 +132,7 @@ $tree = [
     'martingales-stirrups-leathers' => ['horse', 4, 'Martingales, Stirrups & Leathers', 'Irons, Treads & Straps',
         'Stirrup irons including safety and composite patterns, rubber treads, stirrup leathers and martingales.'],
     'girths' => ['horse', 5, 'Girths', 'Fleece, Elastic & Dressage',
-        'Fleece lined, elastic, anti-chafe and short dressage girths, with leather buckle guards to protect the saddle flap.'],
+        'Fleece lined, elastic, anti-chafe and short dressage girths, cut to sit clear of the elbow.'],
     'numnahs-saddlepads' => ['horse', 6, 'Numnahs & Saddlepads', 'Shaped, Square & Blankets',
         'Shaped GP numnahs, dressage squares, non-slip and Prolite pads, and fleece blankets.'],
     'headcollars-lead-ropes' => ['horse', 7, 'Headcollars & Lead Ropes', 'Foal, Pony, Cob & Full',
@@ -147,12 +147,12 @@ $tree = [
         'Fly and midge repellent sprays, fine mesh fly masks, and outdoor fly traps and bait for the yard.'],
     'joint-muscle-care' => ['yard', 3, 'Joint & Muscle Care', 'Supplements, Gels & Clays',
         'Joint supplements and the gels, clays and creams that go on afterwards — devils claw, arnica, MSM and cooling clay.'],
-    'digestive' => ['yard', 4, 'Digestive', 'Gut Balancers & Soothers',
-        'Digestive balancers, soothers and yeast cultures for horses that need settling from the inside.'],
+    'gut-health' => ['yard', 4, 'Gut Health', 'Balancers & Soothers',
+        'Gut balancers, soothers and yeast cultures for horses that need settling from the inside.'],
     'calming' => ['yard', 5, 'Calming', 'Focus & Temperament',
         'Powders, solutions and pastes to take the edge off a nervous or moody horse without dulling it.'],
     'feed-supplements' => ['yard', 6, 'Feed Supplements', 'Vitamins, Minerals & Electrolytes',
-        'Electrolytes, vitamin and mineral premixes, biotin, garlic, limestone, salts and licks for the feed room.'],
+        'Electrolytes, vitamin and mineral premixes, garlic, limestone, salts and licks for the feed room.'],
     'hoof-care' => ['yard', 7, 'Hoof Care', 'Oils, Dressings & Farriery',
         'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.'],
     'first-aid' => ['yard', 8, 'First Aid', 'Wound & Skin Care',
@@ -177,17 +177,17 @@ $tree = [
         'Waxes and compounds that seal cavities, rebuild missing horn and repair damage around nail holes.'],
     'poultice-treatment-boots' => ['hoof-care', 4, 'Poultices & Treatment Boots', 'Soaking & Dressing',
         'Ready-made poultices, and the rigid and fabric boots that hold a dressing on the hoof.'],
-    'farriery' => ['hoof-care', 5, 'Farriery', 'Shoes & Nails',
+    'shoes-nails' => ['hoof-care', 5, 'Shoes & Nails', 'Steel, Aluminium & Nails',
         'Steel and aluminium horseshoes and farrier nails, bundled by size.'],
+    'hoof-supplements' => ['hoof-care', 6, 'Hoof Supplements', 'Biotin, Fed Daily',
+        'Biotin and the hoof supplements fed in the feed to improve horn quality from the inside out.'],
 
     // Feed Supplements (17)
     'vitamins-minerals' => ['feed-supplements', 1, 'Vitamins & Minerals', 'Premixes, Salts & Licks',
         'Vitamin and mineral premixes, limestone, salts, bicarbonate and mineral licks for the feed room.'],
     'electrolytes' => ['feed-supplements', 2, 'Electrolytes', 'Powders & Pastes',
         'Electrolytes to replace the salts lost in sweat, in a tub, a bag or a ready-to-use syringe.'],
-    'hoof-coat-supplements' => ['feed-supplements', 3, 'Hoof & Coat', 'Biotin & Conditioning',
-        'Biotin and the supplements fed to improve hoof horn and coat condition from the inside.'],
-    'herbs-tonics' => ['feed-supplements', 4, 'Herbs & Tonics', 'Garlic, Iron & Respiratory',
+    'herbs-tonics' => ['feed-supplements', 3, 'Herbs & Tonics', 'Garlic, Iron & Respiratory',
         'Garlic, iron tonics and respiratory support, fed daily or through a hard spell.'],
 
     // Joint & Muscle Care (13)
@@ -226,12 +226,48 @@ $tree = [
     'pads-blankets' => ['numnahs-saddlepads', 2, 'Pads & Blankets', 'Riser, Gel & Fleece',
         'Prolite and gel pads that sit under the saddle, and fleece rugs for after work.'],
 
+    // Safety Equipment (5) — split by what the kit protects
+    'riding-helmets' => ['safety-equipment', 1, 'Riding Helmets', 'Velvet & Vented',
+        'Velvet show hats and vented schooling helmets, fitted on the head before you ride in them.'],
+    'skull-caps' => ['safety-equipment', 2, 'Skull Caps', 'Cross Country & Racing',
+        'Jockey skull caps, worn with a silk for cross country and racing.'],
+    'body-protectors' => ['safety-equipment', 3, 'Body Protectors', 'BETA Level 3',
+        'BETA 2018 Level 3 body protectors for cross country and eventing, fitted to the torso.'],
+
+    // Saddles (5) — grouped by maker, as the shop sells them
+    'saddles-wintec' => ['saddles', 1, 'Wintec', 'Synthetic, Changeable Gullet',
+        'Wintec synthetic saddles with changeable gullets — washable, light and suited to the climate.'],
+    'saddles-jeffries' => ['saddles', 2, 'Jeffries', 'English Leather',
+        'Jeffries English leather saddles, hand finished and fitted on the horse.'],
+    'saddles-thorowgood' => ['saddles', 3, 'Thorowgood', 'Soft Leather & Synthetic',
+        'Thorowgood saddles, soft in the hand and forgiving on a changing back.'],
+
+    // Bridles & Reins (3)
+    'bridles' => ['bridles-reins', 1, 'Bridles', 'Black & Havana',
+        'Leather snaffle bridles in black and havana, supplied with a pair of reins.'],
+    'reins' => ['bridles-reins', 2, 'Reins', 'Leather, Rubber & Draw',
+        'Leather, rubber and webbed reins, and schooling draw reins.'],
+
+    // Bits & Accessories (5)
+    'bits' => ['bits-accessories', 1, 'Bits', 'Snaffles, Lozenges & Training',
+        'Loose ring and jointed snaffles, copper lozenge bits and training bits.'],
+    'bit-accessories' => ['bits-accessories', 2, 'Bit Guards & Keepers', 'Protecting the Mouth',
+        'Rubber bit guards and the keepers that stop a bit rubbing the corners of the mouth.'],
+
+    // Martingales, Stirrups & Leathers (5)
+    'martingales' => ['martingales-stirrups-leathers', 1, 'Martingales & Guards', 'Bib, Running & Rubber',
+        'Bib and running martingales, with the rubber guards that keep girth buckles off the saddle flap.'],
+    'stirrup-irons' => ['martingales-stirrups-leathers', 2, 'Stirrup Irons', 'Steel, Safety & Composite',
+        'Stainless steel, peacock safety and lightweight composite stirrup irons.'],
+    'stirrup-treads' => ['martingales-stirrups-leathers', 3, 'Stirrup Treads', 'Sold in Pairs',
+        'Rubber treads that grip the boot, sold in pairs to replace worn or missing ones.'],
+
     // Shampoo & Skin Care (9)
-    'shampoos-conditioners' => ['shampoo-skin-care', 1, 'Shampoos & Conditioners', 'Washing Down',
+    'shampoo' => ['shampoo-skin-care', 1, 'Shampoo', 'Washing Down',
         'Aloe vera, lemon and neem oil shampoos and conditioners for washing horses down.'],
-    'mane-tail-care' => ['shampoo-skin-care', 2, 'Mane & Tail', 'Detangling & Shine',
+    'detanglers' => ['shampoo-skin-care', 2, 'Detanglers', 'Mane & Tail',
         'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day.'],
-    'skin-sun-care' => ['shampoo-skin-care', 3, 'Skin & Sun', 'Soothing & Protecting',
+    'skin-care' => ['shampoo-skin-care', 3, 'Skin Care', 'Soothing & Protecting',
         'Sunscreen for pink noses, soothing gels for itching, and barrier creams for heels.'],
 ];
 

@@ -195,12 +195,12 @@ if ($activeSubId > 0) {
           <div class="catalog-row" data-reveal>
             <div class="catalog-row__head">
               <h3 class="catalog-row__title">
-                <a href="<?= e(url('/shop/' . $section['category']['slug'])) ?>"><?= e($section['category']['name']) ?></a>
+                <a href="<?= e($section['url']) ?>"><?= e($section['category']['name']) ?></a>
               </h3>
               <?php if (!empty($section['category']['tagline'])): ?>
                 <p class="catalog-row__tagline"><?= e($section['category']['tagline']) ?></p>
               <?php endif; ?>
-              <a class="catalog-row__all" href="<?= e(url('/shop/' . $section['category']['slug'])) ?>">
+              <a class="catalog-row__all" href="<?= e($section['url']) ?>">
                 View all <?= (int) $section['total'] ?>
                 <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
                   <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>

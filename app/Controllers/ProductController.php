@@ -10,12 +10,59 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    /**
+     * Where a product went when the October 2026 review renamed it.
+     *
+     * Brand names came out of the titles, two whips became one product, and a
+     * few lines were dropped — all of which changes the URL. Anyone holding
+     * the old one, including Google, is sent to the right place with a 301
+     * rather than a 404. A value beginning with /shop is a category: the
+     * product itself is gone, so the nearest shelf is the honest answer.
+     */
+    private const MOVED = [
+        // Renamed
+        'thorowgood-leather-saddle'                    => 'thorowgood-saddle',
+        'fleece-lined-headcollar'                      => 'lunging-cavesson',
+        'leather-girth-buckle-guards'                  => 'rubber-guards',
+        'arma-anatomic-brushing-boots'                 => 'anatomic-brushing-boots',
+        'arma-brushing-boots-navy'                     => 'brushing-boots-navy',
+        'arma-overreach-boots-red'                     => 'overreach-boots-red',
+        'back-to-basics-muscle-up'                     => 'muscle-up',
+        'coligone-coliflex-gastro-joint-care'          => 'coliflex-gastro-joint-care',
+        'endeavon-flex-o-joint'                        => 'flex-o-joint',
+        'equimins-devils-claw-root-herb'               => 'devils-claw-root-herb',
+        'equine-america-buteless'                      => 'buteless',
+        'equine-america-cortaflex-ha'                  => 'cortaflex-ha',
+        'equine-america-glucosamine-hcl-12-000'        => 'glucosamine-hcl-12-000',
+        'equimins-arnica-witch-hazel'                  => 'arnica-witch-hazel',
+        'equimins-devils-claw-gel'                     => 'devils-claw-gel',
+        'equimins-leg-gel'                             => 'leg-gel',
+        'equimins-msm-cream'                           => 'msm-cream',
+        'moores-herbal-cooling-gel'                    => 'herbal-cooling-gel',
+        'moores-dubbin'                                => 'dubbin',
+        'moores-glycerine-leather-saddle-soap'         => 'glycerine-leather-saddle-soap',
+        'moores-leather-dressing'                      => 'leather-dressing',
+        'moores-leather-soap'                          => 'leather-soap',
+        'calro-organic-neem-oil-shampoo-conditioner'   => 'organic-neem-oil-shampoo-conditioner',
+
+        // Merged into one schooling whip
+        'braided-schooling-whip'                       => 'schooling-whip',
+        'dressage-schooling-whip'                      => 'schooling-whip',
+
+        // Withdrawn — sent to the shelf they were on
+        'black-leather-jump-saddle'                    => '/shop/saddles',
+        'trail-hoof-boot'                              => '/shop/brushing-overreach-boots',
+        'weatherbeeta-fleece-bandages'                 => '/shop/bandages-wraps',
+    ];
+
     public function show(string $slug): void
     {
         $model   = new Product();
         $product = $model->bySlug($slug);
 
         if ($product === null) {
+            $this->moved($slug, $model);
+
             $this->notFound('That product is no longer listed. Browse the catalogue or send us a quote request and we will source it.');
         }
 
@@ -87,6 +134,31 @@ class ProductController extends Controller
             'related'   => $model->related($productId, $product['category_id'] ? (int) $product['category_id'] : null, 4),
             'pillar'    => $pillar,
         ]);
+    }
+
+    /**
+     * Send a renamed product's old URL to its new one, permanently.
+     *
+     * Only redirects when the destination is really there, so a stale entry
+     * here falls through to the 404 rather than bouncing to another one.
+     */
+    private function moved(string $slug, Product $model): void
+    {
+        $to = self::MOVED[$slug] ?? null;
+
+        if ($to === null) {
+            return;
+        }
+
+        if ($to[0] === '/') {
+            header('Location: ' . url($to), true, 301);
+            exit;
+        }
+
+        if ($model->bySlug($to) !== null) {
+            header('Location: ' . url('/product/' . $to), true, 301);
+            exit;
+        }
     }
 
     /**

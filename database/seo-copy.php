@@ -95,7 +95,7 @@ return [
             'title' => 'Joint & Muscle Care for Horses',
             'desc'  => 'Joint supplements with the gels, clays and creams that go on afterwards — devils claw, arnica, MSM and cooling clay. In Nairobi.',
         ],
-        'digestive' => [
+        'gut-health' => [
             'title' => 'Equine Digestive Supplements',
             'desc'  => 'Digestive balancers, soothers and yeast cultures for horses that need settling from the inside. From Tack Rack, Nairobi.',
         ],
@@ -145,7 +145,7 @@ return [
             'title' => 'Poultices & Treatment Boots',
             'desc'  => 'Ready-made hoof poultices and the rigid and fabric boots that hold a dressing on the hoof. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'farriery' => [
+        'shoes-nails' => [
             'title' => 'Farriery — Horseshoes & Nails',
             'desc'  => 'Steel and aluminium horseshoes and Optima farrier nails, bundled by size. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -157,7 +157,7 @@ return [
             'title' => 'Horse Electrolytes',
             'desc'  => 'Electrolytes to replace the salts lost in sweat — in a tub, a bag or a ready-to-use oral syringe. Stocked in Nairobi.',
         ],
-        'hoof-coat-supplements' => [
+        'hoof-supplements' => [
             'title' => 'Hoof & Coat Supplements',
             'desc'  => 'Biotin and the supplements fed to improve hoof horn and coat condition from the inside. From Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -217,17 +217,71 @@ return [
             'title' => 'Saddle Pads & Blankets',
             'desc'  => 'Prolite and gel pads that sit under the saddle, and fleece rugs for after work. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'shampoos-conditioners' => [
+        'shampoo' => [
             'title' => 'Horse Shampoos & Conditioners',
             'desc'  => 'Aloe vera, lemon and neem oil shampoos and conditioners for washing horses down. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'mane-tail-care' => [
+        'detanglers' => [
             'title' => 'Mane & Tail Care',
             'desc'  => 'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'skin-sun-care' => [
+        'skin-care' => [
             'title' => 'Horse Skin & Sun Care',
             'desc'  => 'Sunscreen for pink noses, soothing gels for itching and barrier creams for heels. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+
+        // ---- Added in the October 2026 regrouping ----
+        'riding-helmets' => [
+            'title' => 'Riding Helmets & Show Hats',
+            'desc'  => 'Velvet show hats and vented schooling helmets, fitted on the head at Tack Rack, Ngong Road, Nairobi. Never ride in a hat you have not worn.',
+        ],
+        'skull-caps' => [
+            'title' => 'Jockey Skull Caps',
+            'desc'  => 'Jockey skull caps for cross country and racing, worn with a silk. Fitted in person at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'body-protectors' => [
+            'title' => 'Body Protectors, BETA Level 3',
+            'desc'  => 'BETA 2018 Level 3 body protectors for cross country and eventing, fitted to the torso at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'saddles-wintec' => [
+            'title' => 'Wintec Saddles',
+            'desc'  => 'Wintec synthetic saddles with changeable gullets, fitted on your horse by the only Society of Master Saddlers qualified fitter in East Africa.',
+        ],
+        'saddles-jeffries' => [
+            'title' => 'Jeffries Saddles',
+            'desc'  => 'Jeffries English leather saddles, hand finished and fitted on your horse by our Society of Master Saddlers qualified fitter in Nairobi.',
+        ],
+        'saddles-thorowgood' => [
+            'title' => 'Thorowgood Saddles',
+            'desc'  => 'Thorowgood saddles in soft leather and synthetic, fitted on your horse by our Society of Master Saddlers qualified fitter in Nairobi.',
+        ],
+        'bridles' => [
+            'title' => 'Leather Snaffle Bridles',
+            'desc'  => 'Leather snaffle bridles in black and havana, supplied with reins. Sized pony, cob and full at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'reins' => [
+            'title' => 'Reins & Draw Reins',
+            'desc'  => 'Leather, rubber and webbed reins, and schooling draw reins. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'bits' => [
+            'title' => 'Snaffle & Training Bits',
+            'desc'  => 'Loose ring and jointed snaffles, copper lozenge bits and training bits. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'bit-accessories' => [
+            'title' => 'Bit Guards & Keepers',
+            'desc'  => 'Rubber bit guards that stop a bit rubbing the corners of the mouth. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'martingales' => [
+            'title' => 'Martingales & Rubber Guards',
+            'desc'  => 'Bib and running martingales, with the rubber guards that keep girth buckles off the saddle flap. From Tack Rack, Nairobi.',
+        ],
+        'stirrup-irons' => [
+            'title' => 'Stirrup Irons',
+            'desc'  => 'Stainless steel, peacock safety and lightweight composite stirrup irons. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'stirrup-treads' => [
+            'title' => 'Rubber Stirrup Treads',
+            'desc'  => 'Rubber treads that grip the boot, sold in pairs to replace worn or missing ones. From Tack Rack, Ngong Road, Nairobi.',
         ],
     ],
 
@@ -237,7 +291,7 @@ return [
     'products' => [
 
         // Saddles
-        'Thorowgood Leather Saddle' => [
+        'Thorowgood Saddle' => [
             'title' => 'Thorowgood Leather Saddle',
             'desc'  => 'A soft-leather English saddle with a deep, comfortable seat, fitted on your horse by our Society of Master Saddlers qualified fitter.',
         ],
@@ -252,10 +306,6 @@ return [
         'Black Leather General Purpose Saddle' => [
             'title' => 'Black Leather GP Saddle',
             'desc'  => 'A classic black leather general purpose saddle with a padded seat — one saddle for flatwork, hacking and jumping. Fitted in Nairobi.',
-        ],
-        'Black Leather Jump Saddle' => [
-            'title' => 'Black Leather Jump Saddle',
-            'desc'  => 'A forward-cut jumping saddle in smooth black leather, cut to keep you light over a fence. Fitted on the horse by our qualified fitter.',
         ],
         'Wintec 2000 All Purpose Saddle' => [
             'title' => 'Wintec 2000 All Purpose Saddle',
@@ -333,9 +383,9 @@ return [
             'title' => 'Short Dressage Girth',
             'desc'  => 'A short girth for dressage saddles with long billets, keeping the buckles clear of the rider\'s leg. From Tack Rack, Nairobi.',
         ],
-        'Leather Girth Buckle Guards' => [
-            'title' => 'Leather Girth Buckle Guards',
-            'desc'  => 'Leather guards that keep girth buckles from wearing through the saddle flap — a small part that saves an expensive saddle.',
+        'Rubber Guards' => [
+            'title' => 'Rubber Girth Buckle Guards',
+            'desc'  => 'Rubber guards that keep girth buckles from wearing through the saddle flap — a small part that saves an expensive saddle.',
         ],
 
         // Stirrups
@@ -485,9 +535,9 @@ return [
             'title' => 'Red Hat Silk',
             'desc'  => 'A plain red hat silk for a skull cap — the quickest way to smarten a hat or match a team colour. In stock in Nairobi.',
         ],
-        'Dressage Schooling Whip' => [
-            'title' => 'Dressage Schooling Whip',
-            'desc'  => 'A long schooling whip with a moulded handle, balanced to reach behind the leg without moving the hand. From Tack Rack, Nairobi.',
+        'Schooling Whip' => [
+            'title' => 'Dressage & Schooling Whips',
+            'desc'  => 'A long schooling whip, smooth or braided, balanced to reach behind the leg without moving the hand. From Tack Rack, Ngong Road, Nairobi.',
         ],
         'Lunge Whip' => [
             'title' => 'Lunge Whip',
@@ -518,9 +568,9 @@ return [
             'title' => 'Nylon Headcollars, Colour Range',
             'desc'  => 'Adjustable nylon headcollars with brass fittings in red, black and royal blue. Sized pony, cob and full at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Fleece-Lined Headcollar' => [
-            'title' => 'Fleece-Lined Headcollar',
-            'desc'  => 'A black headcollar padded with grey fleece at the noseband and headpiece, so it will not rub on a horse that wears one all day. In stock.',
+        'Lunging Cavesson' => [
+            'title' => 'Lunging Cavesson',
+            'desc'  => 'A lunging cavesson padded with grey fleece at the noseband and headpiece, so it will not rub a horse worked on a circle. In stock in Nairobi.',
         ],
         'Rope Lead Ropes' => [
             'title' => 'Rope Lead Ropes',
@@ -532,11 +582,11 @@ return [
         ],
 
         // Boots and bandages
-        'ARMA Brushing Boots — Navy' => [
+        'Brushing Boots — Navy' => [
             'title' => 'ARMA Brushing Boots, Navy',
             'desc'  => 'Navy ARMA brushing boots with a moulded strike guard and three touch-close straps, protecting the inside of the leg. In stock in Nairobi.',
         ],
-        'ARMA Anatomic Brushing Boots' => [
+        'Anatomic Brushing Boots' => [
             'title' => 'ARMA Anatomic Brushing Boots',
             'desc'  => 'Black ARMA Anatomic brushing boots with a moulded shell and wide red straps, close to the leg without rubbing. From Tack Rack, Nairobi.',
         ],
@@ -544,13 +594,9 @@ return [
             'title' => 'Shires Rubber Overreach Boots',
             'desc'  => 'Ribbed rubber overreach boots from Shires with a touch-close fastening, protecting heels and coronets from the hind feet. Stocked in Nairobi.',
         ],
-        'ARMA Overreach Boots — Red' => [
+        'Overreach Boots — Red' => [
             'title' => 'ARMA Overreach Boots, Red',
             'desc'  => 'Soft black and red ARMA overreach boots — lighter and quieter than rubber, protecting the heel and coronet. In stock at Tack Rack, Nairobi.',
-        ],
-        'Weatherbeeta Fleece Bandages' => [
-            'title' => 'Weatherbeeta Fleece Bandages',
-            'desc'  => 'Soft Weatherbeeta fleece leg bandages with a suede-effect tab, in navy with grey and in lime green. For exercise or the stable. In Nairobi.',
         ],
         'Cohesive Bandages' => [
             'title' => 'Cohesive Bandages',
@@ -577,10 +623,6 @@ return [
         'ARMA Medi-Boot' => [
             'title' => 'ARMA Medi-Boot Poultice Boot',
             'desc'  => 'A tough fabric ARMA Medi-Boot that draws closed at the pastern, holding a poultice or dressing on the hoof. In stock at Tack Rack, Nairobi.',
-        ],
-        'Trail Hoof Boot' => [
-            'title' => 'Trail Hoof Boot',
-            'desc'  => 'A strapped hoof boot with a deep treaded sole, for a barefoot horse on stony tracks or one that has lost a shoe. Fitted by measurement in Nairobi.',
         ],
         'Hoof Oil' => [
             'title' => 'Hoof Oil',
@@ -698,7 +740,7 @@ return [
             'title' => 'Sooth-Itch Super Strength Gel',
             'desc'  => 'A 500ml gel that soothes itching and supports natural hair regrowth. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Equimins Leg Gel' => [
+        'Leg Gel' => [
             'title' => 'Equimins Leg Gel',
             'desc'  => 'A cool, refreshing Equimins leg gel with camphor and menthol, ideal after training or exercise. 500g tub. From Tack Rack, Nairobi.',
         ],
@@ -706,15 +748,15 @@ return [
             'title' => 'Natural Clay Cooling Dressing',
             'desc'  => 'A non-irritating natural clay dressing, extra cooling and soothing for minor soreness and stiffness. Distributed by Tack Rack, tub or bucket.',
         ],
-        'Equimins Arnica & Witch Hazel' => [
+        'Arnica & Witch Hazel' => [
             'title' => 'Equimins Arnica & Witch Hazel',
             'desc'  => 'Arnica and witch hazel with MSM and allantoin from Equimins — great for bruises and sprains. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Moore’s Herbal Cooling Gel' => [
+        'Herbal Cooling Gel' => [
             'title' => 'Moore’s Herbal Cooling Gel',
             'desc'  => 'Moore’s Quality Herbal Cooling Gel for fast relief from inflammation and sore muscles, in a 500ml tub. Stocked at Tack Rack, Nairobi.',
         ],
-        'Equimins Devils Claw Gel' => [
+        'Devils Claw Gel' => [
             'title' => 'Equimins Devils Claw Gel',
             'desc'  => 'A cooling Equimins joint gel with devils claw that is quickly absorbed through the skin. 500g tub. From Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -722,7 +764,7 @@ return [
             'title' => 'Equimins Aloe Vera Gel',
             'desc'  => 'A soothing Equimins first aid and stable gel with aloe vera, for skin disorders. 500g tub. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Equimins MSM Cream' => [
+        'MSM Cream' => [
             'title' => 'Equimins MSM Cream',
             'desc'  => 'An MSM cream from the Equimins first aid and stable range, in a 500g tub. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -744,15 +786,15 @@ return [
         ],
 
         // Health and supplements
-        'Equine America Glucosamine HCl 12,000' => [
+        'Glucosamine HCl 12,000' => [
             'title' => 'Equine America Glucosamine 12,000',
             'desc'  => 'Extra strength glucosamine powder with MSM and hyaluronic acid for equine joint support — a 66-day supply. From Tack Rack, Nairobi.',
         ],
-        'Equine America Cortaflex HA' => [
+        'Cortaflex HA' => [
             'title' => 'Equine America Cortaflex HA',
             'desc'  => 'Cortaflex HA Regular Strength Powder from Equine America to support joint mobility — 900g, a four-month supply. In stock in Nairobi.',
         ],
-        'Equine America Buteless' => [
+        'Buteless' => [
             'title' => 'Equine America Buteless Solution',
             'desc'  => 'Buteless High Strength Solution from Equine America, for joint comfort and mobility support. 1 litre. From Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -776,7 +818,7 @@ return [
             'title' => 'Equine America Biotin Xtra',
             'desc'  => 'Biotin Xtra Powder from Equine America with zinc and methionine to support hoof health — 2.5kg, a 50-day supply. From Tack Rack, Nairobi.',
         ],
-        'Coligone ColiFLEX Gastro-Joint Care' => [
+        'ColiFLEX Gastro-Joint Care' => [
             'title' => 'Coligone ColiFLEX Gastro-Joint Care',
             'desc'  => 'ColiFLEX from Coligone combines a digestive feed supplement with joint care. Competition safe per the label. In stock at Tack Rack, Nairobi.',
         ],
@@ -792,7 +834,7 @@ return [
             'title' => 'Coligone Digestive Powder',
             'desc'  => 'Coligone equine digestive soothing supplement in powder form. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Endeavon Flex-O-Joint' => [
+        'Flex-O-Joint' => [
             'title' => 'Endeavon Flex-O-Joint',
             'desc'  => 'A joint supplement for horses and dogs with chondroitin, glucosamine, MSM and vitamin C. Distributed by Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -804,7 +846,7 @@ return [
             'title' => 'Keratex Zeolite',
             'desc'  => 'Keratex Zeolite feed supplement — one tub gives up to three months’ supply, according to the label. In stock at Tack Rack, Nairobi.',
         ],
-        'Equimins Devils Claw Root Herb' => [
+        'Devils Claw Root Herb' => [
             'title' => 'Equimins Devils Claw Root Herb',
             'desc'  => 'Devils claw root herb from Equimins in a resealable 1kg eco pack, for joint support. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -844,7 +886,7 @@ return [
             'title' => 'Back to Basics Immuno Hoof',
             'desc'  => 'Immuno Hoof from the Back to Basics supplement range, in a 1kg bag. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Back to Basics Muscle Up' => [
+        'Muscle Up' => [
             'title' => 'Back to Basics Muscle Up',
             'desc'  => 'Muscle Up from the Back to Basics supplement range, in a 1.5kg bag. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -894,7 +936,7 @@ return [
             'title' => 'Endeavon Lemon Horse Shampoo',
             'desc'  => 'Endeavon lemon shampoo for horses, distributed by Tack Rack, in a large can and two bottle sizes. From our shop on Ngong Road, Nairobi.',
         ],
-        'Calro Organic Neem Oil Shampoo & Conditioner' => [
+        'Organic Neem Oil Shampoo & Conditioner' => [
             'title' => 'Calro Neem Oil Shampoo & Conditioner',
             'desc'  => 'Calro organic neem oil shampoo and conditioner with apple fragrance, in 5 litre and 1 litre sizes. Tack Rack label, Ngong Road, Nairobi.',
         ],
@@ -934,27 +976,23 @@ return [
         ],
 
         // Leather care
-        'Moore’s Leather Dressing' => [
+        'Leather Dressing' => [
             'title' => 'Moore’s Leather Dressing',
             'desc'  => 'Moore’s Quality leather dressing that softens and preserves leather, in a 1 litre can. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Moore’s Glycerine Leather & Saddle Soap' => [
+        'Glycerine Leather & Saddle Soap' => [
             'title' => 'Moore’s Glycerine Saddle Soap',
             'desc'  => 'A bar of Moore’s Quality glycerine leather and saddle soap for everyday cleaning of saddles and bridles. From Tack Rack, Nairobi.',
         ],
-        'Moore’s Dubbin' => [
+        'Dubbin' => [
             'title' => 'Moore’s Dubbin',
             'desc'  => 'Moore’s Quality dubbin for leather, in a 500ml tub. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'Moore’s Leather Soap' => [
+        'Leather Soap' => [
             'title' => 'Moore’s Leather Soap',
             'desc'  => 'Moore’s Quality leather soap in a 500ml tub, for cleaning saddles, bridles and boots. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
 
         // Rider accessories
-        'Braided Schooling Whip' => [
-            'title' => 'Braided Schooling Whip',
-            'desc'  => 'A braided schooling whip with a flexible tip, a rubber grip and a wrist strap. In stock at Tack Rack, Ngong Road, Nairobi.',
-        ],
     ],
 ];
