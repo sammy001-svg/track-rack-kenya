@@ -52,7 +52,7 @@
     <section class="a-panel">
       <div class="a-panel__head">
         <h2>Import products from CSV</h2>
-        <p>Bring the real catalog across in one go. Existing products are matched on SKU first,
+        <p>Bring the real catalogue across in one go. Existing products are matched on SKU first,
            then on an exact name — so re-importing updates rather than duplicates.</p>
       </div>
 

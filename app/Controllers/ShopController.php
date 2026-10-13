@@ -55,7 +55,7 @@ class ShopController extends Controller
                 $this->redirect('/shop/' . $moved);
             }
 
-            $this->notFound('That category is no longer part of our catalog.');
+            $this->notFound('That category is no longer part of our catalogue.');
         }
 
         $this->renderCatalog($category);
@@ -105,7 +105,7 @@ class ShopController extends Controller
             $subCategoryOf = $pillar;
         }
 
-        $heading = $category['name'] ?? 'The Catalog';
+        $heading = $category['name'] ?? 'The Catalogue';
         $tagline = $category['tagline'] ?? 'Rider, Horse and Yard — the complete Tack Rack range.';
 
         // The catalogue and the three department pages are browsed by section
@@ -231,7 +231,7 @@ class ShopController extends Controller
 
         $description = $category['meta_desc']
             ?? ($category['description']
-                ?? 'Browse the full Tack Rack catalog — saddlery, rider apparel and yard essentials for every discipline ridden in Kenya.');
+                ?? 'Browse the full Tack Rack catalogue — saddlery, rider apparel and yard essentials for every discipline ridden in Kenya.');
 
         // Page 2 onwards gets its own title so results are not duplicates.
         if (!$isFiltered && $page > 1) {
@@ -245,7 +245,7 @@ class ShopController extends Controller
         } else {
             $seo->canonical($page > 1 ? url($cleanPath) . '?page=' . $page : url($cleanPath));
 
-            $trail = ['Home' => url('/'), 'Catalog' => url('/shop')];
+            $trail = ['Home' => url('/'), 'Catalogue' => url('/shop')];
 
             if ($category !== null) {
                 if ($pillar !== null && $pillar['id'] !== $category['id']) {
@@ -255,7 +255,7 @@ class ShopController extends Controller
             }
 
             $seo->schema(Schema::breadcrumbs($trail))
-                ->schema(Schema::collection($category ?? ['name' => 'The Catalog'], $result['items']));
+                ->schema(Schema::collection($category ?? ['name' => 'The Catalogue'], $result['items']));
         }
 
         if ($category !== null && !empty($category['image'])) {

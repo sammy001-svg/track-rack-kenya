@@ -2,7 +2,7 @@
 
 <section class="a-panel">
   <div class="a-panel__head">
-    <h2>Catalog structure</h2>
+    <h2>Catalogue structure</h2>
     <p>Top-level sections are the three pillars shown on the homepage. Sub-categories fill the shop filters and mega menu.</p>
     <a class="a-btn a-btn--sm" href="<?= e(url('/admin/categories/create')) ?>">+ New category</a>
   </div>

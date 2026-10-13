@@ -14,7 +14,7 @@ foreach ($variants as $variant) {
 <div class="shell shell--wide" style="padding-top:calc(var(--header-h) + 2rem)">
   <ul class="crumbs">
     <li><a href="<?= e(url('/')) ?>">Home</a></li>
-    <li><a href="<?= e(url('/shop')) ?>">Catalog</a></li>
+    <li><a href="<?= e(url('/shop')) ?>">Catalogue</a></li>
     <?php if ($pillar !== null): ?>
       <li><a href="<?= e(url('/shop/' . $pillar['slug'])) ?>"><?= e($pillar['name']) ?></a></li>
     <?php endif; ?>

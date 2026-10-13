@@ -16,7 +16,7 @@ class ProductController extends Controller
         $product = $model->bySlug($slug);
 
         if ($product === null) {
-            $this->notFound('That product is no longer listed. Browse the catalog or send us a quote request and we will source it.');
+            $this->notFound('That product is no longer listed. Browse the catalogue or send us a quote request and we will source it.');
         }
 
         $productId = (int) $product['id'];
@@ -57,7 +57,7 @@ class ProductController extends Controller
         $description = $product['meta_desc'] ?: $this->composeDescription($product);
 
         $trail = ['Home' => url('/')];
-        $trail['Catalog'] = url('/shop');
+        $trail['Catalogue'] = url('/shop');
         if ($pillar !== null) {
             $trail[$pillar['name']] = url('/shop/' . $pillar['slug']);
         }

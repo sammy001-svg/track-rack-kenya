@@ -33,8 +33,8 @@ foreach ($items as $row) {
           <circle cx="18" cy="20" r="1.2" fill="currentColor"/>
         </svg>
         <h3>Your quote list is empty.</h3>
-        <p>Browse the catalog and add anything you would like us to price. You can add as much or as little as you like.</p>
-        <a class="btn" href="<?= e(url('/shop')) ?>">Explore the catalog</a>
+        <p>Browse the catalogue and add anything you would like us to price. You can add as much or as little as you like.</p>
+        <a class="btn" href="<?= e(url('/shop')) ?>">Explore the catalogue</a>
       </div>
 
     <?php else: ?>

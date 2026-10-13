@@ -23,7 +23,7 @@ if (count($grid) < 4) {
     </p>
 
     <div class="hero__actions">
-      <a class="btn btn--light" href="<?= e(url('/shop')) ?>">Explore the Catalog</a>
+      <a class="btn btn--light" href="<?= e(url('/shop')) ?>">Explore the Catalogue</a>
       <a class="btn btn--outline-light" href="<?= e(url('/request-a-quote')) ?>">Request a Quote</a>
     </div>
 
@@ -418,7 +418,7 @@ if (count($grid) < 4) {
         <p class="eyebrow" style="color:rgba(255,255,255,.72)">Effortless Action</p>
         <h2>Tell us what you need. We will quote it.</h2>
         <p>
-          Build a list from the catalog and send it across. You will have current pricing,
+          Build a list from the catalogue and send it across. You will have current pricing,
           availability and lead times — usually within one working day. No account, no obligation.
         </p>
       </div>

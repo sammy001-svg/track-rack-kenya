@@ -91,7 +91,7 @@ $ico = [
       </div>
 
       <div class="a-side__group">
-        <p class="a-side__label">Catalog</p>
+        <p class="a-side__label">Catalogue</p>
         <?php $navLink('/admin/products', 'Products', $ico['products']); ?>
         <?php $navLink('/admin/categories', 'Categories', $ico['cats']); ?>
         <?php $navLink('/admin/brands', 'Brands', $ico['brands']); ?>

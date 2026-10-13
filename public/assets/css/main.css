@@ -2151,6 +2151,28 @@ body.header-hidden .filters { top: 0; }
 .pagination .is-current { background: var(--ink); color: var(--bone); border-color: var(--ink); font-weight: 600; }
 .pagination .is-disabled { opacity: .3; pointer-events: none; }
 
+/* The catalogue's "load more", which replaces the numbered pages wherever
+   JavaScript can take over the job. */
+.shop-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.shop-more__count {
+  margin: 0;
+  font-size: .82rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.shop-more [data-shop-load] { min-width: 190px; }
+.shop-more [data-shop-load][disabled] { opacity: .55; pointer-events: none; }
+
 /* ---------------------------------------------------------------------
    18. Product detail
    --------------------------------------------------------------------- */

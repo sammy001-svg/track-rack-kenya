@@ -98,11 +98,11 @@ class PageController extends Controller
             ],
             'how-to-order' => [
                 'How do I order from Tack Rack?'
-                    => 'Browse the catalog, add what you need to a quote list, and send the request with your contact details. You receive a reference number immediately and a full quote usually within one working day.',
+                    => 'Browse the catalogue, add what you need to a quote list, and send the request with your contact details. You receive a reference number immediately and a full quote usually within one working day.',
                 'Do you deliver across Kenya?'
                     => 'Yes. We deliver across Nairobi and dispatch countrywide by courier. Delivery cost is confirmed in your quote before you commit.',
                 'Can I buy a saddle online?'
-                    => 'Saddles are never sold blind. Send a quote request and we will arrange a fitting, either at the shop on Ngong Road or at your yard.',
+                    => 'Saddles are never sold blind. Send a quote request and we will arrange a fitting at your yard.',
             ],
             default => [],
         };

@@ -39,7 +39,7 @@ $wa = whatsapp_link('Hello ' . $order['customer_name'] . ', regarding your Tack 
                     <a class="a-strong" href="<?= e(url('/product/' . $item['product_slug'])) ?>" target="_blank" rel="noopener"><?= e($item['product_name']) ?></a>
                   <?php else: ?>
                     <?= e($item['product_name']) ?>
-                    <div class="a-cell-media__meta">no longer in the catalog</div>
+                    <div class="a-cell-media__meta">no longer in the catalogue</div>
                   <?php endif; ?>
                 </td>
                 <td class="a-muted"><?= e($item['product_sku'] ?: '—') ?></td>

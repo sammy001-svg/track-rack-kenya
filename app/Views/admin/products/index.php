@@ -32,7 +32,7 @@
     <div class="a-empty">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M20.5 7.5L12 3 3.5 7.5v9L12 21l8.5-4.5v-9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9" stroke="currentColor" stroke-width="1.3"/></svg>
       <h3>No products match</h3>
-      <p>Adjust the filters above, or add the first product to this catalog.</p>
+      <p>Adjust the filters above, or add the first product to this catalogue.</p>
       <a class="a-btn" href="<?= e(url('/admin/products/create')) ?>">Add a product</a>
     </div>
   <?php else: ?>

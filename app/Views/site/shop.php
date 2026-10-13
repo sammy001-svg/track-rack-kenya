@@ -20,7 +20,7 @@ $cardFallback = pillar_art($pillar['slug'] ?? null);
   <div class="shell shell--wide">
     <ul class="crumbs">
       <li><a href="<?= e(url('/')) ?>">Home</a></li>
-      <li><a href="<?= e(url('/shop')) ?>">Catalog</a></li>
+      <li><a href="<?= e(url('/shop')) ?>">Catalogue</a></li>
       <?php if ($pillar !== null && ($category['id'] ?? 0) !== ($pillar['id'] ?? 0)): ?>
         <li><a href="<?= e(url('/shop/' . $pillar['slug'])) ?>"><?= e($pillar['name']) ?></a></li>
       <?php endif; ?>
@@ -73,7 +73,7 @@ if ($activeSubId > 0) {
       <input type="hidden" name="page" value="1">
 
       <label class="search-field">
-        <span class="sr-only">Search the catalog</span>
+        <span class="sr-only">Search the catalogue</span>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
           <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -238,14 +238,30 @@ if ($activeSubId > 0) {
         <a class="btn" href="<?= e(url('/request-a-quote')) ?>">Ask us to source it</a>
       </div>
     <?php else: ?>
-      <div class="grid-products">
+      <?php
+        // The grid loads the rest of itself as you reach the bottom. The page
+        // links below stay in the markup regardless: they are what a crawler
+        // follows, and what the page falls back to without JavaScript.
+        $nextPage = $page < $pages ? query_string(['page' => $page + 1]) : '';
+      ?>
+      <div class="grid-products" data-shop-grid
+           data-next="<?= e($nextPage) ?>"
+           data-shown="<?= count($products) ?>"
+           data-total="<?= (int) $total ?>">
         <?php foreach ($products as $product): ?>
           <?php require APP_PATH . '/Views/partials/product-card.php'; ?>
         <?php endforeach; ?>
       </div>
 
       <?php if ($pages > 1): ?>
-        <nav class="pagination" aria-label="Pagination">
+        <div class="shop-more" data-shop-more hidden>
+          <p class="shop-more__count" data-shop-count role="status" aria-live="polite">
+            Showing <?= count($products) ?> of <?= (int) $total ?>
+          </p>
+          <button class="btn btn--ghost" type="button" data-shop-load>Load more</button>
+        </div>
+
+        <nav class="pagination" data-shop-pagination aria-label="Pagination">
           <?php
             $window = 2;
             $start  = max(1, $page - $window);

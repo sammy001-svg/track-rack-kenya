@@ -54,7 +54,7 @@ use App\Models\RepairRequest;
           <?php if ($orders === []): ?>
             <p class="account-empty">
               No orders yet. Items with a listed price can be bought directly from the
-              <a href="<?= e(url('/shop')) ?>">catalog</a>.
+              <a href="<?= e(url('/shop')) ?>">catalogue</a>.
             </p>
           <?php else: ?>
             <ul class="record-list">

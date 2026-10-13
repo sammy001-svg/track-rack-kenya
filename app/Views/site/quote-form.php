@@ -119,7 +119,7 @@ foreach ($items as $row) {
 
           <?php if ($items === []): ?>
             <p class="quote-summary__note" style="margin-top:1rem;border:0;padding:0">
-              Your quote list is empty. <a href="<?= e(url('/shop')) ?>" style="color:var(--tan)">Add something from the catalog</a>
+              Your quote list is empty. <a href="<?= e(url('/shop')) ?>" style="color:var(--tan)">Add something from the catalogue</a>
               before sending your request.
             </p>
           <?php else: ?>

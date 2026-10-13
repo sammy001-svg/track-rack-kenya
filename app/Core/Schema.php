@@ -290,7 +290,7 @@ class Schema
 
         return [
             '@type'       => 'CollectionPage',
-            'name'        => $category['name'] ?? 'Catalog',
+            'name'        => $category['name'] ?? 'Catalogue',
             'description' => trim(strip_tags((string) ($category['description'] ?? ''))),
             'url'         => url(CURRENT_PATH),
             'isPartOf'    => ['@id' => self::id('website')],

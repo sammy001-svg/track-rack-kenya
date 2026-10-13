@@ -44,7 +44,7 @@ $wa        = whatsapp_link('Hello Tack Rack, I would like to enquire about');
       </div>
 
       <div>
-        <h4>The Catalog</h4>
+        <h4>The Catalogue</h4>
         <ul class="footer__links">
           <?php foreach ($footerPillars as $pillar): ?>
             <li><a href="<?= e(url('/shop/' . $pillar['slug'])) ?>"><?= e($pillar['name']) ?></a></li>

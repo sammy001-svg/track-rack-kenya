@@ -65,7 +65,7 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
         </div>
       </div>
 
-      <a class="nav__link" href="<?= e(url('/shop')) ?>" <?= is_active('/shop', true) ? 'aria-current="page"' : '' ?>>Catalog</a>
+      <a class="nav__link" href="<?= e(url('/shop')) ?>" <?= is_active('/shop', true) ? 'aria-current="page"' : '' ?>>Catalogue</a>
       <a class="nav__link" href="<?= e(url('/services')) ?>" <?= is_active('/services') ? 'aria-current="page"' : '' ?>>Services</a>
       <a class="nav__link" href="<?= e(url('/heritage')) ?>" <?= is_active('/heritage') ? 'aria-current="page"' : '' ?>>Heritage</a>
       <a class="nav__link" href="<?= e(url('/contact')) ?>" <?= is_active('/contact') ? 'aria-current="page"' : '' ?>>Contact</a>
@@ -120,7 +120,7 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
   </div>
 
   <div class="drawer__group">
-    <a href="<?= e(url('/shop')) ?>">Full catalog</a>
+    <a href="<?= e(url('/shop')) ?>">Full catalogue</a>
     <a href="<?= e(url('/heritage')) ?>">Our heritage</a>
     <a href="<?= e(url('/page/how-to-order')) ?>">How to order</a>
     <a href="<?= e(url('/contact')) ?>">Contact us</a>

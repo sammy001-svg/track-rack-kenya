@@ -59,7 +59,7 @@
         <div class="timeline__year">Fitting</div>
         <div class="timeline__body">
           <h4>Society of Master Saddlers qualification</h4>
-          <p>Sharon Ashley becomes — and remains — the only Saddle Fitter in East Africa qualified with the Society of Master Saddlers. Saddles are fitted on the horse, at the shop or at your yard.</p>
+          <p>Sharon Ashley becomes — and remains — the only Saddle Fitter in East Africa qualified with the Society of Master Saddlers. Saddles are fitted on the horse, at your own yard.</p>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
     <div class="section-head" data-reveal>
       <div class="section-head__text">
         <p class="eyebrow">Explore</p>
-        <h2>Start with the catalog.</h2>
+        <h2>Start with the catalogue.</h2>
       </div>
     </div>
   </div>
@@ -115,7 +115,7 @@
       <div data-reveal>
         <p class="eyebrow" style="color:rgba(255,255,255,.72)">Book a fitting</p>
         <h2>A saddle that fits is not a luxury.</h2>
-        <p>A poorly fitted saddle damages a horse's back long before the rider notices. Send us a request and we will arrange an assessment — at the shop or at your yard.</p>
+        <p>A poorly fitted saddle damages a horse's back long before the rider notices. Send us a request and we will arrange an assessment at your yard.</p>
       </div>
       <div class="cta-banner__actions" data-reveal>
         <a class="btn btn--lg" href="<?= e(url('/request-a-quote')) ?>">Request a Fitting</a>

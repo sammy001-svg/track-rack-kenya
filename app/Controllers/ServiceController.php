@@ -68,7 +68,7 @@ class ServiceController extends Controller
                 'Why does a saddle need professional fitting?'
                     => 'A saddle that does not fit will damage a horse\'s back long before the rider notices. Horses also change shape with work, age and condition, so a saddle that fitted last season may not fit this one.',
                 'Do you travel to the yard?'
-                    => 'Yes. Fittings are carried out at the shop on Ngong Road or at your own yard anywhere in Kenya. Yard visits are charged by distance and confirmed before we travel.',
+                    => 'Yes — always. Every fitting is carried out at your own yard, anywhere in Kenya. Visits are charged by distance and confirmed before we travel.',
                 'How long does a saddle fitting take?'
                     => 'Around 90 minutes. The horse is assessed standing and in work, checking wither clearance, panel contact, balance and billet alignment.',
                 'Who carries out the fitting?'
@@ -127,7 +127,9 @@ class ServiceController extends Controller
             'email'          => $validator->value('email'),
             'phone'          => $validator->value('phone'),
             'location'       => $validator->value('location') ?: null,
-            'at_yard'        => isset($_POST['at_yard']) ? 1 : 0,
+            // Every fitting is carried out at the yard; the shop is not a
+            // fitting venue, so there is nothing to ask and nothing to vary.
+            'at_yard'        => 1,
             'horse_name'     => $validator->value('horse_name') ?: null,
             'horse_details'  => $validator->value('horse_details') ?: null,
             'discipline'     => in_array($discipline, self::DISCIPLINES, true) ? $discipline : null,
@@ -333,7 +335,7 @@ class ServiceController extends Controller
             . '<br><strong>Discipline:</strong> ' . e($v->value('discipline') ?: 'not given')
             . '<br><strong>Preferred:</strong> ' . e($date ? pretty_date($date) : 'no date given')
             . ' — ' . e(Booking::SLOTS[$slot] ?? '')
-            . '<br><strong>At the yard:</strong> ' . (isset($_POST['at_yard']) ? 'yes' : 'no') . '</p>'
+            . '<br><strong>Yard:</strong> ' . e($v->value('location') ?: 'not given') . '</p>'
             . ($v->value('saddle_details') ? '<p><strong>Current saddle</strong><br>' . nl2br(e($v->value('saddle_details'))) . '</p>' : '')
             . ($v->value('horse_details') ? '<p><strong>Horse details</strong><br>' . nl2br(e($v->value('horse_details'))) . '</p>' : '')
             . ($v->value('notes') ? '<p><strong>Notes</strong><br>' . nl2br(e($v->value('notes'))) . '</p>' : '');

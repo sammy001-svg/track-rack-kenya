@@ -9,7 +9,7 @@
     <p class="eyebrow" style="margin-top:1.5rem">Beyond the shelf</p>
     <h1>What we do, not just what we sell.</h1>
     <p class="lede">
-      Two things separate Tack Rack from a catalog: a qualified saddle fitter, and a
+      Two things separate Tack Rack from a catalogue: a qualified saddle fitter, and a
       working saddlery behind the shop.
     </p>
   </div>

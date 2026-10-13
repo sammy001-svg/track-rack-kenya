@@ -24,7 +24,7 @@ use App\Models\Quote;
           <?php if ($quotes === []): ?>
             <p class="account-empty">
               No quote requests yet. <a href="<?= e(url('/shop')) ?>">Build a quote list</a>
-              from the catalog and we will price it, usually within a working day.
+              from the catalogue and we will price it, usually within a working day.
             </p>
           <?php else: ?>
             <ul class="record-list">

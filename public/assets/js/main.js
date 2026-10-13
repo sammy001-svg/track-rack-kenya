@@ -138,8 +138,15 @@
   /* -------------------------------------------------------------------
      Scroll reveal
      ------------------------------------------------------------------- */
-  function initReveal() {
-    const nodes = $$('[data-reveal]');
+  let revealObserver = null;
+
+  /**
+   * Fade a set of elements in as they come into view. Called once at boot for
+   * the page as it arrived, and again for anything added later — the
+   * catalogue's next page of cards, for one — which would otherwise be
+   * appended already hidden and never shown.
+   */
+  function revealNodes(nodes) {
     if (!nodes.length) return;
 
     if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -147,13 +154,15 @@
       return;
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    if (revealObserver === null) {
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    }
 
     nodes.forEach((node, index) => {
       // Stagger siblings that share a parent for a sequenced feel.
@@ -163,8 +172,114 @@
       const position = siblings.indexOf(node);
       const step = position > -1 ? position : index;
       node.style.setProperty('--reveal-delay', Math.min(step, 6) * 70 + 'ms');
-      observer.observe(node);
+      revealObserver.observe(node);
     });
+  }
+
+  function initReveal() {
+    revealNodes($$('[data-reveal]'));
+  }
+
+  /* -------------------------------------------------------------------
+     Catalogue: load the next page of products as you reach the bottom
+     ------------------------------------------------------------------- */
+  function initInfiniteScroll() {
+    const grid = $('[data-shop-grid]');
+    const more = $('[data-shop-more]');
+
+    if (!grid || !more || !window.fetch || !('DOMParser' in window)) return;
+
+    const button = $('[data-shop-load]', more);
+    const count  = $('[data-shop-count]', more);
+    const pager  = $('[data-shop-pagination]');
+
+    // Hand the job over from the numbered pages to the button, now that we
+    // know we can do it. Without this script the pages stay as they were.
+    more.hidden = false;
+    if (pager) pager.hidden = true;
+
+    const total = parseInt(grid.dataset.total || '0', 10);
+    let busy = false;
+
+    function describe() {
+      if (!count) return;
+      const shown = grid.children.length;
+      count.textContent = shown >= total
+        ? 'All ' + total + ' products'
+        : 'Showing ' + shown + ' of ' + total;
+    }
+
+    function finish() {
+      more.hidden = true;
+      if (pager) pager.remove();
+      describe();
+    }
+
+    async function load() {
+      const next = grid.dataset.next;
+
+      if (busy || !next) return;
+      busy = true;
+
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Loading…';
+      }
+
+      try {
+        const response = await fetch(next, {
+          headers: { 'X-Requested-With': 'XMLHttpRequest' },
+          credentials: 'same-origin',
+        });
+
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const incoming = doc.querySelector('[data-shop-grid]');
+
+        if (incoming === null || incoming.children.length === 0) {
+          finish();
+          return;
+        }
+
+        const added = Array.from(incoming.children);
+        added.forEach((card) => grid.appendChild(card));
+
+        // The page we just read knows what follows it; believe it rather than
+        // counting pages here, so the server stays the one source of truth.
+        grid.dataset.next = incoming.dataset.next || '';
+
+        revealNodes(added.filter((n) => n.hasAttribute('data-reveal')));
+        describe();
+
+        if (!grid.dataset.next) finish();
+      } catch (err) {
+        // Leave the numbered pages in place so there is still a way through.
+        if (pager) pager.hidden = false;
+        if (count) count.textContent = 'Could not load more just now.';
+      } finally {
+        busy = false;
+
+        if (button) {
+          button.disabled = false;
+          button.textContent = 'Load more';
+        }
+      }
+    }
+
+    if (button) button.addEventListener('click', load);
+
+    describe();
+
+    // Reaching the bottom does the same as pressing the button. The button is
+    // the real control — this only saves people the press.
+    if ('IntersectionObserver' in window) {
+      const sentinel = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) load();
+      }, { rootMargin: '600px 0px' });
+
+      sentinel.observe(more);
+    }
   }
 
   /* -------------------------------------------------------------------
@@ -821,6 +936,7 @@
     initAccordions();
     initFilters();
     initFilterBar();
+    initInfiniteScroll();
     initMarquee();
     initHorsePicker();
     initPhotoDrop();

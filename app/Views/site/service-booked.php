@@ -81,7 +81,7 @@ $photos    = $photos ?? [];
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:2.5rem" data-reveal>
-      <a class="btn" href="<?= e(url('/shop')) ?>">Browse the catalog</a>
+      <a class="btn" href="<?= e(url('/shop')) ?>">Browse the catalogue</a>
       <?php $wa = whatsapp_link('Hello Tack Rack, this is about ' . $booking['reference'] . '.'); ?>
       <?php if ($wa !== ''): ?>
         <a class="btn btn--ghost" href="<?= e($wa) ?>" target="_blank" rel="noopener">Follow up on WhatsApp</a>

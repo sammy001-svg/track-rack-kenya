@@ -56,19 +56,11 @@ $pre = static function (string $field, $fallback = '') use ($customer) {
               <?php if ($err('phone')): ?><span class="field__error"><?= e($err('phone')) ?></span><?php endif; ?>
             </label>
 
-            <label class="field">
-              <span class="field__label">Yard or location</span>
-              <input class="field__input" type="text" name="location" value="<?= e($pre('location', 'location')) ?>" maxlength="200" placeholder="Karen, Nairobi">
+            <label class="field field--full">
+              <span class="field__label">Where the horse is kept</span>
+              <input class="field__input" type="text" name="location" value="<?= e($pre('location', 'location')) ?>" maxlength="200" placeholder="Yard name, Karen, Nairobi">
+              <small class="field__hint">Every fitting is done on the horse at its own yard, so this is where we come. Travel is charged by distance and confirmed before we set off.</small>
             </label>
-
-            <div class="field field--full">
-              <label class="check">
-                <input type="checkbox" name="at_yard" value="1" <?= old('at_yard') ? 'checked' : '' ?>>
-                <span>Please come to my yard rather than me bringing the horse to the shop.
-                  <small style="display:block;color:var(--text-faint);margin-top:.2rem">Yard visits are charged by distance — we will confirm before travelling.</small>
-                </span>
-              </label>
-            </div>
           </div>
         </fieldset>
 

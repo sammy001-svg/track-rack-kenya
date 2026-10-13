@@ -8,7 +8,7 @@
 
     <div style="display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:2.25rem">
       <a class="btn" href="<?= e(url('/')) ?>">Return home</a>
-      <a class="btn btn--ghost" href="<?= e(url('/shop')) ?>">Browse the catalog</a>
+      <a class="btn btn--ghost" href="<?= e(url('/shop')) ?>">Browse the catalogue</a>
     </div>
   </div>
 </section>

@@ -39,6 +39,6 @@ $err = static fn (string $f): string => $errors[$f] ?? '';
 
   <p class="auth-aside">
     You do not need an account to send a quote request or book a fitting —
-    <a href="<?= e(url('/shop')) ?>">browse the catalog</a> whenever you like.
+    <a href="<?= e(url('/shop')) ?>">browse the catalogue</a> whenever you like.
   </p>
 </section>
