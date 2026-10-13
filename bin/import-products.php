@@ -137,8 +137,8 @@ $tree = [
         'Shaped GP numnahs, dressage squares, non-slip and Prolite pads, and fleece blankets.'],
     'headcollars-lead-ropes' => ['horse', 7, 'Headcollars & Lead Ropes', 'Foal, Pony, Cob & Full',
         'Nylon and fleece-lined headcollars, lead ropes, lunge cavessons and lunge reins for the yard and the lorry.'],
-    'horse-boots' => ['horse', 8, 'Horse Boots', 'Brushing & Overreach',
-        'Brushing boots and neoprene and rubber overreach boots, sized pony, cob and full, with fetlock rings and sausage boots.'],
+    'horse-boots' => ['horse', 8, 'Horse Boots', 'Brushing, Overreach & Bandages',
+        'Brushing and overreach boots sized pony, cob and full, with bandages, pads and the sausage boot that saves an elbow.'],
 
     // ---- Yard ----
     'shampoo-skin-care' => ['yard', 1, 'Shampoo & Skin Care', 'Washing, Detangling & Sun',
@@ -155,8 +155,6 @@ $tree = [
         'Electrolytes, vitamin and mineral premixes, garlic, limestone, salts and licks for the feed room.'],
     'hoof-care' => ['yard', 7, 'Hoof Care', 'Oils, Dressings & Farriery',
         'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.'],
-    'first-aid' => ['yard', 8, 'First Aid', 'Wounds, Dressings & Bandages',
-        'Wound sprays, gels and dressings, with the bandages, gamgee and quilted pads that go over them.'],
     'grooming-equipment' => ['yard', 9, 'Grooming Equipment', 'Brushes, Combs & Boxes',
         'Body and dandy brushes, rubber and plastic curry combs, mane combs, sweat scrapers, plaiting bands and tack boxes.'],
     'leather-care' => ['yard', 10, 'Leather Care', 'Soaps, Dressings & Dubbin',
@@ -197,13 +195,11 @@ $tree = [
         'Cooling gels, clays, arnica and MSM creams that go on the leg after work.'],
 
     // Grooming Equipment (13)
-    'brushes' => ['grooming-equipment', 1, 'Brushes', 'Body & Dandy',
-        'Body brushes for the shine, dandy brushes for the mud, and brushes for mane and tail.'],
-    'curry-combs' => ['grooming-equipment', 2, 'Curry Combs', 'Rubber & Plastic',
+    'curry-combs' => ['grooming-equipment', 4, 'Curry Combs', 'Rubber & Plastic',
         'Rubber and plastic curry combs, used in a circular motion to lift dust and loose hair.'],
-    'combs-plaiting' => ['grooming-equipment', 3, 'Combs & Plaiting', 'Manes & Tails',
+    'combs-plaiting' => ['grooming-equipment', 5, 'Combs & Plaiting', 'Manes & Tails',
         'Metal mane combs and plaiting bands, for pulling, plaiting and turning out tidily.'],
-    'grooming-tools' => ['grooming-equipment', 4, 'Grooming Tools', 'Scrapers, Scoops & Boxes',
+    'grooming-tools' => ['grooming-equipment', 6, 'Grooming Tools', 'Scrapers, Scoops & Boxes',
         'Sweat scrapers, feed scoops and the tack box that keeps a grooming kit together.'],
 
     // Clothing (10)
@@ -215,12 +211,12 @@ $tree = [
         'Hat silks and competition number holders — the small things that finish a turnout.'],
 
     // Numnahs & Saddlepads (9)
-    'shaped-numnahs' => ['numnahs-saddlepads', 1, 'Shaped Numnahs', 'Cut to the Saddle',
-        'Quilted GP numnahs shaped to follow the saddle, in two size runs and washable at 30 degrees.'],
-    'dressage-squares' => ['numnahs-saddlepads', 2, 'Dressage Squares', 'Square Cut',
-        'Square-cut dressage pads, cut clear of the withers and deep enough for a long flap.'],
-    'pads-blankets' => ['numnahs-saddlepads', 3, 'Pads & Blankets', 'Riser, Gel & Fleece',
-        'Prolite and gel pads that sit under the saddle, and fleece rugs for after work.'],
+    'numnahs' => ['numnahs-saddlepads', 1, 'Numnahs', 'Shaped & Square Cut',
+        'Quilted GP numnahs shaped to follow the saddle, and square-cut dressage pads.'],
+    'saddle-pads' => ['numnahs-saddlepads', 2, 'Saddle Pads', 'Riser & Fleece',
+        'Pads that sit between the saddle and the horse, and fleece for after work.'],
+    'non-slip-gel-pads' => ['numnahs-saddlepads', 3, 'Non-Slip Gel Pads', 'Grip Both Sides',
+        'Dimpled gel pads that grip on both sides, to stop a saddle sliding and take the jar out of the ride.'],
 
     // Safety Equipment (5) — split by what the kit protects
     'riding-helmets' => ['safety-equipment', 1, 'Riding Helmets', 'Velvet & Vented',
@@ -258,11 +254,31 @@ $tree = [
     'stirrup-treads' => ['martingales-stirrups-leathers', 3, 'Stirrup Treads', 'Sold in Pairs',
         'Rubber treads that grip the boot, sold in pairs to replace worn or missing ones.'],
 
-    // Girths (4) — the sheet runs them as two different size ranges
-    'girths-standard' => ['girths', 1, 'Standard Girths', '42" to 50"',
-        'Fleece lined, elastic and anti-chafe girths in the standard run, 42 to 50 inches.'],
-    'girths-dressage' => ['girths', 2, 'Dressage Girths', '22" to 30"',
+    // Girths (4) — one sub-category per kind of girth
+    'dressage-girths' => ['girths', 1, 'Dressage', 'Short, 22" to 30"',
         'Short girths for a dressage saddle, 22 to 30 inches, so the buckles sit clear of the leg.'],
+    'girths-anti-chafe' => ['girths', 2, 'Anti-Chafe', 'Padded Behind the Elbow',
+        'Girths shaped and padded to sit clear of the elbow on a horse that rubs.'],
+    'girths-fleece-lined' => ['girths', 3, 'Fleece-Lined', 'Soft Against the Skin',
+        'Girths lined with fleece, for thin skin and for horses in hard work.'],
+    'girths-elastic' => ['girths', 4, 'Elastic', 'Give at the Buckle',
+        'Girths with elastic ends, so the horse can fill its chest without the girth fighting it.'],
+
+    // Horse Boots (7)
+    'brushing-boots' => ['horse-boots', 1, 'Brushing Boots', 'Pony, Cob & Full',
+        'Boots with a moulded strike guard, protecting the inside of the leg from the opposite hoof.'],
+    'overreach-boots' => ['horse-boots', 2, 'Overreach Boots', 'Neoprene & Rubber',
+        'Neoprene and rubber overreach boots, guarding the heel and coronet from a hind foot.'],
+    'bandages' => ['horse-boots', 3, 'Bandages', 'Fleece, Cohesive & Pads',
+        'Exercise and stable bandages with the quilted pads that go underneath them.'],
+
+    // Grooming: the brushes, split by what each one is for
+    'body-brushes' => ['grooming-equipment', 1, 'Body Brushes', 'For the Shine',
+        'Soft-bristled brushes used with a curry comb to lift dust and bring up a coat.'],
+    'dandy-brushes' => ['grooming-equipment', 2, 'Dandy Brushes', 'For the Mud',
+        'Stiff-bristled brushes for dried mud and sweat, used before the body brush.'],
+    'mane-tail-brushes' => ['grooming-equipment', 3, 'Mane & Tail Brushes', 'Without Pulling',
+        'Brushes that work through a mane and tail without tearing the hair out.'],
 
     // Shampoo & Skin Care (9)
     'shampoo' => ['shampoo-skin-care', 1, 'Shampoo', 'Washing Down',
@@ -271,6 +287,8 @@ $tree = [
         'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day.'],
     'skin-care' => ['shampoo-skin-care', 3, 'Skin Care', 'Soothing & Protecting',
         'Sunscreen for pink noses, soothing gels for itching, and barrier creams for heels.'],
+    'first-aid' => ['shampoo-skin-care', 4, 'First Aid', 'Wounds & Dressings',
+        'Wound sprays, gels, gamgee and dressings for the tack room first aid box.'],
 ];
 
 foreach ($tree as $slug => [$parentSlug, $sort, $name, $tagline, $desc]) {

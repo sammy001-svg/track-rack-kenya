@@ -278,7 +278,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Fleece Lined Girth',
-    'category' => 'girths-standard',
+    'category' => 'girths-fleece-lined',
     'short'    => 'A girth lined with soft fleece, for horses prone to girth galls.',
     'description' => "A girth with a soft fleece lining against the horse. The fleece spreads the pressure and stops the rubbing that causes girth galls, which makes it a sensible choice for a thin-skinned horse or one coming back into work.\n\nThe lining comes off and washes.",
     'specs'    => "Lining: soft fleece\nBuckles: stainless steel roller\nElastic: both ends\nCare: lining is washable",
@@ -289,7 +289,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Black Elastic Girth',
-    'category' => 'girths-standard',
+    'category' => 'girths-elastic',
     'short'    => 'A hard-wearing black girth with elastic at both ends.',
     'description' => "A straightforward black girth with elastic ends, which lets the horse's ribcage expand as it works rather than being held rigid. Stainless steel roller buckles make it easy to do up single-handed.",
     'specs'    => "Material: hard-wearing webbing\nElastic: both ends\nBuckles: stainless steel roller",
@@ -301,7 +301,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Padded Anti-Chafe Girth',
-    'category' => 'girths-standard',
+    'category' => 'girths-anti-chafe',
     'featured' => true,
     'short'    => 'A shaped, padded girth designed to reduce rubbing behind the elbow.',
     'description' => "A shaped girth with a padded, textured lining that grips without chafing. The curve behind the elbow gives the horse room to move its foreleg freely, which matters a great deal to a horse that jumps.\n\nOne of the more worthwhile upgrades you can make to an otherwise ordinary set of tack.",
@@ -314,7 +314,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Short Dressage Girth',
-    'category' => 'girths-dressage',
+    'category' => 'dressage-girths',
     'short'    => 'A short girth for dressage saddles with long billets.',
     'description' => "A short, padded girth for use with a dressage saddle on long billet straps, keeping the buckles clear of the rider's leg. Neoprene lined so it grips without slipping.",
     'specs'    => "Type: short / dressage girth\nLining: padded neoprene\nBuckles: stainless steel roller",
@@ -415,7 +415,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Quilted GP Numnah — Red',
-    'category' => 'shaped-numnahs',
+    'category' => 'numnahs',
     'short'    => 'A shaped, quilted numnah in red, cut for a GP saddle.',
     'description' => "A shaped numnah cut to follow the line of a general purpose saddle, quilted cotton with a soft lining and girth and billet straps. Washes clean and holds its colour.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -427,7 +427,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Teal',
-    'category' => 'shaped-numnahs',
+    'category' => 'numnahs',
     'short'    => 'The same shaped GP numnah in teal.',
     'description' => "A shaped GP numnah in teal, quilted cotton with a soft lining. A colour that looks well on a grey or a bay without being loud.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -438,7 +438,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Black',
-    'category' => 'shaped-numnahs',
+    'category' => 'numnahs',
     'short'    => 'A shaped GP numnah in black — the one that always looks tidy.',
     'description' => "A shaped GP numnah in black. It does not show dust or a stray hoof mark the way a white one does, which makes it the pad most people reach for day to day.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -449,7 +449,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Quilted GP Numnah — Navy',
-    'category' => 'shaped-numnahs',
+    'category' => 'numnahs',
     'short'    => 'A shaped GP numnah in navy.',
     'description' => "A shaped GP numnah in navy, quilted cotton with a soft lining and girth and billet straps.",
     'specs'    => "Shape: general purpose\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -461,7 +461,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Square — White',
-    'category' => 'dressage-squares',
+    'category' => 'numnahs',
     'featured' => true,
     'short'    => 'A crisp white dressage square for the competition ring.',
     'description' => "A square-cut dressage pad in white — correct turnout for a dressage test and smart enough for a clinic. Quilted cotton with a wicking lining that pulls sweat away from the back.\n\nWashes clean without going grey, which is more than can be said for some.",
@@ -473,7 +473,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dressage Square — Black',
-    'category' => 'dressage-squares',
+    'category' => 'numnahs',
     'short'    => 'A square-cut dressage pad in black, for schooling.',
     'description' => "A square-cut dressage pad in black — the everyday schooling pad, keeping the white one clean for competition day.",
     'specs'    => "Shape: dressage square\nFace: quilted cotton\nAttachment: girth and billet straps\nCare: machine washable",
@@ -488,7 +488,7 @@ $firstShoot = [
 // =====================================================================
 [
     'name'     => 'Ezi-Groom Body Brush',
-    'category' => 'brushes',
+    'category' => 'body-brushes',
     'brand'    => 'Shires',
     'featured' => true,
     'short'    => 'A soft body brush with a chunky grip, from the Ezi-Groom range.',
@@ -503,7 +503,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Ezi-Groom Dandy Brush',
-    'category' => 'brushes',
+    'category' => 'dandy-brushes',
     'brand'    => 'Shires',
     'short'    => 'A stiff dandy brush for lifting mud and dried sweat.',
     'description' => "A stiff-bristled dandy brush for getting dried mud and sweat off the coat before you start with the softer brushes. The moulded grip takes the effort out of it.\n\nToo stiff for the face or any clipped area — keep it for the body and legs.",
@@ -518,7 +518,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Body Brushes — Colour Range',
-    'category' => 'brushes',
+    'category' => 'body-brushes',
     'short'    => 'Soft body brushes with a moulded grip, in a choice of colours.',
     'description' => "Soft body brushes with a moulded grip, stocked in a range of colours so every horse on the yard can have its own. Keeping one kit per horse is the simplest way to stop skin conditions moving between animals.",
     'specs'    => "Bristle: soft, for body brushing\nGrip: moulded with a hand strap\nColours: several, subject to stock",
@@ -529,7 +529,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Dandy Brushes — Colour Range',
-    'category' => 'brushes',
+    'category' => 'dandy-brushes',
     'short'    => 'Stiff dandy brushes in a choice of colours.',
     'description' => "Stiff-bristled dandy brushes for mud and dried sweat, stocked in several colours. A hard-working brush that earns its keep on a wet-season yard.",
     'specs'    => "Bristle: stiff\nColours: several, subject to stock",
@@ -588,7 +588,7 @@ $firstShoot = [
 ],
 [
     'name'     => 'Mane and Tail Brush',
-    'category' => 'brushes',
+    'category' => 'mane-tail-brushes',
     'short'    => 'A cushioned brush for working through mane and tail without breaking hair.',
     'description' => "A cushioned brush with rounded pins for working through a mane and tail. Start at the bottom and work up, and you will keep far more tail than you will with a comb.\n\nAvailable in several colours.",
     'specs'    => "Pins: rounded, cushioned pad\nHandle: moulded grip\nColours: several, subject to stock",

@@ -21,7 +21,7 @@ return [
 // =====================================================================
 [
     'name'     => 'Prolite Saddle Pad',
-    'category' => 'pads-blankets',
+    'category' => 'saddle-pads',
     'brand'    => 'Prolite',
     'short'    => 'A shaped black Prolite pad with a spine channel, worn under the saddle.',
     'description' => "A shaped pad from Prolite, cut to follow the saddle and split down the spine so it stays off the horse's back.\n\nBring the saddle in and we will check how the pad changes the fit before you buy.",
@@ -32,7 +32,7 @@ return [
 ],
 [
     'name'     => 'Non-Slip Gel Pad',
-    'category' => 'pads-blankets',
+    'category' => 'non-slip-gel-pads',
     'short'    => 'A dimpled black gel pad that stops the saddle slipping.',
     'description' => "A flexible gel pad with a dimpled surface that grips on both sides, used to keep the saddle from sliding and to take some of the jar out of the ride.\n\nIt wipes clean with a damp cloth.",
     'specs'    => "Material: gel\nColour: black\nSurface: dimpled, non-slip",
@@ -42,7 +42,7 @@ return [
 ],
 [
     'name'     => 'Tartan Fleece Rug',
-    'category' => 'pads-blankets',
+    'category' => 'saddle-pads',
     'short'    => 'A red, yellow and black tartan fleece rug with front straps.',
     'description' => "A warm fleece rug in a bold red and yellow tartan, bound in black, with adjustable straps across the chest.\n\nUseful as a cooler after work or as a light layer on a cold Nairobi morning.",
     'specs'    => "Material: fleece\nPattern: red, yellow and black tartan\nFastening: chest straps",
@@ -104,33 +104,33 @@ return [
 // =====================================================================
 [
     'name'     => 'Brushing Boots',
-    'category' => 'horse-boots',
+    'category' => 'brushing-boots',
     'brand'    => 'ARMA',
     'short'    => 'Brushing boots with a moulded strike guard, in five colours.',
     'description' => "Brushing boots with a moulded outer shell over a soft lining, to protect the inside of the leg from knocks by the opposite hoof.\n\nThree touch-close straps keep them secure.",
-    'specs'    => "Maker: ARMA\nColours: black, grey, green, navy, red\nFastening: three touch-close straps\nSizes: pony, cob, full",
+    'specs'    => "Colours: black, grey, green, navy, red\nFastening: three touch-close straps\nSizes: pony, cob, full",
     'sizing'   => 'Sold by leg size. Tell us the horse’s height and build and we will find the right pair.',
     'images'   => [
         ['1S3A5764.png', 'The boot from the outside, showing the moulded strike guard'],
-        ['1S3A5754.png', 'The boot in its ARMA packaging'],
+        ['1S3A5754.png', 'The boot in its packaging'],
     ],
 ],
 [
     'name'     => 'Anatomic Brushing Boots',
-    'category' => 'horse-boots',
+    'category' => 'brushing-boots',
     'brand'    => 'ARMA',
     'short'    => 'Black brushing boots with red straps and a moulded shell.',
-    'description' => "Brushing boots from the ARMA Anatomic range, with a moulded shell on the inside of the leg and wide red touch-close straps.\n\nA soft neoprene-style body keeps them close to the leg without rubbing.",
-    'specs'    => "Maker: ARMA\nRange: Anatomic\nColour: black with red straps\nFastening: two touch-close straps",
+    'description' => "Anatomic brushing boots with a moulded shell on the inside of the leg and wide red touch-close straps.\n\nA soft neoprene-style body keeps them close to the leg without rubbing.",
+    'specs'    => "Range: Anatomic\nColour: black with red straps\nFastening: two touch-close straps",
     'sizing'   => 'Sold by leg size. Tell us the horse’s height and build and we will find the right pair.',
     'images'   => [
-        ['1S3A5760.png', 'The boot from the shell side, showing the ARMA strike guard'],
-        ['1S3A5762.png', 'The strap side, with the ARMA Anatomic branding'],
+        ['1S3A5760.png', 'The boot from the shell side, showing the strike guard'],
+        ['1S3A5762.png', 'The strap side and its touch-close straps'],
     ],
 ],
 [
     'name'     => 'Rubber Overreach Boots',
-    'category' => 'horse-boots',
+    'category' => 'overreach-boots',
     'brand'    => 'Shires',
     'short'    => 'Black ribbed rubber overreach boots with a touch-close fastening.',
     'description' => "Ribbed rubber overreach boots that sit over the hoof to protect the heel and coronet from a hind foot catching them.\n\nThe touch-close fastening means they go on without being pulled over the foot.",
@@ -142,20 +142,20 @@ return [
 ],
 [
     'name'     => 'Neoprene Overreach Boots',
-    'category' => 'horse-boots',
+    'category' => 'overreach-boots',
     'brand'    => 'ARMA',
     'short'    => 'Soft neoprene overreach boots, lighter and quieter than rubber.',
     'description' => "Soft overreach boots with a red strike panel, lighter and quieter than rubber, protecting the heel and coronet from the hind feet.",
-    'specs'    => "Maker: ARMA\nMaterial: neoprene\nColours: black, blue, green, red\nFastening: touch-close\nSizes: pony, cob, full",
+    'specs'    => "Material: neoprene\nColours: black, blue, green, red\nFastening: touch-close\nSizes: pony, cob, full",
     'sizing'   => 'Sized by hoof. Bring the horse’s shoe size or measure around the pastern.',
     'images'   => [
         ['1S3A5777.png', 'The pair of overreach boots'],
-        ['1S3A5775.png', 'A single boot, showing the ARMA badge'],
+        ['1S3A5775.png', 'A single boot, showing the maker\'s badge'],
     ],
 ],
 [
     'name'     => 'Cohesive Bandages',
-    'category' => 'first-aid',
+    'category' => 'bandages',
     'short'    => 'Self-adhesive cohesive bandages in blue and purple.',
     'description' => "Cohesive bandage sticks to itself but not to hair, so it holds a dressing or a tail in place without pins or tape.\n\nTears by hand. Shown in blue and purple.",
     'specs'    => "Type: self-adhesive cohesive bandage\nColours: blue, purple",
@@ -167,7 +167,7 @@ return [
 ],
 [
     'name'     => 'Quilted Bandage Pads',
-    'category' => 'first-aid',
+    'category' => 'bandages',
     'short'    => 'White quilted pads to wear under stable and travel bandages.',
     'description' => "Quilted pads that go under a stable or travel bandage, spreading the pressure evenly down the leg.\n\nSold as a set.",
     'specs'    => "Colour: white\nConstruction: quilted",
@@ -214,15 +214,15 @@ return [
     ],
 ],
 [
-    'name'     => 'ARMA Medi-Boot',
+    'name'     => 'Medi-Boot',
     'category' => 'poultice-treatment-boots',
     'brand'    => 'ARMA',
     'short'    => 'A tough fabric poultice boot that holds a dressing on the hoof.',
     'description' => "A hard-wearing fabric boot that draws closed around the pastern, holding a poultice or dressing on the hoof and keeping it clean.",
-    'specs'    => "Maker: ARMA\nMaterial: heavy-duty fabric\nColour: black",
+    'specs'    => "Material: heavy-duty fabric\nColour: black",
     'sizing'   => 'Sized by hoof. Bring the horse’s shoe size.',
     'images'   => [
-        ['1S3A5807.png', 'The Medi-Boot with its ARMA badge'],
+        ['1S3A5807.png', 'The Medi-Boot, showing the fastening'],
     ],
 ],
 [

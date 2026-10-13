@@ -48,9 +48,16 @@ class ShopController extends Controller
         'skin-sun-care'            => 'skin-care',
         'hoof-coat-supplements'    => 'hoof-supplements',
         // Regrouped from the client's sizes & colours sheet.
-        'bandages-wraps'           => 'first-aid',
+        'bandages-wraps'           => 'bandages',
         'brushing-overreach-boots' => 'horse-boots',
-        'numnahs-squares'          => 'shaped-numnahs',
+        'numnahs-squares'          => 'numnahs',
+        // Regrouped again from the October review minutes.
+        'shaped-numnahs'           => 'numnahs',
+        'dressage-squares'         => 'numnahs',
+        'pads-blankets'            => 'saddle-pads',
+        'girths-standard'          => 'girths',
+        'girths-dressage'          => 'dressage-girths',
+        'brushes'                  => 'body-brushes',
     ];
 
     public function category(string $slug): void

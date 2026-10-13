@@ -173,7 +173,7 @@ return [
             'title' => 'Leg Gels, Clays & Creams',
             'desc'  => 'Cooling gels, natural clay, arnica and MSM creams that go on the leg after work. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
-        'brushes' => [
+        'body-brushes' => [
             'title' => 'Horse Brushes',
             'desc'  => 'Body brushes for the shine, dandy brushes for the mud, and brushes for mane and tail. From Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -209,11 +209,11 @@ return [
             'title' => 'Horse Bandages & Wraps',
             'desc'  => 'Fleece and cohesive bandages, with the quilted pads and gamgee that go underneath. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'shaped-numnahs' => [
+        'numnahs' => [
             'title' => 'Numnahs & Dressage Squares',
             'desc'  => 'Shaped GP numnahs and square-cut dressage pads, washable and cut clear of the withers. Stocked in Nairobi since 1997.',
         ],
-        'pads-blankets' => [
+        'saddle-pads' => [
             'title' => 'Saddle Pads & Blankets',
             'desc'  => 'Prolite and gel pads that sit under the saddle, and fleece rugs for after work. From Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -230,16 +230,46 @@ return [
             'desc'  => 'Sunscreen for pink noses, soothing gels for itching and barrier creams for heels. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
 
+        // ---- Added from the October 2026 review minutes ----
+        'girths-anti-chafe' => [
+            'title' => 'Anti-Chafe Girths',
+            'desc'  => 'Girths shaped and padded to sit clear of the elbow on a horse that rubs. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'girths-fleece-lined' => [
+            'title' => 'Fleece-Lined Girths',
+            'desc'  => 'Girths lined with fleece, for thin skin and for horses in hard work. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'girths-elastic' => [
+            'title' => 'Elastic Girths',
+            'desc'  => 'Girths with elastic ends, so a horse can fill its chest without the girth fighting it. From Tack Rack, Nairobi.',
+        ],
+        'non-slip-gel-pads' => [
+            'title' => 'Non-Slip Gel Pads',
+            'desc'  => 'Dimpled gel pads that grip on both sides, stopping a saddle sliding and taking the jar out of the ride. From Tack Rack, Nairobi.',
+        ],
+        'brushing-boots' => [
+            'title' => 'Brushing Boots',
+            'desc'  => 'Boots with a moulded strike guard, protecting the inside of the leg from the opposite hoof. Pony, cob and full at Tack Rack, Nairobi.',
+        ],
+        'overreach-boots' => [
+            'title' => 'Overreach Boots',
+            'desc'  => 'Neoprene and rubber overreach boots guarding the heel and coronet from a hind foot. Pony, cob and full. From Tack Rack, Nairobi.',
+        ],
+        'bandages' => [
+            'title' => 'Bandages & Pads',
+            'desc'  => 'Exercise and stable bandages with the quilted pads that go underneath them. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'dandy-brushes' => [
+            'title' => 'Dandy Brushes',
+            'desc'  => 'Stiff-bristled brushes for dried mud and sweat, used before the body brush. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'mane-tail-brushes' => [
+            'title' => 'Mane & Tail Brushes',
+            'desc'  => 'Brushes that work through a mane and tail without tearing the hair out. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
+
         // ---- Added from the sizes & colours sheet ----
-        'dressage-squares' => [
-            'title' => 'Dressage Square Numnahs',
-            'desc'  => 'Square-cut dressage pads in white, green, red and blue, 17 to 18 inches. In stock at Tack Rack, Ngong Road, Nairobi.',
-        ],
-        'girths-standard' => [
-            'title' => 'Girths, 42" to 50"',
-            'desc'  => 'Fleece lined, elastic and anti-chafe girths in the standard run, 42 to 50 inches, in brown and black. From Tack Rack, Nairobi.',
-        ],
-        'girths-dressage' => [
+        'dressage-girths' => [
             'title' => 'Short Dressage Girths',
             'desc'  => 'Short girths for a dressage saddle, 22 to 30 inches, in brown and black. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -597,20 +627,20 @@ return [
 
         // Boots and bandages
         'Brushing Boots' => [
-            'title' => 'ARMA Brushing Boots, Navy',
-            'desc'  => 'Navy ARMA brushing boots with a moulded strike guard and three touch-close straps, protecting the inside of the leg. In stock in Nairobi.',
+            'title' => 'Brushing Boots, Five Colours',
+            'desc'  => 'Brushing boots with a moulded strike guard and three touch-close straps, protecting the inside of the leg. In stock in Nairobi.',
         ],
         'Anatomic Brushing Boots' => [
-            'title' => 'ARMA Anatomic Brushing Boots',
-            'desc'  => 'Black ARMA Anatomic brushing boots with a moulded shell and wide red straps, close to the leg without rubbing. From Tack Rack, Nairobi.',
+            'title' => 'Anatomic Brushing Boots',
+            'desc'  => 'Anatomic brushing boots with a moulded shell and wide red straps, close to the leg without rubbing. From Tack Rack, Nairobi.',
         ],
         'Rubber Overreach Boots' => [
             'title' => 'Shires Rubber Overreach Boots',
             'desc'  => 'Ribbed rubber overreach boots from Shires with a touch-close fastening, protecting heels and coronets from the hind feet. Stocked in Nairobi.',
         ],
         'Neoprene Overreach Boots' => [
-            'title' => 'ARMA Overreach Boots, Red',
-            'desc'  => 'Soft black and red ARMA overreach boots — lighter and quieter than rubber, protecting the heel and coronet. In stock at Tack Rack, Nairobi.',
+            'title' => 'Neoprene Overreach Boots',
+            'desc'  => 'Soft neoprene overreach boots — lighter and quieter than rubber, protecting the heel and coronet. In stock at Tack Rack, Nairobi.',
         ],
         'Cohesive Bandages' => [
             'title' => 'Cohesive Bandages',
@@ -634,9 +664,9 @@ return [
             'title' => 'Davis Hoof Treatment Boot',
             'desc'  => 'A rigid Davis treatment boot, made in the USA, that holds a soak or poultice on the hoof and keeps it clean. Stocked at Tack Rack, Nairobi.',
         ],
-        'ARMA Medi-Boot' => [
-            'title' => 'ARMA Medi-Boot Poultice Boot',
-            'desc'  => 'A tough fabric ARMA Medi-Boot that draws closed at the pastern, holding a poultice or dressing on the hoof. In stock at Tack Rack, Nairobi.',
+        'Medi-Boot' => [
+            'title' => 'Medi-Boot Poultice Boot',
+            'desc'  => 'A tough fabric Medi-Boot that draws closed at the pastern, holding a poultice or dressing on the hoof. In stock at Tack Rack, Nairobi.',
         ],
         'Hoof Oil' => [
             'title' => 'Hoof Oil',
