@@ -1,5 +1,5 @@
 <?php
-/** @var array $pillars @var array $heroSlides @var array $featured @var array $latest */
+/** @var array $departments @var array $services @var array $heroSlides @var array $featured @var array $latest */
 $heroSlides = $heroSlides ?? [];
 $spotlight = array_slice($featured, 0, 4);
 $grid      = array_slice($featured, 0, 8);
@@ -148,16 +148,16 @@ if (count($grid) < 4) {
 </div>
 
 <!-- ================================================================
-     Section 2 — The Curation
+     Section 2 — Shop by department
      ================================================================ -->
 <section class="section" id="curation">
   <div class="shell shell--wide">
     <div class="section-head" data-reveal>
       <div class="section-head__text">
-        <p class="eyebrow">The Curation</p>
-        <h2>Three pillars, one standard.</h2>
+        <p class="eyebrow">The Catalogue</p>
+        <h2>Find it the way the shop is laid out.</h2>
         <p class="lede">
-          Our catalog is organised the way a yard actually works — what the rider wears,
+          Three departments, the way a yard actually works — what the rider wears,
           what the horse carries, and what keeps both in condition.
         </p>
       </div>
@@ -168,45 +168,58 @@ if (count($grid) < 4) {
         </svg>
       </a>
     </div>
-  </div>
 
-  <div class="pillars">
-    <?php foreach ($pillars as $index => $pillar): ?>
-      <?php
-        $art = pillar_art($pillar['slug']);
-        $pillarImage = !empty($pillar['image'])
-            ? image($pillar['image'])
-            : asset('/assets/img/' . ($art !== 'product' ? 'pillar-' . $art : 'placeholder-product') . '.jpg');
-        $pillarAlt = [
-            'rider'  => 'A showjumping rider clearing a fence',
-            'horse'  => 'An English saddle fitted with a sheepskin numnah',
-            'yard'   => 'Grooming a horse with a body brush',
-        ][$pillar['slug']] ?? $pillar['name'];
-      ?>
-      <article class="pillar" data-reveal>
-        <div class="pillar__media">
-          <?= picture($pillarImage, $pillarAlt, ['loading' => 'lazy', 'width' => 800, 'height' => 1000]) ?>
-        </div>
+    <div class="departments">
+      <?php foreach ($departments as $index => $dept): ?>
+        <?php
+          $pillar = $dept['pillar'];
+          $art    = pillar_art($pillar['slug']);
+          $image  = !empty($pillar['image'])
+              ? image($pillar['image'])
+              : asset('/assets/img/' . ($art !== 'product' ? 'pillar-' . $art : 'placeholder-product') . '.jpg');
+          $alt = [
+              'rider' => 'A showjumping rider clearing a fence',
+              'horse' => 'An English saddle fitted with a sheepskin numnah',
+              'yard'  => 'Grooming a horse with a body brush',
+          ][$pillar['slug']] ?? $pillar['name'];
 
-        <span class="pillar__index"><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span>
+          $total = 0;
+          foreach ($dept['sections'] as $s) { $total += (int) $s['product_count']; }
+        ?>
+        <article class="dept" data-reveal>
+          <a class="dept__card" href="<?= e(url('/shop/' . $pillar['slug'])) ?>">
+            <span class="dept__media">
+              <?= picture($image, $alt, ['loading' => 'lazy', 'width' => 760, 'height' => 560, 'decoding' => 'async']) ?>
+            </span>
+            <span class="dept__caption">
+              <span class="dept__index"><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span>
+              <span class="dept__tag"><?= e($pillar['tagline']) ?></span>
+              <span class="dept__name"><?= e($pillar['name']) ?></span>
+            </span>
+          </a>
 
-        <span class="pillar__tag"><?= e($pillar['tagline']) ?></span>
-        <h3><?= e($pillar['name']) ?></h3>
-        <p class="pillar__desc"><?= e($pillar['description']) ?></p>
-
-        <?php if (!empty($pillar['children'])): ?>
-          <div class="pillar__links">
-            <?php foreach (array_slice($pillar['children'], 0, 5) as $child): ?>
-              <a href="<?= e(url('/shop/' . $child['slug'])) ?>"><?= e($child['name']) ?></a>
+          <?php // Every section listed, not hidden behind a hover — on a phone
+                // there is no hover, so the old chips were invisible there. ?>
+          <ul class="dept__sections">
+            <?php foreach ($dept['sections'] as $section): ?>
+              <li>
+                <a href="<?= e(url('/shop/' . $section['slug'])) ?>">
+                  <span><?= e($section['name']) ?></span>
+                  <span class="dept__count"><?= (int) $section['product_count'] ?></span>
+                </a>
+              </li>
             <?php endforeach; ?>
-          </div>
-        <?php endif; ?>
+          </ul>
 
-        <a class="pillar__cta" href="<?= e(url('/shop/' . $pillar['slug'])) ?>">
-          <span class="sr-only">Shop <?= e($pillar['name']) ?></span>
-        </a>
-      </article>
-    <?php endforeach; ?>
+          <a class="dept__all" href="<?= e(url('/shop/' . $pillar['slug'])) ?>">
+            All <?= e($pillar['name']) ?> &middot; <?= $total ?> items
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+              <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+      <?php endforeach; ?>
+    </div>
   </div>
 </section>
 
@@ -246,6 +259,68 @@ if (count($grid) < 4) {
           </article>
         <?php endforeach; ?>
       </div>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
+<!-- ================================================================
+     Services — the part of Tack Rack that is not a shelf
+     ================================================================ -->
+<?php if ($services !== []): ?>
+<?php
+  $serviceArt = [
+      'saddle-fitting'   => 'service-fitting',
+      'workshop-repairs' => 'service-repairs',
+  ];
+  $serviceCta = [
+      'saddle-fitting'   => 'Book a fitting',
+      'workshop-repairs' => 'Send photos for a quote',
+  ];
+?>
+<section class="section section--tight">
+  <div class="shell shell--wide">
+    <div class="section-head" data-reveal>
+      <div class="section-head__text">
+        <p class="eyebrow">What We Do</p>
+        <h2>More than a shelf.</h2>
+        <p class="lede">
+          A saddle that does not fit damages a horse's back long before the rider
+          notices — so we fit on the horse, and we repair in our own workshop.
+        </p>
+      </div>
+      <a class="link" href="<?= e(url('/services')) ?>">
+        All services
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+          <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="services-home">
+      <?php foreach ($services as $service): ?>
+        <?php
+          $art = $serviceArt[$service['slug']] ?? null;
+          $img = !empty($service['image'])
+              ? image($service['image'])
+              : asset('/assets/img/' . ($art ?? 'placeholder-product') . '.jpg');
+        ?>
+        <article class="service-card" data-reveal>
+          <a class="service-card__media" href="<?= e(url('/services/' . $service['slug'])) ?>" tabindex="-1" aria-hidden="true">
+            <?= picture($img, $service['name'], ['loading' => 'lazy', 'width' => 760, 'height' => 500, 'decoding' => 'async']) ?>
+          </a>
+          <div class="service-card__body">
+            <h3><a href="<?= e(url('/services/' . $service['slug'])) ?>"><?= e($service['name']) ?></a></h3>
+            <p><?= e($service['tagline']) ?></p>
+            <span class="service-card__cta">
+              <?= e($serviceCta[$service['slug']] ?? 'Find out more') ?>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </article>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -325,7 +400,7 @@ if (count($grid) < 4) {
     </div>
 
     <div class="grid-products grid-products--4">
-      <?php foreach (array_slice($grid, 0, 8) as $product): ?>
+      <?php foreach (array_slice($grid, 0, 4) as $product): ?>
         <?php require APP_PATH . '/Views/partials/product-card.php'; ?>
       <?php endforeach; ?>
     </div>
@@ -347,6 +422,23 @@ if (count($grid) < 4) {
           availability and lead times — usually within one working day. No account, no obligation.
         </p>
       </div>
+
+      <?php // Nothing on the site shows a price, so the ordering model is
+            // spelled out here rather than left to be worked out. ?>
+      <ol class="steps" data-reveal>
+        <li>
+          <span class="steps__num">1</span>
+          <span class="steps__text"><strong>Build a list.</strong> Add anything from the catalogue — no account needed.</span>
+        </li>
+        <li>
+          <span class="steps__num">2</span>
+          <span class="steps__text"><strong>We quote it.</strong> Current pricing, availability and lead times, usually within a working day.</span>
+        </li>
+        <li>
+          <span class="steps__num">3</span>
+          <span class="steps__text"><strong>Collect or we deliver.</strong> From the shop, across Nairobi, or countrywide by courier.</span>
+        </li>
+      </ol>
 
       <div class="cta-banner__actions" data-reveal>
         <a class="btn btn--lg" href="<?= e(url('/request-a-quote')) ?>">Request a Quote</a>

@@ -6,6 +6,7 @@ use App\Core\Schema;
 use App\Core\Seo;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Service;
 
 class HomeController extends Controller
 {
@@ -19,11 +20,26 @@ class HomeController extends Controller
             ->description(setting('seo_home_desc', setting('site_intro')))
             ->canonical(url('/'));
 
+        // Each department with the sections inside it, so the home page can
+        // offer a way straight to "Hoof Care" instead of only to "Yard".
+        $departments = [];
+        foreach ($categories->pillars() as $pillar) {
+            $sections = array_values(array_filter(
+                $categories->childrenWithCounts((int) $pillar['id']),
+                static fn (array $c): bool => (int) $c['product_count'] > 0
+            ));
+
+            if ($sections !== []) {
+                $departments[] = ['pillar' => $pillar, 'sections' => $sections];
+            }
+        }
+
         $this->view('site.home', [
             'seo'         => $seo,
             'bodyClass'   => 'page-home',
             'transparentHeader' => true,
-            'pillars'     => $categories->tree(),
+            'departments' => $departments,
+            'services'    => (new Service())->active(),
             'heroSlides'  => $products->showcase(6),
             'featured'    => $products->featured(6),
             'latest'      => $products->latest(4),
