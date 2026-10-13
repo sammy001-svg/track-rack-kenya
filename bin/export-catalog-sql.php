@@ -60,6 +60,37 @@ function insert(string $table, array $rows, PDO $pdo): string
 }
 
 $categories = $db->all('SELECT * FROM categories ORDER BY id');
+
+// A parent has to be inserted before its children or the foreign key refuses
+// the row, and ids do not guarantee that: regrouping the catalogue has created
+// parents later than the sections already sitting under them. Emit the tree a
+// level at a time instead.
+$ordered = [];
+$placed  = [null => true];
+
+while (count($ordered) < count($categories)) {
+    $progress = false;
+
+    foreach ($categories as $category) {
+        if (isset($placed[$category['id']])) {
+            continue;
+        }
+
+        if (isset($placed[$category['parent_id']])) {
+            $ordered[] = $category;
+            $placed[$category['id']] = true;
+            $progress = true;
+        }
+    }
+
+    if (!$progress) {
+        fwrite(STDERR, "Refusing to export: the category tree has a cycle.
+");
+        exit(1);
+    }
+}
+
+$categories = $ordered;
 $brands     = $db->all('SELECT * FROM brands ORDER BY id');
 $products   = $db->all('SELECT * FROM products ORDER BY id');
 $images     = $db->all('SELECT * FROM product_images ORDER BY product_id, sort_order');
