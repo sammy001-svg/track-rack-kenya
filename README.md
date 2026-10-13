@@ -137,9 +137,14 @@ Then add `127.0.0.1  tackrack.local` to your hosts file.
 
     /admin/login
     admin@tackrack.co.ke
-    TackRack@2026
 
-**Change that password immediately** under *Admin → My account*.
+`bin/install.php` generates the password, prints it once and does not store it
+anywhere else. Write it down when it appears.
+
+If you built the database by importing `database/seed.sql` by hand, that row
+carries the placeholder hash published with this repository. **Sign in and set
+a real password under *Admin → My account* before the site is reachable from
+outside.**
 
 ---
 

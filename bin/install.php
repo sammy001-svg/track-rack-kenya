@@ -87,13 +87,18 @@ $run = static function (PDO $pdo, string $file, string $label): void {
 
 $run($pdo, $root . '/database/schema.sql', 'Schema');
 
-if (!$schemaOnly) {
-    $run($pdo, $root . '/database/seed.sql', 'Seed data');
-}
-
 // ---- Migrations --------------------------------------------------------
 // The base schema is Phase 1. Everything since lives in database/migrations
 // and is applied here so a fresh install matches an upgraded one exactly.
+//
+// They run in two passes, either side of the seed, because the two kinds want
+// opposite things: the early ones add tables the seed writes to, so they have
+// to come first or the seed fails outright; the later ones amend seeded copy —
+// a page's wording, a setting — so they have to come after, or they update
+// nothing and the seed then puts the old wording back.
+//
+// PRE_SEED names the structural ones. Anything not named there runs after the
+// seed, which is the right default: almost everything since has been copy.
 $pdo->exec(
     'CREATE TABLE IF NOT EXISTS `migrations` (
         `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -104,29 +109,48 @@ $pdo->exec(
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
 );
 
+const PRE_SEED = [
+    '2026_08_18_000001_phase_two.sql',
+    '2026_08_18_000002_seo.sql',
+];
+
 $applied    = $pdo->query('SELECT `filename` FROM `migrations`')->fetchAll(PDO::FETCH_COLUMN);
 $migrations = glob($root . '/database/migrations/*.sql') ?: [];
 sort($migrations);
 
 $appliedNow = 0;
 
-foreach ($migrations as $file) {
-    $name = basename($file);
+$apply = static function (array $files) use ($pdo, &$applied, &$appliedNow): void {
+    foreach ($files as $file) {
+        $name = basename($file);
 
-    if (in_array($name, $applied, true)) {
-        continue;
-    }
+        if (in_array($name, $applied, true)) {
+            continue;
+        }
 
-    try {
-        $pdo->exec(file_get_contents($file));
-        $pdo->prepare('INSERT INTO `migrations` (`filename`) VALUES (?)')->execute([$name]);
-        $appliedNow++;
-    } catch (PDOException $e) {
-        out('  ERROR  Migration failed: ' . $name);
-        out('         ' . $e->getMessage());
-        exit(1);
+        try {
+            $pdo->exec(file_get_contents($file));
+            $pdo->prepare('INSERT INTO `migrations` (`filename`) VALUES (?)')->execute([$name]);
+            $applied[] = $name;
+            $appliedNow++;
+        } catch (PDOException $e) {
+            out('  ERROR  Migration failed: ' . $name);
+            out('         ' . $e->getMessage());
+            exit(1);
+        }
     }
+};
+
+// The structural ones first: the seed writes to tables they create.
+$apply(array_filter($migrations, static fn (string $f): bool => in_array(basename($f), PRE_SEED, true)));
+
+if (!$schemaOnly) {
+    $run($pdo, $root . '/database/seed.sql', 'Seed data');
 }
+
+// Then the rest, which amend seeded copy and would find nothing to amend if
+// they ran before it.
+$apply(array_filter($migrations, static fn (string $f): bool => !in_array(basename($f), PRE_SEED, true)));
 
 out($appliedNow > 0
     ? '  Migrations applied (' . $appliedNow . ')'
@@ -172,9 +196,37 @@ if (!$schemaOnly) {
     out('  Admin sign-in');
     out('    URL       /admin/login');
     out('    Email     admin@tackrack.co.ke');
-    out('    Password  TackRack@2026');
-    out('');
-    out('  >> Change this password immediately under Admin > My account.');
+
+    /*
+     * The password hash in database/seed.sql is published with this repository,
+     * so an account still carrying it is a published credential. It is replaced
+     * here with one generated for this install and shown once.
+     *
+     * The installer rebuilds from schema.sql, which drops the tables, so in
+     * practice the seeded row comes back on every run and every run prints a
+     * new password. The check is there so that an account which already has a
+     * password of its own is never overwritten.
+     */
+    $seededHash = '$2y$10$XAH0rk0QSalvKPYGNt1XUuCP7lXZfdBMWVDnbSNERGNCYlye97SEq';
+
+    $admin = $pdo
+        ->query("SELECT `id`, `password_hash` FROM `users` WHERE `email` = 'admin@tackrack.co.ke'")
+        ->fetch(PDO::FETCH_ASSOC);
+
+    if ($admin !== false && hash_equals($seededHash, (string) $admin['password_hash'])) {
+        $password = bin2hex(random_bytes(9));
+
+        $pdo->prepare('UPDATE `users` SET `password_hash` = ? WHERE `id` = ?')
+            ->execute([password_hash($password, PASSWORD_DEFAULT), $admin['id']]);
+
+        out('    Password  ' . $password);
+        out('');
+        out('  >> Generated for this install and shown once. Write it down now,');
+        out('     then change it under Admin > My account.');
+    } else {
+        out('    Password  unchanged \— this account already has its own.');
+    }
+
     out('');
 }
 

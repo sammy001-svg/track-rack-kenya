@@ -44,7 +44,13 @@ ALTER TABLE `pages`            AUTO_INCREMENT = 1;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- ---------------------------------------------------------------------
---  Admin account   ->  admin@tackrack.co.ke  /  TackRack@2026
+--  Admin account   ->  admin@tackrack.co.ke
+--
+--  The hash below is published with this file, so treat it as a placeholder
+--  rather than a password. bin/install.php replaces it with a generated one
+--  and prints that once. If you import this file by hand instead, sign in and
+--  change the password before the site is reachable from outside.
+--
 --  IGNORE so an existing account, or a changed password, survives.
 -- ---------------------------------------------------------------------
 INSERT IGNORE INTO `users` (`id`,`name`,`email`,`password_hash`,`role`,`is_active`) VALUES
