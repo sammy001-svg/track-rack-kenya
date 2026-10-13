@@ -181,14 +181,31 @@ class ShopController extends Controller
         $departments = $category !== null ? [$category] : $categories->pillars();
         $perSection  = $category !== null ? 8 : 4;
 
+        // The catalogue's front page introduces each department rather than
+        // reproducing it: twenty-two shelves of products in one scroll is not
+        // a page anyone reads to the end. A department page lists all of its
+        // own, and the filter bar still reaches every section from anywhere.
+        $perDepartment = $category !== null ? PHP_INT_MAX : 5;
+
         $groups = [];
 
         foreach ($departments as $department) {
             $sections = [];
 
-            foreach ($categories->childrenWithCounts((int) $department['id']) as $section) {
+            $candidates = $categories->childrenWithCounts((int) $department['id']);
+
+            if ($perDepartment !== PHP_INT_MAX) {
+                usort($candidates, static fn (array $a, array $b): int
+                    => (int) $b['product_count'] <=> (int) $a['product_count']);
+            }
+
+            foreach ($candidates as $section) {
                 if ((int) $section['product_count'] === 0) {
                     continue;
+                }
+
+                if (count($sections) >= $perDepartment) {
+                    break;
                 }
 
                 $result = $products->catalog(

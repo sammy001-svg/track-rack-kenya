@@ -1281,6 +1281,32 @@ body.header-hidden .filters { top: 0; }
 }
 
 /* Active filters, shown as removable chips under the controls. */
+.filters__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem;
+}
+
+/* Four stacked rows of controls took a quarter of a phone screen, and the bar
+   is sticky, so it took that quarter the whole way down the page. */
+@media (max-width: 719px) {
+  .search-field { flex: 1 1 100%; }
+
+  .filters__controls {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+
+  .filters__controls::-webkit-scrollbar { display: none; }
+  .filters__controls > * { flex: none; }
+}
+
 .filters__active {
   display: flex;
   flex-wrap: wrap;
@@ -1397,6 +1423,34 @@ body.header-hidden .filters { top: 0; }
 }
 
 .catalog-row__all:hover { color: var(--brass); border-color: var(--brass); }
+
+/* A section shows four to eight products. Stacked one per screen that is
+   eight screens for one shelf, and a department with eleven shelves runs to
+   forty thousand pixels on a phone. Swiped, a shelf is one screen and the
+   card at the edge says there is more. The flat grid further down the page
+   is left alone: that one is the long list, and it loads as you reach it. */
+@media (max-width: 719px) {
+  .catalog-row .grid-products {
+    grid-auto-flow: column;
+    grid-auto-columns: 66%;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    padding-bottom: .4rem;
+    scrollbar-width: none;
+  }
+
+  .catalog-row .grid-products::-webkit-scrollbar { display: none; }
+  .catalog-row .grid-products > * { scroll-snap-align: start; }
+}
+
+@media (max-width: 460px) {
+  .catalog-row .grid-products { grid-auto-columns: 76%; }
+}
 
 @media (max-width: 599px) {
   .catalog-row__head { grid-template-columns: 1fr; }

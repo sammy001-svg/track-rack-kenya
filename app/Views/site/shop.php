@@ -81,6 +81,9 @@ if ($activeSubId > 0) {
         <input type="search" name="q" value="<?= e($filters['q']) ?>" placeholder="Search saddles, bits, rugs…" autocomplete="off">
       </label>
 
+      <?php // Section, availability and sort travel together, so on a phone they
+            // can be one swipeable line instead of three stacked ones. ?>
+      <div class="filters__controls">
       <?php if ($subCategories !== []): ?>
         <div class="select">
           <label class="sr-only" for="f-category">Category</label>
@@ -132,7 +135,8 @@ if ($activeSubId > 0) {
         </select>
       </div>
 
-      <noscript><button class="btn btn--sm" type="submit">Apply</button></noscript>
+        <noscript><button class="btn btn--sm" type="submit">Apply</button></noscript>
+      </div>
 
       <?php
         $countLabel = (int) $total . ' item' . ($total === 1 ? '' : 's');
