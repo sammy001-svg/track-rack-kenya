@@ -33,11 +33,11 @@ if (count($grid) < 4) {
         <dd><?= e(setting('founded_year', '1997')) ?></dd>
       </div>
       <div class="hero__stat">
-        <dt>Saddle fitting</dt>
-        <dd>SMS Qualified</dd>
+        <dt>Qualified fitting</dt>
+        <dd>Master Saddlers</dd>
       </div>
       <div class="hero__stat">
-        <dt>On-site workshop</dt>
+        <dt>Our own workshop</dt>
         <dd>Repairs &amp; Bespoke</dd>
       </div>
     </dl>
@@ -198,17 +198,34 @@ if (count($grid) < 4) {
             </span>
           </a>
 
-          <?php // Every section listed, not hidden behind a hover — on a phone
-                // there is no hover, so the old chips were invisible there. ?>
-          <ul class="dept__sections">
-            <?php foreach ($dept['sections'] as $section): ?>
+          <?php
+            // The busiest sections first, and only a handful of them. Rider has
+            // three sections and Yard eleven, so listing every one left the
+            // three cards wildly uneven on a desktop and ran to three screens
+            // on a phone. The rest are one tap away under the department.
+            $sections = $dept['sections'];
+            usort($sections, static fn (array $a, array $b): int
+                => (int) $b['product_count'] <=> (int) $a['product_count']);
+
+            $shown = array_slice($sections, 0, 6);
+            $rest  = count($sections) - count($shown);
+          ?>
+          <ul class="dept__chips">
+            <?php foreach ($shown as $section): ?>
               <li>
                 <a href="<?= e(url('/shop/' . $section['slug'])) ?>">
-                  <span><?= e($section['name']) ?></span>
+                  <?= e($section['name']) ?>
                   <span class="dept__count"><?= (int) $section['product_count'] ?></span>
                 </a>
               </li>
             <?php endforeach; ?>
+            <?php if ($rest > 0): ?>
+              <li>
+                <a class="dept__chip-more" href="<?= e(url('/shop/' . $pillar['slug'])) ?>">
+                  +<?= $rest ?> more
+                </a>
+              </li>
+            <?php endif; ?>
           </ul>
 
           <a class="dept__all" href="<?= e(url('/shop/' . $pillar['slug'])) ?>">

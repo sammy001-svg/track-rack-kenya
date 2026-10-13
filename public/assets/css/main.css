@@ -665,7 +665,7 @@ body.nav-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(var(--header-h) + clamp(3rem, 8vh, 6rem)) var(--gutter) clamp(3rem, 8vh, 5rem);
+  padding: calc(var(--header-h) + clamp(1.75rem, 5vh, 4.5rem)) var(--gutter) clamp(2rem, 5vh, 3.5rem);
   max-width: 46rem;
   margin-left: auto;
   width: 100%;
@@ -690,7 +690,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .hero__lede {
-  margin-top: 1.75rem;
+  margin-top: clamp(1rem, 2.4vh, 1.75rem);
   font-size: clamp(1.02rem, 1.35vw, 1.16rem);
   line-height: 1.68;
   color: rgba(247, 244, 239, .72);
@@ -698,19 +698,41 @@ body.nav-open { overflow: hidden; }
 }
 
 .hero__actions {
-  margin-top: 2.5rem;
+  margin-top: clamp(1.5rem, 3.5vh, 2.5rem);
   display: flex;
   flex-wrap: wrap;
   gap: .9rem;
 }
 
+/* Two actions of different widths read as an accident. On a phone they take
+   the full column and line up. */
+@media (max-width: 560px) {
+  .hero__actions { display: grid; gap: .65rem; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+}
+
 .hero__meta {
-  margin-top: clamp(2.5rem, 6vh, 4.5rem);
-  padding-top: 1.75rem;
+  margin-top: clamp(1.5rem, 4vh, 3.25rem);
+  padding-top: clamp(1rem, 2.4vh, 1.75rem);
   border-top: 1px solid var(--rule-invert);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.25rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* The display serif is too wide to set three values across a phone, so here
+   the value takes the body face at a size that fits the column. */
+@media (max-width: 899px) {
+  .hero__meta { gap: .9rem; }
+  .hero__stat dt { font-size: .56rem; letter-spacing: .1em; line-height: 1.35; }
+  .hero__stat dd {
+    font-family: var(--sans);
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.35;
+    margin-top: .3rem;
+  }
 }
 
 .hero__stat dt {
@@ -723,7 +745,7 @@ body.nav-open { overflow: hidden; }
 
 .hero__stat dd {
   font-family: var(--display);
-  font-size: 1.75rem;
+  font-size: clamp(1.15rem, 1.5vw, 1.5rem);
   font-weight: 300;
   letter-spacing: -.02em;
   margin-top: .3rem;
@@ -776,7 +798,7 @@ body.nav-open { overflow: hidden; }
   background: var(--ink);
   /* Taller than the static hero image: this one carries a caption and a row
      of controls underneath the photograph. */
-  min-height: 62svh;
+  min-height: 52svh;
 }
 
 /* The static hero's dark wash exists to blend a photograph into the copy
@@ -1202,6 +1224,38 @@ body.nav-open { overflow: hidden; }
 
 .grid-products--4 { grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
 
+/* On a phone a four-up grid becomes four full-width cards stacked one under
+   the other, and a section of four products costs three screens of scrolling.
+   Swiped side by side it costs one — and the next card showing at the edge is
+   what tells you there are more. The arrow keys and a swipe both work; nothing
+   here needs JavaScript. */
+@media (max-width: 719px) {
+  .grid-products--4 {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 66%;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    /* Bleed to both screen edges so the rail reads as a rail rather than a
+       box with a scrollbar inside it. */
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    padding-bottom: .4rem;
+    scrollbar-width: none;
+  }
+
+  .grid-products--4::-webkit-scrollbar { display: none; }
+
+  .grid-products--4 > * { scroll-snap-align: start; }
+}
+
+@media (max-width: 460px) {
+  .grid-products--4 { grid-auto-columns: 76%; }
+}
+
 .card {
   position: relative;
   display: flex;
@@ -1498,13 +1552,19 @@ body.nav-open { overflow: hidden; }
   overflow: hidden;
 }
 
-@media (min-width: 700px)  { .craft { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 440px)  { .craft { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .craft { grid-template-columns: repeat(4, 1fr); } }
 
 .craft__item {
   background: var(--paper);
-  padding: clamp(1.6rem, 2.6vw, 2.25rem);
+  padding: clamp(1.1rem, 2.6vw, 2.25rem);
   transition: background-color .4s var(--ease);
+}
+
+@media (max-width: 599px) {
+  .craft__item svg { width: 20px; height: 20px; margin-bottom: .7rem; }
+  .craft__item h4 { font-size: 1rem; }
+  .craft__item p { font-size: .8rem; line-height: 1.55; }
 }
 
 .craft__item:hover { background: var(--bone); }
@@ -1559,6 +1619,12 @@ body.nav-open { overflow: hidden; }
   aspect-ratio: 4 / 3;
   background: var(--ink);
   isolation: isolate;
+}
+
+/* A 4:3 photograph three times over is most of a phone screen before a single
+   section is named. */
+@media (max-width: 559px) {
+  .dept__card { aspect-ratio: 16 / 10; }
 }
 
 .dept__media { position: absolute; inset: 0; }
@@ -1618,32 +1684,49 @@ body.nav-open { overflow: hidden; }
   margin-top: .3rem;
 }
 
-.dept__sections {
+/* The sections a department holds, as chips rather than a stacked list: six
+   of them cost two lines here and eleven rows there. */
+.dept__chips {
   list-style: none;
   margin: 1.1rem 0 0;
   padding: 0;
-  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
 }
 
-.dept__sections li + li { border-top: 1px solid var(--rule-soft); }
-
-.dept__sections a {
-  display: flex;
+.dept__chips a {
+  display: inline-flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: .62rem .2rem;
-  font-size: .92rem;
+  gap: .4rem;
+  padding: .42rem .7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: .82rem;
+  line-height: 1.2;
   color: var(--text);
   text-decoration: none;
-  transition: color .25s var(--ease), padding-left .25s var(--ease);
+  background: var(--paper);
+  transition: color .25s var(--ease), border-color .25s var(--ease),
+              background-color .25s var(--ease);
 }
 
-.dept__sections a:hover,
-.dept__sections a:focus-visible { color: var(--tan); padding-left: .45rem; }
+.dept__chips a:hover,
+.dept__chips a:focus-visible {
+  color: var(--ink);
+  border-color: var(--tan);
+  background: var(--bone);
+}
+
+.dept__chip-more {
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--tan) !important;
+  border-style: dashed !important;
+}
 
 .dept__count {
-  font-size: .72rem;
+  font-size: .7rem;
   font-variant-numeric: tabular-nums;
   color: var(--text-faint);
 }
@@ -2958,6 +3041,20 @@ body.header-hidden .filters { top: 0; }
 
 @media (min-width: 780px)  { .footer__top { grid-template-columns: 1.4fr 1fr 1fr; } }
 @media (min-width: 1080px) { .footer__top { grid-template-columns: 1.6fr 1fr 1fr 1fr; } }
+
+/* On a phone the four blocks stacked ran to a screen and a half of footer.
+   The two link lists sit side by side instead; the brand and the address,
+   which need the width, keep the full column. */
+@media (max-width: 779px) {
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.5rem;
+  }
+  .footer__brand,
+  .footer__top > div:last-child { grid-column: 1 / -1; }
+  .footer__links a { font-size: .86rem; }
+  .footer__links li + li { margin-top: .4rem; }
+}
 
 .footer__brand .brand__mark { color: var(--bone); font-size: 1.6rem; }
 .footer__brand .brand__sub  { color: rgba(247,244,239,.45); }
