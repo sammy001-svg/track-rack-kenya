@@ -145,7 +145,7 @@ return [
             'title' => 'Poultices & Treatment Boots',
             'desc'  => 'Ready-made hoof poultices and the rigid and fabric boots that hold a dressing on the hoof. From Tack Rack, Ngong Road, Nairobi.',
         ],
-        'shoes-nails' => [
+        'horseshoes' => [
             'title' => 'Farriery — Horseshoes & Nails',
             'desc'  => 'Steel and aluminium horseshoes and Optima farrier nails, bundled by size. Stocked at Tack Rack, Ngong Road, Nairobi.',
         ],
@@ -228,6 +228,19 @@ return [
         'skin-care' => [
             'title' => 'Horse Skin & Sun Care',
             'desc'  => 'Sunscreen for pink noses, soothing gels for itching and barrier creams for heels. Stocked at Tack Rack, Ngong Road, Nairobi.',
+        ],
+
+        'shoeing-equipment' => [
+            'title' => 'Shoeing Equipment',
+            'desc'  => 'Steel and aluminium shoes, farrier nails and the tools that put them on. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'horseshoe-nails' => [
+            'title' => 'Farrier Nails',
+            'desc'  => 'Farrier nails in the head patterns and gauges your shoes take, by the packet of 50 or the box of 250. From Tack Rack, Nairobi.',
+        ],
+        'farrier-tools' => [
+            'title' => 'Farrier Tools',
+            'desc'  => 'Pincers, rasps, knives and nippers for shoeing. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
 
         // ---- Added from the October 2026 review minutes ----

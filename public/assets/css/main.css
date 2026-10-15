@@ -472,10 +472,16 @@ p { text-wrap: pretty; }
 .mega__inner {
   max-width: 90rem;
   margin-inline: auto;
-  padding: clamp(2rem, 3.5vw, 3rem) var(--gutter);
+  padding: clamp(1.5rem, 2.4vw, 2.1rem) var(--gutter);
   display: grid;
-  grid-template-columns: repeat(3, 1fr) minmax(0, .9fr);
-  gap: clamp(1.75rem, 3vw, 3rem);
+  grid-template-columns: .62fr 1.45fr 1.45fr minmax(0, .72fr);
+  gap: clamp(1.5rem, 2.5vw, 2.75rem);
+  align-items: start;
+  /* Every section and sub-category is listed here now, which is taller than
+     some screens. */
+  max-height: calc(100svh - var(--header-h) - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .mega__col h4 {
@@ -492,18 +498,18 @@ p { text-wrap: pretty; }
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--tan);
-  margin-bottom: 1.1rem;
+  margin-bottom: .75rem;
   display: block;
 }
 
-.mega__list li + li { margin-top: .1rem; }
+.mega__list > li + li { margin-top: .15rem; }
 
 .mega__list a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  padding: .42rem 0;
+  padding: .36rem 0;
   font-size: .9rem;
   color: var(--text-muted);
   border-bottom: 1px solid transparent;
@@ -512,6 +518,36 @@ p { text-wrap: pretty; }
 
 .mega__list a:hover { color: var(--ink); padding-left: .4rem; }
 .mega__list a span { font-size: .72rem; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+
+/* A section's own shelves, set under it and indented against a hairline so a
+   long column still reads as a list of sections rather than one flat run. */
+.mega__sub {
+  list-style: none;
+  margin: .1rem 0 .5rem .1rem;
+  padding-left: .75rem;
+  border-left: 1px solid var(--rule-soft);
+}
+
+.mega__sub a {
+  padding: .26rem 0;
+  font-size: .82rem;
+  color: var(--text-faint);
+}
+
+.mega__sub a:hover { color: var(--tan); }
+
+/* Yard carries ten sections to Rider's three, so on a wide screen its
+   list runs in two columns and the whole menu fits without scrolling. */
+@media (min-width: 1200px) {
+  .mega__col--wide { grid-column: span 1; }
+  .mega__col--wide .mega__list { column-count: 2; column-gap: 2rem; }
+  .mega__col--wide .mega__list > li { break-inside: avoid; }
+}
+
+.mega__sub a span { font-size: .68rem; }
+
+/* The sections stay the anchor points. */
+.mega__list > li > a { font-weight: 500; color: var(--text); }
 
 .mega__feature {
   background: var(--ink);
@@ -640,6 +676,16 @@ body.nav-open { overflow: hidden; }
 }
 
 .drawer__group a:hover { color: var(--ink); }
+
+/* A section's own shelves, indented under it in the phone menu. */
+.drawer__sub {
+  padding-left: .9rem;
+  font-size: .88rem;
+  color: var(--text-faint);
+  border-left: 1px solid var(--rule-soft);
+  margin-left: .1rem;
+}
+
 .drawer .btn { margin-top: 1.75rem; }
 
 /* ---------------------------------------------------------------------

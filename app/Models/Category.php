@@ -32,15 +32,44 @@ class Category extends Model
     /** Full pillar -> children tree, with a product count on each child. */
     public function tree(bool $activeOnly = true): array
     {
-        $tree = [];
+        // Every level, not just the sections: the navigation lists the
+        // sub-categories under each one. Built from a single query and nested
+        // here, because walking it level by level was a query per section and
+        // there are now seventy-odd categories.
+        $where = $activeOnly ? 'WHERE c.`is_active` = 1' : '';
 
-        foreach ($this->pillars($activeOnly) as $pillar) {
-            $pillar['children'] = $this->childrenWithCounts((int) $pillar['id'], $activeOnly);
-            $pillar['product_count'] = array_sum(array_column($pillar['children'], 'product_count'));
-            $tree[] = $pillar;
+        $rows = $this->db()->all(
+            "SELECT c.*, (
+                 SELECT COUNT(*) FROM `products` p
+                  WHERE p.`is_active` = 1 AND p.`category_id` = c.`id`
+             ) AS own_count
+             FROM `categories` c
+             {$where}
+             ORDER BY c.`sort_order` ASC, c.`name` ASC"
+        );
+
+        $byParent = [];
+
+        foreach ($rows as $row) {
+            $byParent[(int) ($row['parent_id'] ?? 0)][] = $row;
         }
 
-        return $tree;
+        // A category's count includes everything filed beneath it, so a
+        // section whose products all live one level down does not read empty.
+        $build = static function (int $parentId) use (&$build, $byParent): array {
+            $out = [];
+
+            foreach ($byParent[$parentId] ?? [] as $row) {
+                $row['children']      = $build((int) $row['id']);
+                $row['product_count'] = (int) $row['own_count']
+                    + array_sum(array_column($row['children'], 'product_count'));
+                $out[] = $row;
+            }
+
+            return $out;
+        };
+
+        return $build(0);
     }
 
     public function childrenWithCounts(int $parentId, bool $activeOnly = true): array

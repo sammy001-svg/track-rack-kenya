@@ -42,7 +42,7 @@ class ShopController extends Controller
         'fly-control'              => 'fly-repellent',
         // Renamed in the October 2026 regrouping.
         'digestive'                => 'gut-health',
-        'farriery'                 => 'shoes-nails',
+        'farriery'                 => 'horseshoes',
         'shampoos-conditioners'    => 'shampoo',
         'mane-tail-care'           => 'detanglers',
         'skin-sun-care'            => 'skin-care',
@@ -59,6 +59,7 @@ class ShopController extends Controller
         'girths-dressage'          => 'dressage-girths',
         'brushes'                  => 'body-brushes',
         'numnahs-saddlepads'       => 'numnahs-saddle-pads',
+        'shoes-nails'              => 'shoeing-equipment',
     ];
 
     public function category(string $slug): void

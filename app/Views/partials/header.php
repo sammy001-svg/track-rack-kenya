@@ -30,16 +30,32 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
         <div class="mega">
           <div class="mega__inner">
             <?php foreach ($navTree as $pillar): ?>
-              <div class="mega__col">
+              <div class="mega__col<?= count($pillar['children']) > 6 ? ' mega__col--wide' : '' ?>">
                 <h4><?= e($pillar['name']) ?></h4>
                 <span class="mega__tag"><?= e($pillar['tagline']) ?></span>
                 <ul class="mega__list">
-                  <?php foreach ($pillar['children'] as $child): ?>
+                  <?php foreach ($pillar['children'] as $section): ?>
                     <li>
-                      <a href="<?= e(url('/shop/' . $child['slug'])) ?>">
-                        <?= e($child['name']) ?>
-                        <span><?= (int) $child['product_count'] ?></span>
+                      <a href="<?= e(url('/shop/' . $section['slug'])) ?>">
+                        <?= e($section['name']) ?>
+                        <span><?= (int) $section['product_count'] ?></span>
                       </a>
+
+                      <?php // The sub-categories, so every shelf in the shop is
+                            // reachable from the menu rather than only the aisles. ?>
+                      <?php if ($section['children'] !== []): ?>
+                        <ul class="mega__sub">
+                          <?php foreach ($section['children'] as $sub): ?>
+                            <?php if ((int) $sub['product_count'] === 0) { continue; } ?>
+                            <li>
+                              <a href="<?= e(url('/shop/' . $sub['slug'])) ?>">
+                                <?= e($sub['name']) ?>
+                                <span><?= (int) $sub['product_count'] ?></span>
+                              </a>
+                            </li>
+                          <?php endforeach; ?>
+                        </ul>
+                      <?php endif; ?>
                     </li>
                   <?php endforeach; ?>
                   <li>
@@ -106,8 +122,12 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
   <?php foreach ($navTree as $pillar): ?>
     <div class="drawer__group">
       <div class="drawer__title"><?= e($pillar['name']) ?></div>
-      <?php foreach ($pillar['children'] as $child): ?>
-        <a href="<?= e(url('/shop/' . $child['slug'])) ?>"><?= e($child['name']) ?></a>
+      <?php foreach ($pillar['children'] as $section): ?>
+        <a href="<?= e(url('/shop/' . $section['slug'])) ?>"><?= e($section['name']) ?></a>
+        <?php foreach ($section['children'] as $sub): ?>
+          <?php if ((int) $sub['product_count'] === 0) { continue; } ?>
+          <a class="drawer__sub" href="<?= e(url('/shop/' . $sub['slug'])) ?>"><?= e($sub['name']) ?></a>
+        <?php endforeach; ?>
       <?php endforeach; ?>
       <a href="<?= e(url('/shop/' . $pillar['slug'])) ?>"><em>View all <?= e($pillar['name']) ?></em></a>
     </div>

@@ -175,8 +175,6 @@ $tree = [
         'Waxes and compounds that seal cavities, rebuild missing horn and repair damage around nail holes.'],
     'poultice-treatment-boots' => ['hoof-care', 4, 'Poultices & Treatment Boots', 'Soaking & Dressing',
         'Ready-made poultices, and the rigid and fabric boots that hold a dressing on the hoof.'],
-    'shoes-nails' => ['hoof-care', 5, 'Shoes & Nails', 'Steel, Aluminium & Nails',
-        'Steel and aluminium horseshoes and farrier nails, bundled by size.'],
     'hoof-supplements' => ['hoof-care', 6, 'Hoof Supplements', 'Biotin, Fed Daily',
         'Biotin and the hoof supplements fed in the feed to improve horn quality from the inside out.'],
 
@@ -287,6 +285,15 @@ $tree = [
         'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day.'],
     'skin-care' => ['shampoo-skin-care', 3, 'Skin Care', 'Soothing & Protecting',
         'Sunscreen for pink noses, soothing gels for itching, and barrier creams for heels.'],
+    'shoeing-equipment' => ['yard', 12, 'Shoeing Equipment', 'Shoes, Nails & Tools',
+        'What goes under the hoof and the tools that put it there: shoes, nails and the farrier\'s own kit.'],
+    'horseshoes' => ['shoeing-equipment', 1, 'Shoes', 'Steel & Aluminium',
+        'Steel shoes and aluminium racing plates, bundled by size.'],
+    'horseshoe-nails' => ['shoeing-equipment', 2, 'Nails', 'By Head and Gauge',
+        'Farrier nails in the head patterns and gauges the shoes take, by the packet or the box.'],
+    'farrier-tools' => ['shoeing-equipment', 3, 'Farrier Tools', 'For the Shoeing Itself',
+        'The tools a farrier works with: pincers, rasps, knives, nippers and the rest of the kit.'],
+
     'first-aid' => ['shampoo-skin-care', 4, 'First Aid', 'Wounds & Dressings',
         'Wound sprays, gels, gamgee and dressings for the tack room first aid box.'],
 ];

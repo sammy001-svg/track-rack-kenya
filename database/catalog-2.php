@@ -405,7 +405,7 @@ return [
 ],
 [
     'name'     => 'Optima Horseshoe Nails',
-    'category' => 'shoes-nails',
+    'category' => 'horseshoe-nails',
     'brand'    => 'Optima',
     'short'    => 'Optima horseshoe nails, boxed, in several head types and sizes.',
     'description' => "Horseshoe nails from Optima for farriers, sold by the box.\n\nShown here in E-3, E-4, Crown Head and ASV patterns.",
@@ -416,7 +416,7 @@ return [
 ],
 [
     'name'     => 'Aluminium Horseshoes',
-    'category' => 'shoes-nails',
+    'category' => 'horseshoes',
     'short'    => 'Lightweight aluminium horseshoes with a toe clip.',
     'description' => "Lightweight aluminium horseshoes with a toe clip, bundled by size for farriers.",
     'specs'    => "Material: aluminium\nClip: toe clip",
@@ -427,7 +427,7 @@ return [
 ],
 [
     'name'     => 'Steel Horseshoes',
-    'category' => 'shoes-nails',
+    'category' => 'horseshoes',
     'short'    => 'Steel horseshoes with a toe clip, bundled by size.',
     'description' => "Standard steel horseshoes with a toe clip, bundled by size for farriers.",
     'specs'    => "Material: steel\nClip: toe clip",
