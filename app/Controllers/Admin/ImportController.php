@@ -29,6 +29,116 @@ class ImportController extends Controller
         ], 'layouts.admin');
     }
 
+    /**
+     * POST /admin/import/catalogue — apply database/catalog-import.sql.
+     *
+     * The host has no command line and the file is 185 KB of SQL, which makes
+     * phpMyAdmin the only other way in. This runs it against whatever database
+     * the site is connected to, so bringing the catalogue across is a button
+     * rather than an export, an upload and a prayer.
+     *
+     * It replaces the catalogue: categories, brands, products, their images
+     * and their sizes. It does not touch users, settings, pages, orders,
+     * quotes, bookings or repairs, and an order line keeps its own product
+     * name and SKU, so history still reads correctly afterwards.
+     *
+     * A CSV of what is there now is written to storage/backups first, so the
+     * work being replaced is recoverable even if nobody took a database dump.
+     */
+    public function applyCatalogue(): void
+    {
+        $file = dirname(__DIR__, 3) . '/database/catalog-import.sql';
+
+        if (!is_file($file) || filesize($file) < 1024) {
+            Session::flash('error', 'database/catalog-import.sql is missing from this deployment. Pull the latest code first.');
+            $this->redirect('/admin/import');
+        }
+
+        if (trim((string) ($_POST['confirm'] ?? '')) !== 'REPLACE') {
+            Session::flash('error', 'Type REPLACE to confirm. Nothing has been changed.');
+            $this->redirect('/admin/import');
+        }
+
+        $db  = Database::instance();
+        $pdo = $db->pdo();
+
+        $before = [
+            'categories' => (int) $db->value('SELECT COUNT(*) FROM categories'),
+            'products'   => (int) $db->value('SELECT COUNT(*) FROM products'),
+        ];
+
+        $backup = $this->backupCatalogue();
+
+        try {
+            // Several hundred statements in one string: step through every
+            // result set so a failure half way down is raised, not swallowed.
+            $statement = $pdo->query(file_get_contents($file));
+
+            if ($statement !== false) {
+                while ($statement->nextRowset()) {
+                    // nothing to read; we only want the errors
+                }
+            }
+        } catch (\PDOException $e) {
+            Session::flash('error', 'The catalogue was not applied: ' . $e->getMessage()
+                . ' Nothing else has been changed. Your backup is at ' . $backup . '.');
+            $this->redirect('/admin/import');
+        }
+
+        $after = [
+            'categories' => (int) $db->value('SELECT COUNT(*) FROM categories'),
+            'products'   => (int) $db->value('SELECT COUNT(*) FROM products'),
+            'images'     => (int) $db->value('SELECT COUNT(*) FROM product_images'),
+            'variants'   => (int) $db->value('SELECT COUNT(*) FROM product_variants'),
+        ];
+
+        Session::flash('success', sprintf(
+            'Catalogue applied: %d categories and %d products, with %d photographs and %d sizes and colours. '
+            . 'It replaced %d categories and %d products; a copy of those is in %s.',
+            $after['categories'], $after['products'], $after['images'], $after['variants'],
+            $before['categories'], $before['products'], $backup
+        ));
+
+        $this->redirect('/admin/import');
+    }
+
+    /** Write the catalogue as it stands to a CSV, and return the path. */
+    private function backupCatalogue(): string
+    {
+        $dir = dirname(__DIR__, 3) . '/storage/backups';
+
+        if (!is_dir($dir) && !@mkdir($dir, 0775, true) && !is_dir($dir)) {
+            return '(could not be written)';
+        }
+
+        $name = 'catalogue-before-' . date('Y-m-d-His') . '.csv';
+        $out  = fopen($dir . '/' . $name, 'w');
+
+        if ($out === false) {
+            return '(could not be written)';
+        }
+
+        fputcsv($out, ['sku', 'name', 'slug', 'category', 'brand', 'short_desc', 'description', 'stock_status', 'image']);
+
+        $rows = Database::instance()->all(
+            'SELECT p.sku, p.name, p.slug, c.name AS category, b.name AS brand,
+                    p.short_desc, p.description, p.stock_status,
+                    (SELECT i.path FROM product_images i WHERE i.product_id = p.id ORDER BY i.sort_order LIMIT 1) AS image
+               FROM products p
+               LEFT JOIN categories c ON c.id = p.category_id
+               LEFT JOIN brands b ON b.id = p.brand_id
+              ORDER BY p.name'
+        );
+
+        foreach ($rows as $row) {
+            fputcsv($out, array_values($row));
+        }
+
+        fclose($out);
+
+        return 'storage/backups/' . $name;
+    }
+
     /** GET /admin/import/template — a CSV with the headers and one example row. */
     public function template(): void
     {

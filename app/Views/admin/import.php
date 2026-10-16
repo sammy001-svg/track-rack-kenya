@@ -49,6 +49,52 @@
       </section>
     <?php endif; ?>
 
+      <?php
+        // The prepared catalogue, shipped with the code. Only offered when the
+        // file is actually present in this deployment.
+        $catalogueFile = dirname(__DIR__, 3) . '/database/catalog-import.sql';
+        $hasCatalogue  = is_file($catalogueFile) && filesize($catalogueFile) > 1024;
+      ?>
+      <?php if ($hasCatalogue): ?>
+        <section class="a-panel">
+          <div class="a-panel__head">
+            <h2>Apply the prepared catalogue</h2>
+            <p>Replaces the catalogue with the one built from the studio photographs and the
+               review minutes &mdash; <?= number_format(filesize($catalogueFile) / 1024) ?> KB of
+               categories, products, photographs and sizes, shipped with the code.</p>
+          </div>
+
+          <form method="post" action="<?= e(url('/admin/import/catalogue')) ?>">
+            <?= csrf_field() ?>
+
+            <div class="a-panel__body a-stack">
+              <p style="font-size:.86rem;line-height:1.7">
+                This <strong>replaces every category, brand, product, photograph and size</strong>
+                with the prepared set. Anything added or edited here by hand is lost.
+                Users, settings, pages, orders, quotes, bookings and repairs are untouched, and
+                each order line keeps its own product name and SKU, so past orders still read
+                correctly.
+              </p>
+
+              <p style="font-size:.86rem;line-height:1.7">
+                A CSV of the catalogue as it stands now is written to
+                <code>storage/backups</code> before anything is replaced.
+              </p>
+
+              <label class="a-field" style="max-width:22rem">
+                <span class="a-label">Type REPLACE to confirm</span>
+                <input class="a-input" type="text" name="confirm" autocomplete="off"
+                       placeholder="REPLACE" required>
+              </label>
+            </div>
+
+            <div class="a-panel__foot">
+              <button class="a-btn a-btn--danger" type="submit">Replace the catalogue</button>
+            </div>
+          </form>
+        </section>
+      <?php endif; ?>
+
     <section class="a-panel">
       <div class="a-panel__head">
         <h2>Import products from CSV</h2>

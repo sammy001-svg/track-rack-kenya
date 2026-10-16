@@ -200,6 +200,7 @@ $router->post('/admin/services/{id}/update', 'App\Controllers\Admin\ServiceContr
 $router->get('/admin/import',                'App\Controllers\Admin\ImportController@index',    $auth);
 $router->get('/admin/import/template',       'App\Controllers\Admin\ImportController@template', $auth);
 $router->post('/admin/import/products',      'App\Controllers\Admin\ImportController@importProducts', $auth);
+$router->post('/admin/import/catalogue',     'App\Controllers\Admin\ImportController@applyCatalogue', $auth);
 $router->get('/admin/export/products',       'App\Controllers\Admin\ImportController@exportProducts', $auth);
 $router->get('/admin/export/quotes',         'App\Controllers\Admin\ImportController@exportQuotes',   $auth);
 $router->get('/admin/export/orders',         'App\Controllers\Admin\ImportController@exportOrders',   $auth);
