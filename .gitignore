@@ -42,3 +42,8 @@ Desktop.ini
 # renders the share card with the site's own typefaces (Fraunces and Inter);
 # the finished card is committed, so the fonts only matter if it is redrawn.
 /build/
+
+# Catalogue snapshots written before a replace. Local safety copies of
+# whatever that site held; they belong on the server, not in the repo.
+/storage/backups/*
+!/storage/backups/.gitkeep

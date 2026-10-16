@@ -70,9 +70,27 @@ class ImportController extends Controller
         $backup = $this->backupCatalogue();
 
         try {
-            // Several hundred statements in one string: step through every
-            // result set so a failure half way down is raised, not swallowed.
-            $statement = $pdo->query(file_get_contents($file));
+            /*
+             * The file is several hundred statements in one string, and the
+             * connection the rest of the site uses will not run more than one
+             * at a time. This opens its own, with multi-statements allowed,
+             * and steps through every result set so a failure half way down is
+             * raised rather than swallowed.
+             */
+            $cfg = config('db');
+
+            $runner = new \PDO(
+                sprintf('mysql:host=%s;port=%d;dbname=%s;charset=%s',
+                    $cfg['host'], $cfg['port'], $cfg['database'], $cfg['charset']),
+                $cfg['username'],
+                $cfg['password'],
+                [
+                    \PDO::ATTR_ERRMODE              => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::MYSQL_ATTR_MULTI_STATEMENTS => true,
+                ]
+            );
+
+            $statement = $runner->query(file_get_contents($file));
 
             if ($statement !== false) {
                 while ($statement->nextRowset()) {
