@@ -1,7 +1,7 @@
 -- Tack Rack — sizes, colours and packs
--- Generated 2026-10-16 01:00 by bin/export-variants-sql.php. Do not edit by hand.
+-- Generated 2026-10-17 15:46 by bin/export-variants-sql.php. Do not edit by hand.
 --
--- 389 options across 81 products, from 34 rows of the
+-- 407 options across 85 products, from 36 rows of the
 -- client's sizes & colours sheet (database/variants.php).
 --
 -- Import through phpMyAdmin: select the site database, open the Import tab,
@@ -26,6 +26,7 @@ DELETE v FROM `product_variants` v
   'aluminium-horseshoes',
   'anatomic-brushing-boots',
   'beige-riding-breeches',
+  'black-burghley-girth',
   'black-elastic-girth',
   'black-full-seat-breeches',
   'black-half-chaps',
@@ -33,6 +34,7 @@ DELETE v FROM `product_variants` v
   'black-leather-snaffle-bridle',
   'black-or-havana-leather-flash-bridle',
   'black-skull-cap',
+  'borghey-girth',
   'brown-leather-gaiters',
   'brushing-boots',
   'brushing-boots-2',
@@ -73,6 +75,8 @@ DELETE v FROM `product_variants` v
   'natural-clay',
   'navy-riding-breeches',
   'neoprene-overreach-boots',
+  'night-rug',
+  'night-rugs',
   'nylon-headcollar-assorted-colours',
   'nylon-headcollar-colour-range',
   'optima-horseshoe-nails',
@@ -500,6 +504,24 @@ SELECT p.`id`, v.`label`, v.`value`, v.`sort_order`
     UNION ALL SELECT 'flyguard-pro-fine-mesh-fly-mask' AS `slug`, 'Size' AS `label`, 'Full' AS `value`, 2 AS `sort_order`
     UNION ALL SELECT 'flyguard-pro-fine-mesh-fly-mask' AS `slug`, 'Style' AS `label`, 'With ears' AS `value`, 3 AS `sort_order`
     UNION ALL SELECT 'flyguard-pro-fine-mesh-fly-mask' AS `slug`, 'Style' AS `label`, 'Without ears' AS `value`, 4 AS `sort_order`
+    UNION ALL SELECT 'borghey-girth' AS `slug`, 'Size' AS `label`, '40\"' AS `value`, 0 AS `sort_order`
+    UNION ALL SELECT 'borghey-girth' AS `slug`, 'Size' AS `label`, '42\"' AS `value`, 1 AS `sort_order`
+    UNION ALL SELECT 'borghey-girth' AS `slug`, 'Size' AS `label`, '44\"' AS `value`, 2 AS `sort_order`
+    UNION ALL SELECT 'borghey-girth' AS `slug`, 'Size' AS `label`, '46\"' AS `value`, 3 AS `sort_order`
+    UNION ALL SELECT 'borghey-girth' AS `slug`, 'Size' AS `label`, '48\"' AS `value`, 4 AS `sort_order`
+    UNION ALL SELECT 'borghey-girth' AS `slug`, 'Size' AS `label`, '50\"' AS `value`, 5 AS `sort_order`
+    UNION ALL SELECT 'black-burghley-girth' AS `slug`, 'Size' AS `label`, '40\"' AS `value`, 0 AS `sort_order`
+    UNION ALL SELECT 'black-burghley-girth' AS `slug`, 'Size' AS `label`, '42\"' AS `value`, 1 AS `sort_order`
+    UNION ALL SELECT 'black-burghley-girth' AS `slug`, 'Size' AS `label`, '44\"' AS `value`, 2 AS `sort_order`
+    UNION ALL SELECT 'black-burghley-girth' AS `slug`, 'Size' AS `label`, '46\"' AS `value`, 3 AS `sort_order`
+    UNION ALL SELECT 'black-burghley-girth' AS `slug`, 'Size' AS `label`, '48\"' AS `value`, 4 AS `sort_order`
+    UNION ALL SELECT 'black-burghley-girth' AS `slug`, 'Size' AS `label`, '50\"' AS `value`, 5 AS `sort_order`
+    UNION ALL SELECT 'night-rug' AS `slug`, 'Size' AS `label`, 'Pony' AS `value`, 0 AS `sort_order`
+    UNION ALL SELECT 'night-rug' AS `slug`, 'Size' AS `label`, 'Cob' AS `value`, 1 AS `sort_order`
+    UNION ALL SELECT 'night-rug' AS `slug`, 'Size' AS `label`, 'Full' AS `value`, 2 AS `sort_order`
+    UNION ALL SELECT 'night-rugs' AS `slug`, 'Size' AS `label`, 'Pony' AS `value`, 0 AS `sort_order`
+    UNION ALL SELECT 'night-rugs' AS `slug`, 'Size' AS `label`, 'Cob' AS `value`, 1 AS `sort_order`
+    UNION ALL SELECT 'night-rugs' AS `slug`, 'Size' AS `label`, 'Full' AS `value`, 2 AS `sort_order`
   ) v ON v.`slug` = p.`slug`;
 
 COMMIT;

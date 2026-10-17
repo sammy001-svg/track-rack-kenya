@@ -259,7 +259,9 @@ $tree = [
         'Girths shaped and padded to sit clear of the elbow on a horse that rubs.'],
     'girths-fleece-lined' => ['girths', 3, 'Fleece-Lined', 'Soft Against the Skin',
         'Girths lined with fleece, for thin skin and for horses in hard work.'],
-    'girths-elastic' => ['girths', 4, 'Elastic', 'Give at the Buckle',
+    'girths-borghey' => ['girths', 4, 'Borghey', 'Long, 40" to 50"',
+        'Hard-wearing black girths in the Borghey pattern, cut long for a general purpose saddle.'],
+    'girths-elastic' => ['girths', 5, 'Elastic', 'Give at the Buckle',
         'Girths with elastic ends, so the horse can fill its chest without the girth fighting it.'],
 
     // Horse Boots (7)
@@ -559,9 +561,19 @@ foreach ($catalog as $item) {
         $files[] = [$path, $file, $caption];
     }
 
-    if ($files === []) {
+    /*
+     * A product that lists photographs and resolves none of them is a broken
+     * reference and is skipped. A product that lists none at all is a listing
+     * the shop stocks but we have not photographed yet: it goes in, and the
+     * card falls back to the department artwork until a photograph arrives.
+     */
+    if ($files === [] && $item['images'] !== []) {
         out("  !! no usable images for {$item['name']} — skipped");
         continue;
+    }
+
+    if ($item['images'] === []) {
+        $stats['unphotographed'][] = $item['name'];
     }
 
     if ($dryRun) {
@@ -706,6 +718,12 @@ out();
 out('  ' . str_repeat('-', 56));
 out(sprintf('  products   %d', $stats['products']));
 out(sprintf('  images     %d  (%s MB written)', $stats['images'], number_format($stats['bytes'] / 1048576, 1)));
+
+if (!empty($stats['unphotographed'])) {
+    out();
+    out('  AWAITING A PHOTOGRAPH:');
+    foreach ($stats['unphotographed'] as $name) { out('    ' . $name); }
+}
 
 if ($stats['missing'] !== []) {
     out();

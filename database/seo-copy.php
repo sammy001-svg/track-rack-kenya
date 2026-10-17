@@ -244,6 +244,10 @@ return [
         ],
 
         // ---- Added from the October 2026 review minutes ----
+        'girths-borghey' => [
+            'title' => 'Borghey Girths',
+            'desc'  => 'Hard-wearing black girths in the Borghey pattern, 40 to 50 inches. In stock at Tack Rack, Ngong Road, Nairobi.',
+        ],
         'girths-anti-chafe' => [
             'title' => 'Anti-Chafe Girths',
             'desc'  => 'Girths shaped and padded to sit clear of the elbow on a horse that rubs. From Tack Rack, Ngong Road, Nairobi.',
@@ -346,6 +350,24 @@ return [
     // Products, keyed by name in database/catalog.php.
     // ---------------------------------------------------------------
     'products' => [
+
+        // Carried over from the live catalogue
+        'Borghey Girth' => [
+            'title' => 'Borghey Girth, 40\" to 50\"',
+            'desc'  => 'A hard-wearing black girth in the Borghey pattern, cut long for a general purpose saddle. 40 to 50 inches, from Tack Rack, Nairobi.',
+        ],
+        'Night Rug' => [
+            'title' => 'Stable Night Rugs',
+            'desc'  => 'Rugs for the stable overnight, keeping a clipped horse warm without the weight of a turnout. Pony, cob and full, from Tack Rack, Nairobi.',
+        ],
+        'Rein Keepers & Martingale Stops' => [
+            'title' => 'Rein Keepers & Stops',
+            'desc'  => 'Rubber keepers to hold the rein and stops to keep a running martingale off the bit. From Tack Rack, Ngong Road, Nairobi.',
+        ],
+        'Red Gorilla Feed Tub' => [
+            'title' => 'Red Gorilla Feed Tub',
+            'desc'  => 'A shallow flexible tub with a handle each side, for feed, water or carrying anything round a yard. From Tack Rack, Nairobi.',
+        ],
 
         // Saddles
         'Thorowgood Saddle' => [

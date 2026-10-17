@@ -382,4 +382,24 @@ return [
         ],
     ],
 
+    'Girths (Borghey)'                 => [
+        'variants' => [
+            'Size' => ['40"', '42"', '44"', '46"', '48"', '50"'],
+        ],
+        'products' => [
+            'borghey-girth',
+            'black-burghley-girth',
+        ],
+    ],
+
+    'Night Rugs'                       => [
+        'variants' => [
+            'Size' => ['Pony', 'Cob', 'Full'],
+        ],
+        'products' => [
+            'night-rug',
+            'night-rugs',
+        ],
+    ],
+
 ];

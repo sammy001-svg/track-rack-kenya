@@ -1243,4 +1243,48 @@ return [
     ],
 ],
 
+// =====================================================================
+//  CARRIED OVER FROM THE LIVE CATALOGUE
+//
+//  Four listings that existed only on the live site, entered there by hand.
+//  They are kept here so replacing that catalogue with this one does not lose
+//  them. None has been photographed in the studio yet, so each goes in with
+//  no images and falls back to the department artwork until one arrives.
+// =====================================================================
+[
+    'name'     => 'Borghey Girth',
+    'category' => 'girths-borghey',
+    'short'    => 'A hard-wearing black girth in the Borghey pattern.',
+    'description' => "A hard-wearing black girth, cut long for a general purpose or jumping saddle.\n\nSized 40 to 50 inches.",
+    'specs'    => "Colour: black\nSizes: 40\" to 50\"",
+    'sizing'   => 'Measure an existing girth buckle to buckle, or tell us the horse and the saddle.',
+    'images'   => [],
+],
+[
+    'name'     => 'Night Rug',
+    'category' => 'saddle-pads',
+    'short'    => 'A stable rug for overnight, in assorted colours.',
+    'description' => "A rug for the stable overnight, keeping a clipped or hard-working horse warm without the weight of a turnout.\n\nAssorted colours; tell us what you would like and we will say what is in.",
+    'specs'    => "Use: stable, overnight\nSizes: pony, cob, full\nColours: assorted",
+    'sizing'   => 'Sized pony, cob and full. Measure from the centre of the chest to the point of the buttock.',
+    'images'   => [],
+],
+[
+    'name'     => 'Rein Keepers & Martingale Stops',
+    'category' => 'martingales',
+    'short'    => 'Rein keepers in pairs and martingale stops individually.',
+    'description' => "The small rubber parts that keep a running martingale where it belongs: keepers to hold the rein, and stops to keep the rings off the bit.\n\nKeepers are sold in pairs, stops individually.",
+    'specs'    => "Material: rubber\nKeepers: sold in pairs\nStops: sold individually",
+    'images'   => [],
+],
+[
+    'name'     => 'Red Gorilla Feed Tub',
+    'category' => 'yard-equipment',
+    'brand'    => 'Red Gorilla',
+    'short'    => 'A shallow, flexible feed tub with two handles.',
+    'description' => "A shallow flexible tub with a handle each side, for feed, water or carrying anything round a yard. It flexes rather than cracks when it is dropped or stood on.",
+    'specs'    => "Maker: Red Gorilla\nShape: shallow, two handles\nMaterial: flexible plastic",
+    'images'   => [],
+],
+
 ];
