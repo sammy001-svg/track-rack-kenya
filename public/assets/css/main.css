@@ -472,27 +472,52 @@ p { text-wrap: pretty; }
 .mega__inner {
   max-width: 90rem;
   margin-inline: auto;
-  padding: clamp(1.5rem, 2.4vw, 2.1rem) var(--gutter);
-  display: grid;
-  grid-template-columns: .62fr 1.45fr 1.45fr minmax(0, .72fr);
-  gap: clamp(1.5rem, 2.5vw, 2.75rem);
-  align-items: start;
-  /* Every section and sub-category is listed here now, which is taller than
-     some screens. */
+  padding: clamp(1.5rem, 2.4vw, 2.1rem) var(--gutter) clamp(1.75rem, 2.6vw, 2.4rem);
+  /* One department per panel, so its shelves flow in as many columns as the
+     width allows rather than being assigned one each. */
   max-height: calc(100svh - var(--header-h) - 2rem);
   overflow-y: auto;
   overscroll-behavior: contain;
 }
 
-.mega__col h4 {
-  font-family: var(--display);
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: -.02em;
-  margin-bottom: .3rem;
+.mega__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule-soft);
 }
 
-.mega__col .mega__tag {
+.mega__head h4 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+
+.mega__all {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .69rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: .25rem;
+  transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+
+.mega__all:hover { color: var(--tan); border-color: var(--tan); }
+.mega__all svg { transition: transform .3s var(--ease-out); }
+.mega__all:hover svg { transform: translateX(3px); }
+
+.mega__tag {
   font-size: .68rem;
   font-weight: 600;
   letter-spacing: .14em;
@@ -502,7 +527,17 @@ p { text-wrap: pretty; }
   display: block;
 }
 
-.mega__list > li + li { margin-top: .15rem; }
+/* The shelves flow across the panel; a section and its own sub-categories are
+   never split between two columns. */
+.mega__list {
+  columns: 15rem;
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.mega__list > li {
+  break-inside: avoid;
+  margin-bottom: .55rem;
+}
 
 .mega__list a {
   display: flex;
@@ -538,34 +573,15 @@ p { text-wrap: pretty; }
 
 /* Yard carries ten sections to Rider's three, so on a wide screen its
    list runs in two columns and the whole menu fits without scrolling. */
-@media (min-width: 1200px) {
-  .mega__col--wide { grid-column: span 1; }
-  .mega__col--wide .mega__list { column-count: 2; column-gap: 2rem; }
-  .mega__col--wide .mega__list > li { break-inside: avoid; }
-}
 
 .mega__sub a span { font-size: .68rem; }
 
 /* The sections stay the anchor points. */
 .mega__list > li > a { font-weight: 500; color: var(--text); }
 
-.mega__feature {
-  background: var(--ink);
-  color: var(--bone);
-  padding: 1.75rem;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
 
-.mega__feature p {
-  font-family: var(--display);
-  font-size: 1.3rem;
-  line-height: 1.28;
-  letter-spacing: -.02em;
-}
+
+
 
 /* --- Header actions --- */
 .header__actions { display: flex; align-items: center; gap: .7rem; flex: none; }

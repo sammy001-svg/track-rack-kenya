@@ -1,5 +1,5 @@
 -- Tack Rack — sizes, colours and packs
--- Generated 2026-10-17 15:46 by bin/export-variants-sql.php. Do not edit by hand.
+-- Generated 2026-10-18 23:21 by bin/export-variants-sql.php. Do not edit by hand.
 --
 -- 407 options across 85 products, from 36 rows of the
 -- client's sizes & colours sheet (database/variants.php).

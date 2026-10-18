@@ -113,6 +113,56 @@ foreach ($pillarRenames as $from => $to) {
     out("  pillar RENAMED     {$from} -> {$to['slug']}");
 }
 
+/*
+ * The departments themselves. Three came with the original seed; Grooming &
+ * Care is split out of Yard, which had grown to more than half the catalogue
+ * while Rider held eighteen products. What goes on the horse and the leather
+ * is one job, what runs the yard is another.
+ */
+$departments = [
+    'rider'         => ['Rider', 1],
+    'horse'         => ['Horse', 2],
+    'grooming-care' => ['Grooming & Care', 3],
+    'yard'          => ['Yard', 4],
+];
+
+foreach ($departments as $slug => [$name, $sort]) {
+    $existing = $db->one('SELECT id, sort_order FROM categories WHERE slug = :s', ['s' => $slug]);
+    $meta     = $seoCopy['categories'][$slug] ?? null;
+
+    if ($existing !== null) {
+        if ((int) $existing['sort_order'] !== $sort) {
+            if ($dryRun) {
+                out("  department WOULD REORDER {$slug}");
+            } else {
+                $db->run('UPDATE categories SET sort_order = :o WHERE id = :id',
+                    ['o' => $sort, 'id' => $existing['id']]);
+                out("  department REORDERED {$slug}");
+            }
+        }
+        continue;
+    }
+
+    if ($dryRun) {
+        out("  department WOULD ADD  {$slug}");
+        continue;
+    }
+
+    $db->insert('categories', [
+        'parent_id'   => null,
+        'name'        => $name,
+        'slug'        => $slug,
+        'tagline'     => 'Grooming, Skin & Leather',
+        'description' => 'Brushes, shampoos, hoof care and leather care — everything used on the horse and on the tack rather than fed to it.',
+        'meta_title'  => $meta['title'] ?? null,
+        'meta_desc'   => $meta['desc'] ?? null,
+        'sort_order'  => $sort,
+        'is_active'   => 1,
+    ]);
+
+    out("  department ADDED     {$slug}");
+}
+
 $tree = [
     // ---- Rider ----
     'clothing' => ['rider', 1, 'Clothing', 'Jodhpurs, Boots & Chaps',
@@ -141,25 +191,25 @@ $tree = [
         'Brushing and overreach boots sized pony, cob and full, with bandages, pads and the sausage boot that saves an elbow.'],
 
     // ---- Yard ----
-    'shampoo-skin-care' => ['yard', 1, 'Shampoo & Skin Care', 'Washing, Detangling & Sun',
+    'shampoo-skin-care' => ['grooming-care', 2, 'Shampoo & Skin Care', 'Washing, Detangling & Sun',
         'Shampoos, detanglers, mane and tail lotions, soothing gels and sunscreen for the Kenyan sun.'],
-    'fly-repellent' => ['yard', 2, 'Fly Repellent', 'Sprays, Masks & Traps',
+    'fly-repellent' => ['yard', 1, 'Fly Repellent', 'Sprays, Masks & Traps',
         'Fly and midge repellent sprays, fine mesh fly masks, and outdoor fly traps and bait for the yard.'],
-    'joint-muscle-care' => ['yard', 3, 'Joint & Muscle Care', 'Supplements, Gels & Clays',
+    'joint-muscle-care' => ['yard', 2, 'Joint & Muscle Care', 'Supplements, Gels & Clays',
         'Joint supplements and the gels, clays and creams that go on afterwards — devils claw, arnica, MSM and cooling clay.'],
-    'gut-health' => ['yard', 4, 'Gut Health', 'Balancers & Soothers',
+    'gut-health' => ['yard', 3, 'Gut Health', 'Balancers & Soothers',
         'Gut balancers, soothers and yeast cultures for horses that need settling from the inside.'],
-    'calming' => ['yard', 5, 'Calming', 'Focus & Temperament',
+    'calming' => ['yard', 4, 'Calming', 'Focus & Temperament',
         'Powders, solutions and pastes to take the edge off a nervous or moody horse without dulling it.'],
-    'feed-supplements' => ['yard', 6, 'Feed Supplements', 'Vitamins, Minerals & Electrolytes',
+    'feed-supplements' => ['yard', 5, 'Feed Supplements', 'Vitamins, Minerals & Electrolytes',
         'Electrolytes, vitamin and mineral premixes, garlic, limestone, salts and licks for the feed room.'],
-    'hoof-care' => ['yard', 7, 'Hoof Care', 'Oils, Dressings & Farriery',
+    'hoof-care' => ['grooming-care', 3, 'Hoof Care', 'Oils, Dressings & Repair',
         'Hoof oils, dressings, moisturisers and repair compounds, treatment boots and poultices, and shoes and nails for the farrier.'],
-    'grooming-equipment' => ['yard', 9, 'Grooming Equipment', 'Brushes, Combs & Boxes',
+    'grooming-equipment' => ['grooming-care', 1, 'Grooming Equipment', 'Brushes, Combs & Boxes',
         'Body and dandy brushes, rubber and plastic curry combs, mane combs, sweat scrapers, plaiting bands and tack boxes.'],
-    'leather-care' => ['yard', 10, 'Leather Care', 'Soaps, Dressings & Dubbin',
+    'leather-care' => ['grooming-care', 4, 'Leather Care', 'Soaps, Dressings & Dubbin',
         'Saddle soaps, leather dressings and dubbin that keep tack alive in a dry, high-altitude climate.'],
-    'yard-equipment' => ['yard', 11, 'Yard Equipment', 'Buckets, Haynets & Tubs',
+    'yard-equipment' => ['yard', 6, 'Yard Equipment', 'Buckets, Haynets & Tubs',
         'Feed buckets and tubs, haynets and the everyday kit that keeps a yard running.'],
 
     // ---- Sub-categories, under the eight largest sections ----
@@ -287,7 +337,7 @@ $tree = [
         'Detanglers, sheen sprays and mane and tail lotions, for shows and for every day.'],
     'skin-care' => ['shampoo-skin-care', 3, 'Skin Care', 'Soothing & Protecting',
         'Sunscreen for pink noses, soothing gels for itching, and barrier creams for heels.'],
-    'shoeing-equipment' => ['yard', 12, 'Shoeing Equipment', 'Shoes, Nails & Tools',
+    'shoeing-equipment' => ['yard', 7, 'Shoeing Equipment', 'Shoes, Nails & Tools',
         'What goes under the hoof and the tools that put it there: shoes, nails and the farrier\'s own kit.'],
     'horseshoes' => ['shoeing-equipment', 1, 'Shoes', 'Steel & Aluminium',
         'Steel shoes and aluminium racing plates, bundled by size.'],

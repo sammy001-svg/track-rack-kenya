@@ -19,69 +19,62 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
     </a>
 
     <nav class="nav" aria-label="Primary">
-      <div class="nav__item">
-        <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-haspopup="true">
-          Shop
-          <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-        </button>
+      <?php // One item per department. Hovering one opens its own shelves,
+            // rather than every department opening one shared panel. ?>
+      <?php foreach ($navTree as $pillar): ?>
+        <div class="nav__item">
+          <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-haspopup="true">
+            <?= e($pillar['name']) ?>
+            <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
 
-        <div class="mega">
-          <div class="mega__inner">
-            <?php foreach ($navTree as $pillar): ?>
-              <div class="mega__col<?= count($pillar['children']) > 6 ? ' mega__col--wide' : '' ?>">
-                <h4><?= e($pillar['name']) ?></h4>
-                <span class="mega__tag"><?= e($pillar['tagline']) ?></span>
-                <ul class="mega__list">
-                  <?php foreach ($pillar['children'] as $section): ?>
-                    <li>
-                      <a href="<?= e(url('/shop/' . $section['slug'])) ?>">
-                        <?= e($section['name']) ?>
-                        <span><?= (int) $section['product_count'] ?></span>
-                      </a>
+          <div class="mega">
+            <div class="mega__inner">
+              <div class="mega__head">
+                <div>
+                  <h4><?= e($pillar['name']) ?></h4>
+                  <span class="mega__tag"><?= e($pillar['tagline']) ?></span>
+                </div>
+                <a class="mega__all" href="<?= e(url('/shop/' . $pillar['slug'])) ?>">
+                  All <?= e($pillar['name']) ?> &middot; <?= (int) $pillar['product_count'] ?> pieces
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                    <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
 
-                      <?php // The sub-categories, so every shelf in the shop is
-                            // reachable from the menu rather than only the aisles. ?>
-                      <?php if ($section['children'] !== []): ?>
-                        <ul class="mega__sub">
-                          <?php foreach ($section['children'] as $sub): ?>
-                            <?php if ((int) $sub['product_count'] === 0) { continue; } ?>
-                            <li>
-                              <a href="<?= e(url('/shop/' . $sub['slug'])) ?>">
-                                <?= e($sub['name']) ?>
-                                <span><?= (int) $sub['product_count'] ?></span>
-                              </a>
-                            </li>
-                          <?php endforeach; ?>
-                        </ul>
-                      <?php endif; ?>
-                    </li>
-                  <?php endforeach; ?>
+              <ul class="mega__list">
+                <?php foreach ($pillar['children'] as $section): ?>
                   <li>
-                    <a href="<?= e(url('/shop/' . $pillar['slug'])) ?>"><strong>View all <?= e($pillar['name']) ?></strong></a>
-                  </li>
-                </ul>
-              </div>
-            <?php endforeach; ?>
+                    <a href="<?= e(url('/shop/' . $section['slug'])) ?>">
+                      <?= e($section['name']) ?>
+                      <span><?= (int) $section['product_count'] ?></span>
+                    </a>
 
-            <div class="mega__feature">
-              <div>
-                <span class="mega__tag" style="color:var(--brass)">Fitted by a specialist</span>
-                <p>Every saddle fitted on the horse by the only Society of Master Saddlers qualified fitter in East&nbsp;Africa.</p>
-              </div>
-              <a class="link link--light" href="<?= e(url('/heritage')) ?>">
-                Our heritage
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-                  <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
+                    <?php if ($section['children'] !== []): ?>
+                      <ul class="mega__sub">
+                        <?php foreach ($section['children'] as $sub): ?>
+                          <?php if ((int) $sub['product_count'] === 0) { continue; } ?>
+                          <li>
+                            <a href="<?= e(url('/shop/' . $sub['slug'])) ?>">
+                              <?= e($sub['name']) ?>
+                              <span><?= (int) $sub['product_count'] ?></span>
+                            </a>
+                          </li>
+                        <?php endforeach; ?>
+                      </ul>
+                    <?php endif; ?>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
+      <?php endforeach; ?>
 
-      <a class="nav__link" href="<?= e(url('/shop')) ?>" <?= is_active('/shop', true) ? 'aria-current="page"' : '' ?>>Catalogue</a>
+      <a class="nav__link" href="<?= e(url('/shop')) ?>" <?= is_active('/shop', true) ? 'aria-current="page"' : '' ?>>Everything</a>
       <a class="nav__link" href="<?= e(url('/services')) ?>" <?= is_active('/services') ? 'aria-current="page"' : '' ?>>Services</a>
       <a class="nav__link" href="<?= e(url('/heritage')) ?>" <?= is_active('/heritage') ? 'aria-current="page"' : '' ?>>Heritage</a>
       <a class="nav__link" href="<?= e(url('/contact')) ?>" <?= is_active('/contact') ? 'aria-current="page"' : '' ?>>Contact</a>

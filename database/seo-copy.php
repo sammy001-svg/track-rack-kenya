@@ -34,6 +34,11 @@ return [
             'desc'  => 'Shampoos, fly repellents, supplements, hoof care, grooming kit and leather care for the Kenyan yard. From Tack Rack, Nairobi.',
         ],
 
+        'grooming-care' => [
+            'title' => 'Grooming, Skin & Leather Care',
+            'desc'  => 'Brushes, shampoos, detanglers, hoof care and leather care — everything used on the horse and on the tack. From Tack Rack, Nairobi.',
+        ],
+
         // ---- Rider ----
         'clothing' => [
             'title' => 'Riding Clothing, Jodhpurs & Chaps',

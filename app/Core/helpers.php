@@ -75,9 +75,12 @@ function image(?string $path, string $fallback = 'product'): string
 function pillar_art(?string $slug): string
 {
     return [
-        'rider' => 'rider',
-        'horse' => 'horse',
-        'yard'  => 'stable',
+        'rider'         => 'rider',
+        'horse'         => 'horse',
+        // The stable photograph is a hand and a body brush, which belongs to
+        // grooming rather than to the yard. Yard has no photograph of its own
+        // yet and falls through to the product backdrop.
+        'grooming-care' => 'stable',
     ][$slug] ?? 'product';
 }
 
