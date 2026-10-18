@@ -96,11 +96,18 @@ foreach ($variants as $variant) {
 
       <h1 class="product__title"><?= e($product['name']) ?></h1>
 
-      <?php if (!empty($product['brand_name'])): ?>
+      <?php // Seventy products carry no maker's mark, and the reference used to
+            // be printed inside the maker's line, so those showed none. ?>
+      <?php if (!empty($product['brand_name']) || !empty($product['sku'])): ?>
         <p class="product__brand">
-          By <?= e($product['brand_name']) ?>
+          <?php if (!empty($product['brand_name'])): ?>
+            By <?= e($product['brand_name']) ?>
+          <?php endif; ?>
+          <?php if (!empty($product['brand_name']) && !empty($product['sku'])): ?>
+            &nbsp;&middot;&nbsp;
+          <?php endif; ?>
           <?php if (!empty($product['sku'])): ?>
-            &nbsp;&middot;&nbsp; SKU <?= e($product['sku']) ?>
+            <span class="product__sku">Ref <?= e($product['sku']) ?></span>
           <?php endif; ?>
         </p>
       <?php endif; ?>

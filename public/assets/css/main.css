@@ -1798,6 +1798,8 @@ body.header-hidden .filters { top: 0; }
   letter-spacing: -.025em;
 }
 
+.product__sku { font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+
 .product__brand {
   margin-top: .9rem;
   font-size: .8rem;
