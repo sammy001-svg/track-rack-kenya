@@ -1668,7 +1668,13 @@ body.header-hidden .filters { top: 0; }
   .product { grid-template-columns: 1.08fr .92fr; align-items: start; }
 }
 
-.gallery { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.gallery {
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+  /* A grid item will not shrink below its content without this, and the
+     thumbnail rail is as wide as all the thumbnails put together. */
+  min-width: 0;
+}
 
 @media (max-width: 939px) { .gallery { position: static; } }
 
