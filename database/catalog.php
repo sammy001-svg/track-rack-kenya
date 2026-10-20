@@ -753,10 +753,10 @@ $firstShoot = [
     'specs'    => "Upper: leather\nSides: elasticated gussets\nSole: rubber, riding heel\nMaker: HY\nColour: brown",
     'sizing'   => 'Measure the foot flat, heel to longest toe, late in the day. Between sizes, take the larger.',
     'images'   => [
+        ['1S3A5673.png', 'A pair from the front, showing the HY tab'],
         ['1S3A5668.png', 'Brown jodhpur boot from the side'],
         ['1S3A5670.png', 'Angled view showing the pull tabs'],
         ['1S3A5671.png', 'A pair from the rear'],
-        ['1S3A5673.png', 'A pair from the front, showing the HY tab'],
     ],
 ],
 [
