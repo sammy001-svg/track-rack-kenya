@@ -120,6 +120,62 @@ class ImportController extends Controller
         $this->redirect('/admin/import');
     }
 
+    /**
+     * POST /admin/import/pending — apply database/apply-pending.sql.
+     *
+     * Wording, not stock: the page and service copy that the review minutes
+     * corrected, and the settings behind it. Each statement in that file
+     * matches the exact sentence it replaces, so copy edited here since is
+     * left alone and running it twice changes nothing the second time.
+     */
+    public function applyPending(): void
+    {
+        $file = dirname(__DIR__, 3) . '/database/apply-pending.sql';
+
+        if (!is_file($file) || filesize($file) < 512) {
+            Session::flash('error', 'database/apply-pending.sql is missing from this deployment. Pull the latest code first.');
+            $this->redirect('/admin/import');
+        }
+
+        $db = Database::instance();
+
+        $before = $db->value("SELECT `value` FROM `settings` WHERE `key_name` = 'fitting_fee_note'");
+
+        try {
+            $cfg = config('db');
+
+            $runner = new \PDO(
+                sprintf('mysql:host=%s;port=%d;dbname=%s;charset=%s',
+                    $cfg['host'], $cfg['port'], $cfg['database'], $cfg['charset']),
+                $cfg['username'],
+                $cfg['password'],
+                [
+                    \PDO::ATTR_ERRMODE               => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::MYSQL_ATTR_MULTI_STATEMENTS => true,
+                ]
+            );
+
+            $statement = $runner->query(file_get_contents($file));
+
+            if ($statement !== false) {
+                while ($statement->nextRowset()) {
+                    // stepping through so a failure half way down is raised
+                }
+            }
+        } catch (\PDOException $e) {
+            Session::flash('error', 'The copy changes were not applied: ' . $e->getMessage());
+            $this->redirect('/admin/import');
+        }
+
+        $after = $db->value("SELECT `value` FROM `settings` WHERE `key_name` = 'fitting_fee_note'");
+
+        Session::flash('success', $before === $after
+            ? 'Copy changes applied. Everything in that file was already in place, so nothing changed.'
+            : 'Copy changes applied. The catalogue spelling and the saddle fitting wording are now correct.');
+
+        $this->redirect('/admin/import');
+    }
+
     /** Write the catalogue as it stands to a CSV, and return the path. */
     private function backupCatalogue(): string
     {

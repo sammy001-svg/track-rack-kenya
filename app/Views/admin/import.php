@@ -55,6 +55,38 @@
         $catalogueFile = dirname(__DIR__, 3) . '/database/catalog-import.sql';
         $hasCatalogue  = is_file($catalogueFile) && filesize($catalogueFile) > 1024;
       ?>
+      <?php
+        $pendingFile = dirname(__DIR__, 3) . '/database/apply-pending.sql';
+        $hasPending  = is_file($pendingFile) && filesize($pendingFile) > 512;
+      ?>
+      <?php if ($hasPending): ?>
+        <section class="a-panel">
+          <div class="a-panel__head">
+            <h2>Apply the pending copy changes</h2>
+            <p>The wording the review meeting corrected &mdash; &ldquo;Catalogue&rdquo; throughout, and
+               saddle fitting described as happening at the yard rather than at the shop &mdash;
+               together with the settings behind it.</p>
+          </div>
+
+          <form method="post" action="<?= e(url('/admin/import/pending')) ?>">
+            <?= csrf_field() ?>
+
+            <div class="a-panel__body">
+              <p style="font-size:.86rem;line-height:1.7">
+                This changes wording only: no product, category, photograph, order or quote is
+                touched. Each statement matches the exact sentence it replaces, so anything
+                reworded here since is left as it is, and running it twice changes nothing the
+                second time.
+              </p>
+            </div>
+
+            <div class="a-panel__foot">
+              <button class="a-btn" type="submit">Apply the copy changes</button>
+            </div>
+          </form>
+        </section>
+      <?php endif; ?>
+
       <?php if ($hasCatalogue): ?>
         <section class="a-panel">
           <div class="a-panel__head">
