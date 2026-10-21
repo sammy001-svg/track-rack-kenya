@@ -139,6 +139,31 @@ $sql = <<<HEAD
 SET NAMES utf8mb4;
 SET SESSION sql_mode = '';
 
+
+-- The catalogue below carries columns that arrive with the migrations rather
+-- than with schema.sql, so a database that never had those migrations applied
+-- would reject every insert. Add them first where they are missing, in the
+-- same guarded form the migrations themselves use, which works on MySQL and
+-- MariaDB alike. DDL commits implicitly, so this belongs before the
+-- transaction opens rather than inside it.
+SET @has := (SELECT COUNT(*) FROM information_schema.COLUMNS
+             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'categories' AND COLUMN_NAME = 'meta_title');
+SET @sql := IF(@has = 0,
+  'ALTER TABLE `categories`
+     ADD COLUMN `meta_title` VARCHAR(190) NULL AFTER `description`,
+     ADD COLUMN `meta_desc`  VARCHAR(300) NULL AFTER `meta_title`',
+  'SELECT "categories meta columns already present"');
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
+SET @has := (SELECT COUNT(*) FROM information_schema.COLUMNS
+             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'products' AND COLUMN_NAME = 'stock_qty');
+SET @sql := IF(@has = 0,
+  'ALTER TABLE `products`
+     ADD COLUMN `stock_qty` INT NULL AFTER `stock_status`,
+     ADD COLUMN `buyable` TINYINT(1) NOT NULL DEFAULT 0 AFTER `price_visible`',
+  'SELECT "products stock columns already present"');
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
 START TRANSACTION;
 
 -- Out with the placeholder catalogue. DELETE rather than TRUNCATE: TRUNCATE is
