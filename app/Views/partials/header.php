@@ -74,7 +74,6 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
         </div>
       <?php endforeach; ?>
 
-      <a class="nav__link" href="<?= e(url('/shop')) ?>" <?= is_active('/shop', true) ? 'aria-current="page"' : '' ?>>Everything</a>
       <a class="nav__link" href="<?= e(url('/services')) ?>" <?= is_active('/services') ? 'aria-current="page"' : '' ?>>Services</a>
       <a class="nav__link" href="<?= e(url('/heritage')) ?>" <?= is_active('/heritage') ? 'aria-current="page"' : '' ?>>Heritage</a>
       <a class="nav__link" href="<?= e(url('/contact')) ?>" <?= is_active('/contact') ? 'aria-current="page"' : '' ?>>Contact</a>
