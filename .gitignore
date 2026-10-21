@@ -47,3 +47,8 @@ Desktop.ini
 # whatever that site held; they belong on the server, not in the repo.
 /storage/backups/*
 !/storage/backups/.gitkeep
+
+# Written by the auto-migrator to remember which migrations it has applied.
+# Per-deployment state, never shared: if this were committed, a stale
+# fingerprint would stop a server applying what it actually needs.
+/storage/.migrations-state

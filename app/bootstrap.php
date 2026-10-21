@@ -118,3 +118,12 @@ set_exception_handler(static function (Throwable $e) use ($debug): void {
         . e(setting('contact_phone', '+254 722 763 279')) . '.</p>';
     echo '<p><a href="' . e(url('/')) . '" style="color:#8a6234">Return to the homepage</a></p></div>';
 });
+
+// ---- Database changes that came with this deployment -------------------
+// Code arrives by git; the database used to be left behind until someone
+// remembered to run bin/migrate.php. This applies anything outstanding on
+// the first request after a deploy and costs nothing once it is current.
+// Set app.auto_migrate to false to go back to applying them by hand.
+if (PHP_SAPI !== 'cli' && config('app.auto_migrate', true)) {
+    App\Core\Migrator::runPendingIfChanged();
+}
