@@ -279,7 +279,7 @@ return [
     'Head Collars'                     => [
         'variants' => [
             'Size' => ['Pony', 'Cob', 'Full'],
-            'Colour' => ['Blue', 'Navy blue', 'Green', 'Red', 'Black', 'Purple'],
+            'Colour' => ['Red', 'Navy', 'Black', 'Green', 'Sky Blue', 'Purple'],
         ],
         'products' => [
             'nylon-headcollar-assorted-colours',

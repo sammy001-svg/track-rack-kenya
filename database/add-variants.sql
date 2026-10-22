@@ -1,5 +1,5 @@
 -- Tack Rack — sizes, colours and packs
--- Generated 2026-10-18 23:21 by bin/export-variants-sql.php. Do not edit by hand.
+-- Generated 2026-10-22 14:59 by bin/export-variants-sql.php. Do not edit by hand.
 --
 -- 407 options across 85 products, from 36 rows of the
 -- client's sizes & colours sheet (database/variants.php).
@@ -342,20 +342,20 @@ SELECT p.`id`, v.`label`, v.`value`, v.`sort_order`
     UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Size' AS `label`, 'Pony' AS `value`, 0 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Size' AS `label`, 'Cob' AS `value`, 1 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Size' AS `label`, 'Full' AS `value`, 2 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Blue' AS `value`, 3 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Navy blue' AS `value`, 4 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Green' AS `value`, 5 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Red' AS `value`, 6 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Black' AS `value`, 7 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Red' AS `value`, 3 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Navy' AS `value`, 4 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Black' AS `value`, 5 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Green' AS `value`, 6 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Sky Blue' AS `value`, 7 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-assorted-colours' AS `slug`, 'Colour' AS `label`, 'Purple' AS `value`, 8 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Size' AS `label`, 'Pony' AS `value`, 0 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Size' AS `label`, 'Cob' AS `value`, 1 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Size' AS `label`, 'Full' AS `value`, 2 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Blue' AS `value`, 3 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Navy blue' AS `value`, 4 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Green' AS `value`, 5 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Red' AS `value`, 6 AS `sort_order`
-    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Black' AS `value`, 7 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Red' AS `value`, 3 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Navy' AS `value`, 4 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Black' AS `value`, 5 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Green' AS `value`, 6 AS `sort_order`
+    UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Sky Blue' AS `value`, 7 AS `sort_order`
     UNION ALL SELECT 'nylon-headcollar-colour-range' AS `slug`, 'Colour' AS `label`, 'Purple' AS `value`, 8 AS `sort_order`
     UNION ALL SELECT 'rope-lead-ropes' AS `slug`, 'Length' AS `label`, '3m' AS `value`, 0 AS `sort_order`
     UNION ALL SELECT 'rope-lead-ropes' AS `slug`, 'Colour' AS `label`, 'Red' AS `value`, 1 AS `sort_order`
