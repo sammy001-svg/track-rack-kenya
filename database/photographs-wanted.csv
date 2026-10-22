@@ -2,7 +2,6 @@ priority,sku,product,section,"what is needed","shots on file"
 "1 no photograph",TR-GIR-002,"Borghey Girth",Borghey,"Any photograph at all",0
 "1 no photograph",TR-MST-005,"Rein Keepers & Martingale Stops","Martingales & Guards","Any photograph at all",0
 "1 no photograph",TR-NUM-003,"Night Rug","Saddle Pads","Any photograph at all",0
-"1 no photograph",TR-YRD-004,"Red Gorilla Feed Tub","Yard Equipment","Any photograph at all",0
 "2 leads with a side or detail view",TR-GRM-003,"Ezi-Groom Body Brush","Body Brushes","A forward-facing shot to lead with (currently: Body brush from the side, showing the bristles)",3
 "2 leads with a side or detail view",TR-GRM-004,"Ezi-Groom Dandy Brush","Dandy Brushes","A forward-facing shot to lead with (currently: Dandy brush from the side)",4
 "2 leads with a side or detail view",TR-GIR-005,"Short Dressage Girth",Dressage,"A forward-facing shot to lead with (currently: Short dressage girth from the side)",1
@@ -53,10 +52,14 @@ priority,sku,product,section,"what is needed","shots on file"
 "3 only one frame",TR-JNT-009,"Herbal Cooling Gel","Gels, Clays & Creams","A second angle",1
 "3 only one frame",TR-JNT-010,"Leg Gel","Gels, Clays & Creams","A second angle",1
 "3 only one frame",TR-JNT-011,"MSM Cream","Gels, Clays & Creams","A second angle",1
+"3 only one frame",TR-CLO-011,"Cotton Pimple-Grip Riding Gloves — Black",Gloves,"A second angle",1
+"3 only one frame",TR-CLO-012,"Hook Polo Grip Pro Gloves",Gloves,"A second angle",1
 "3 only one frame",TR-GUT-001,"Alltech Yea-Sacc Conc","Gut Health","A second angle",1
 "3 only one frame",TR-GUT-002,"Coligone Balancer","Gut Health","A second angle",1
+"3 only one frame",TR-GUT-007,"Coligone Calm Down Paste","Gut Health","A second angle",1
 "3 only one frame",TR-GUT-003,"Coligone Liquid","Gut Health","A second angle",1
 "3 only one frame",TR-GUT-004,"Coligone Powder","Gut Health","A second angle",1
+"3 only one frame",TR-GUT-008,"Coligone PreTravel Paste","Gut Health","A second angle",1
 "3 only one frame",TR-GUT-005,"Equimins Milk Thistle","Gut Health","A second angle",1
 "3 only one frame",TR-GUT-006,"Keratex Zeolite","Gut Health","A second angle",1
 "3 only one frame",TR-CLO-008,"Hat Silk — Red","Hat Silks & Numbers","A second angle",1
@@ -110,6 +113,8 @@ priority,sku,product,section,"what is needed","shots on file"
 "3 only one frame",TR-FED-012,"Mineral Licks","Vitamins & Minerals","A second angle",1
 "3 only one frame",TR-WHP-001,"Lunge Whip",Whips,"A second angle",1
 "3 only one frame",TR-WHP-002,"Riding Crop",Whips,"A second angle",1
+"3 only one frame",TR-SAD-006,"Wintec 500 All Purpose Saddle",Wintec,"A second angle",1
 "3 only one frame",TR-YRD-002,"Flexible Tub — Orange","Yard Equipment","A second angle",1
+"3 only one frame",TR-YRD-004,"Red Gorilla Feed Tub","Yard Equipment","A second angle",1
 "3 only one frame",TR-YRD-005,"Rope Haynet — Yellow","Yard Equipment","A second angle",1
 "3 only one frame",TR-YRD-006,"Shallow Feed Tub — Green","Yard Equipment","A second angle",1
