@@ -64,6 +64,19 @@ $overClass = !empty($overHeader) ? ' header--over' : '';
                             </a>
                           </li>
                         <?php endforeach; ?>
+
+                          <?php // A product can sit on the section itself rather than on
+                                // any shelf beneath it — a saddle with no maker shelf, say.
+                                // Give it a row of its own so the figures on screen always
+                                // account for the number beside the section. ?>
+                          <?php if ((int) $section['own_count'] > 0): ?>
+                            <li>
+                              <a href="<?= e(url('/shop/' . $section['slug'])) ?>">
+                                More in <?= e($section['name']) ?>
+                                <span><?= (int) $section['own_count'] ?></span>
+                              </a>
+                            </li>
+                          <?php endif; ?>
                       </ul>
                     <?php endif; ?>
                   </li>
