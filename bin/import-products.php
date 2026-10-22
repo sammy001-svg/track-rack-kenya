@@ -282,11 +282,19 @@ $tree = [
     'saddles-thorowgood' => ['saddles', 3, 'Thorowgood', 'Soft Leather & Synthetic',
         'Thorowgood saddles, soft in the hand and forgiving on a changing back.'],
 
-    // Bridles & Reins (3)
+    // Bridles & Reins (5). Reins are shelved by what they are made of,
+    // rather than gathered behind one Reins heading, so a rider looking for
+    // rubber reins can see at a glance whether we have them.
     'bridles' => ['bridles-reins', 1, 'Bridles', 'Black & Havana',
         'Leather snaffle bridles in black and havana, supplied with a pair of reins.'],
-    'reins' => ['bridles-reins', 2, 'Reins', 'Leather, Rubber & Draw',
-        'Leather, rubber and webbed reins, and schooling draw reins.'],
+    'rubber-reins' => ['bridles-reins', 2, 'Rubber Reins', 'Grip in the Wet',
+        'Rubber-covered reins, for grip that holds when the rein is wet and the hands are cold.'],
+    'leather-reins' => ['bridles-reins', 3, 'Leather Reins', 'Plain & Laced',
+        'Plain and laced leather reins, and the schooling draw reins that run girth to bit ring.'],
+    'webbed-reins' => ['bridles-reins', 4, 'Webbed Reins', 'Light & Marked',
+        'Webbed reins with leather stops, light in the hand and marked so the length can be found by feel.'],
+    'running-reins' => ['bridles-reins', 5, 'Running Reins', 'Schooling Only',
+        'Running and continental reins, for schooling under instruction rather than for jumping.'],
 
     // Bits & Accessories (5)
     'bits' => ['bits-accessories', 1, 'Bits', 'Snaffles, Lozenges & Training',

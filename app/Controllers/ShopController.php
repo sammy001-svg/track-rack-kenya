@@ -45,6 +45,9 @@ class ShopController extends Controller
         'farriery'                 => 'horseshoes',
         'shampoos-conditioners'    => 'shampoo',
         'mane-tail-care'           => 'detanglers',
+        // Reins are now shelved by what they are made of, so the single
+        // Reins shelf is gone and the section is the honest destination.
+        'reins'                    => 'bridles-reins',
         'skin-sun-care'            => 'skin-care',
         'hoof-coat-supplements'    => 'hoof-supplements',
         // Regrouped from the client's sizes & colours sheet.
@@ -72,7 +75,11 @@ class ShopController extends Controller
             $moved = self::RETIRED_CATEGORIES[$slug] ?? null;
 
             if ($moved !== null && (new Category())->bySlug($moved) !== null) {
-                $this->redirect('/shop/' . $moved);
+                // Permanently: these shelves are not coming back, and a 302
+                // would leave the old address in the index competing with
+                // the one that replaced it.
+                header('Location: ' . url('/shop/' . $moved), true, 301);
+                exit;
             }
 
             $this->notFound('That category is no longer part of our catalogue.');
