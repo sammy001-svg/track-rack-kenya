@@ -48,6 +48,8 @@ class ShopController extends Controller
         // Reins are now shelved by what they are made of, so the single
         // Reins shelf is gone and the section is the honest destination.
         'reins'                    => 'bridles-reins',
+        // Boots were split off, and what was left is named for what it holds.
+        'footwear-chaps'           => 'chaps-gaiters',
         'skin-sun-care'            => 'skin-care',
         'hoof-coat-supplements'    => 'hoof-supplements',
         // Regrouped from the client's sizes & colours sheet.

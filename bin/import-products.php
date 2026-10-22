@@ -253,9 +253,11 @@ $tree = [
     // Clothing (10)
     'breeches-jodhpurs' => ['clothing', 1, 'Breeches & Jodhpurs', 'Show & Schooling',
         'Show breeches, schooling jodhpurs and full-seat tights, sized in person at the shop.'],
-    'footwear-chaps' => ['clothing', 2, 'Footwear & Chaps', 'Boots, Chaps & Gaiters',
-        'Jodhpur boots, half chaps and leather gaiters, fitted to the foot and the calf.'],
-    'hat-silks-numbers' => ['clothing', 3, 'Hat Silks & Numbers', 'Finishing the Turnout',
+    'boots' => ['clothing', 2, 'Boots', 'Jodhpur & Long',
+        'Jodhpur boots and long boots, fitted to the foot rather than guessed at from a size chart.'],
+    'chaps-gaiters' => ['clothing', 3, 'Chaps & Gaiters', 'Half Chaps & Leather',
+        'Half chaps and leather gaiters, fitted to the calf so they neither gape nor grip.'],
+    'hat-silks-numbers' => ['clothing', 4, 'Hat Silks & Numbers', 'Finishing the Turnout',
         'Hat silks and competition number holders — the small things that finish a turnout.'],
 
     // Numnahs & Saddlepads (9)
