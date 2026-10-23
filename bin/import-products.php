@@ -319,8 +319,8 @@ $tree = [
         'Girths shaped and padded to sit clear of the elbow on a horse that rubs.'],
     'girths-fleece-lined' => ['girths', 3, 'Fleece-Lined', 'Soft Against the Skin',
         'Girths lined with fleece, for thin skin and for horses in hard work.'],
-    'girths-borghey' => ['girths', 4, 'Borghey', 'Long, 40" to 50"',
-        'Hard-wearing black girths in the Borghey pattern, cut long for a general purpose saddle.'],
+    'girths-burghley' => ['girths', 4, 'Burghley', 'Long, 40" to 50"',
+        'Hard-wearing black girths in the Burghley pattern, cut long for a general purpose saddle.'],
     'girths-elastic' => ['girths', 5, 'Elastic', 'Give at the Buckle',
         'Girths with elastic ends, so the horse can fill its chest without the girth fighting it.'],
 

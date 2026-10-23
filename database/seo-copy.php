@@ -249,9 +249,9 @@ return [
         ],
 
         // ---- Added from the October 2026 review minutes ----
-        'girths-borghey' => [
-            'title' => 'Borghey Girths',
-            'desc'  => 'Hard-wearing black girths in the Borghey pattern, 40 to 50 inches. In stock at Tack Rack, Ngong Road, Nairobi.',
+        'girths-burghley' => [
+            'title' => 'Burghley Girths',
+            'desc'  => 'Hard-wearing black girths in the Burghley pattern, 40 to 50 inches. In stock at Tack Rack, Ngong Road, Nairobi.',
         ],
         'girths-anti-chafe' => [
             'title' => 'Anti-Chafe Girths',
@@ -357,9 +357,9 @@ return [
     'products' => [
 
         // Carried over from the live catalogue
-        'Borghey Girth' => [
-            'title' => 'Borghey Girth, 40\" to 50\"',
-            'desc'  => 'A hard-wearing black girth in the Borghey pattern, cut long for a general purpose saddle. 40 to 50 inches, from Tack Rack, Nairobi.',
+        'Burghley Girth' => [
+            'title' => 'Burghley Girth, 40\" to 50\"',
+            'desc'  => 'A hard-wearing black girth in the Burghley pattern, cut long for a general purpose saddle. 40 to 50 inches, from Tack Rack, Nairobi.',
         ],
         'Night Rug' => [
             'title' => 'Stable Night Rugs',

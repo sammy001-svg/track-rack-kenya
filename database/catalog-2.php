@@ -1358,10 +1358,10 @@ return [
 //  no images and falls back to the department artwork until one arrives.
 // =====================================================================
 [
-    'name'     => 'Borghey Girth',
+    'name'     => 'Burghley Girth',
     'sku'      => 'TR-GIR-002',
-    'category' => 'girths-borghey',
-    'short'    => 'A hard-wearing black girth in the Borghey pattern.',
+    'category' => 'girths-burghley',
+    'short'    => 'A hard-wearing black girth in the Burghley pattern.',
     'description' => "A hard-wearing black girth, cut long for a general purpose or jumping saddle.\n\nSized 40 to 50 inches.",
     'specs'    => "Colour: black\nSizes: 40\" to 50\"",
     'sizing'   => 'Measure an existing girth buckle to buckle, or tell us the horse and the saddle.',

@@ -382,12 +382,12 @@ return [
         ],
     ],
 
-    'Girths (Borghey)'                 => [
+    'Girths (Burghley)'                => [
         'variants' => [
             'Size' => ['40"', '42"', '44"', '46"', '48"', '50"'],
         ],
         'products' => [
-            'borghey-girth',
+            'burghley-girth',
             'black-burghley-girth',
         ],
     ],

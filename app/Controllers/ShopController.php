@@ -52,6 +52,8 @@ class ShopController extends Controller
         'footwear-chaps'           => 'chaps-gaiters',
         // Leathers joined the irons on one shelf.
         'stirrup-irons'            => 'stirrup-irons-leathers',
+        // Spelled Borghey here, Burghley everywhere else; Burghley is right.
+        'girths-borghey'           => 'girths-burghley',
         'skin-sun-care'            => 'skin-care',
         'hoof-coat-supplements'    => 'hoof-supplements',
         // Regrouped from the client's sizes & colours sheet.

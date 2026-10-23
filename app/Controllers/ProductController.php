@@ -24,6 +24,7 @@ class ProductController extends Controller
         'thorowgood-leather-saddle'                    => 'thorowgood-saddle',
         'fleece-lined-headcollar'                      => 'lunging-cavesson',
         'leather-girth-buckle-guards'                  => 'rubber-guards',
+        'borghey-girth'                                => 'burghley-girth',
         'arma-anatomic-brushing-boots'                 => 'anatomic-brushing-boots',
         'arma-brushing-boots-navy'                     => 'brushing-boots-navy',
         'arma-overreach-boots-red'                     => 'overreach-boots-red',
