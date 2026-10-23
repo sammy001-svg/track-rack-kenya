@@ -29,8 +29,19 @@ const LONG_EDGE = 1400;
 const JPEG_Q    = 82;
 const WEBP_Q    = 78;
 
-$apply  = in_array('--yes', array_slice($argv, 1), true);
-$source = BASE_PATH . '/public/assets/img/New Products';
+$apply = in_array('--yes', array_slice($argv, 1), true);
+
+/*
+ * Loose photographs arrive in New Products; the studio shoots live in
+ * Products. A manifest entry names a file and we look in both, so a
+ * listing can take a studio frame that was never assigned to anything
+ * without the file having to be copied about first.
+ */
+$sources = [
+    BASE_PATH . '/public/assets/img/New Products',
+    BASE_PATH . '/public/assets/img/Products',
+];
+
 $outDir = PUBLIC_PATH . '/uploads/products';
 
 /**
@@ -81,6 +92,21 @@ $manifest = [
      'product' => 'arena-leather-general-purpose-saddle',
      'alt' => 'Full side profile of the Arena leather general purpose saddle',
      'lead' => true],
+
+    ['file' => '1S3A5345.png',
+     'product' => 'bates-general-purpose-saddle',
+     'alt' => 'Full side profile of the Bates saddle',
+     'lead' => true],
+
+    ['file' => '1S3A5349.png',
+     'product' => 'bates-general-purpose-saddle',
+     'alt' => 'The Bates badge on the skirt',
+     'lead' => false],
+
+    ['file' => 'bates-underside.jpg',
+     'product' => 'bates-general-purpose-saddle',
+     'alt' => 'The Bates Saddles stamp and girth billets beneath the flap',
+     'lead' => false],
 
     ['file' => 'equimins-biotin-15.jpg',
      'product' => 'equimins-biotin-15',
@@ -224,10 +250,17 @@ $done    = 0;
 $added   = [];
 
 foreach ($manifest as $row) {
-    $src = $source . '/' . $row['file'];
+    $src = null;
 
-    if (!is_file($src)) {
-        out('  !! not found: ' . $row['file']);
+    foreach ($sources as $dir) {
+        if (is_file($dir . '/' . $row['file'])) {
+            $src = $dir . '/' . $row['file'];
+            break;
+        }
+    }
+
+    if ($src === null) {
+        out('  !! not found in either folder: ' . $row['file']);
         continue;
     }
 

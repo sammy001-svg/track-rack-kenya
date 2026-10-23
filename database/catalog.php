@@ -78,6 +78,25 @@ $firstShoot = [
     ],
 ],
 [
+    'name'     => 'Bates General Purpose Saddle',
+    'sku'      => 'TR-SAD-008',
+    'category' => 'saddles',
+    'brand'    => 'Bates Saddles',
+    'short'    => 'A black leather general purpose saddle from Bates, with the changeable gullet system.',
+    'description' => "A Bates general purpose saddle in black leather, cut to school, jump and hack the same horse without asking the rider to sit differently for each.
+
+Bates build around a gullet that can be changed rather than a tree that cannot, so the saddle can be refitted as a horse muscles up or lets down instead of being sold on. Ours is fitted on the horse before it leaves us, and we will come back to it as the horse changes.",
+    'specs'    => "Maker: Bates Saddles
+Leather: black
+Cut: general purpose
+Gullet: changeable",
+    'sizing'   => 'Fitted on the horse. Tell us the horse and the work and we will bring the right seat sizes out to you.',
+    'images'   => [
+        ['1S3A5345.png', 'Full side profile of the Bates saddle'],
+        ['1S3A5349.png', "The Bates badge on the skirt"],
+    ],
+],
+[
     'name'     => 'Black Leather General Purpose Saddle',
     'sku'      => 'TR-SAD-001',
     'category' => 'saddles',
