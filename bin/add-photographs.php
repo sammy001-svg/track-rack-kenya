@@ -82,6 +82,11 @@ $manifest = [
      'alt' => 'Full side profile of the Arena leather general purpose saddle',
      'lead' => true],
 
+    ['file' => 'equimins-biotin-15.jpg',
+     'product' => 'equimins-biotin-15',
+     'alt' => 'The 3kg tub of Equimins Biotin 15, showing the hoof label',
+     'lead' => true],
+
     ['file' => 'stirrup-leathers.png',
      'product' => 'stirrup-leathers',
      'alt' => 'A pair of black leather stirrup leathers, coiled, with the buckles showing',

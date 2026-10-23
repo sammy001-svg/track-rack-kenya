@@ -740,13 +740,21 @@ return [
     ],
 ],
 [
-    'name'     => 'Cortaflex HA',
+    'name'     => 'Cortaflex HA Regular Strength Powder',
     'sku'      => 'TR-JNT-004',
     'category' => 'joint-supplements',
     'brand'    => 'Equine America',
-    'short'    => 'Regular strength joint powder to support joint mobility.',
-    'description' => "Cortaflex HA Regular Strength Powder from Equine America, to support joint mobility.\n\nThe label gives a four-month supply.",
-    'specs'    => "Maker: Equine America\nSize: 900g\nSupply: 4 months",
+    'short'    => 'Regular strength joint powder, with collagen, hyaluronic acid and MSM.',
+    'description' => "Cortaflex HA Regular Strength Powder from Equine America, fed to support joint, tendon and ligament health rather than to treat a problem already there.
+
+It carries collagen, hyaluronic acid and MSM, with amino acids and trace minerals alongside them. Fed at 7g a day, the 900g pouch runs four months for a 500kg horse.
+
+There is a double strength in the range as well; ask us which suits the horse and the work.",
+    'specs'    => "Maker: Equine America
+Size: 900g
+Feeding rate: 7g a day for a 500kg horse
+Supply: 4 months
+Key ingredients: collagen, hyaluronic acid, MSM, amino acids, trace minerals",
     'images'   => [
         ['1S3A5952.jpg', 'The 900g pouch of Cortaflex HA'],
     ],
@@ -810,6 +818,22 @@ return [
     'images'   => [
         ['1S3A6042.jpg', 'The So-Kalm paste box'],
     ],
+],
+[
+    'name'     => 'Equimins Biotin 15',
+    'sku'      => 'TR-HOO-022',
+    'category' => 'hoof-supplements',
+    'brand'    => 'Equimins',
+    'short'    => 'A hoof supplement giving 15mg of biotin a day, with zinc, methionine and copper.',
+    'description' => "Equimins Biotin 15, a complementary feedstuff giving 15mg of biotin a day with generous levels of zinc, methionine and copper.
+
+Fed to support healthy horn growth, and it tells on the skin and coat as well. Hoof supplements are slow work: horn grows about a centimetre a month, so give it a season before judging whether it has helped.",
+    'specs'    => "Maker: Equimins
+Size: 3kg
+Biotin: 15mg a day
+Also carries: zinc, methionine, copper",
+    'sizing'   => 'Fed daily. A 3kg tub lasts a 500kg horse several months at the standard rate.',
+    'images'   => [],
 ],
 [
     'name'     => 'Equine America Biotin Xtra',
