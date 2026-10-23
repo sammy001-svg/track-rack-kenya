@@ -1700,37 +1700,6 @@ body.header-hidden .filters { top: 0; }
 
 .gallery__main.is-zoomed img { transform: scale(1.8); cursor: zoom-out; }
 
-/* --- Caption: what this particular photograph shows --- */
-.gallery__caption {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  z-index: 3;
-  display: flex;
-  align-items: baseline;
-  gap: .7rem;
-  padding: 2.5rem 1.1rem .9rem;
-  color: var(--bone);
-  font-size: .85rem;
-  line-height: 1.45;
-  /* Flat bar: the caption sits over the photograph. */
-  background: rgba(20, 17, 14, .8);
-  pointer-events: none;
-  transition: opacity .3s var(--ease);
-}
-
-.gallery__main.is-zoomed .gallery__caption { opacity: 0; }
-
-.gallery__count {
-  flex: none;
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  font-variant-numeric: tabular-nums;
-  color: var(--brass);
-}
-
-.gallery__desc { color: rgba(247, 244, 239, .92); }
-
 /* --- Prev / next --- */
 .gallery__arrow {
   position: absolute;

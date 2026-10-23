@@ -50,13 +50,12 @@ foreach ($variants as $variant) {
           </button>
         <?php endif; ?>
 
-        <?php /* What this particular photograph shows, written per image. */ ?>
-        <figcaption class="gallery__caption" id="gallery-caption" aria-live="polite">
-          <?php if ($imageCount > 1): ?>
-            <span class="gallery__count" id="gallery-count">1 / <?= $imageCount ?></span>
-          <?php endif; ?>
-          <span class="gallery__desc" id="gallery-desc"><?= e($images[0]['alt'] ?? $product['name']) ?></span>
-        </figcaption>
+        <?php /* The thumbnails below say which photograph is showing, so the
+                 caption that used to sit over the picture is gone. Someone
+                 reading by ear still needs telling, hence the live region. */ ?>
+        <p class="sr-only" id="gallery-desc" aria-live="polite">
+          <?= e($images[0]['alt'] ?? $product['name']) ?>
+        </p>
       </div>
 
       <?php if ($imageCount > 1): ?>

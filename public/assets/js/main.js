@@ -422,8 +422,9 @@
     // img.src — so it has to be swapped in step with it.
     const source = $('source', main);
     const thumbs = $$('.gallery__thumb');
+    // Not shown on screen any more; it is the live region that tells a
+    // screen reader which photograph has come up.
     const desc   = $('#gallery-desc');
-    const count  = $('#gallery-count');
     const total  = thumbs.length;
 
     let current = 0;
@@ -457,9 +458,8 @@
         image.style.opacity = '1';
       }, 160);
 
-      // The caption describes the specific photograph, not the product.
-      if (desc)  desc.textContent = alt;
-      if (count) count.textContent = (current + 1) + ' / ' + total;
+      // Announce the photograph that has come up, and which of how many.
+      if (desc) desc.textContent = alt + ' — image ' + (current + 1) + ' of ' + total;
 
       thumbs.forEach((t, i) => t.classList.toggle('is-active', i === current));
 
