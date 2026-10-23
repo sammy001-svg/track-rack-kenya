@@ -50,6 +50,8 @@ class ShopController extends Controller
         'reins'                    => 'bridles-reins',
         // Boots were split off, and what was left is named for what it holds.
         'footwear-chaps'           => 'chaps-gaiters',
+        // Leathers joined the irons on one shelf.
+        'stirrup-irons'            => 'stirrup-irons-leathers',
         'skin-sun-care'            => 'skin-care',
         'hoof-coat-supplements'    => 'hoof-supplements',
         // Regrouped from the client's sizes & colours sheet.

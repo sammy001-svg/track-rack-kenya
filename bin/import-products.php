@@ -307,8 +307,8 @@ $tree = [
     // Martingales, Stirrups & Leathers (5)
     'martingales' => ['martingales-stirrups-leathers', 1, 'Martingales & Guards', 'Bib, Running & Rubber',
         'Bib and running martingales, with the rubber guards that keep girth buckles off the saddle flap.'],
-    'stirrup-irons' => ['martingales-stirrups-leathers', 2, 'Stirrup Irons', 'Steel, Safety & Composite',
-        'Stainless steel, peacock safety and lightweight composite stirrup irons.'],
+    'stirrup-irons-leathers' => ['martingales-stirrups-leathers', 2, 'Stirrup Irons & Leathers', 'Steel, Safety & Composite',
+        'Stainless steel, peacock safety and lightweight composite stirrup irons, and the leathers that hang them.'],
     'stirrup-treads' => ['martingales-stirrups-leathers', 3, 'Stirrup Treads', 'Sold in Pairs',
         'Rubber treads that grip the boot, sold in pairs to replace worn or missing ones.'],
 

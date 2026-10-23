@@ -3,9 +3,9 @@ priority,sku,product,section,"what is needed","shots on file"
 "1 no photograph",TR-MST-005,"Rein Keepers & Martingale Stops","Martingales & Guards","Any photograph at all",0
 "1 no photograph",TR-NUM-003,"Night Rug","Saddle Pads","Any photograph at all",0
 "2 leads with a side or detail view",TR-GRM-003,"Ezi-Groom Body Brush","Body Brushes","A forward-facing shot to lead with (currently: Body brush from the side, showing the bristles)",3
+"2 leads with a side or detail view",TR-CLO-006,"HY Leather Jodhpur Boots — Black",Boots,"A forward-facing shot to lead with (currently: Black jodhpur boot from the side)",2
 "2 leads with a side or detail view",TR-GRM-004,"Ezi-Groom Dandy Brush","Dandy Brushes","A forward-facing shot to lead with (currently: Dandy brush from the side)",4
 "2 leads with a side or detail view",TR-GIR-005,"Short Dressage Girth",Dressage,"A forward-facing shot to lead with (currently: Short dressage girth from the side)",1
-"2 leads with a side or detail view",TR-CLO-006,"HY Leather Jodhpur Boots — Black","Footwear & Chaps","A forward-facing shot to lead with (currently: Black jodhpur boot from the side)",2
 "2 leads with a side or detail view",TR-NUM-004,"Non-Slip Gel Pad","Non-Slip Gel Pads","A forward-facing shot to lead with (currently: The gel pad from above, showing the dimpled grip surface)",1
 "2 leads with a side or detail view",TR-SAF-002,"HKM Velvet Riding Hat","Riding Helmets","A forward-facing shot to lead with (currently: Velvet riding hat from the side)",3
 "2 leads with a side or detail view",TR-SAF-001,"Black Skull Cap","Skull Caps","A forward-facing shot to lead with (currently: Skull cap from the side)",2
@@ -22,6 +22,8 @@ priority,sku,product,section,"what is needed","shots on file"
 "3 only one frame",TR-CLM-002,"Equine America Magnitude",Calming,"A second angle",1
 "3 only one frame",TR-CLM-003,"Equine America No More Moods",Calming,"A second angle",1
 "3 only one frame",TR-CLM-004,"Equine America So-Kalm Paste",Calming,"A second angle",1
+"3 only one frame",TR-CLO-003,"Black Half Chaps","Chaps & Gaiters","A second angle",1
+"3 only one frame",TR-CLO-004,"Brown Leather Gaiters","Chaps & Gaiters","A second angle",1
 "3 only one frame",TR-GRM-011,"Stainless Steel Mane Comb","Combs & Plaiting","A second angle",1
 "3 only one frame",TR-GRM-009,"Plastic Curry Combs — Colour Range","Curry Combs","A second angle",1
 "3 only one frame",TR-GRM-002,"Dandy Brushes — Colour Range","Dandy Brushes","A second angle",1
@@ -39,8 +41,6 @@ priority,sku,product,section,"what is needed","shots on file"
 "3 only one frame",TR-FLY-004,"FlyGuard Pro Fine Mesh Fly Mask","Fly Repellent","A second angle",1
 "3 only one frame",TR-FLY-005,"Redtop Bait & Bag Refill","Fly Repellent","A second angle",1
 "3 only one frame",TR-FLY-006,"Redtop Outdoor Flytrap","Fly Repellent","A second angle",1
-"3 only one frame",TR-CLO-003,"Black Half Chaps","Footwear & Chaps","A second angle",1
-"3 only one frame",TR-CLO-004,"Brown Leather Gaiters","Footwear & Chaps","A second angle",1
 "3 only one frame",TR-HOO-009,"Keratex Frog Power Cleanser","Frog & Sole Care","A second angle",1
 "3 only one frame",TR-HOO-015,"Red Horse Artimud","Frog & Sole Care","A second angle",1
 "3 only one frame",TR-HOO-016,"Red Horse Field Paste","Frog & Sole Care","A second angle",1
@@ -106,7 +106,8 @@ priority,sku,product,section,"what is needed","shots on file"
 "3 only one frame",TR-SKN-007,"Lincoln Sun Bloc","Skin Care","A second angle",1
 "3 only one frame",TR-SKN-010,"Red Horse Honeyheel","Skin Care","A second angle",1
 "3 only one frame",TR-SKN-012,"Sooth-Itch Super Strength Gel","Skin Care","A second angle",1
-"3 only one frame",TR-MST-004,"Peacock Safety Stirrup Irons","Stirrup Irons","A second angle",1
+"3 only one frame",TR-MST-004,"Peacock Safety Stirrup Irons","Stirrup Irons & Leathers","A second angle",1
+"3 only one frame",TR-MST-008,"Stirrup Leathers","Stirrup Irons & Leathers","A second angle",1
 "3 only one frame",TR-FED-005,"Equimins B-Plus Liquid","Vitamins & Minerals","A second angle",1
 "3 only one frame",TR-FED-009,"Equimins Vitamin E & Selenium","Vitamins & Minerals","A second angle",1
 "3 only one frame",TR-FED-010,"Equimins Young Stock Formula","Vitamins & Minerals","A second angle",1

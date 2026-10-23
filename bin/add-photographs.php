@@ -82,6 +82,11 @@ $manifest = [
      'alt' => 'Full side profile of the Arena leather general purpose saddle',
      'lead' => true],
 
+    ['file' => 'stirrup-leathers.png',
+     'product' => 'stirrup-leathers',
+     'alt' => 'A pair of black leather stirrup leathers, coiled, with the buckles showing',
+     'lead' => true],
+
     ['file' => 'WhatsApp Image 2026-10-16 at 12.06.18 PM.jpeg',
      'product' => 'arena-leather-general-purpose-saddle',
      'alt' => 'The Arena Saddles stamp and girth billets beneath the flap',
@@ -229,7 +234,21 @@ foreach ($manifest as $row) {
     }
 
     $id   = (int) $product['id'];
-    $have = $db->all('SELECT id, path FROM product_images WHERE product_id = :i ORDER BY sort_order', ['i' => $id]);
+    $have = $db->all('SELECT id, path, alt FROM product_images WHERE product_id = :i ORDER BY sort_order', ['i' => $id]);
+
+    /*
+     * Already on the product? Leave it alone. Without this, running the
+     * script a second time files every photograph again under the next
+     * free number and hands the lead to the copy — which is exactly what
+     * it did once. The caption identifies the photograph: two frames of
+     * the same product never carry the same one.
+     */
+    foreach ($have as $img) {
+        if ($img['alt'] === $row['alt']) {
+            out(sprintf('  already on  %-42s %s', $product['name'], basename($img['path'])));
+            continue 2;
+        }
+    }
 
     // Carry on from whatever numbering the product already uses.
     $next = 1;
